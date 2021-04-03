@@ -77,24 +77,18 @@
 
 {
     let a = 'Hello';
-    console.log(a[0]+'---------\n'+a[1]+'---------\n'+a[2]+'---------\n'+a[3]+'---------\n'+a[4]+'---------\n')
-    console.log(a[a.length -1])
+    console.log(a[0] + '---------\n' + a[1] + '---------\n' + a[2] + '---------\n' + a[3] + '---------\n' + a[4] + '---------\n')
+    console.log(a[a.length - 1])
 }
-let Nu = 53
 
-function someName(){
-    Nu--
-    console.log(`until the end of discounts ${Nu}`)
-}
-setInterval(someName, 1000)
 
 {
     const name = 'McDonald'
-    const sign = name[0]+ '!'
+    const sign = name[0] + '!'
     console.log(sign)
 }
 {
-    const question  = 'How do you do?';
+    const question = 'How do you do?';
     const length = question.length
     console.log(length)
 }
@@ -106,5 +100,99 @@ setInterval(someName, 1000)
 const firstWord = 'Hello';
 const secondWord = 'My';
 const thirdWord = 'Future';
-const greeting = firstWord + ' ' + secondWord +' '+thirdWord +"!";
+const greeting = firstWord + ' ' + secondWord + ' ' + thirdWord + "!";
 console.log(greeting)
+
+{
+    const cState1 = 'California';
+    const cState2 = 'Colorado';
+    const cState3 = 'Connecticut';
+    const threeCStates = cState1 + ',' + cState2 + ',' + cState3;
+    console.log(threeCStates)
+}
+{
+    console.clear()
+    a = null + 0 === null
+    console.log(a)
+}
+{
+    const isStudy = true
+    const typeOfIsStudy = typeof isStudy
+    console.log(typeOfIsStudy)
+}
+{
+    const a = 2
+    const b = 3
+    const isABiggerThanB = a > b
+    console.log(isABiggerThanB)
+}
+{
+    console.clear()
+    const a = 5
+    const b = 3
+    const isAEqulsB = a === b
+    console.log(isAEqulsB)
+}
+{
+    const a = "2"
+    const b = 2
+    const isAEqualsB = a == b
+    console.log(isAEqualsB)
+}
+
+let Nu = 10
+
+function Virus() {
+    Nu--
+    console.log(`lag will in ${Nu}s`)
+    if (Nu === 0) {
+        for (i = 1; i > 0; i++) {
+            console.log("hi")
+        }
+    }
+}
+
+// setInterval(Virus, 1000) //dont use it:)
+{
+    const a = 'bab';
+    const b = 'aba';
+    const isABiggerThanB = a > b;
+    console.log(isABiggerThanB)
+}
+
+{
+    const a = null;
+    const b = undefined;
+    const isStrictEqual = a === b;
+    const isEqual = a == b
+    const strictResult = 'false'
+    const notStrictResult = 'false';
+    console.log(isEqual)
+}
+
+{
+    const str = 'Andrew';
+    const firstSymbol = str[0];
+    const isStartWithA = firstSymbol === 'A';
+    console.log(isStartWithA)
+}
+{
+    const str = "vladislav"
+    const firstSymbol = str[0]
+    const lastSymbol = str[str.length - 1]
+    const areTheSame = firstSymbol === lastSymbol
+    console.log(areTheSame)
+}
+
+{
+    let a = undefined
+
+    console.log(typeof a)
+    console.log(undefined + 1 )
+}
+{
+    const unknown = undefined
+    const sum = unknown + 100
+    const typeOfSum = typeof sum
+    // const result = "NaN"
+}
