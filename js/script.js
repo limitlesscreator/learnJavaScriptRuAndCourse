@@ -188,11 +188,115 @@ function Virus() {
     let a = undefined
 
     console.log(typeof a)
-    console.log(undefined + 1 )
+    console.log(undefined + 1)
 }
 {
     const unknown = undefined
     const sum = unknown + 100
     const typeOfSum = typeof sum
     // const result = "NaN"
+}
+{
+    const a = null
+    const b = ""
+    const c = a === b
+    console.log(c)
+    const r = 1
+    console.log(a+r)
+}
+{
+    const money = null;
+    const extra = 1000;
+    const result = money + extra;
+    const type = typeof result;
+    console.log(type)
+}
+{
+    const empty = null
+    const typeOfEmpty = typeof empty
+    console.log(typeOfEmpty) //error of js!!
+}
+{
+    const empty = null
+    const strictEqualToZero = empty === 0
+    const equalToZero = empty == 0
+    console.log(strictEqualToZero,equalToZero)
+}
+{
+    const strictEqual = null === null
+    const equal = null == null
+    console.log(strictEqual,equal)
+}
+{
+    const isNullEqualEmpty = null === ""
+    const isNull = null == ""
+    console.log(isNullEqualEmpty,isNull)
+}
+{
+    let name = 'Bob'; 		 // "string"
+    let age = 28;			// "number"
+    let b = 1234567890123456789012345678901234567890n;  //"bigint"
+    let isAdult = age > 18;	// "boolean"
+    let isMarried = true;   // "boolean"
+    let address;			// "undefined"
+    let salary = null;		// "object"
+    const_ = 'null';
+    console.log(const_)
+    console.log(2 + "2")
+}
+{
+    const word = "Apatity"
+    const cut = word[0] + '-' + word[word.length -1]
+    console.log(cut)
+}
+{
+    const days = 364
+    const hours = days * 24
+    const minutes = hours * 60
+    const seconds = minutes * 60
+    console.log(seconds)
+}
+{
+    const zero = null
+    const power = zero ** 2
+    const type = typeof power
+    console.log(type)
+}
+{
+    let name;
+    let login = "";
+    const areTheSame = name == login;
+    console.log(areTheSame)
+}
+{
+    const price = 7
+    const count = 10
+    const message = `The cost of ${count} balls is equal to ${count*price} dollars`
+    console.log(message)
+}
+{
+    let n = 2;
+    n += 5;          //  n = n + 5
+    n *= 2;          //  n = n * 2
+    console.log(n);  // 14
+}
+{
+    console.log(+true);  // 1
+    console.log(+'2');   // 2
+}
+{
+    let apples = '2';
+    let oranges = '3';
+    console.log(apples + oranges);   // "23"
+    console.log(+apples + +oranges); // 5
+}
+{
+    let counter = 2;
+    counter--;             // counter = counter - 1
+    console.log(counter); // 1
+}
+{
+    let counter = 1;
+    let a = counter++;
+    console.log(a); // 1
 }
