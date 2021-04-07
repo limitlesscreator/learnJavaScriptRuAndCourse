@@ -300,3 +300,101 @@ function Virus() {
     let a = counter++;
     console.log(a); // 1
 }
+{
+    console.log(2 - '1');   // 1
+    console.log('6' / '2'); // 3
+}
+{
+    let a = -5
+    console.log(+a)
+}
+{
+    const temp = 30
+    const opposite = -temp
+    console.log(opposite)
+}
+{
+    const square = 200
+    const side = square ** 0.5
+    const diagonal = (2 * side **2) ** 0.5
+    console.log(diagonal)
+}
+{
+    const perimeter = 1000
+    const side = perimeter / 3
+    console.log(side)
+}
+{
+    const a = 3
+    const b = 5
+    const c = (a ** 2 + b ** 2) ** 0.5
+    console.log(c)
+}
+{
+    const coin = true
+    const value = +coin
+    console.log(value)
+}
+{
+    const zero = null
+    const value = +zero
+    console.log(value)
+}
+{
+    const a = '8'
+    const b = '12'
+    const sum = +a + +b
+    console.log(sum)
+}
+{
+    const side = 10
+    const area = (side ** 2 * 3 ** 0.5)/ 4
+    console.log(area)
+}
+{
+    let age = 13
+    age += 3
+    console.log(age)
+}
+{
+    let a = '-13';
+    console.log( - + a);
+}
+{
+    const radius = 10
+    const pi = 3.14
+    const area = pi * radius ** 2
+    console.log(area)
+}
+{
+    const a = '2'
+    const b = '3'
+    const aPlusB = a + b
+    const bPlusA = b + a
+    const isEqual = aPlusB  == bPlusA
+    console.log(isEqual)
+}
+{
+    const a = '12'
+    const b = '28'
+    const difference = +a - +b
+    console.log(difference)
+}
+{
+    const str1 = 'Everything'
+    const str2 = "is"
+    const str3 = "beautiful"
+    const message = str1 + " " + str2 + " " + str3 + "!"
+    console.log(message)
+}
+{
+    let d = 2 * 2 + (3 - +'1');
+    console.log(d)
+}
+//////////////////////////////
+// y = y + x; равносильно y += x;
+// y = y - x; равносильно y -= x;
+// y = y * x; равносильно y *= x;
+// y = y % x; равносильно y %= x;
+// y = y / x; равносильно y /= x;
+//////////////////////////////
