@@ -398,3 +398,167 @@ function Virus() {
 // y = y % x; равносильно y %= x;
 // y = y / x; равносильно y /= x;
 //////////////////////////////
+{
+    let a;
+    let b = 2;
+    let c = 3 - (a = b + 1);
+    console.log(c)
+}
+{
+    let num = 453;
+    let last = num % 10;
+    console.log(last); // 3
+    console.log( 4 ** (1/2) ); // 2 (извлечение квадратного корня)
+    console.log( 8 ** (1/3) ); // 2 (извлечение корня третьей степени)
+}
+//-2 ** 2;   // Это некорректно в JavaScript
+//-(2 ** 2); // -4 в JavaScript
+{
+    const a = 30
+    const remainder = a % 2
+    const isZero = remainder === 0
+    console.log(isZero)
+}
+{
+    const b = 33
+    const remainder = b % 2
+    const isOne = remainder === 1
+    console.log(isOne)
+}
+{
+    const a = 12
+    const square = a ** 2
+    console.log(square)
+}
+{
+    const volume = 3
+    const edge = volume ** (1/3)
+    console.log(edge)
+}
+{
+    const bookQuantity = 3
+    const shelves = 5
+    const result = bookQuantity ** shelves
+    console.log(result)
+}
+{
+    const number = 101
+    const power = 0
+    const result = number ** power
+    console.log(result)
+}
+// "modify-in-place"
+{let x = 7;
+    let y = x++; /* значение x увеличивается на единицу x = 8,
+                но возвращается старое значение y = 7 */}
+{
+    let x = 7;
+    let y = ++x; /* значение x увеличивается на единицу x = 8,
+                возвращается новое значение y = 8 */
+}
+
+// ++a Инкремент, префиксная форма
+// a++ Инкремент, постфиксная форма
+{
+    let user = {
+        name: 'Bob',
+        age: 39,
+        isAdult: true,
+        salary: null,
+    };
+    console.log(user);
+}
+{
+    let user = {
+        name: "John",
+        age: 30,
+        "likes programming": true,  // имя свойства из нескольких слов должно быть в кавычках
+    }
+    //console.log(user.likes programming);  // появится ошибка
+    console.log(user['likes programming']);  // true
+}
+{
+    let a = null
+    console.log(typeof a)
+}
+{
+    const school = {
+        '1a': 18,
+        '1b': 20,
+        '2a': 21,
+        '2b': 22,
+    }
+    console.log(school['1a']);   // 18
+}
+{
+    const person = {
+        name : 'Alice',
+        "likes dogs": true,
+        "likes cats": false,
+    }
+}
+{
+    const user = {
+        name: "Bob",
+        hasJob: true,
+        salary: 80000,
+    }
+    const money = user.salary
+    console.log(money)
+}
+{
+    const husband = {
+    name: "Bob",
+        salary: 95000,
+}
+    const wife = {
+        name: "Alice",
+        salary: 90000
+    }
+    income = husband.salary + wife.salary
+    console.log(income)
+    const obj = new Object();
+    console.log(obj)
+}
+{
+    let car = {}; // задание пустого объекта car
+    console.log(car)
+}
+{
+    let person = {}; // задание пустого объекта person
+    person.name = 'Bob';
+    console.log(person)
+}
+{
+    const animal = {
+        name: "bear",
+    }
+    animal.class = "mammal"
+}
+{
+    const animal = {
+        name: "gorilla",
+        color: "brown"
+    }
+    animal.color = 'black'
+}
+{
+    const car = {
+        make: "Ford",
+        model: "Mustang",
+        year: 2015
+    }
+    delete car.year
+    console.log(car)
+    console.log(+null)
+}
+{
+    let user = {
+        name: 'Bob',
+        age: 30,
+        isStudent: true
+    }
+    if  (user.age) console.log ('Yes');  //'Yes'
+    
+}
+
