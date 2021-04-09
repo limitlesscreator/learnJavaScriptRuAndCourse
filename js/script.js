@@ -559,6 +559,148 @@ function Virus() {
         isStudent: true
     }
     if  (user.age) console.log ('Yes');  //'Yes'
-    
-}
 
+}
+{
+    let user = {
+        name: 'Bob',
+        age: 30,
+        isStudent: true
+    }
+    console.log(user.lala)
+}
+{
+    let menuPrice = {};
+    menuPrice.coffee = 5;
+    menuPrice.tea = 3;
+    menuPrice['type'] = 'drink';
+    console.log(menuPrice)
+}
+{
+    const obj = { 'apple': 40,
+        'orange': 25,
+        'mango': 50, }
+    const hasOrange = Boolean(obj.orange)
+    console.log(hasOrange)
+}
+{
+    const obj = { 'apple': 40, 'orange': 25, 'mango': 50, }
+    const hasApple = !!obj.apple
+    console.log(hasApple)
+}
+{
+    const car = { 'make': 'Toyota',
+        'model': 'Camry',
+        'year': 2016, }
+    const hasModel = car.hasOwnProperty('model')
+    console.log(hasModel)
+}
+{
+    const report = { 'math': 5, 'history': 4, 'science': 5, }
+    const hasMath = 'math' in report
+    console.log(hasMath)
+}
+{
+    const report = { 'math': 5, 'geo': 4, 'science': 5, }
+    const hasHistory = 'history' in report
+    console.log(hasHistory)
+}
+{
+    const book = {
+        author: 'Margaret Mitchell',
+        style: 'novel',
+        title :'Gone with the Wind',
+        year: 1936,
+    }
+    const hasAuthor = 'author' in book
+    const hasTitle= 'title' in book
+    const hasStyle= 'style' in book
+    const hasYear= 'year' in book
+    const hasPages = 'pages' in book
+    console.log(hasAuthor,hasTitle,hasPages)
+}
+{
+    const trip = {
+        milesPerDay : 400 ,
+        gallonsPerMile: 0.02,
+        days: 5
+    }
+    const totalMiles = trip.milesPerDay * trip.days
+    const totalGallons = trip.milesPerDay / trip.days
+    console.log(totalMiles,totalGallons)
+}
+{
+    shop1 = { count: 900, price: 1.4, }
+    shop2 = { count: 1200, price: 1.3,}
+    const total = shop1.count * shop1.price + shop2.count * shop2.price
+    console.log(total)
+}
+{
+    const  school = {
+        name: 'Fox Trail Elementary',
+        boys: 543,
+        girls: 487
+    }
+    const count = school.boys + school.girls
+    console.log(count)
+}
+{
+    collection = { cosmos: 134, cities: 255, fishes: 322, animals: 290,}
+    const total = collection.cosmos + collection.cities + collection.fishes + collection.animals
+    console.log(total)
+}
+{
+    trip = { 'teachers': 4, '9a': 15, '9b': 17, '10a': 12, }
+    const count = trip['teachers'] + trip['9a'] + trip['9b'] + trip['10a']
+    console.log(count)
+}
+{
+    gifts = { 'puzzles': 30, 'dolls': 14, 'cars': 20, 'lego': 15, }
+    count = gifts['puzzles'] + gifts['dolls'] + gifts['cars'] + gifts['lego']
+}
+{
+    ship1 = { name: 'MSC Seaview', passengers: 4050, },
+        ship2 = { name: 'Costa Magica', passengers: 2716, }
+    total = ship1.passengers + ship2.passengers
+    console.log(total)
+}
+{
+    const a = true
+    console.log(a)
+}
+{
+    const num = 12
+    const isPositive = num > 0
+    console.log(isPositive)
+}
+{
+    const num = 0
+    const isNonNegative = num === 0
+    console.log(isNonNegative)
+}
+{
+    const a = 3
+    const b = 5
+    const isNotEqual = a !== b
+    console.log(isNotEqual)
+}
+{
+    const a = 5
+    const b = 4
+    const isAGreaterThanB = a > b
+    console.log(isAGreaterThanB)
+}
+{
+    const num = 34
+    const isEven = num % 2 === 0
+    console.log(isEven)
+}
+{
+    const num = 33
+    const isOdd = num % 2 !== 0
+}
+{
+    const num = 5
+    const isDivided5 = num % 5 === 0
+    console.log(isDivided5)
+}
