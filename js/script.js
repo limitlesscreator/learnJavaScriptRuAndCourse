@@ -704,3 +704,111 @@ function Virus() {
     const isDivided5 = num % 5 === 0
     console.log(isDivided5)
 }
+{
+    const a = 4
+    const b = 20
+    const isATimesB  = a % b === 0
+    console.log(isATimesB)
+}
+{
+    const a = 3
+    const b = 3
+    const isDifferenceEven  = (a - b) % 2 === 0
+    console.log(isDifferenceEven)
+}
+{
+    const day = 5
+    const isWeekend = day === 6 || day === 7
+    console.log(isWeekend)
+}
+{
+    const toBe = true
+    const notToBe = false
+    const answer = toBe || notToBe
+    console.log(answer)
+}
+{
+    const month = 6
+    const isWinter = month === 6 || month === 8
+    console.log(isWinter)
+}
+{
+    const age = 34
+    const isVisaFree = age <= 12 || age >=65
+    console.log(isVisaFree)
+}
+{
+    const number = 34
+    const isLucky = number % 3 === 0 || number % 5 === 0
+    console.log(isLucky)
+}
+{
+    const size = ('XS', 'X', 'M', 'L', 'XL', 'XXL')
+    const isFit = size === 'X' || size === "XS"
+    console.log(typeof  size)
+}
+{
+    const age = 23
+    const isNotSchoolAge = age < 6 || age > 18
+    console.log(isNotSchoolAge)
+}
+{
+    const x = -2
+    const a = 0
+    const b = 1
+    const notIncluded = x < a || x > b
+    console.log(notIncluded)
+}
+{
+    const a = 10
+    const b = -3
+    const arePositive = a > 0 || b > 0
+    console.log(arePositive)
+}
+{
+    const a = 3
+    const b = 4
+    const areNonZeros = a !== 0 || b !== 0
+    console.log(areNonZeros)
+}
+{
+    const a = -3
+    const b = 3
+    const result = a + b === 0 || a * b === 0
+    console.log(result)
+}
+{
+    const phone = '1234567890'
+    const isPhoneCorrect = phone.length === 11 || phone.length === 12
+    console.log(isPhoneCorrect)
+}
+{
+    const month = 7
+    const isSummer =  month >= 6 || month <= 8
+    console.log(isSummer)
+}
+{
+    const day = 4
+    const isWorkDay = day >= 1 || day <= 5
+    console.log(isWorkDay)
+}
+{
+    const number = -3
+    const isOneDigitNegative = number >= -9 || number <= -1
+    console.log(isOneDigitNegative)
+}
+{
+    const number = 55
+    const isTwoDigitPositive = number >= 10 && number <= 99
+    console.log(isTwoDigitPositive)
+}
+{
+    const number = - 22
+    const isTwoDigitNegative = number >= -99 && number<= 10
+    console.log(isTwoDigitNegative)
+}
+{
+    const number = 33
+    const isPositiveEven = number % 2 === 0 && number > 0
+    console.log(isPositiveEven)
+}
