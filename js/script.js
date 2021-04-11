@@ -812,3 +812,105 @@ function Virus() {
     const isPositiveEven = number % 2 === 0 && number > 0
     console.log(isPositiveEven)
 }
+{
+    const number = 4
+    const isPositiveOdd = number % 2 !== 0 && number > 0
+    console.log(isPositiveOdd)
+}
+{
+    const x = 23
+    const a = 20
+    const b = 30
+    const isBelongs = x >= a && x <= b
+    console.log(isBelongs)
+}
+{
+    const name = "Andey"
+    const isCorrect = name[0] === 'A' && name.length === 5
+    console.log(isCorrect)
+}
+{
+    const password = 'qwerty1234'
+    const isPasswordCorrect = password.length >= 8 && password.length <= 20
+    console.log(isPasswordCorrect)
+}
+{
+    const word = 'Vladislav'
+    const isCorrect = word.length === 4 && word[0] === word[word.length -1]
+    console.log(isCorrect)
+}
+{
+    const x = 3
+    const y = 5
+    const isForth = x > 0 && y < 0
+    console.log(isForth)
+}
+{
+    const a = 3
+    const b = 5
+    const haveDifferentSigns = a > 0 && b < 0
+    console.log(haveDifferentSigns)
+}
+{
+    const a = 5
+    const b = 4
+    const haveTheSameSign = a < 0 && b < 0 || a > 0 && b > 0
+    console.log(haveTheSameSign)
+}
+{
+    const x = 54
+    const y = 68
+    const isFirst = x > 0 && y > 0
+    console.log(isFirst)
+}
+{
+    const x = 3
+    const y = 3
+    const z = 4
+    const isCube = x === y && y === z
+}
+{
+    const a = 54
+    const b = 54
+    const angle = 90
+    const isSquare = a === b && angle === 90
+    console.log(isSquare)
+}
+{
+    console.log( !true ); // false
+    console.log( !0 ); // true
+    console.log( !!'string' ); // true
+    console.log( !!null ); // false
+}
+{
+    const value = 0
+    const result = !value
+    console.log(result)
+}
+{
+    const value = false
+    const result = !value
+    console.log(result)
+}
+{
+    const value = 1
+    const result = !value
+    console.log(result)
+}
+{
+    const value = "Whats up"
+    const result = !value
+    const value2 = null
+    const result2 = !value2
+    const value3 = ""
+    const result3 = !value3
+    const value4 = undefined
+    const result4 = !value4
+    console.log(result,result2,result3,result4)
+    const value5 = 0
+    const result5 = !!value5
+    console.log(result5)
+    const value6 = 1
+    const result6 = !!value6
+    console.log(result6)
+}
