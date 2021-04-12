@@ -1210,41 +1210,41 @@ function Virus() {
     let result;
     switch (number) {
         case 1:
-            result= 'One';
+            result = 'One';
             break;
         case 2:
-            result= 'Two';
+            result = 'Two';
             break;
         case 3:
-            result= 'Three';
+            result = 'Three';
             break;
         case 4:
-            result= 'Four';
+            result = 'Four';
             break;
         case 5:
-            result= 'Five';
+            result = 'Five';
             break;
         case 6:
-            result= 'Six';
+            result = 'Six';
             break;
         case 7:
-            result= 'Seven';
+            result = 'Seven';
             break;
         case 8:
-            result= 'Eight';
+            result = 'Eight';
             break;
         case 9:
-            result= 'Nine';
+            result = 'Nine';
             break;
         default:
-            result= 'Error';
+            result = 'Error';
     }
     console.log(result)
 }
 {
     const x = 1;
     const y = 8;
-    const sign= '+';
+    const sign = '+';
     let result;
     switch (sign) {
         case '+':
@@ -1268,34 +1268,173 @@ function Virus() {
     const month = 5;
     let name;
     switch (month) {
-        case 1: name= 'January'; break;
-        case 2: name= 'February'; break;
-        case 3: name= 'March'; break;
-        case 4: name= 'April'; break;
-        case 5: name= 'May'; break;
-        case 6: name= 'June'; break;
-        case 7: name= 'July'; break;
-        case 8: name= 'August'; break;
-        case 9: name= 'September'; break;
-        case 10: name= 'October'; break;
-        case 11: name= 'November'; break;
-        case 12: name= 'December'; break;
-        default: name= 'error';
+        case 1:
+            name = 'January';
+            break;
+        case 2:
+            name = 'February';
+            break;
+        case 3:
+            name = 'March';
+            break;
+        case 4:
+            name = 'April';
+            break;
+        case 5:
+            name = 'May';
+            break;
+        case 6:
+            name = 'June';
+            break;
+        case 7:
+            name = 'July';
+            break;
+        case 8:
+            name = 'August';
+            break;
+        case 9:
+            name = 'September';
+            break;
+        case 10:
+            name = 'October';
+            break;
+        case 11:
+            name = 'November';
+            break;
+        case 12:
+            name = 'December';
+            break;
+        default:
+            name = 'error';
     }
 }
 
 {
     const month = 6
     let season
-    switch (month){
-        case 12 || 1 || 2 : season = 'Winter';break;
-        case 3 || 4 || 5 : season = 'Spring'; break;
-        case 6 || 7 || 8 : season = 'Summer'; break;
-        case 9 || 10 || 11 : season = 'Fall'; break;
-        default: season = 'Error'
+    switch (month) {
+        case 12 || 1 || 2 :
+            season = 'Winter';
+            break;
+        case 3 || 4 || 5 :
+            season = 'Spring';
+            break;
+        case 6 || 7 || 8 :
+            season = 'Summer';
+            break;
+        case 9 || 10 || 11 :
+            season = 'Fall';
+            break;
+        default:
+            season = 'Error'
     }
     console.log(season)
 }
 {
+    const arr = [1, 2, 3, 4, 5, 6, 7]
+    const sumOfFirstAndLast = arr[0] + arr[arr.length - 1]
+    console.log(sumOfFirstAndLast)
+}
+{
+    const arr = [2, 4, 6, 8, 10, 12]
+    const lastElement = arr[arr.length - 1]
+    console.log(lastElement)
+}
+{
+    const arr = []
+    const length = arr.length
+    console.log(length)
+}
+{
+    const b = [1, , , , 5];
+    console.log(b)
+}
+{
+    const arr = [1, 34, 2, 3]
+    const sum = arr[0] + arr[1]
+    console.log(sum)
+}
+{
+    const arr = ['To', 'be', 'or', 'not', 'to']
+    const phrase = arr[0] + ' ' + arr[1] + ' ' + arr[2] + ' ' + arr[3] + ' ' + arr[4] + ' be'
+    console.log(phrase)
+}
+{
+    const arr = [3, 5, 4, 23, 4]
+    const product = arr[0] * arr[arr.length - 1]
+    console.log(product)
+}
+{
+    const arr = []
+    arr[0] = 0;
+    arr[1] = 1;
+    arr[2] = 2;
+    arr[3] = 3;
+    arr[4] = 4;
+    console.log(arr)
+}
+{
+    const arr = []
+    arr[0] = 1
+    arr[4] = 1
+    console.log(arr)
+}
+{
+    const arr = [1, , , , , 6]
+    const unknown = arr[2]
+}
 
+for (let i = 0; i <= 5 ; i++){
+    console.log(i)
+}
+{
+    const arr = [0]
+    const newLength = arr.push(1,2,3)
+    console.log(newLength)
+}
+{
+    const arr = []
+    arr.push(1,10,11)
+    console.log(arr)
+}
+{
+    const arr = [0,0,0]
+    arr.unshift(100)
+    console.log(arr)
+}
+{
+    const arr = [0, 0, 0];
+    arr.unshift(1, 2, 3);
+    console.log(arr)
+}
+{
+    const arr = [0]
+    newLength = arr.unshift(1,2)
+    console.log(newLength)
+}
+{
+    const arr = [11, 12, 13, 14, 15]
+    arr.pop()
+    console.log(arr)
+}
+{
+    const arr = [100, 200, 300, 400]
+    arr.pop();
+    arr.pop(); // удалили два последних элемента массива, получился массив [100, 200]
+    console.log(arr)
+}
+{
+    const arr = [10, 11, 12, 13, 14, 15]// удалили первый элемент массива, получился массив [2, 3, 4, 5]
+    arr.shift()
+    console.log(arr)
+}
+{
+    const arr = [10, 11, 12, 13, 14, 15]
+    arr.shift();arr.shift();arr.shift()
+    console.log(arr)
+}
+{
+    const arr = [2,4,6,8,10]
+    const removed = arr.shift()
+    console.log(removed)
 }
