@@ -1077,3 +1077,225 @@ function Virus() {
         message = "The numbers are not equal"
     }
 }
+////////////////////////////7.2
+{
+    const age = 18
+    let stage
+    if (age <= 1) {
+        stage = 'baby'
+    } else if (age <= 3) {
+        stage = 'toddler'
+    } else if (age <= 5) {
+        stage = 'preschooler'
+    } else if (age <= 12) {
+        stage = 'gradeschooler'
+    } else if (age <= 18) {
+        stage = 'teen'
+    } else if (age <= 21) {
+        stage = 'young adult'
+    } else {
+        stage = "adult"
+    }
+    console.log(stage)
+}
+{
+    const month = 12
+    let season
+    if (month >= 3 && month <= 5) {
+        season = "spring"
+    } else if (month >= 6 && month < 8) {
+        season = 'summer'
+    } else if (month >= 9 && month < 11) {
+        season = 'fall'
+    } else {
+        season = "winter"
+    }
+    console.log(season)
+}
+{
+    age = 18
+    let priceOfVisa
+    if (age < 6 || age > 65) {
+        priceOfVisa = 0
+    } else if (age >= 6 && age <= 12) {
+        priceOfVisa = 35
+    } else {
+        priceOfVisa = 60
+    }
+    console.log(priceOfVisa)
+}
+{
+    const temp = 50
+    let feeling
+    if (temp < -20) {
+        feeling = 'Chilly'
+    } else if (temp < 0) {
+        felling = 'Frosty'
+    } else if (temp < 10) {
+        feeling = 'Cold'
+    } else if (temp < 20) {
+        feeling = 'A little cool'
+    } else if (temp < 30) {
+        feeling = 'It is warm now'
+    } else if (temp < 40) {
+        feeling = "It is hot now"
+    } else if (temp < 50) {
+        feeling = "Extremely hot"
+    } else {
+        feeling = "Stay at home!"
+    }
+    console.log(feeling)
+}
+{
+    const score = 5;
+    let mark;
+    if (score === 5) {
+        mark = 'Excellent';
+    } else if (score === 4) {
+        mark = 'Good';
+    } else if (score === 3) {
+        mark = 'Satisfactory';
+    } else if (score === 2) {
+        mark = 'Unsatisfactory';
+    } else {
+        mark = 'Bad';
+    }
+}
+/////////////////////////7.3
+{
+    const str1 = 'Hello'
+    const str2 = 'Mike'
+    result = str1[0] === str2[0] ? "start with the same letter" : "start with different letters"
+    console.log(result)
+}
+{
+    const num = 4
+    const result = num >= 0 ? 'positive' : 'negative'
+    console.log(result)
+}
+{
+    const num = 30
+    const result = num % 2 === 0 ? "even" : 'odd'
+    console.log(result)
+}
+{
+    const x = 7.1
+    const y = 8
+    const result = Math.abs(y - x) < 1 ? 'closely' : 'faraway'
+    console.log(result)
+}
+{
+    const str1 = "wow"
+    const str2 = 'nice'
+    result = str1[0] === str2[str2.length - 1] ? 'suitable' : 'not suitable'
+}
+{
+    const str1 = 'lara'
+    const str2 = 'Maria'
+    const result = str1.length === str2.length ? 'engths are equal' : "lengths are not equal"
+    console.log(result)
+}
+{
+    const str = 'Sasha'
+    const result = str[0] === str[str.length - 1] ? 'equal' : 'not equal'
+    console.log(result)
+}
+{
+    const num = 68
+    const newNumber = num % 2 === 0 ? num + 1 : num - 1
+    console.log(newNumber)
+}
+{
+    const number = 1;
+    let result;
+    switch (number) {
+        case 1:
+            result= 'One';
+            break;
+        case 2:
+            result= 'Two';
+            break;
+        case 3:
+            result= 'Three';
+            break;
+        case 4:
+            result= 'Four';
+            break;
+        case 5:
+            result= 'Five';
+            break;
+        case 6:
+            result= 'Six';
+            break;
+        case 7:
+            result= 'Seven';
+            break;
+        case 8:
+            result= 'Eight';
+            break;
+        case 9:
+            result= 'Nine';
+            break;
+        default:
+            result= 'Error';
+    }
+    console.log(result)
+}
+{
+    const x = 1;
+    const y = 8;
+    const sign= '+';
+    let result;
+    switch (sign) {
+        case '+':
+            result = x + y;
+            break;
+        case '-':
+            result = x - y;
+            break;
+        case '*':
+            result = x * y;
+            break;
+        case '/':
+            result = x / y;
+            break;
+        default:
+            result = 'unknown value';
+    }
+    console.log(result)
+}
+{
+    const month = 5;
+    let name;
+    switch (month) {
+        case 1: name= 'January'; break;
+        case 2: name= 'February'; break;
+        case 3: name= 'March'; break;
+        case 4: name= 'April'; break;
+        case 5: name= 'May'; break;
+        case 6: name= 'June'; break;
+        case 7: name= 'July'; break;
+        case 8: name= 'August'; break;
+        case 9: name= 'September'; break;
+        case 10: name= 'October'; break;
+        case 11: name= 'November'; break;
+        case 12: name= 'December'; break;
+        default: name= 'error';
+    }
+}
+
+{
+    const month = 6
+    let season
+    switch (month){
+        case 12 || 1 || 2 : season = 'Winter';break;
+        case 3 || 4 || 5 : season = 'Spring'; break;
+        case 6 || 7 || 8 : season = 'Summer'; break;
+        case 9 || 10 || 11 : season = 'Fall'; break;
+        default: season = 'Error'
+    }
+    console.log(season)
+}
+{
+
+}
