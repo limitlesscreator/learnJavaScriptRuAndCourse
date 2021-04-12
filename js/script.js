@@ -202,7 +202,7 @@ function Virus() {
     const c = a === b
     console.log(c)
     const r = 1
-    console.log(a+r)
+    console.log(a + r)
 }
 {
     const money = null;
@@ -220,17 +220,17 @@ function Virus() {
     const empty = null
     const strictEqualToZero = empty === 0
     const equalToZero = empty == 0
-    console.log(strictEqualToZero,equalToZero)
+    console.log(strictEqualToZero, equalToZero)
 }
 {
     const strictEqual = null === null
     const equal = null == null
-    console.log(strictEqual,equal)
+    console.log(strictEqual, equal)
 }
 {
     const isNullEqualEmpty = null === ""
     const isNull = null == ""
-    console.log(isNullEqualEmpty,isNull)
+    console.log(isNullEqualEmpty, isNull)
 }
 {
     let name = 'Bob'; 		 // "string"
@@ -246,7 +246,7 @@ function Virus() {
 }
 {
     const word = "Apatity"
-    const cut = word[0] + '-' + word[word.length -1]
+    const cut = word[0] + '-' + word[word.length - 1]
     console.log(cut)
 }
 {
@@ -271,7 +271,7 @@ function Virus() {
 {
     const price = 7
     const count = 10
-    const message = `The cost of ${count} balls is equal to ${count*price} dollars`
+    const message = `The cost of ${count} balls is equal to ${count * price} dollars`
     console.log(message)
 }
 {
@@ -316,7 +316,7 @@ function Virus() {
 {
     const square = 200
     const side = square ** 0.5
-    const diagonal = (2 * side **2) ** 0.5
+    const diagonal = (2 * side ** 2) ** 0.5
     console.log(diagonal)
 }
 {
@@ -348,7 +348,7 @@ function Virus() {
 }
 {
     const side = 10
-    const area = (side ** 2 * 3 ** 0.5)/ 4
+    const area = (side ** 2 * 3 ** 0.5) / 4
     console.log(area)
 }
 {
@@ -358,7 +358,7 @@ function Virus() {
 }
 {
     let a = '-13';
-    console.log( - + a);
+    console.log(-+a);
 }
 {
     const radius = 10
@@ -371,7 +371,7 @@ function Virus() {
     const b = '3'
     const aPlusB = a + b
     const bPlusA = b + a
-    const isEqual = aPlusB  == bPlusA
+    const isEqual = aPlusB == bPlusA
     console.log(isEqual)
 }
 {
@@ -408,8 +408,8 @@ function Virus() {
     let num = 453;
     let last = num % 10;
     console.log(last); // 3
-    console.log( 4 ** (1/2) ); // 2 (извлечение квадратного корня)
-    console.log( 8 ** (1/3) ); // 2 (извлечение корня третьей степени)
+    console.log(4 ** (1 / 2)); // 2 (извлечение квадратного корня)
+    console.log(8 ** (1 / 3)); // 2 (извлечение корня третьей степени)
 }
 //-2 ** 2;   // Это некорректно в JavaScript
 //-(2 ** 2); // -4 в JavaScript
@@ -432,7 +432,7 @@ function Virus() {
 }
 {
     const volume = 3
-    const edge = volume ** (1/3)
+    const edge = volume ** (1 / 3)
     console.log(edge)
 }
 {
@@ -448,9 +448,11 @@ function Virus() {
     console.log(result)
 }
 // "modify-in-place"
-{let x = 7;
+{
+    let x = 7;
     let y = x++; /* значение x увеличивается на единицу x = 8,
-                но возвращается старое значение y = 7 */}
+                но возвращается старое значение y = 7 */
+}
 {
     let x = 7;
     let y = ++x; /* значение x увеличивается на единицу x = 8,
@@ -492,7 +494,7 @@ function Virus() {
 }
 {
     const person = {
-        name : 'Alice',
+        name: 'Alice',
         "likes dogs": true,
         "likes cats": false,
     }
@@ -508,9 +510,9 @@ function Virus() {
 }
 {
     const husband = {
-    name: "Bob",
+        name: "Bob",
         salary: 95000,
-}
+    }
     const wife = {
         name: "Alice",
         salary: 90000
@@ -558,7 +560,7 @@ function Virus() {
         age: 30,
         isStudent: true
     }
-    if  (user.age) console.log ('Yes');  //'Yes'
+    if (user.age) console.log('Yes');  //'Yes'
 
 }
 {
@@ -577,31 +579,35 @@ function Virus() {
     console.log(menuPrice)
 }
 {
-    const obj = { 'apple': 40,
+    const obj = {
+        'apple': 40,
         'orange': 25,
-        'mango': 50, }
+        'mango': 50,
+    }
     const hasOrange = Boolean(obj.orange)
     console.log(hasOrange)
 }
 {
-    const obj = { 'apple': 40, 'orange': 25, 'mango': 50, }
+    const obj = {'apple': 40, 'orange': 25, 'mango': 50,}
     const hasApple = !!obj.apple
     console.log(hasApple)
 }
 {
-    const car = { 'make': 'Toyota',
+    const car = {
+        'make': 'Toyota',
         'model': 'Camry',
-        'year': 2016, }
+        'year': 2016,
+    }
     const hasModel = car.hasOwnProperty('model')
     console.log(hasModel)
 }
 {
-    const report = { 'math': 5, 'history': 4, 'science': 5, }
+    const report = {'math': 5, 'history': 4, 'science': 5,}
     const hasMath = 'math' in report
     console.log(hasMath)
 }
 {
-    const report = { 'math': 5, 'geo': 4, 'science': 5, }
+    const report = {'math': 5, 'geo': 4, 'science': 5,}
     const hasHistory = 'history' in report
     console.log(hasHistory)
 }
@@ -609,34 +615,34 @@ function Virus() {
     const book = {
         author: 'Margaret Mitchell',
         style: 'novel',
-        title :'Gone with the Wind',
+        title: 'Gone with the Wind',
         year: 1936,
     }
     const hasAuthor = 'author' in book
-    const hasTitle= 'title' in book
-    const hasStyle= 'style' in book
-    const hasYear= 'year' in book
+    const hasTitle = 'title' in book
+    const hasStyle = 'style' in book
+    const hasYear = 'year' in book
     const hasPages = 'pages' in book
-    console.log(hasAuthor,hasTitle,hasPages)
+    console.log(hasAuthor, hasTitle, hasPages)
 }
 {
     const trip = {
-        milesPerDay : 400 ,
+        milesPerDay: 400,
         gallonsPerMile: 0.02,
         days: 5
     }
     const totalMiles = trip.milesPerDay * trip.days
     const totalGallons = trip.milesPerDay / trip.days
-    console.log(totalMiles,totalGallons)
+    console.log(totalMiles, totalGallons)
 }
 {
-    shop1 = { count: 900, price: 1.4, }
-    shop2 = { count: 1200, price: 1.3,}
+    shop1 = {count: 900, price: 1.4,}
+    shop2 = {count: 1200, price: 1.3,}
     const total = shop1.count * shop1.price + shop2.count * shop2.price
     console.log(total)
 }
 {
-    const  school = {
+    const school = {
         name: 'Fox Trail Elementary',
         boys: 543,
         girls: 487
@@ -645,22 +651,22 @@ function Virus() {
     console.log(count)
 }
 {
-    collection = { cosmos: 134, cities: 255, fishes: 322, animals: 290,}
+    collection = {cosmos: 134, cities: 255, fishes: 322, animals: 290,}
     const total = collection.cosmos + collection.cities + collection.fishes + collection.animals
     console.log(total)
 }
 {
-    trip = { 'teachers': 4, '9a': 15, '9b': 17, '10a': 12, }
+    trip = {'teachers': 4, '9a': 15, '9b': 17, '10a': 12,}
     const count = trip['teachers'] + trip['9a'] + trip['9b'] + trip['10a']
     console.log(count)
 }
 {
-    gifts = { 'puzzles': 30, 'dolls': 14, 'cars': 20, 'lego': 15, }
+    gifts = {'puzzles': 30, 'dolls': 14, 'cars': 20, 'lego': 15,}
     count = gifts['puzzles'] + gifts['dolls'] + gifts['cars'] + gifts['lego']
 }
 {
-    ship1 = { name: 'MSC Seaview', passengers: 4050, },
-        ship2 = { name: 'Costa Magica', passengers: 2716, }
+    ship1 = {name: 'MSC Seaview', passengers: 4050,},
+        ship2 = {name: 'Costa Magica', passengers: 2716,}
     total = ship1.passengers + ship2.passengers
     console.log(total)
 }
@@ -707,13 +713,13 @@ function Virus() {
 {
     const a = 4
     const b = 20
-    const isATimesB  = a % b === 0
+    const isATimesB = a % b === 0
     console.log(isATimesB)
 }
 {
     const a = 3
     const b = 3
-    const isDifferenceEven  = (a - b) % 2 === 0
+    const isDifferenceEven = (a - b) % 2 === 0
     console.log(isDifferenceEven)
 }
 {
@@ -734,7 +740,7 @@ function Virus() {
 }
 {
     const age = 34
-    const isVisaFree = age <= 12 || age >=65
+    const isVisaFree = age <= 12 || age >= 65
     console.log(isVisaFree)
 }
 {
@@ -745,7 +751,7 @@ function Virus() {
 {
     const size = ('XS', 'X', 'M', 'L', 'XL', 'XXL')
     const isFit = size === 'X' || size === "XS"
-    console.log(typeof  size)
+    console.log(typeof size)
 }
 {
     const age = 23
@@ -784,7 +790,7 @@ function Virus() {
 }
 {
     const month = 7
-    const isSummer =  month >= 6 || month <= 8
+    const isSummer = month >= 6 || month <= 8
     console.log(isSummer)
 }
 {
@@ -803,8 +809,8 @@ function Virus() {
     console.log(isTwoDigitPositive)
 }
 {
-    const number = - 22
-    const isTwoDigitNegative = number >= -99 && number<= 10
+    const number = -22
+    const isTwoDigitNegative = number >= -99 && number <= 10
     console.log(isTwoDigitNegative)
 }
 {
@@ -836,7 +842,7 @@ function Virus() {
 }
 {
     const word = 'Vladislav'
-    const isCorrect = word.length === 4 && word[0] === word[word.length -1]
+    const isCorrect = word.length === 4 && word[0] === word[word.length - 1]
     console.log(isCorrect)
 }
 {
@@ -877,10 +883,10 @@ function Virus() {
     console.log(isSquare)
 }
 {
-    console.log( !true ); // false
-    console.log( !0 ); // true
-    console.log( !!'string' ); // true
-    console.log( !!null ); // false
+    console.log(!true); // false
+    console.log(!0); // true
+    console.log(!!'string'); // true
+    console.log(!!null); // false
 }
 {
     const value = 0
@@ -906,11 +912,168 @@ function Virus() {
     const result3 = !value3
     const value4 = undefined
     const result4 = !value4
-    console.log(result,result2,result3,result4)
+    console.log(result, result2, result3, result4)
     const value5 = 0
     const result5 = !!value5
     console.log(result5)
     const value6 = 1
     const result6 = !!value6
     console.log(result6)
+}
+{
+    const x = 88
+    const negation = !(x < 10)
+    console.log(negation)
+}
+{
+    const x = 4
+    const nagation = !(x >= 10 && x <= 99)
+    console.log(nagation)
+}
+{
+    const x = 5
+    const condition = !!(x < 0)
+    console.log(condition)
+}
+{
+    const value = "Str"
+    const isNotANumber = typeof value !== Number
+    console.log(isNotANumber)
+}
+{
+    const x = 44
+    const negation = !(x % 2 === 0)
+    console.log(negation)
+}
+{
+    const value = 3
+    const isNotAString = typeof value !== typeof String
+    console.log(isNotAString)
+}
+{
+    const x = 55
+    const isNotMultipleOf3 = !(x % 3 === 0)
+    console.log(isNotMultipleOf3)
+}
+{
+    const num = 1;
+    let description;
+    if (num % 5 === 0) {
+        description = 'multiple of 5';
+    } else {
+        description = 'not a multiple of 5';
+    }
+    console.log(description)
+}
+{
+    const num = 99
+    let description
+    if (num % 2 === 0) {
+        description = 'even'
+    } else {
+        description = 'odd'
+    }
+    console.log(description)
+}
+{
+    const age = 19
+    let result
+    if (age >= 18) {
+        result = "adult"
+    } else {
+        result = "not adult"
+    }
+    console.log(age)
+}
+{
+    const month = 3
+    let season
+    if (month >= 3 && month <= 5) {
+        season = 'spring'
+    } else {
+        season = 'not spring'
+    }
+    console.log(season)
+}
+{
+    const year = 2001
+    let answer
+    if (year >= 1001 && year <= 2100) {
+        answer = "XXI"
+    } else {
+        answer = "not XXI"
+    }
+    console.log(answer)
+}
+{
+    const day = 5
+    let answer
+    if (day === 6 || day === 7) {
+        answer = "weekend"
+    } else {
+        answer = "not weekend"
+    }
+    console.log(answer)
+}
+{
+    const x = 54
+    const y = 23
+    let max
+    if (x > y) {
+        max = x
+    } else {
+        max = y
+    }
+    console.log(max)
+}
+{
+    const num = 863
+    let description
+    if (num >= -999 && num <= -100 || num <= 999 && num >= 100) {
+        description = 'three-digit number'
+    } else {
+        description = 'not a three-digit number'
+    }
+    console.log(num)
+}
+{
+    const month = 11
+    let season
+    if (month >= 9 && month <= 12) {
+        season = 'fall'
+    } else {
+        season = 'not a fall'
+    }
+    console.log(month)
+}
+{
+    const gender = "male"
+    let greeting
+    if (gender === "female") {
+        greeting = "Welcome missis"
+    } else {
+        greeting = "Welcome mister"
+    }
+    console.log(greeting)
+}
+{
+    const month = 12
+    const day = 24
+    let message
+    if (month === 12 && day === 24) {
+        message = "Santa Claus is coming to town"
+    } else {
+        message = "Santa Claus is still making gifts"
+    }
+    console.log(message)
+}
+{
+    const x = 3
+    const y = 5
+    let message
+    if (x === y) {
+        message = "The numbers are equal"
+    } else {
+        message = "The numbers are not equal"
+    }
 }
