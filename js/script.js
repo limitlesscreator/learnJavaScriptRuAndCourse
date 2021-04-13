@@ -1851,3 +1851,269 @@
     console.log(countOfInteger)
 }
 ///////////////Function
+{
+    function sum(num1, num2) {
+        return num1 + num2
+    }
+}
+
+{
+    function sum(num1 = 0, num2 = 0) {
+        console.log(num1 + num2)
+    }
+
+    sum(3, 3)
+}
+
+function product(num1 = 1, num2 = 1) {
+    return num1 + num2
+}
+
+console.log(product(3, 33))
+{
+    function product(num1 = 0, num2 = 0, num3 = 0) {
+        return num1 * num2 * num3
+    }
+}
+{
+    function mult2(num) {
+        return num * 2
+    }
+
+    console.log(mult2(3))
+}
+{
+    function distance(x = 0, y = 0) {
+        return (x ** 2 + y ** 2) ** 0.5
+    }
+}
+{
+    function percentageValue(number, percent) {
+        return (number / 100) * percent
+    }
+
+    console.log(percentageValue(2000, 15))
+}
+{
+    function powerOfNumber(number, power) {
+        return number ** power
+    }
+
+    console.log(powerOfNumber(3, 5))
+}
+{
+    function greetings(name) {
+        if (name === '' || name === undefined) {
+            return 'Hello!'
+        } else {
+            return `Hello ${name}!`
+        }
+    }
+
+    console.log(greetings('Vladislav'))
+}
+{
+    function negative(num) {
+        if (num < 0) {
+            return num
+        } else {
+            return num * -1
+        }
+    }
+
+    console.log(negative(3))
+}
+{
+    function geometricMean(num1, num2) {
+        return Math.sqrt(num1 * num2)
+    }
+
+    console.log(geometricMean(3, 12))
+}
+{
+    function anglesOfPolygon(n) {
+        return 180 * (n - 2)
+    }
+
+    console.log(percentageValue(3))
+}
+{
+    function perimeterOfTriangle(a, b, c) {
+        if (a < b + c && b < a + c && c < a + b) {
+            return (a + b + c)
+        } else {
+            return "The triangle does not exist"
+        }
+    }
+
+    console.propertyIsEnumerable(2, 4, 3)
+}
+{
+    function areaOfTriangle(a, b, c) {
+        if (a < b + c && b < a + c && c < a + b) {
+            return ((a + b + c) / 2 * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c)) ** 0.5
+        } else {
+            return "The triangle does not exist"
+        }
+    }
+
+    console.log(areaOfTriangle(6, 3, 5))
+}
+{
+    function evenOrOdd(number) {
+        if (number % 2 === 0) {
+            return 'Even'
+        } else {
+            return 'Odd'
+        }
+    }
+
+    console.log(evenOrOdd(5))
+}
+{
+    function lastDigit(number) {
+        return number % 10
+    }
+
+    console.log(lastDigit(55))
+}
+{
+    function isDivided(a, b) {
+        if (a % b === 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    console.log(isDivided(3, 3))
+}
+{
+    function factorial(number) {
+        for (let i = number - 1; i >= 1; i--) {
+            number *= number
+        }
+        return number
+    }
+
+    console.log(factorial(4))
+
+}
+{
+    function sum(n) {
+        let total = 0
+        for (let i = 0; i <= n; i++) {
+            total += i
+        }
+        return total
+    }
+
+    console.log(sum(5))
+}
+{
+    function max(x, y) {
+        if (x > y) {
+            return x
+        } else {
+            return y
+        }
+    }
+
+    console.log(max(3, 2))
+}
+{
+    function max(x, y, z) {
+        if (x > y && x > z) {
+            return x
+        } else if (y > x && y > z) {
+            return y
+        } else if (z > x && z > y) {
+            return z
+        }
+    }
+}
+{
+    function max(x, y, z) {
+        let total = 0
+        for (let i = 0; i <= 3; i++) {
+            if (x >= y && x >= z) {
+                total = x
+            } else if (y >= z && y >= x) {
+                total = y
+            } else if (z >= y && z >= x) {
+                total = z
+            }
+        }
+        return total
+    }
+
+    console.log(max(3, 3, 1))
+}
+{
+    function fillArray(n) {
+        let arr = []
+        if (n > 0) {
+            for (let i = 1; i <= n; i++) {
+                arr.push(i)
+            }
+        }
+        return arr
+    }
+
+    console.log(fillArray(5)) // от 0 до 5
+}
+
+{
+    function fillArrayBetter(n, m) {
+        let arr = []
+        if (n < m) {
+            for (let i = n; i <= m; i++) {
+                arr.push(i)
+            }
+        }
+        return arr
+    }
+
+    console.log(fillArrayBetter(5, 15)) // от 5 до 15
+}
+{
+    function fillArray(n) {
+        let arr = []
+        if (n > 0) {
+            for (let i = 2; i <= n; i++) {
+                if (i % 2 === 0) {
+                    arr.push(i)
+                }
+            }
+        }
+        return arr
+    }
+
+    console.log(fillArray(16)) // только от 2 до чётных
+}
+
+
+{
+    function numberOfDigits(number) {
+        let count = 0
+        let last
+        while (number !==0){
+            last = number % 10
+            number = (number - last)/10
+            count++
+        }
+        return count
+    }
+
+    console.log(numberOfDigits(5454))
+}
+{
+    function describesNumber(number){
+        if(number ===0){return 'Zero'}
+        if(number > 0 && number % 2===0){ return "Even positive number"}
+        if(number > 0 && number % 2!==0){ return "Odd positive number"}
+        if(number < 0 && number % 2===0){ return "Even negative number"}
+        if(number < 0 && number % 2!==0){ return "Odd negative number"}
+    }
+    console.log(describesNumber(44))
+}
