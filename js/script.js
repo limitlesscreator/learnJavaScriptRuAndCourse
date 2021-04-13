@@ -1384,21 +1384,21 @@ function Virus() {
     const unknown = arr[2]
 }
 
-for (let i = 0; i <= 5 ; i++){
+for (let i = 0; i <= 5; i++) {
     console.log(i)
 }
 {
     const arr = [0]
-    const newLength = arr.push(1,2,3)
+    const newLength = arr.push(1, 2, 3)
     console.log(newLength)
 }
 {
     const arr = []
-    arr.push(1,10,11)
+    arr.push(1, 10, 11)
     console.log(arr)
 }
 {
-    const arr = [0,0,0]
+    const arr = [0, 0, 0]
     arr.unshift(100)
     console.log(arr)
 }
@@ -1409,7 +1409,7 @@ for (let i = 0; i <= 5 ; i++){
 }
 {
     const arr = [0]
-    newLength = arr.unshift(1,2)
+    newLength = arr.unshift(1, 2)
     console.log(newLength)
 }
 {
@@ -1430,11 +1430,197 @@ for (let i = 0; i <= 5 ; i++){
 }
 {
     const arr = [10, 11, 12, 13, 14, 15]
-    arr.shift();arr.shift();arr.shift()
+    arr.shift();
+    arr.shift();
+    arr.shift()
     console.log(arr)
 }
 {
-    const arr = [2,4,6,8,10]
+    const arr = [2, 4, 6, 8, 10]
     const removed = arr.shift()
     console.log(removed)
+}
+{
+    let i = 0;
+    while (i < 4) {
+        i++;
+    }
+    console.log(i);
+}
+{
+    let sum = 0
+    let x = 1
+    while (x <= 20) {
+        sum += x
+        x++
+    }
+    console.log(sum)
+}
+{
+    let str = ''
+    let i = 0
+    while (i < 20) {
+        str += '1'
+        i++
+    }
+    console.log(str)
+}
+{
+    let sum = 0
+    let x = 10
+    while (x <= 30) {
+        sum += x
+        x++
+    }
+    console.log(sum)
+}
+{
+    let sum = 0
+    let x = -4
+    while (x <= 25) {
+        sum += x
+        x++
+    }
+    console.log(sum)
+}
+{
+    let sum = 0
+    let x = 80
+    while (x <= 250) {
+        sum += x
+        x++
+    }
+    console.log(sum)
+}
+{
+    let product = 1
+    let x = 1
+    while (x <= 10) {
+        product *= x
+        x++
+    }
+    console.log(product)
+}
+{
+    let sum = 0
+    let x = 0.2
+    while (x <= 10) {
+        sum += x
+        x = x + 0.2
+    }
+    console.log(sum)
+}
+{
+    let sum = 0
+    let x = 0.1
+    while (x <= 5) {
+        sum += x
+        x += 0.1
+    }
+    console.log(sum)
+}
+{
+    let x = 1;
+    let sum = 1;
+    while (x <= 10) {
+        sum += 1 / x
+        x = x + 1
+    }
+    console.log(sum)
+}
+{
+    const arr = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+    let sum = 0
+    let i = 0
+    while (i < arr.length) {
+        sum += arr[i]
+        i++
+    }
+    console.log(sum)
+}
+{
+    const arr = [1, 9, 13, -4, 5, 12, 8, 2, -6, 16]
+    let sum = 0
+    let i = 0
+    while (i < arr.length) {
+        sum += arr[i]
+        i++
+    }
+    console.log(sum)
+}
+{
+    let str = ''
+    let i = 0
+    while (i <= 20) {
+        str = str + i
+        i++
+    }
+    console.log(str)
+}
+{
+    let product = 1
+    let x = 0.3
+    while (x <= 3) {
+        product += x
+        x += 0.3
+    }
+    console.log(product)
+}
+
+{
+    let power = 1
+    for (let x = 1; x <= 15; x++) {
+        power *= 2
+    }
+    console.log(power)
+}
+{
+    let sum = 0
+    for(let i = 10; i<= 100; i++){
+        sum += i
+    }
+}
+{
+    let sum = 0
+    for (let i = 2; i<=200; i+=2){
+        sum+=i}
+    console.log(sum)
+}
+{
+    let sum = 0
+    let arr = [5, 14, 56, 28, 100, -12, 34, 116, -18, 120]
+    for (let i = 0 ; i < arr.length; i++){
+        sum+=arr[i]}
+    console.log(sum)
+}
+{
+    const arr = []
+    for (let i = 0; i < 20; i++){
+        arr.push(0)
+    }
+    console.log(arr)
+}
+{
+    const power = []
+    for (let i = 0; i < 20; i++){
+        power.push(2**i);
+    }
+    console.log(power)
+}
+{
+    let str = ''
+    for (let i = 9; i >= 0; i--){
+        str += i;
+    }
+    console.log(str)
+}
+////////////таблицаУмножения
+{
+    for (let i = 1; i <= 10; i++) {
+        for (let j = 1; j <= 10; j++) {
+            console.log("|" + `${i} * ${j} = ${i * j}` + '|')
+        }
+        console.log('-------------------')
+
+    }
 }
