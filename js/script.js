@@ -1626,494 +1626,684 @@
 //
 //     }
 // }
+// {
+//     let i = 0;
+//     do {
+//         i++;
+//     } while (i <= 1);
+//     console.log(i)
+// }
+// {
+//     let result = ''
+//     let i = 0
+//     do {
+//         i++
+//         result += 'Abc '
+//     } while (i < 4)
+//     console.log(result)
+// }
+// {
+//     let result = ''
+//     let i = 0
+//     do {
+//         i++
+//         result += '0-'
+//     } while (i < 5)
+//     console.log(result)
+// }
+// {
+//     const arr = []
+//     let i = 0
+//     do {
+//         i++
+//         arr.push(i)
+//     }
+//     while (i < 8)
+//     console.log(arr)
+// }
+// {
+//     const arr = []
+//     let i = 0
+//     do {
+//         i++
+//         arr.push(1, 0)
+//     }
+//     while (i < 5)
+//     console.log(arr)
+// }
+// {
+//     const arr = [3, 8, 1, 9, 14, -9, -2, 6, 32, 1]
+//     let i = 0
+//     let sum = 0
+//     do {
+//         sum += arr[i]
+//         i++
+//     } while (i < arr.length)
+//     console.log(arr)
+// }
+// {
+//     let str = ''
+//     let i = 0
+//     do {
+//         i++
+//         str += `${i} sheep...`
+//     } while (i < 30)
+//     console.log(str)
+// }
+// {
+//     let timer = ''
+//     let i = 10
+//     do {
+//         timer += `${i} seconds...`
+//         i--
+//     } while (i > 1)
+//     timer += '1 second'
+//     console.log(timer)
+// }
+//
+// {
+//     const arr = [12, 4, 6, 15, 45, 2, 17, -4, 31, 8];
+//     let index = 0
+//     let max = arr[0]
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > max) {
+//             max = arr[i]
+//             index = i
+//         }
+//     }
+//     console.log(` максимальное число: ${max}, индекс: ${index}`)
+// }
+// {
+//     let str = 'I am studying programming';
+//     let count = 0
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] === 'g') {
+//             count++
+//         }
+//     }
+//     console.log(`букв g в заданной строке: ${count}`)
+// }
+// {
+//     const arr = [3, 4, 2, -34, 32]
+//     let countNegative = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] < 0) {
+//             countNegative++
+//         }
+//     }
+//     console.log(countNegative)
+// }
+// {
+//     let sumOfEven = 0
+//     let productOfOdd = 1
+//     for (let i = 1; i <= 20; i++) {
+//         if (i % 2 === 0) {
+//             sumOfEven += i
+//         } else {
+//             productOfOdd *= i
+//         }
+//
+//     }
+//     console.log(sumOfEven, productOfOdd)
+// }
+// {
+//     const arr = [234, 23, 4, 234]
+//     let countOdd = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 2 !== 0) {
+//             countOdd++
+//         }
+//     }
+//     console.log(countOdd)
+// }
+// {
+//     const arr = [1, -9, 0, -8, 56, -2, -5, 7, 9, 11];
+//     let countPositiveEven = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 2 === 0 && arr[i] > 0) {
+//             countPositiveEven++
+//         }
+//     }
+//     console.log(countPositiveEven)
+// }
+// {
+//     const arr = [432, 4, 2, 4, 23]
+//     let sumEven = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 2 === 0) {
+//             sumEven += arr[i]
+//         }
+//     }
+//     console.log(sumEven)
+// }
+// {
+//     let str = 'My name is Vladislav'
+//     let countOfSpace = 0
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] === ' ') {
+//             countOfSpace++
+//         }
+//     }
+//     console.log(countOfSpace)
+// }
+// {
+//     const str = 'I like to eat fruit'
+//     let countOfLetters = 0
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] !== " ") {
+//             countOfLetters++
+//         }
+//     }
+//     console.log(countOfLetters)
+// }
+// {
+//     const str = 'Whats up guys'
+//     let countOfVowels = 0
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] === 'a' || str[i] === 'o' || str[i] === 'e' || str[i] === 'i' || str[i] === 'u') {
+//             countOfVowels++
+//         }
+//     }
+//
+// }
+// {
+//     const arr = ['apple', 'banana', 'apricot', 'plum']
+//     let wordsStartsWithA = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i][0] === 'a')
+//             wordsStartsWithA++
+//     }
+//     console.log(arr)
+// }
+// {
+//     const arr = [12, 4, 6, 1, 0, 15, -3, 5];
+//     let min = arr[0];
+//     for (let i = 1; i < arr.length; i++) {
+//         if (arr[i] < min) {
+//             min = arr[i];
+//         }
+//     }
+//     console.log(min)
+// }
+// {
+//     const arr = [12, 4, 6, 1, 0, 15, -3, 5];
+//     let min = arr[0]
+//     let max = arr[0]
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > max) {
+//             max = arr[i]
+//         } else if (arr[i] < min) {
+//             min = arr[i]
+//         }
+//     }
+//     let sum = min + max
+//     console.log(sum)
+// }
+//
+// {
+//     const arr = [4.56, 2, 3.14, -0.5, 15, -3, 6, 5]
+//     let countOfInteger = 0
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] % 1 === 0) {
+//             countOfInteger++
+//         }
+//     }
+//     console.log(countOfInteger)
+// }
+// ///////////////Function
+// {
+//     function sum(num1, num2) {
+//         return num1 + num2
+//     }
+// }
+//
+// {
+//     function sum(num1 = 0, num2 = 0) {
+//         console.log(num1 + num2)
+//     }
+//
+//     sum(3, 3)
+// }
+//
+// function product(num1 = 1, num2 = 1) {
+//     return num1 + num2
+// }
+//
+// console.log(product(3, 33))
+// {
+//     function product(num1 = 0, num2 = 0, num3 = 0) {
+//         return num1 * num2 * num3
+//     }
+// }
+// {
+//     function mult2(num) {
+//         return num * 2
+//     }
+//
+//     console.log(mult2(3))
+// }
+// {
+//     function distance(x = 0, y = 0) {
+//         return (x ** 2 + y ** 2) ** 0.5
+//     }
+// }
+// {
+//     function percentageValue(number, percent) {
+//         return (number / 100) * percent
+//     }
+//
+//     console.log(percentageValue(2000, 15))
+// }
+// {
+//     function powerOfNumber(number, power) {
+//         return number ** power
+//     }
+//
+//     console.log(powerOfNumber(3, 5))
+// }
+// {
+//     function greetings(name) {
+//         if (name === '' || name === undefined) {
+//             return 'Hello!'
+//         } else {
+//             return `Hello ${name}!`
+//         }
+//     }
+//
+//     console.log(greetings('Vladislav'))
+// }
+// {
+//     function negative(num) {
+//         if (num < 0) {
+//             return num
+//         } else {
+//             return num * -1
+//         }
+//     }
+//
+//     console.log(negative(3))
+// }
+// {
+//     function geometricMean(num1, num2) {
+//         return Math.sqrt(num1 * num2)
+//     }
+//
+//     console.log(geometricMean(3, 12))
+// }
+// {
+//     function anglesOfPolygon(n) {
+//         return 180 * (n - 2)
+//     }
+//
+//     console.log(percentageValue(3))
+// }
+// {
+//     function perimeterOfTriangle(a, b, c) {
+//         if (a < b + c && b < a + c && c < a + b) {
+//             return (a + b + c)
+//         } else {
+//             return "The triangle does not exist"
+//         }
+//     }
+//
+//     console.propertyIsEnumerable(2, 4, 3)
+// }
+// {
+//     function areaOfTriangle(a, b, c) {
+//         if (a < b + c && b < a + c && c < a + b) {
+//             return ((a + b + c) / 2 * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c)) ** 0.5
+//         } else {
+//             return "The triangle does not exist"
+//         }
+//     }
+//
+//     console.log(areaOfTriangle(6, 3, 5))
+// }
+// {
+//     function evenOrOdd(number) {
+//         if (number % 2 === 0) {
+//             return 'Even'
+//         } else {
+//             return 'Odd'
+//         }
+//     }
+//
+//     console.log(evenOrOdd(5))
+// }
+// {
+//     function lastDigit(number) {
+//         return number % 10
+//     }
+//
+//     console.log(lastDigit(55))
+// }
+// {
+//     function isDivided(a, b) {
+//         if (a % b === 0) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
+//
+//     console.log(isDivided(3, 3))
+// }
+// {
+//     function factorial(number) {
+//         for (let i = number - 1; i >= 1; i--) {
+//             number *= number
+//         }
+//         return number
+//     }
+//
+//     console.log(factorial(4))
+//
+// }
+// {
+//     function sum(n) {
+//         let total = 0
+//         for (let i = 0; i <= n; i++) {
+//             total += i
+//         }
+//         return total
+//     }
+//
+//     console.log(sum(5))
+// }
+// {
+//     function max(x, y) {
+//         if (x > y) {
+//             return x
+//         } else {
+//             return y
+//         }
+//     }
+//
+//     console.log(max(3, 2))
+// }
+// {
+//     function max(x, y, z) {
+//         if (x > y && x > z) {
+//             return x
+//         } else if (y > x && y > z) {
+//             return y
+//         } else if (z > x && z > y) {
+//             return z
+//         }
+//     }
+// }
+// {
+//     function max(x, y, z) {
+//         let total = 0
+//         for (let i = 0; i <= 3; i++) {
+//             if (x >= y && x >= z) {
+//                 total = x
+//             } else if (y >= z && y >= x) {
+//                 total = y
+//             } else if (z >= y && z >= x) {
+//                 total = z
+//             }
+//         }
+//         return total
+//     }
+//
+//     console.log(max(3, 3, 1))
+// }
+// {
+//     function fillArray(n) {
+//         let arr = []
+//         if (n > 0) {
+//             for (let i = 1; i <= n; i++) {
+//                 arr.push(i)
+//             }
+//         }
+//         return arr
+//     }
+//
+//     console.log(fillArray(5)) // от 0 до 5
+// }
+//
+// {
+//     function fillArrayBetter(n, m) {
+//         let arr = []
+//         if (n < m) {
+//             for (let i = n; i <= m; i++) {
+//                 arr.push(i)
+//             }
+//         }
+//         return arr
+//     }
+//
+//     console.log(fillArrayBetter(5, 15)) // от 5 до 15
+// }
+// {
+//     function fillArray(n) {
+//         let arr = []
+//         if (n > 0) {
+//             for (let i = 2; i <= n; i++) {
+//                 if (i % 2 === 0) {
+//                     arr.push(i)
+//                 }
+//             }
+//         }
+//         return arr
+//     }
+//
+//     console.log(fillArray(16)) // только от 2 до чётных
+// }
+//
+//
+// {
+//     function numberOfDigits(number) {
+//         let count = 0
+//         let last
+//         while (number !==0){
+//             last = number % 10
+//             number = (number - last)/10
+//             count++
+//         }
+//         return count
+//     }
+//
+//     console.log(numberOfDigits(5454))
+// }
+// {
+//     function describesNumber(number){
+//         if(number ===0){return 'Zero'}
+//         if(number > 0 && number % 2===0){ return "Even positive number"}
+//         if(number > 0 && number % 2!==0){ return "Odd positive number"}
+//         if(number < 0 && number % 2===0){ return "Even negative number"}
+//         if(number < 0 && number % 2!==0){ return "Odd negative number"}
+//     }
+//     console.log(describesNumber(44))
+// }
 {
-    let i = 0;
-    do {
-        i++;
-    } while (i <= 1);
-    console.log(i)
-}
-{
-    let result = ''
-    let i = 0
-    do {
-        i++
-        result += 'Abc '
-    } while (i < 4)
-    console.log(result)
-}
-{
-    let result = ''
-    let i = 0
-    do {
-        i++
-        result += '0-'
-    } while (i < 5)
-    console.log(result)
-}
-{
-    const arr = []
-    let i = 0
-    do {
-        i++
-        arr.push(i)
-    }
-    while (i < 8)
-    console.log(arr)
-}
-{
-    const arr = []
-    let i = 0
-    do {
-        i++
-        arr.push(1, 0)
-    }
-    while (i < 5)
-    console.log(arr)
-}
-{
-    const arr = [3, 8, 1, 9, 14, -9, -2, 6, 32, 1]
-    let i = 0
-    let sum = 0
-    do {
-        sum += arr[i]
-        i++
-    } while (i < arr.length)
-    console.log(arr)
-}
-{
-    let str = ''
-    let i = 0
-    do {
-        i++
-        str += `${i} sheep...`
-    } while (i < 30)
-    console.log(str)
-}
-{
-    let timer = ''
-    let i = 10
-    do {
-        timer += `${i} seconds...`
-        i--
-    } while (i > 1)
-    timer += '1 second'
-    console.log(timer)
-}
+    console.log(avg(1, 3, 5))
 
-{
-    const arr = [12, 4, 6, 15, 45, 2, 17, -4, 31, 8];
-    let index = 0
-    let max = arr[0]
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i]
-            index = i
-        }
-    }
-    console.log(` максимальное число: ${max}, индекс: ${index}`)
-}
-{
-    let str = 'I am studying programming';
-    let count = 0
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === 'g') {
-            count++
-        }
-    }
-    console.log(`букв g в заданной строке: ${count}`)
-}
-{
-    const arr = [3, 4, 2, -34, 32]
-    let countNegative = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] < 0) {
-            countNegative++
-        }
-    }
-    console.log(countNegative)
-}
-{
-    let sumOfEven = 0
-    let productOfOdd = 1
-    for (let i = 1; i <= 20; i++) {
-        if (i % 2 === 0) {
-            sumOfEven += i
-        } else {
-            productOfOdd *= i
-        }
-
-    }
-    console.log(sumOfEven, productOfOdd)
-}
-{
-    const arr = [234, 23, 4, 234]
-    let countOdd = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] % 2 !== 0) {
-            countOdd++
-        }
-    }
-    console.log(countOdd)
-}
-{
-    const arr = [1, -9, 0, -8, 56, -2, -5, 7, 9, 11];
-    let countPositiveEven = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] % 2 === 0 && arr[i] > 0) {
-            countPositiveEven++
-        }
-    }
-    console.log(countPositiveEven)
-}
-{
-    const arr = [432, 4, 2, 4, 23]
-    let sumEven = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] % 2 === 0) {
-            sumEven += arr[i]
-        }
-    }
-    console.log(sumEven)
-}
-{
-    let str = 'My name is Vladislav'
-    let countOfSpace = 0
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === ' ') {
-            countOfSpace++
-        }
-    }
-    console.log(countOfSpace)
-}
-{
-    const str = 'I like to eat fruit'
-    let countOfLetters = 0
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] !== " ") {
-            countOfLetters++
-        }
-    }
-    console.log(countOfLetters)
-}
-{
-    const str = 'Whats up guys'
-    let countOfVowels = 0
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === 'a' || str[i] === 'o' || str[i] === 'e' || str[i] === 'i' || str[i] === 'u') {
-            countOfVowels++
-        }
+    function avg(n1, n2, n3) { //Function Declaration - можно вызвать в любом месте кода (даже до ее объявления)
+        return (n1 + n2 + n3) / 3;
     }
 
-}
-{
-    const arr = ['apple', 'banana', 'apricot', 'plum']
-    let wordsStartsWithA = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i][0] === 'a')
-            wordsStartsWithA++
-    }
-    console.log(arr)
-}
-{
-    const arr = [12, 4, 6, 1, 0, 15, -3, 5];
-    let min = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-    }
-    console.log(min)
-}
-{
-    const arr = [12, 4, 6, 1, 0, 15, -3, 5];
-    let min = arr[0]
-    let max = arr[0]
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i]
-        } else if (arr[i] < min) {
-            min = arr[i]
-        }
-    }
-    let sum = min + max
-    console.log(sum)
-}
-
-{
-    const arr = [4.56, 2, 3.14, -0.5, 15, -3, 6, 5]
-    let countOfInteger = 0
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] % 1 === 0) {
-            countOfInteger++
-        }
-    }
-    console.log(countOfInteger)
-}
-///////////////Function
-{
-    function sum(num1, num2) {
-        return num1 + num2
-    }
-}
-
-{
-    function sum(num1 = 0, num2 = 0) {
-        console.log(num1 + num2)
+    const sum = function (a, b) { //Function Expression
+        return a + b
     }
 
-    sum(3, 3)
-}
+// const sum2 = (a,b) => {return a + b}
+    const sum2 = (a, b) => a + b
 
-function product(num1 = 1, num2 = 1) {
-    return num1 + num2
-}
-
-console.log(product(3, 33))
-{
-    function product(num1 = 0, num2 = 0, num3 = 0) {
-        return num1 * num2 * num3
-    }
+    console.log(sum2(3, 4))
 }
 {
-    function mult2(num) {
-        return num * 2
+    function mult(a, b, c) {
+        return a * b * c;
     }
 
-    console.log(mult2(3))
+    console.log(mult(3, 3, 3))
 }
 {
-    function distance(x = 0, y = 0) {
-        return (x ** 2 + y ** 2) ** 0.5
-    }
-}
-{
-    function percentageValue(number, percent) {
-        return (number / 100) * percent
+    function division(a, b) {
+        return a / b;
     }
 
-    console.log(percentageValue(2000, 15))
-}
-{
-    function powerOfNumber(number, power) {
-        return number ** power
+    let sum = function (a, b) {
+        return a + b;
     }
-
-    console.log(powerOfNumber(3, 5))
+    console.log(division(3, 3), sum(5, 5))
 }
 {
-    function greetings(name) {
-        if (name === '' || name === undefined) {
-            return 'Hello!'
-        } else {
-            return `Hello ${name}!`
-        }
-    }
-
-    console.log(greetings('Vladislav'))
-}
-{
-    function negative(num) {
-        if (num < 0) {
-            return num
-        } else {
-            return num * -1
-        }
-    }
-
-    console.log(negative(3))
-}
-{
-    function geometricMean(num1, num2) {
-        return Math.sqrt(num1 * num2)
-    }
-
-    console.log(geometricMean(3, 12))
-}
-{
-    function anglesOfPolygon(n) {
-        return 180 * (n - 2)
-    }
-
-    console.log(percentageValue(3))
-}
-{
-    function perimeterOfTriangle(a, b, c) {
-        if (a < b + c && b < a + c && c < a + b) {
-            return (a + b + c)
-        } else {
-            return "The triangle does not exist"
-        }
-    }
-
-    console.propertyIsEnumerable(2, 4, 3)
-}
-{
-    function areaOfTriangle(a, b, c) {
-        if (a < b + c && b < a + c && c < a + b) {
-            return ((a + b + c) / 2 * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c)) ** 0.5
-        } else {
-            return "The triangle does not exist"
-        }
-    }
-
-    console.log(areaOfTriangle(6, 3, 5))
-}
-{
-    function evenOrOdd(number) {
-        if (number % 2 === 0) {
-            return 'Even'
-        } else {
-            return 'Odd'
-        }
-    }
-
-    console.log(evenOrOdd(5))
-}
-{
-    function lastDigit(number) {
-        return number % 10
-    }
-
-    console.log(lastDigit(55))
-}
-{
-    function isDivided(a, b) {
-        if (a % b === 0) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    console.log(isDivided(3, 3))
-}
-{
-    function factorial(number) {
-        for (let i = number - 1; i >= 1; i--) {
-            number *= number
-        }
-        return number
-    }
-
-    console.log(factorial(4))
-
-}
-{
-    function sum(n) {
-        let total = 0
-        for (let i = 0; i <= n; i++) {
-            total += i
-        }
-        return total
-    }
-
-    console.log(sum(5))
-}
-{
-    function max(x, y) {
-        if (x > y) {
-            return x
-        } else {
-            return y
-        }
-    }
-
-    console.log(max(3, 2))
-}
-{
-    function max(x, y, z) {
-        if (x > y && x > z) {
-            return x
-        } else if (y > x && y > z) {
-            return y
-        } else if (z > x && z > y) {
-            return z
-        }
-    }
-}
-{
-    function max(x, y, z) {
-        let total = 0
-        for (let i = 0; i <= 3; i++) {
-            if (x >= y && x >= z) {
-                total = x
-            } else if (y >= z && y >= x) {
-                total = y
-            } else if (z >= y && z >= x) {
-                total = z
-            }
-        }
-        return total
-    }
-
-    console.log(max(3, 3, 1))
-}
-{
-    function fillArray(n) {
-        let arr = []
-        if (n > 0) {
-            for (let i = 1; i <= n; i++) {
-                arr.push(i)
-            }
-        }
-        return arr
-    }
-
-    console.log(fillArray(5)) // от 0 до 5
-}
-
-{
-    function fillArrayBetter(n, m) {
-        let arr = []
-        if (n < m) {
-            for (let i = n; i <= m; i++) {
-                arr.push(i)
-            }
-        }
-        return arr
-    }
-
-    console.log(fillArrayBetter(5, 15)) // от 5 до 15
-}
-{
-    function fillArray(n) {
-        let arr = []
-        if (n > 0) {
-            for (let i = 2; i <= n; i++) {
-                if (i % 2 === 0) {
-                    arr.push(i)
+    function sumOfArray(arr) {
+        let total = 1
+        if (arr.length !== 0) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr.length !== 0) {
+                    total *= arr[i]
+                } else {
+                    return 0
                 }
             }
+            return total
+        } else {
+            return 0
         }
-        return arr
     }
 
-    console.log(fillArray(16)) // только от 2 до чётных
-}
-
-
-{
-    function numberOfDigits(number) {
-        let count = 0
-        let last
-        while (number !==0){
-            last = number % 10
-            number = (number - last)/10
-            count++
-        }
-        return count
-    }
-
-    console.log(numberOfDigits(5454))
+    console.log(sumOfArray([3, 3]))
 }
 {
-    function describesNumber(number){
-        if(number ===0){return 'Zero'}
-        if(number > 0 && number % 2===0){ return "Even positive number"}
-        if(number > 0 && number % 2!==0){ return "Odd positive number"}
-        if(number < 0 && number % 2===0){ return "Even negative number"}
-        if(number < 0 && number % 2!==0){ return "Odd negative number"}
+    function average(arr) {
+        let total = 0
+        if (arr.length !== 0) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr.length !== 0) {
+                    total = (total + arr[i])
+                } else {
+                    return 0
+                }
+            }
+            return total / arr.length
+        } else {
+            return 0
+        }
     }
-    console.log(describesNumber(44))
+
+    console.log(average([1, 2, 3, 4]))
+}
+{
+    function sumOfPositive(arr) {
+        if (arr.length !== 0) {
+            let total = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > 0) {
+                    total += arr[i]
+                }
+            }
+            return total
+        } else {
+            return 0
+        }
+    }
+
+    console.log(sumOfPositive([1, 2, -3, 4]))
+}
+{
+    function sumOfNegative(arr) {
+        if (arr.length !== 0) {
+            let total = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < 0) {
+                    total += arr[i]
+                }
+            }
+            return total
+        } else {
+            return 0
+        }
+    }
+
+    console.log(sumOfNegative([1, 2, -3, -4])) //-7
+}
+{
+    function countOfPositive(arr) {
+        if (arr.length !== 0) {
+            let total = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > 0) {
+                    total++
+                }
+            }
+            return total
+        } else {
+            return 0
+        }
+    }
+
+    console.log(countOfPositive([1, 2, -3, 4])) //3
+}
+{
+    function countOfEven(arr) {
+        if (arr.length !== 0) {
+            let total = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    total++
+                }
+            }
+            return total
+        } else {
+            return 0
+        }
+    }
+
+    console.log(countOfEven([1, 20, -5, 4])) //2
+}
+{
+    function indexOfFirstNegative(arr) {
+        if (arr.length !== 0) {
+            let index = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < 0) {
+                    return index = i
+                }
+            }
+            return "no negative elements"
+        } else {
+            return "no negative elements"
+        }
+    }
+
+    console.log(indexOfFirstNegative([7, 5])) //2
+}
+{
+    function countOfNumbers(arr) {
+        if (arr.length !== 0) {
+            let index = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (typeof arr[i] === 'number') {
+                    index++
+                }
+            }
+            return index
+        } else {
+            return 0
+        }
+    }
+
+    console.log(countOfNumbers([true, false, 'abc']))
+
+}
+{
+    function countOfWordsOf5Letters(arr){
+        if (arr.length !== 0) {
+            let index = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (typeof arr[i] === 'string' && arr[i].length === 5) {
+                    index++
+                }
+            }
+            return index
+        } else {
+            return 0
+        }
+    }
+    console.log(countOfWordsOf5Letters(['apple', 'peach', 'ice', 'water']))
 }
