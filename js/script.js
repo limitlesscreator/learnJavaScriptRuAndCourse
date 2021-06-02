@@ -28,12 +28,11 @@
 // console.log('Let it snow!\nLet it snow!\nLet it snow!')
 
 
-
 let smalles = (arg) => {
     console.log(arg)
 }
 
-smalles([34,15,88,2])
+smalles([34, 15, 88, 2])
 
 // freeCodeCamp
 console.log("Alan Peter".length);
@@ -54,26 +53,26 @@ console.log("Alan Peter".length);
 // 8kyu
 // Make a simple function called greet that returns the most-famous "hello world!".
 
-    // Style Points
+// Style Points
 // Sure, this is about as easy as it gets. But how clever can you be to create
 // the most creative hello world you can think of?
 //     What is a "hello world" solution you would want to show your friends?
 // Write a function "greet" that returns "hello world!"
 {
-    function greet(){
+    function greet() {
         return 'hello world!'
     }
 }
 //8kyu
 {
-    function greet(name){
+    function greet(name) {
         return "Hello, " + name + " how are you doing today?"
     }
 
     greet('Vlad')
 }
 {
-    function helloWorld(){
+    function helloWorld() {
         const str = 'Hello World!'
         console.log(str)
         return str
@@ -96,4 +95,88 @@ console.log("Alan Peter".length);
     }
 
     hello('Mike')
+}
+{
+    function happyBirthday(name) {
+        return 'Happy birthday to you' + '\n' + "Happy birthday to you" + '\n' + "Happy birthday dear " + name + '\n' + "Happy birthday to you.";
+    }
+}
+{
+    function greetings(name) {
+        return `Hi ${name}! How are you?`
+    }
+}
+{
+    console.log(1 % 0)
+    console.log(+'+1')
+    console.log(+1)
+    console.log(2 ** 2 ** 3)
+    // console.log(a = 5++) doesn't work
+    let x = 4
+
+    // --(--x);
+    function evenOrOdd(num) {
+        if (num % 2 === 0) {
+            return "Even"
+        } else {
+            return "Odd"
+        }
+    }
+
+    function triangle(a, b, c) {
+        function triangle(a, b, c) {
+            let perimeter = a + b + c
+            let p = (a + b + c) / 2
+            let area = (p * (p - a) * (p - b) * (p - c)) ** 0.5
+            return [perimeter, area]
+        }
+    }
+
+}
+{
+    function expression(x) {
+        let y = 3 * (x ** 6) - 6 * (x ** 2) - 7
+        return y
+    }
+}
+{
+    function parallelepiped(a, b, c) {
+        let v = a * b * c
+        let s = 2 * (a * b + b * c + a * c)
+        return [v, s]
+    }
+}
+{
+    function equation(a, b) {
+        let x = -b / a
+        return x
+    }
+    function opposite(num){
+        return -num
+    }
+    function centigrade(tempF){
+        let tc = (tempF - 32) * (5/9)
+        console.log(Math.round(tc))
+    }
+    centigrade(19)
+    {
+        function plusMinusOne(number){
+            let minus = number - 1
+            let plus = number + 1
+            console.log([plus ,minus])
+        }
+        plusMinusOne(2)
+    }
+    {
+        function fahrenheit(tempC){
+            let result = tempC * (9/5) + 32
+            return Math.round(result)
+        }
+    }
+    {
+        function costOfSweets(x, y, cost){
+            let result = (y * cost) / x
+            return result
+        }
+    }
 }
