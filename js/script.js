@@ -151,32 +151,110 @@ console.log("Alan Peter".length);
         let x = -b / a
         return x
     }
-    function opposite(num){
+
+    function opposite(num) {
         return -num
     }
-    function centigrade(tempF){
-        let tc = (tempF - 32) * (5/9)
+
+    function centigrade(tempF) {
+        let tc = (tempF - 32) * (5 / 9)
         console.log(Math.round(tc))
     }
+
     centigrade(19)
     {
-        function plusMinusOne(number){
+        function plusMinusOne(number) {
             let minus = number - 1
             let plus = number + 1
-            console.log([plus ,minus])
+            console.log([plus, minus])
         }
+
         plusMinusOne(2)
     }
     {
-        function fahrenheit(tempC){
-            let result = tempC * (9/5) + 32
+        function fahrenheit(tempC) {
+            let result = tempC * (9 / 5) + 32
             return Math.round(result)
         }
     }
     {
-        function costOfSweets(x, y, cost){
+        function costOfSweets(x, y, cost) {
             let result = (y * cost) / x
             return result
         }
     }
+    // here
+    {
+        function fourOperations(a, b){
+            return [a+b,a-b,a*b,a/b]
+        }
+    }
+    {
+        function areaComparison(r,a){
+            let SoFSquare = a ** 2
+            let SoFCircle = Math.PI * (r ** 2)
+            if (SoFCircle > SoFSquare){
+                return('circle')
+            }
+            else if(SoFSquare > SoFCircle){
+                return('square')
+            }
+            else if(SoFSquare === SoFCircle){
+                return('the same')
+            }
+        }
+        areaComparison(2,5)
+    }
+    {
+        function cube(edge){
+            let v = edge ** 3
+            let s = 6 * edge ** 2
+            console.log([v,s])
+        }
+        cube(1)
+    }
+    {
+        function changeValues(a, b){
+// your code will be here
+        }
+        changeValues(1,2)
+    }
+    {
+        let a = 5, b = 6;
+        [a, b] = [b, a];
+        console.log(`${a} ${b}`);
+    }
+    {
+        function time(hour, minutes, seconds){
+            let h = hour * 60 * 60
+            let m = minutes * 60
+            let s = seconds
+            let result = h + m + s
+        }
+        {
+            function breakChocolate(n,m) {
+                if(n > 0 && m > 0){
+                    return n * m - 1;
+                }
+                else{
+                    return 0
+                }
+            }
+        }
+    }
+}
+{
+    function root(x, n) {
+        let result = (x) ** (1/n)
+        console.log(result)
+    }
+    root(6.25,2)
+}
+{
+    function converter (mpg) {
+        let gallon = mpg / 4.54609188
+        let litres = gallon * 1.609344
+        console.log(Number(litres.toFixed(2)))
+    }
+    converter(30)
 }
