@@ -258,3 +258,84 @@ console.log("Alan Peter".length);
     }
     converter(30)
 }
+{
+    // Given an array of 4 integers
+    // [a,b,c,d] representing two points (a, b) and (c, d),
+    // return a string representation of the slope of the line joining these two points.
+    //
+    // For an undefined slope (division by 0), return undefined . Note that the "undefined" is case-sensitive.
+    //
+    // a:x1
+    // b:y1
+    // c:x2
+    // d:y2
+    // Assume that [a,b,c,d] and the answer are all integers (no floating numbers!). Slope: https://en.wikipedia.org/wiki/Slope
+    function slope(points)
+    {
+        let x = points[2] - points[0]
+        let y = points[3] - points[1]
+        let slope = y/x
+        if (slope === -Infinity || slope === Infinity || x === 0 || x === '0'){
+            return ('undefined')
+        }
+        else {
+            return (String(slope))
+        }
+    }
+    slope([19,3,20,3])
+    {
+    // ' equal to 100. the function equal1 is completed, please refer to this example to complete the following functions.
+    //     When you have finished the work, click "Run Tests" to see if your code is working properly.
+    //     In the end, click "Submit" to submit your code pass this kata.
+        var v1=50;v2=100,v3=150,v4=200,v5=2,v6=250
+        function equal1(){
+            var a = v1
+            var b = v1
+            return a+b;
+        }
+//Please refer to the example above to complete the following functions
+        function equal2(){
+            var a= v3  //set number value to a
+            var b= v1  //set number value to b
+            return a-b;
+        }
+        function equal3(){
+            var a= v1  //set number value to a
+            var b=  v5  //set number value to b
+            return a*b;
+        }
+        function equal4(){
+            var a= v4    //set number value to a
+            var b=  v5  //set number value to b
+            return a/b;
+        }
+        function equal5(){
+            var a= v6 //set number value to a
+            var b=  v3  //set number value to b
+            return a%b;
+    }
+        {
+            function howMuchILoveYou(nbPetals) {
+                if (nbPetals > 0){
+                    if(nbPetals === 1){return "I love you"}
+                    if(nbPetals === 2){return "a little"}
+                    if(nbPetals === 3){return "a lot"}
+                    if(nbPetals === 4){return "passionately"}
+                    if(nbPetals === 5){return "madly"}
+                    if(nbPetals === 6){return "not at all"}
+                    if(nbPetals > 6){
+                        nbPetals = nbPetals - nbPetals + 1
+                        if(nbPetals === 1){return "I love you"}
+                        if(nbPetals === 2){return "a little"}
+                        if(nbPetals === 3){return "a lot"}
+                        if(nbPetals === 4){return "passionately"}
+                        if(nbPetals === 5){return "madly"}
+                        if(nbPetals === 6){return "not at all"}
+                    }
+                }
+            }
+            //must to fix tomorrow
+            console.log(howMuchILoveYou(13))
+        }
+    }
+}
