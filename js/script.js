@@ -185,39 +185,40 @@ console.log("Alan Peter".length);
     }
     // here
     {
-        function fourOperations(a, b){
-            return [a+b,a-b,a*b,a/b]
+        function fourOperations(a, b) {
+            return [a + b, a - b, a * b, a / b]
         }
     }
     {
-        function areaComparison(r,a){
+        function areaComparison(r, a) {
             let SoFSquare = a ** 2
             let SoFCircle = Math.PI * (r ** 2)
-            if (SoFCircle > SoFSquare){
-                return('circle')
-            }
-            else if(SoFSquare > SoFCircle){
-                return('square')
-            }
-            else if(SoFSquare === SoFCircle){
-                return('the same')
+            if (SoFCircle > SoFSquare) {
+                return ('circle')
+            } else if (SoFSquare > SoFCircle) {
+                return ('square')
+            } else if (SoFSquare === SoFCircle) {
+                return ('the same')
             }
         }
-        areaComparison(2,5)
+
+        areaComparison(2, 5)
     }
     {
-        function cube(edge){
+        function cube(edge) {
             let v = edge ** 3
             let s = 6 * edge ** 2
-            console.log([v,s])
+            console.log([v, s])
         }
+
         cube(1)
     }
     {
-        function changeValues(a, b){
+        function changeValues(a, b) {
 // your code will be here
         }
-        changeValues(1,2)
+
+        changeValues(1, 2)
     }
     {
         let a = 5, b = 6;
@@ -225,18 +226,18 @@ console.log("Alan Peter".length);
         console.log(`${a} ${b}`);
     }
     {
-        function time(hour, minutes, seconds){
+        function time(hour, minutes, seconds) {
             let h = hour * 60 * 60
             let m = minutes * 60
             let s = seconds
             let result = h + m + s
         }
+
         {
-            function breakChocolate(n,m) {
-                if(n > 0 && m > 0){
+            function breakChocolate(n, m) {
+                if (n > 0 && m > 0) {
                     return n * m - 1;
-                }
-                else{
+                } else {
                     return 0
                 }
             }
@@ -245,17 +246,19 @@ console.log("Alan Peter".length);
 }
 {
     function root(x, n) {
-        let result = (x) ** (1/n)
+        let result = (x) ** (1 / n)
         console.log(result)
     }
-    root(6.25,2)
+
+    root(6.25, 2)
 }
 {
-    function converter (mpg) {
+    function converter(mpg) {
         let gallon = mpg / 4.54609188
         let litres = gallon * 1.609344
         console.log(Number(litres.toFixed(2)))
     }
+
     converter(30)
 }
 {
@@ -270,72 +273,139 @@ console.log("Alan Peter".length);
     // c:x2
     // d:y2
     // Assume that [a,b,c,d] and the answer are all integers (no floating numbers!). Slope: https://en.wikipedia.org/wiki/Slope
-    function slope(points)
-    {
+    function slope(points) {
         let x = points[2] - points[0]
         let y = points[3] - points[1]
-        let slope = y/x
-        if (slope === -Infinity || slope === Infinity || x === 0 || x === '0'){
+        let slope = y / x
+        if (slope === -Infinity || slope === Infinity || x === 0 || x === '0') {
             return ('undefined')
-        }
-        else {
+        } else {
             return (String(slope))
         }
     }
-    slope([19,3,20,3])
+
+    slope([19, 3, 20, 3])
     {
-    // ' equal to 100. the function equal1 is completed, please refer to this example to complete the following functions.
-    //     When you have finished the work, click "Run Tests" to see if your code is working properly.
-    //     In the end, click "Submit" to submit your code pass this kata.
-        var v1=50;v2=100,v3=150,v4=200,v5=2,v6=250
-        function equal1(){
+        // ' equal to 100. the function equal1 is completed, please refer to this example to complete the following functions.
+        //     When you have finished the work, click "Run Tests" to see if your code is working properly.
+        //     In the end, click "Submit" to submit your code pass this kata.
+        var v1 = 50;
+        v2 = 100, v3 = 150, v4 = 200, v5 = 2, v6 = 250
+
+        function equal1() {
             var a = v1
             var b = v1
-            return a+b;
+            return a + b;
         }
+
 //Please refer to the example above to complete the following functions
-        function equal2(){
-            var a= v3  //set number value to a
-            var b= v1  //set number value to b
-            return a-b;
+        function equal2() {
+            var a = v3  //set number value to a
+            var b = v1  //set number value to b
+            return a - b;
         }
-        function equal3(){
-            var a= v1  //set number value to a
-            var b=  v5  //set number value to b
-            return a*b;
+
+        function equal3() {
+            var a = v1  //set number value to a
+            var b = v5  //set number value to b
+            return a * b;
         }
-        function equal4(){
-            var a= v4    //set number value to a
-            var b=  v5  //set number value to b
-            return a/b;
+
+        function equal4() {
+            var a = v4    //set number value to a
+            var b = v5  //set number value to b
+            return a / b;
         }
-        function equal5(){
-            var a= v6 //set number value to a
-            var b=  v3  //set number value to b
-            return a%b;
-    }
+
+        function equal5() {
+            var a = v6 //set number value to a
+            var b = v3  //set number value to b
+            return a % b;
+        }
+
         {
+            console.clear()
+
             function howMuchILoveYou(nbPetals) {
-                if (nbPetals > 0){
-                    if(nbPetals === 1){return "I love you"}
-                    if(nbPetals === 2){return "a little"}
-                    if(nbPetals === 3){return "a lot"}
-                    if(nbPetals === 4){return "passionately"}
-                    if(nbPetals === 5){return "madly"}
-                    if(nbPetals === 6){return "not at all"}
-                    if(nbPetals > 6){
-                        nbPetals = nbPetals - nbPetals + 1
-                        if(nbPetals === 1){return "I love you"}
-                        if(nbPetals === 2){return "a little"}
-                        if(nbPetals === 3){return "a lot"}
-                        if(nbPetals === 4){return "passionately"}
-                        if(nbPetals === 5){return "madly"}
-                        if(nbPetals === 6){return "not at all"}
+                let arr = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all']
+
+                if (nbPetals > 0) {
+                    nbPetals %= 6
+                    if (nbPetals === 1) {
+                        return arr[0]
+                    }
+                    if (nbPetals === 2) {
+                        return arr[1]
+                    }
+                    if (nbPetals === 3) {
+                        return arr[2]
+                    }
+                    if (nbPetals === 4) {
+                        return arr[3]
+                    }
+                    if (nbPetals === 5) {
+                        return arr[4]
+                    }
+                    if (nbPetals === 6) {
+                        return arr[5]
                     }
                 }
+                if (nbPetals === 0) {
+                    return arr[5]
+                }
+
             }
+
             //must to fix tomorrow
-            console.log(howMuchILoveYou(13))
+            console.log(howMuchILoveYou(0))
         }
     }
 }
+{
+    console.clear()
+
+    // Seats in Theater
+    function seatsInTheater(nCols, nRows, col, row) {
+        return (nRows - row) * (nCols - col + 1)
+    }
+
+    function arrowArea(a, b) {
+        return a * b / 4
+    }
+
+    function perimeterSequence(a, n) {
+        let result = 0
+        let numbers = []
+        for (let i = 0; i <= n; i++) {
+            numbers[i] = i + i
+        }
+        numbers.shift()
+        for (let i = 0; i < numbers.length; i++) {
+            result += numbers[i]
+        }
+        console.log(result)
+    }
+
+    perimeterSequence(1, 3)
+    // The function takes in 2 inputs x and y, and should return x to the power of y
+    // Simple, right? But you're NOT allowed to use Math.pow();
+    // Obs: x and y will be naturals, so DON'T take fractions into consideration;
+    function power(x, y) {
+        console.clear()
+        let total = 1
+        if (y === 0) {
+            return 1
+        }
+        else {
+            total = x
+            for (let i = 1; i < y; i++) {
+                total *= x
+            }
+            console.log(total)
+        }
+    }
+
+    power(7, 6)
+}
+
+
