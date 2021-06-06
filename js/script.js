@@ -395,8 +395,7 @@ console.log("Alan Peter".length);
         let total = 1
         if (y === 0) {
             return 1
-        }
-        else {
+        } else {
             total = x
             for (let i = 1; i < y; i++) {
                 total *= x
@@ -406,6 +405,135 @@ console.log("Alan Peter".length);
     }
 
     power(7, 6)
+
+}
+///here
+{
+    function otherAngle(a, b) {
+        return 180 - a - b;
+    }
+
+    function angle(n) {
+        return (n - 2) * 180
+    }
+
+    function maxMultiple(divisor, bound) {
+        console.clear()
+
+        let result = bound % divisor
+        let finalResult = bound - result
+        console.log(finalResult)
+    }
+
+    maxMultiple(2, 7)
+}
+// number (числа и специальные значения: Infinity, -Infinity и NaN);
+// const array = [1, 2, 3];  // "object"
+// let obj = {name: "Bob"}; // "object"
+// let data = new Date(); // "object"
+console.log(typeof [])
+console.log(typeof NaN)
+console.log(typeof Infinity)
+console.log(typeof (' ' + 1))
+console.log(typeof '123' > typeof 123);
+
+function typeOfArgument(value) {
+    return typeof value
 }
 
+function numbersIncrement(value) {
+    if (typeof value === 'number') {
+        return ++value
+    } else {
+        return 'It is not a number'
+    }
+}
 
+function isThereAString(value1, value2) {
+    if (typeof value1 === 'string' || typeof value2 === 'string') {
+        return "String received"
+    } else {
+        return "There are no strings"
+    }
+}
+
+function booleanTranslate(value) {
+    if (typeof value === "boolean") {
+        if (value === true) {
+            return "Truth"
+        } else if (value === false) {
+            return "Lie"
+        } else if (value > 1) {
+            return "Not a boolean value"
+        }
+    } else {
+        return "Not a boolean value"
+    }
+}
+
+function typeOfSum(val1, val2, val3) {
+    console.clear()
+    let result = val1 + val2 + val3
+    console.log(typeof result)
+}
+
+typeOfSum(3, 3, '5')
+
+function bugsFixing(value) {
+    if (typeof value === 'number') {
+        return value *= 2;
+    } else if (typeof value === 'string') {
+        return value + '!'
+    } else return 'Wrong value';
+}
+
+function countNumbers(arr) {
+    let result = 0
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === 'number') {
+            result++
+        }
+    }
+    return result
+}
+
+countNumbers([2, 6, 'one'])
+
+function cookie(x) {
+    console.clear()
+    if (typeof x === 'string') {
+        return ("Who ate the last cookie? It was Zach!")
+    }
+    else if (typeof x === 'number'){
+        return ('Who ate the last cookie? It was Monica!')
+    }
+    else {
+        return "Who ate the last cookie? It was the dog!"
+    }
+}
+
+function isUndefined(value) {
+    if(typeof value === 'undefined'){
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function myFirstKata(a,b){
+    if (typeof(a) === "number" && typeof(b) === "number") {
+        return (a % b) + (b % a);
+    }
+    else if (a === true && b === true){
+        return false
+    }
+    else if (a === false && b === false){
+        return true
+    }
+    else {
+        return false
+    }
+
+}
+myFirstKata(3,3)
