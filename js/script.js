@@ -537,3 +537,139 @@ function myFirstKata(a,b){
 
 }
 myFirstKata(3,3)
+// here
+console.log('10' + '20')
+console.log(Number(0))
+console.log(Number(undefined))
+console.log(Number(null))
+console.log(Number(false))
+console.log(Number('0'))
+console.log(Number('one'))
+console.log(+undefined)
+console.log(Number('5,2'))
+console.log(Boolean(null))
+console.log(Boolean(NaN))
+console.log(!!undefined)
+console.log(!![0])
+function numberToString(num) {
+    return String(num)
+}
+function numberToString(num){
+    return '' + num
+}
+function valueToNumber(value){
+    return +value
+}
+function valueToNumber(value){
+    return Number(value)
+}
+function clear(){
+    console.clear()
+}
+function valueToBoolean(value){
+    return !!value
+}
+function arithmeticExpression(a, b){
+    let c = a + b
+    return `${a} + ${b} = ${c}`
+}
+function differenceOfStr(a, b){
+    return String(+a - +b)
+}
+function sumOfBoolean(a, b, c){
+    return String(!!a + !!b + !!c)
+}
+// Math.abs(x) возвращает абсолютное значение числа x;
+// Math.cos(x) возвращает косинус числа x (x – значение в радианах);
+// Math.sin(x) возвращает синус числа x (x – значение в радианах);
+// Math.atan() возвращает арктангенс числа (в радианах);
+// Math.sqrt(x) возвращает квадратный корень числа x. Если число отрицательное, то вернется NaN;
+// Math.pow(x, y) возвращает x в степени y;
+// Math.floor(x) округление вниз. Округляет аргумент x до ближайшего меньшего целого;
+// Math.ceil(x) округление вверх. Округляет аргумент x до ближайшего большего целого;
+// Math.round(x) возвращает число, округлённое к ближайшему целому;
+// Math.trunc(x) возвращает целую часть числа путём удаления всех дробных знаков;
+// Math.max(x, y, ..., ) возвращает наибольшее из нуля или более чисел;
+// Math.min(x,y, ..., ) возвращает наименьшее из нуля или более чисел;
+// Math.random() возвращает псевдослучайное число с плавающей запятой из диапазона [0, 1), то есть, от 0 (включительно) до 1 (но не включая 1).
+clear()
+{
+    let x = 9.475
+    console.log(Math.sqrt(x) === Math.pow(x, 0.5));
+    console.log(Math.pow(x, 1) === Math.sqrt(x));
+    console.log(Math.pow(x, 3) === x ** 3);
+    console.log(Math.pow(x, 0) === 1);
+    console.log(Math.pow(x, 1/2) === Math.sqrt(x));
+    console.log(Math.ceil(x))
+}
+
+function discoverOriginalPrice(discountedPrice, salePercentage){
+    let procent = 100 - salePercentage
+    let result = discountedPrice * 100 / procent
+    console.log(+result.toFixed(2))
+}
+
+discoverOriginalPrice(728.424,25)//101)
+
+function twoDecimalPlaces(n) {
+    console.log(+n.toFixed(2))
+}
+twoDecimalPlaces(4.659725356) //4.66
+{
+    function twoDecimalPlaces2(number) {
+        let value = 0
+        let setNum = String(number)
+        let arrStr = setNum.split('')
+        for (let i = 0; i < arrStr.length; i++){
+            if (arrStr[i] === '.'){
+                break;
+            }
+            value++
+        }
+        console.log(Number(String(number).substr(0,value+3)))
+    }
+    clear()
+    twoDecimalPlaces2(-7488.83485834983)
+}
+// above and bellow doing the same work
+{
+    function twoDecimalPlaces3(number){
+        clear()
+        console.log(Math.trunc(number * 100)/100)
+    }
+    twoDecimalPlaces3(-7488.83485834983)
+}
+// Create a Function that takes one parameter and returns its square root rounded to 5 decimal places. You are not allowed to use the Math.sqrt() or the Math.pow() methods.
+
+{
+    function squareRoot(x) {
+        clear()
+        let value = 0
+
+        for (let i = 0; i < x; i++){
+            if (i * i === x){
+                value = i
+            }
+        }
+        console.log(value)
+    }
+    squareRoot(81)
+}
+{
+    console.log(Math.PI)
+}
+{
+    function howManyTimes(annualPrice, individualPrice) {
+        clear()
+        let value = 0
+        for (let i = 0; i < annualPrice; i++){
+            if (individualPrice < annualPrice){
+                ++value
+                annualPrice -= individualPrice
+            }
+        }
+        console.log(value+1)
+    }
+    howManyTimes(80,15)
+
+}
