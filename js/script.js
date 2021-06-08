@@ -503,40 +503,35 @@ function cookie(x) {
     console.clear()
     if (typeof x === 'string') {
         return ("Who ate the last cookie? It was Zach!")
-    }
-    else if (typeof x === 'number'){
+    } else if (typeof x === 'number') {
         return ('Who ate the last cookie? It was Monica!')
-    }
-    else {
+    } else {
         return "Who ate the last cookie? It was the dog!"
     }
 }
 
 function isUndefined(value) {
-    if(typeof value === 'undefined'){
+    if (typeof value === 'undefined') {
         return true
-    }
-    else {
+    } else {
         return false
     }
 }
 
-function myFirstKata(a,b){
-    if (typeof(a) === "number" && typeof(b) === "number") {
+function myFirstKata(a, b) {
+    if (typeof (a) === "number" && typeof (b) === "number") {
         return (a % b) + (b % a);
-    }
-    else if (a === true && b === true){
+    } else if (a === true && b === true) {
         return false
-    }
-    else if (a === false && b === false){
+    } else if (a === false && b === false) {
         return true
-    }
-    else {
+    } else {
         return false
     }
 
 }
-myFirstKata(3,3)
+
+myFirstKata(3, 3)
 // here
 console.log('10' + '20')
 console.log(Number(0))
@@ -551,34 +546,44 @@ console.log(Boolean(null))
 console.log(Boolean(NaN))
 console.log(!!undefined)
 console.log(!![0])
+
 function numberToString(num) {
     return String(num)
 }
-function numberToString(num){
+
+function numberToString(num) {
     return '' + num
 }
-function valueToNumber(value){
+
+function valueToNumber(value) {
     return +value
 }
-function valueToNumber(value){
+
+function valueToNumber(value) {
     return Number(value)
 }
-function clear(){
+
+function clear() {
     console.clear()
 }
-function valueToBoolean(value){
+
+function valueToBoolean(value) {
     return !!value
 }
-function arithmeticExpression(a, b){
+
+function arithmeticExpression(a, b) {
     let c = a + b
     return `${a} + ${b} = ${c}`
 }
-function differenceOfStr(a, b){
+
+function differenceOfStr(a, b) {
     return String(+a - +b)
 }
-function sumOfBoolean(a, b, c){
+
+function sumOfBoolean(a, b, c) {
     return String(!!a + !!b + !!c)
 }
+
 // Math.abs(x) возвращает абсолютное значение числа x;
 // Math.cos(x) возвращает косинус числа x (x – значение в радианах);
 // Math.sin(x) возвращает синус числа x (x – значение в радианах);
@@ -599,44 +604,47 @@ clear()
     console.log(Math.pow(x, 1) === Math.sqrt(x));
     console.log(Math.pow(x, 3) === x ** 3);
     console.log(Math.pow(x, 0) === 1);
-    console.log(Math.pow(x, 1/2) === Math.sqrt(x));
+    console.log(Math.pow(x, 1 / 2) === Math.sqrt(x));
     console.log(Math.ceil(x))
 }
 
-function discoverOriginalPrice(discountedPrice, salePercentage){
+function discoverOriginalPrice(discountedPrice, salePercentage) {
     let procent = 100 - salePercentage
     let result = discountedPrice * 100 / procent
     console.log(+result.toFixed(2))
 }
 
-discoverOriginalPrice(728.424,25)//101)
+discoverOriginalPrice(728.424, 25)//101)
 
 function twoDecimalPlaces(n) {
     console.log(+n.toFixed(2))
 }
+
 twoDecimalPlaces(4.659725356) //4.66
 {
     function twoDecimalPlaces2(number) {
         let value = 0
         let setNum = String(number)
         let arrStr = setNum.split('')
-        for (let i = 0; i < arrStr.length; i++){
-            if (arrStr[i] === '.'){
+        for (let i = 0; i < arrStr.length; i++) {
+            if (arrStr[i] === '.') {
                 break;
             }
             value++
         }
-        console.log(Number(String(number).substr(0,value+3)))
+        console.log(Number(String(number).substr(0, value + 3)))
     }
+
     clear()
     twoDecimalPlaces2(-7488.83485834983)
 }
 // above and bellow doing the same work
 {
-    function twoDecimalPlaces3(number){
+    function twoDecimalPlaces3(number) {
         clear()
-        console.log(Math.trunc(number * 100)/100)
+        console.log(Math.trunc(number * 100) / 100)
     }
+
     twoDecimalPlaces3(-7488.83485834983)
 }
 // Create a Function that takes one parameter and returns its square root rounded to 5 decimal places. You are not allowed to use the Math.sqrt() or the Math.pow() methods.
@@ -646,13 +654,14 @@ twoDecimalPlaces(4.659725356) //4.66
         clear()
         let value = 0
 
-        for (let i = 0; i < x; i++){
-            if (i * i === x){
+        for (let i = 0; i < x; i++) {
+            if (i * i === x) {
                 value = i
             }
         }
         console.log(value)
     }
+
     squareRoot(81)
 }
 {
@@ -662,14 +671,122 @@ twoDecimalPlaces(4.659725356) //4.66
     function howManyTimes(annualPrice, individualPrice) {
         clear()
         let value = 0
-        for (let i = 0; i < annualPrice; i++){
-            if (individualPrice < annualPrice){
+        for (let i = 0; i < annualPrice; i++) {
+            if (individualPrice < annualPrice) {
                 ++value
                 annualPrice -= individualPrice
             }
         }
-        console.log(value+1)
+        console.log(value + 1)
     }
-    howManyTimes(80,15)
 
+    howManyTimes(80, 15)
 }
+// here
+{
+    // Given a number return the closest number to it that is divisible by 10.
+    const closestMultiple10 = num => {
+        clear()
+        // for (let i = 0; i < num; i++){
+        //     num -= 1
+        //     if (num % 10 === 0){
+        //         break
+        //     }
+        // }
+        let result = Math.round(num / 10) * 10
+        console.log(result)
+    };
+    closestMultiple10(54)
+}
+{
+    function oddCount(n) {
+        clear()
+        let arr = []
+        let replay = n
+        for (let i = 0; i < replay; i++) {
+            --n
+            if (n % 2 !== 0) {
+                arr.push(n)
+            }
+        }
+        arr.reverse()
+        console.log(arr)
+    }
+
+    oddCount(15)
+}
+{
+    function century(year) {
+        clear()
+        console.log(Math.ceil(year / 100))
+
+    }
+
+    century(1705)
+}
+{
+    function womensAge(n) {
+        clear()
+        let numFirst = (Math.floor(n / 2))
+        let result = String(n % numFirst)
+        let result2 = String(2 % numFirst)
+        let mainresult = Number(result2 + result)
+        console.log(`${n}? That's just ${mainresult}, in base ${numFirst}!`)
+    }
+
+    womensAge(32)
+}
+{
+    function squareOperations(a, b) {
+        let arr1 = a * a + b * b
+        let arr2 = (a - b) * (a + b)
+        let arr3 = (a * b) * (a * b)
+        let arr4 = Math.round((a / b) * (a / b))
+        let result = [arr1, arr2, arr3, arr4]
+        return (result)
+    }
+
+    squareOperations(17, 4)
+}
+{
+    function jumpRecord(res1, res2, res3) {
+        return Math.max(res1, res2, res3)
+    }
+}
+{
+    function angleInRadians(angle) {
+        return Math.round(Math.PI / 180 * angle)
+    }
+
+    function hypotenuse(a, b) {
+        return Math.ceil(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)))
+    }
+
+    hypotenuse(14, 4)
+
+    function randomNumber() {
+        console.log(Math.floor(Math.random() * 100))
+    }
+
+    randomNumber()
+}
+
+function geometricMean(a, b) {
+    return Math.sqrt(a * b).toFixed(2)
+}
+
+function fuelPrice(litres, pricePerLitre) {
+    return +(litres * pricePerLitre).toFixed(2)
+}
+
+function circleArea(r) {
+    return Math.round(Math.PI * Math.pow(r, 2))
+}
+
+function absoluteValuesOperations(a, b) {
+    clear()
+    let result = [Math.abs(a) + Math.abs(b), Math.abs(a) - Math.abs(b), Math.abs(a) * Math.abs(b), Math.round(Math.abs(a) / Math.abs(b))]
+    console.log(result)
+}
+
+absoluteValuesOperations(5, 3)
