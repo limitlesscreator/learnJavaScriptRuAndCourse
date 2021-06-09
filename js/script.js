@@ -1016,11 +1016,165 @@ totalPrice(68, 25, 9)
     function eachIsPositive(a, b, c) {
         return a > 0 && b > 0 && c > 0
     }
-    function exactlyOneIsEven(a, b, c){
+
+    function exactlyOneIsEven(a, b, c) {
         if (a % 2 === 0 && (b % 2 === 1 || b % 2 === -1) && (c % 2 === 1 || c % 2 === -1) ||
             b % 2 === 0 && (a % 2 === 1 || a % 2 === -1) && (c % 2 === 1 || c % 2 === -1) ||
             c % 2 === 0 && (a % 2 === 1 || a % 2 === -1) && (b % 2 === 1 || b % 2 === -1)
-        ){return true}
-        else return false
+        ) {
+            return true
+        } else return false
     }
+
+// here
+    {
+        let x = 3
+        // if ('abc' > 'def') console.log('Odd'); else console.log('Even');
+        // if (!null) console.log('Odd'); else console.log('Even');
+        if (!!5) console.log('Odd'); else console.log('Even');
+        let age = 18;
+        if (age > 0 && age < 11) console.log('free');
+        else if (age < 17) console.log('5 dollars');
+        else if (age >= 17 && age < 21) console.log('10 dollars');
+        else console.log('15 dollars');
+    }
+    {
+        function isLucky(n) {
+            let value = 0
+            let strNum = String(n).split('')
+            for (let i = 0; i < strNum.length; i++) {
+                value += +strNum[i]
+            }
+            if (value % 9 === 0) {
+                return true
+            } else return false
+        }
+
+        isLucky(1892376)
+    }
+    {
+        const isLuckyBetter = (n) => n % 9 === 0
+        console.log(isLuckyBetter(1892376))
+    }
+    {
+        function getGrade(s1, s2, s3) {
+            let average = (s1 + s2 + s3) / 3
+            if (average <= 100 && average >= 90) {
+                return 'A'
+            }
+            if (average < 90 && average >= 80) {
+                return 'B'
+            }
+            if (average < 80 && average >= 70) {
+                return 'C'
+            }
+            if (average < 70 && average >= 60) {
+                return 'D'
+            }
+            if (average < 60 && average >= 0) {
+                return 'F'
+            }
+        }
+
+    }
+}
+{
+    function calculate(a, o, b) {
+        let result
+        if (o === "+") {
+            result = a + b;
+        } else if (o === "-") {
+            result = a - b;
+        } else if (o === "/" && b !== 0) {
+            result = a / b;
+        } else if (o === "/" && b === 0) {
+            result = null;
+        } else if (o !== "/" && o !== "-" && o !== "+" && o !== "*") {
+            result = null
+        } else if (o === '*') {
+            result = a * b
+        }
+        return (result)
+    }
+
+    calculate(-3, '/', 0)
+
+    function chromosomeCheck(sperm) {
+        return sperm === 'XY' ? "Congratulations! You're going to have a son." : "Congratulations! You're going to have a daughter."
+    }
+
+    function rainAmount(mm) {
+        if (mm < 40) {
+            return "You need to give your plant " + `${40 - mm}` + "mm of water"
+        } else return "Your plant has had more than enough water for today!"
+    }
+
+    function getRealFloor(n) {
+        if (n <= 0) {
+            return n
+        } else if (n < 13) {
+            return n - 1
+        } else if (n > 13) {
+            return n - 2
+        }
+    }
+
+    function calculateAge(a, b) {
+        if (a > b && a - b !== 1) {
+            return `You will be born in ${a - b} years.`
+        } else if (a > b && a - b === 1) {
+            return `You will be born in ${a - b} year.`
+        } else if (a < b && b - a !== 1) {
+            return `You are ${b - a} years old.`
+        } else if (a < b && b - a === 1) {
+            return `You are ${b - a} year old.`
+        } else {
+            return "You were born this very year!"
+        }
+    }
+    function bmi(weight, height) {
+        let bmi = weight / Math.pow(height,2)
+        if (bmi <= 18.5){return "Underweight"}
+        else if (bmi <= 25.0 ){return "Normal"}
+        else if (bmi <= 30.0){return "Overweight"}
+        else if (bmi > 30.0){return "Obese"}
+    }
+
+    function fuelPrice(litres, pricePerLitre) {
+        //   😎
+        let sail = 0
+        for (let i = 0; i < litres; i++){
+            if (sail !== 0.25 && litres >= 2){
+                if (litres % 2 === 0){
+                    sail = (litres / 2) * 5
+                    if (sail > 25){
+                        sail = 25
+                    }
+                }
+                else if (litres % 2 === 1){
+                    litres--
+                    sail = (litres / 2) * 5
+                    litres++
+                    if (sail > 25){
+                        sail = 25
+                    }
+                }
+            }
+        }
+        console.log(((litres * pricePerLitre - (litres * (sail/100))).toFixed(2)))
+    }
+    fuelPrice(5,5.6)
+    function roots(a,b,c){
+        clear()
+        let result = Math.pow(b,2) - (4 * (a * c))
+        if (Number.isInteger(Math.sqrt(result))){
+            let secondX = (-b - result )/ (2*a)
+            let thirdX = (-b + result )/ (2*a)
+            console.log(+(secondX + thirdX).toFixed(2))
+        }
+        else {
+            console.log(null)
+        }
+    }
+    roots(5,40,26)
 }
