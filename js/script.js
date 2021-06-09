@@ -894,7 +894,133 @@ totalPrice(68, 25, 9)
             console.log(false)
         }
     }
-    equalParity(54,-33)
+
+    equalParity(54, -33)
 }
+// here
+{
+    function inequalitiesAreFulfilled(a, b) {
+        return a > 2 && b <= 3 ? true : false
+    }
 
+    function exactlyTwoArePositive(a, b, c) {
+        clear()
+        if (a > 0 && b > 0 && c < 0 || a > 0 && c > 0 && b < 0 || b > 0 && c > 0 && a < 0) {
+            console.log(true)
+        } else {
+            console.log(false)
+        }
+    }
 
+    exactlyTwoArePositive(12, 6, 0)
+
+    function atLeastOnePairOfOpposite(a, b, c) {
+        if (-a === b || -b === c || -c === a || -c === b) {
+            console.log(true)
+        } else console.log(false)
+    }
+
+    atLeastOnePairOfOpposite(4, -4, 10)
+
+    function areAllDigitsDifferent(num) {
+        clear()
+
+        let strNum = String(num).split('')
+        if (strNum[0] === strNum[1] || strNum[0] === strNum[2] ||
+            strNum[1] === strNum[2]) {
+            return false
+        }
+        console.log(strNum)
+    }
+
+    areAllDigitsDifferent(362)
+
+    function isThreeDigitOddNumber(num) {
+        let strNum = String(num).split('')
+        if (strNum.length === 3 && num % 2 === 1) {
+            return true
+        } else return false
+    }
+
+    function atLeastOneIsOdd(a, b) {
+        if (a % 2 === 1 || b % 2 === 1) {
+            return true
+        } else return false
+    }
+
+    function atLeastOneIsOdd(a, b) {
+        if (a % 2 === 1 || b % 2 === 1 || a % 2 === -1 || b % 2 === -1 || a % 2 === 1 && b % 2 === 1 || a % 2 === -1 && b % 2 === -1) {
+            return true
+        } else return false
+    }
+
+    function areNumbersOdd(a, b) {
+        if (a % 2 === 1 && b % 2 === 1 || a % 2 === -1 && b % 2 === -1 || a % 2 === -1 && b % 2 === 1 || a % 2 === 1 && b % 2 === -1) {
+            return true
+        } else return false
+    }
+
+    function onlyOneIsPositive(a, b, c) {
+        if (a > 0 && b <= 0 && c <= 0 || b > 0 && a <= 0 && c <= 0 || c > 0 && a <= 0 && b <= 0) {
+            return true
+        } else return false
+    }
+
+    function inequalitiesAreFulfilled(a, b, c) {
+        if (a < b && b < c) {
+            return true
+        } else return false
+    }
+
+    function exactlyOneIsOdd(a, b) {
+        if (a % 2 === 1 && b % 2 === 0 || a % 2 === -1 && b % 2 === 0 || a % 2 === 0 && b % 2 === 1 || a % 2 === 0 && b % 2 === -1) {
+            return true
+        } else return false
+    }
+
+    function isPropositionTrue(a, b, c) {
+        if (a < b && b < c || a > b && b > c) {
+            return true
+        } else return false
+    }
+
+    function areDigitsInAscendingOrder(num) {
+        let strNum = String(num).split('')
+        if (strNum[0] < strNum[1] && strNum[1] < strNum[2]) {
+            return true
+        } else return false
+    }
+
+    function isNumberPositive(num) {
+        return num > 0 ? true : false
+    }
+
+    function atLeastOnePairOfEquals(a, b, c) {
+        if (a === b || a === c || b === c) {
+            return true
+        } else return false
+    }
+
+    function areNumbersEven(a, b) {
+        if (a % 2 === 0 && b % 2 === 0) {
+            return true
+        }
+        return false
+    }
+
+    function isTwoDigitEvenNumber(num) {
+        let result = String(num).split('').length
+        return result === 2 && num % 2 === 0 ? true : false
+    }
+
+    function eachIsPositive(a, b, c) {
+        return a > 0 && b > 0 && c > 0
+    }
+    function exactlyOneIsEven(a, b, c){
+        if (a % 2 === 0 && (b % 2 === 1 || b % 2 === -1) && (c % 2 === 1 || c % 2 === -1) ||
+            b % 2 === 0 && (a % 2 === 1 || a % 2 === -1) && (c % 2 === 1 || c % 2 === -1) ||
+            c % 2 === 0 && (a % 2 === 1 || a % 2 === -1) && (b % 2 === 1 || b % 2 === -1)
+        ){return true}
+        else return false
+    }
+}
