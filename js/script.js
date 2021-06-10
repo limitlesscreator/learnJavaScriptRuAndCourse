@@ -1132,49 +1132,194 @@ totalPrice(68, 25, 9)
             return "You were born this very year!"
         }
     }
+
     function bmi(weight, height) {
-        let bmi = weight / Math.pow(height,2)
-        if (bmi <= 18.5){return "Underweight"}
-        else if (bmi <= 25.0 ){return "Normal"}
-        else if (bmi <= 30.0){return "Overweight"}
-        else if (bmi > 30.0){return "Obese"}
+        let bmi = weight / Math.pow(height, 2)
+        if (bmi <= 18.5) {
+            return "Underweight"
+        } else if (bmi <= 25.0) {
+            return "Normal"
+        } else if (bmi <= 30.0) {
+            return "Overweight"
+        } else if (bmi > 30.0) {
+            return "Obese"
+        }
     }
 
     function fuelPrice(litres, pricePerLitre) {
         //   😎
         let sail = 0
-        for (let i = 0; i < litres; i++){
-            if (sail !== 0.25 && litres >= 2){
-                if (litres % 2 === 0){
+        for (let i = 0; i < litres; i++) {
+            if (sail !== 0.25 && litres >= 2) {
+                if (litres % 2 === 0) {
                     sail = (litres / 2) * 5
-                    if (sail > 25){
+                    if (sail > 25) {
                         sail = 25
                     }
-                }
-                else if (litres % 2 === 1){
+                } else if (litres % 2 === 1) {
                     litres--
                     sail = (litres / 2) * 5
                     litres++
-                    if (sail > 25){
+                    if (sail > 25) {
                         sail = 25
                     }
                 }
             }
         }
-        console.log(((litres * pricePerLitre - (litres * (sail/100))).toFixed(2)))
+        console.log(((litres * pricePerLitre - (litres * (sail / 100))).toFixed(2)))
     }
-    fuelPrice(5,5.6)
-    function roots(a,b,c){
+
+    fuelPrice(5, 5.6)
+
+    function roots(a, b, c) {
         clear()
-        let result = Math.pow(b,2) - (4 * (a * c))
-        if (Number.isInteger(Math.sqrt(result))){
-            let secondX = (-b - result )/ (2*a)
-            let thirdX = (-b + result )/ (2*a)
+        let result = Math.pow(b, 2) - (4 * (a * c))
+        if (Number.isInteger(Math.sqrt(result))) {
+            let secondX = (-b - result) / (2 * a)
+            let thirdX = (-b + result) / (2 * a)
             console.log(+(secondX + thirdX).toFixed(2))
-        }
-        else {
+        } else {
             console.log(null)
         }
     }
-    roots(5,40,26)
+
+    roots(5, 40, 26)
+}
+// here
+{
+    function shark(pontoonDistance, sharkDistance, youSpeed, sharkSpeed, dolphin) {
+
+        let result
+        if (dolphin === true) {
+            result = (pontoonDistance / youSpeed) / 2 < sharkDistance / sharkSpeed ? "Alive!" : "Shark Bait!"
+        } else if (dolphin === false) {
+            result = (pontoonDistance / youSpeed) < sharkDistance / sharkSpeed ? "Alive!" : "Shark Bait!"
+        }
+        return result
+    }
+}
+{
+    function apple(x) {
+        return Math.pow(Number(x), 2) > 1000 ? "It's hotter than the sun!!" : 'Help yourself to a honeycomb Yorkie for the glovebox.'
+    }
+
+    function humanYearsCatYearsDogYears(humanYears) {
+        let catYears = 0
+        let dogYears = 0
+        for (let i = 1; i <= humanYears; i++) {
+            if (i === 1) {
+                catYears += 15
+                dogYears += 15
+            } else if (i === 2) {
+                catYears += 9
+                dogYears += 9
+            } else if (i > 2) {
+                catYears += 4
+                dogYears += 5
+
+            }
+        }
+        return [humanYears, catYears, dogYears]
+    }
+}
+{
+    function isPalindrome(num) {
+        let result = Number(('' + num).split('').reverse().join(''))
+        console.log(result === num)
+    }
+
+    isPalindrome(898)
+
+    function minOfThree(a, b, c) {
+        if (a !== b && b !== c && a !== c) {
+            return Math.min(a, b, c)
+        } else {
+            return a
+        }
+    }
+
+    function newValues(a, b, c) {
+        if (a < b && b < c && a < c) {
+            console.log('work')
+        } else {
+            console.log('stop')
+        }
+    }
+
+    newValues(1, 2, 2)
+
+    function newValues(a, b, c) {
+        if (a < b && b < c && a < c) {
+            a *= 2;
+            b *= 2;
+            c *= 2;
+        } else {
+            a = -a;
+            b = -b;
+            c = -c
+        }
+        return [a, b, c]
+    }
+
+    function numberSign(num) {
+        if (num > 0) {
+            return 'plus'
+        } else if (num < 0) {
+            return 'minus'
+        } else {
+            return null
+        }
+    }
+
+    function countOfPositive(a, b, c) {
+        let arr = [a, b, c]
+        let result = 0
+        for (let i = 0; i < 3; i++) {
+            if (arr[i] > 0) {
+                result++
+            }
+        }
+        console.log(result)
+    }
+
+    countOfPositive(6, -10, 0)
+
+    function middleOfThree(a, b, c) {
+        let arr = [a, b, c]
+
+        let max = Math.max(...arr)
+        let min = Math.min(...arr)
+        if (a !== max && a !== min) {
+            return a
+        }
+        if (b !== max && b !== min) {
+            return b
+        }
+        if (c !== max && c !== min) {
+            return c
+        }
+    }
+
+    middleOfThree(5, 4, 6)
+    console.log(Math.abs(1))
+    console.log(Math.trunc(-45.95))
+    console.log(Math.floor(-45.95))
+
+    function changeNumber(num) {
+        return num > 0 ? num *= 2 : num /= 2
+    }
+
+    function sumOfTwoLargest(a, b, c) {
+        let arr = [a, b, c]
+        let min = Math.min(...arr)
+        if (a !== min && b !== min) {
+            return a + b
+        }
+        if (a !== min && c !== min) {
+            return a + c
+        }
+        if (b !== min && c !== min) {
+            return c + b
+        }
+    }
 }
