@@ -1323,3 +1323,117 @@ totalPrice(68, 25, 9)
         }
     }
 }
+// here
+{
+    function areaComparison(r, a) {
+        let circleS = Math.PI * Math.pow(r, 2)
+        let squareS = a * 4
+        if (circleS > squareS) {
+            return "circle"
+        }
+        if (squareS > circleS) {
+            return "square"
+        }
+        if (squareS === circleS) {
+            return "the same"
+        }
+    }
+
+    function distanceComparison(x1, y1, x2, y2) {
+        let d1 = Math.sqrt(x1 * x1 + y1 * y1)
+        let d2 = Math.sqrt(x2 * x2 + y2 * y2)
+        if (d1 < d2) {
+            console.log(1)
+        } else if (d2 < d1) {
+            console.log(2)
+        } else if (d1 === d2) {
+            console.log(0)
+        }
+        console.log(d1, d2)
+    }
+
+    function putInOrder(a, b) {
+        let arr = [a, b]
+        let min = Math.min(...arr)
+        let max = Math.max(...arr)
+        return [max, min]
+    }
+
+    distanceComparison(-7, 0, 4, 6)
+
+    function equationHasRoots(a, b, c) {
+        let result = Math.pow(b, 2) - 4 * (a * c)
+        if (result >= 0 && Number.isInteger(Math.sqrt(result))) {
+            console.log(Number.isInteger(Math.sqrt(result)))
+            return "The equation has roots"
+        } else if (result < 0) {
+            return "The equation has no roots"
+        } else return "The equation has roots"
+    }
+
+    equationHasRoots(-1, 4, -4)
+
+    function smallerOfTwo(a, b) {
+        let arr = [a, b]
+        let minNumber = a
+        let indexMinNumber = 1
+        for (let i = 0; i <= a || i <= b; i++) {
+            if (minNumber > arr[i]) {
+                minNumber = arr[i]
+                indexMinNumber++
+            }
+        }
+        return [minNumber, indexMinNumber]
+    }
+
+    smallerOfTwo(1, -1)
+
+    function countOfPosAndNeg(a, b, c) {
+        clear()
+        let positive = 0
+        let negative = 0
+        let arr = [a, b, c]
+        for (let i = 0; i < 3; i++) {
+            if (arr[i] < 0) {
+                negative++
+            } else if (arr[i] !== 0 && arr[i] > 0) {
+                positive++
+            }
+        }
+        console.log(positive, negative)
+    }
+
+    countOfPosAndNeg(-5, -13, -1)
+
+    function changeNumber(num) {
+    }
+
+    // num > 0 ? num + 8 : num
+
+    function orderNumberOfDifferentValue(a, b, c) {
+        let result = 0
+        let numbersArr = [a, b, c]
+        let deleteTheNumbers
+        if (a === b) {
+            deleteTheNumbers = a
+        } else if (b === c) {
+            deleteTheNumbers = c
+        } else if (c === a) {
+            deleteTheNumbers = a
+        }
+        for (let i = 0; i < 3; i++) {
+            if (numbersArr[i] === deleteTheNumbers) {
+
+            } else result = numbersArr[i]
+        }
+        if (a === result) {
+            return 1
+        } else if (b === result) {
+            return 2
+        } else if (c === result) {
+            return 3
+        }
+    }
+
+    orderNumberOfDifferentValue(-4, -2, 10)
+}
