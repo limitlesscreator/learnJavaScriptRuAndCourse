@@ -1436,4 +1436,114 @@ totalPrice(68, 25, 9)
     }
 
     orderNumberOfDifferentValue(-4, -2, 10)
+    // here
+    let a = '12'
+    {
+        console.log(a > 0 && a < 12)
+        console.log(true && true); // true
+        console.log(false && true); // false
+        console.log(true && false); // false
+        console.log(false && false); // false
+    }
+    const rps = (p1, p2) => {
+        if (p1 === p2) {
+            return 'Draw!'
+        } else if (p1 === 'scissors' && p2 === 'paper' || p1 === 'paper' && p2 === 'rock' || p1 === 'rock' && p2 === 'scissors') {
+            console.log('Player 1 won!')
+        } else if (p2 === 'scissors' && p1 === 'paper' || p2 === 'paper' && p1 === 'rock' || p2 === 'rock' && p1 === 'scissors') {
+            console.log('Player 2 won!')
+        }
+    };
+    rps('rock', 'paper')
+    const perfectRoots = num => {
+        let sq2 = Number.isInteger(Math.pow(num, 1 / 2))
+        let sq4 = Number.isInteger(Math.pow(num, 1 / 4))
+        let sq8 = Number.isInteger(Math.pow(num, 1 / 8))
+        return sq2 && sq4 && sq8
+    }
+    perfectRoots(1000)
+    const isDivideBy = (number, a, b) => Number.isInteger(number / a) && Number.isInteger(number / b)
+
+    function finalGrade(exam, projects) {
+        if (exam > 90 || projects > 10) {
+            return 100
+        } else if (exam > 75 && exam <= 90 && projects >= 5 && projects <= 10) {
+            return 90
+        } else if (exam > 50 && exam < 76 && projects >= 2 || exam > 50 && projects >= 2) {
+            return 75
+        } else {
+            return 0
+        }
+    }
+
+    function numberDescription(num) {
+        clear()
+        let result = String(num).split('')
+        if (result[0] === '-') {
+            result[0] = ''
+        }
+        result = String(+result.join('')).split('').length
+        console.log(result)
+        if (result === 3) {
+            return "three-digit number"
+        } else if (result === 2) {
+            return "two-digit number"
+        } else if (result === 1) {
+            return "one-digit number"
+        }
+    }
+
+    numberDescription(-223)
+}
+{
+    function numberDescription(num) {
+        if (num < 0 && num % 2 === 0) {
+            return "negative even number"
+        } else if (num < 0 && num % 2 === 1) {
+            return "negative odd number"
+        } else if (num > 0 && num % 2 === 1) {
+            return "positive odd number"
+        } else if (num < 0 && num % 2 === -1) {
+            return "negative odd number"
+        } else if (num > 0 && num % 2 === -1) {
+            return "positive odd number"
+        } else if (num > 0 && num % 2 === 0) {
+            return "positive even number"
+        } else if (num === 0) {
+            return "zero number"
+        }
+    }
+
+    numberDescription(-12)
+}
+{
+    function positionOfPoint(x, y) {
+        if (x > 0 && y === 0 || x < 0 && y === 0) {
+            return (1)
+        } else if (y > 0 && x === 0 || y < 0 && x === 0) {
+            return (2)
+        } else if (x > 0 && y > 0 && y !== x || y > 0 && x > 0 && x !== y || x < 0 && y < 0 && y !== x || y < 0 && x < 0 && x !== y ||
+            x < 0 && y > 0 && y !== x || y < 0 && x > 0 && x !== y || x > 0 && y < 0 && y !== x || y > 0 && x < 0 && x !== y || x === y && x !== 0 && y !== 0) {
+            return (3)
+        } else if (x === 0 && y === 0) {
+            return (0)
+        }
+    }
+
+    console.log(3 % 15)
+
+    function areYouPlayingBanjo(name) {
+        if (name[0] === 'R' || name[0] === 'r') {
+            return name + " plays banjo"
+        } else {
+            return name + " does not play banjo"
+        }
+    }
+    function getAges(sum,difference){
+        if(sum > 0 && difference >= 0){
+            let res = [(sum+difference)/2,(sum-difference) / 2]
+            return res[0] >= 0 && res[1] >= 0 ? res : null;
+        }
+        return null;
+    };
 }
