@@ -1539,11 +1539,119 @@ totalPrice(68, 25, 9)
             return name + " does not play banjo"
         }
     }
-    function getAges(sum,difference){
-        if(sum > 0 && difference >= 0){
-            let res = [(sum+difference)/2,(sum-difference) / 2]
+
+    function getAges(sum, difference) {
+        if (sum > 0 && difference >= 0) {
+            let res = [(sum + difference) / 2, (sum - difference) / 2]
             return res[0] >= 0 && res[1] >= 0 ? res : null;
         }
         return null;
     };
+}
+// here
+{
+    function atLeastOneEven(a, b, c) {
+        if (a % 2 === 0 || b % 2 === 0 || c % 2 === 0) {
+            return true
+        } else return false
+    }
+
+    function dayOfWeek(day) {
+        if (day > 0 && day < 6) {
+            return "Time to get up for work"
+        } else if (day > 5 && day < 8) {
+            return "You can get some sleep"
+        }
+    }
+
+    function pythagoreanThree(a, b, c) {
+        clear()
+        let result = Math.pow(a, 2) + Math.pow(b, 2) === Math.pow(c, 2)
+        console.log(result)
+    }
+
+    pythagoreanThree(3, 4, 5)
+
+    function nameStartsWithA(str1, str2, str3) {
+        if (str1[0] === 'A' || str2[0] === 'A' || str3[0] === 'A') {
+            return 'Yes'
+        } else return 'No'
+    }
+
+    function rainbowСolor(color) {
+        if (color === 'red' || color === 'orange' || color === 'yellow' || color === 'green' || color === 'blue' || color === 'indigo' || color === 'violet') {
+            return true
+        } else return false
+    }
+
+    function luckyNumber(a, b) {
+        if (a === 8 || b === 8 || a === 3 || b === 3 ||
+            a === 5 || b === 5 || a === 7 || b === 7) {
+            return true
+        } else return false
+    }
+
+    function season(month) {
+        if (month > 0 && month < 3 || month === 12) {
+            return 'Winter'
+        } else if (month > 2 && month < 6) {
+            return 'Spring'
+        } else if (month > 5 && month < 9) {
+            return 'Summer'
+        } else if (month > 8 && month < 12) {
+            return 'Fall'
+        }
+    }
+
+    function atLeastOneNegative(a, b, c, d) {
+        return a < 0 || b < 0 || c < 0 || d < 0 ? true : false
+    }
+
+    function sweetSeason(month) {
+        if (month === 2 || month === 10 || month === 12) {
+            return "Time to buy sweets"
+        } else return "Not the time to buy sweets"
+    }
+
+    function isGoodNumber(num) {
+        num !== 39 ? "The number of suitable" : "The number is unsuccessful"
+    }
+
+    function moneyInCash(money) {
+        return money !== 0 ? true : false
+    }
+
+    function newValues(a, b) {
+        if (a === b) {
+            return [0, 0]
+        } else if (a < b) {
+            return [b, b]
+        } else if (b < a) {
+            return [a, a]
+        }
+    }
+
+    function floorNumber(floor, amount) {
+        if (floor !== 4 && floor <= amount && floor > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    function newValues(a, b) {
+        if (a === b) {
+            return [0, 0]
+        } else if (a !== b) {
+            return [a + b, a - b]
+        }
+    }
+
+    let str = 5
+    let x = 5
+    console.log(!!'abc'); // true
+    console.log(!!null); // false
+    console.log(!!5); // true
+    console.log(x % 2 !== 0);  // true, т.к. остаток от деления числа 5 на 2 не равен 0
+    console.log(!(typeof str === 'string'));  // true, т.к. тип переменной str – не строка
 }
