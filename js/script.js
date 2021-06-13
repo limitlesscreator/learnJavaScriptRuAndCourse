@@ -1655,3 +1655,101 @@ totalPrice(68, 25, 9)
     console.log(x % 2 !== 0);  // true, т.к. остаток от деления числа 5 на 2 не равен 0
     console.log(!(typeof str === 'string'));  // true, т.к. тип переменной str – не строка
 }
+// here
+{
+    function plural(n) {
+        if (n === 0) {
+            return true
+        } else if (n === 0.5) {
+            return true
+        } else if (n === 1) {
+            return false
+        } else if (n === 100) {
+            return true
+        } else if (n === Infinity) {
+            return true
+        } else {
+            return true
+        }
+    }
+
+    console.log(2 % 2 == 0)
+
+    function divide(weight) {
+        let result = weight % 2 === 0
+        if (weight > 2) {
+            return result
+        } else return false
+    }
+
+    function yearDays(year) {
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+            return `${year} has 366 days`
+        } else return `${year} has 365 days`
+    }
+
+    // let isAdult = (age > 18) ? true : false;
+    {
+        let age = 6;
+        let status = (age > 18) ? 'adult' : (age > 5) ? 'student' : 'baby';
+        console.log(status); // будет выведено "student"
+    }
+
+    function absValue(x) {
+        return typeof x === 'number' ? Math.abs(x) : null
+    }
+
+    console.log('a' < 'b'); //true
+    console.log('c' < 'b'); //false
+    console.log('0' < '1'); //true
+    // function isDigit(letter) {
+    //     return typeof letter === 'number' ? "digit" : "not a digit"
+    // }
+    // {
+    //     let letter = '5'
+    //     console.log(Number(letter))
+    // }
+    function isDigit(letter) {
+        return letter === '0' || letter === '1' || letter === '2' || letter === '3' || letter === '4' || letter === '5' || letter === '6' || letter === '7' || letter === '8' || letter === '9' ? 'digit' : 'not a digit'
+    }
+
+    // sry, i'm so sleepy
+    // sry, i'm so sleepy
+    isDigit('g')
+
+    function boolToString(bool) {
+        return Boolean(bool) ? 'True' : 'False'
+    }
+
+    function isTeenager(age) {
+        return age > 12 && age < 20 ? 'teenager' : 'not a teenager'
+    }
+
+    function changeNumber(num) {
+        return num % 2 === 0 ? num * 2 : num * 3
+    }
+
+    function scoreIncrease(current, level) {
+        return level === 'easy' ? current + 2 : level === 'medium' ? current + 4 : current + 8
+    }
+
+    function saleFruits(n) {
+        return (n >= 10 ? n * 0.60 : n >= 3 ? n * 0.80 : n * 1).toFixed(2)
+    }
+
+    const boolToWord = bool => bool ? 'Yes' : 'No'
+
+    function hoopCount(n) {
+        return n >= 10 ? "Great, now move on to tricks" : "Keep at it until you get it"
+    }
+
+    function howManyDalmations(number) {
+
+        let dogs = ["Hardly any", "More than a handful!", "Woah that's a lot of dogs!", "101 DALMATIONS!!!"];
+
+        console.log(dogs[2])
+        return number <= 10 ? dogs[0] : number <= 50 ? dogs[1] : number === 101 ? dogs[3] : dogs[2]
+    }
+
+    howManyDalmations(10)
+}
