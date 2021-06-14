@@ -1753,3 +1753,112 @@ totalPrice(68, 25, 9)
 
     howManyDalmations(10)
 }
+// here
+{
+    // Return the nth triangular number
+    function triangular(n) {
+        let result = 0
+
+        if (n > 0) {
+            result = n * (n + 1) / 2
+        } else if (n <= 0) {
+            result = 0
+        }
+        return result
+    }
+
+    triangular(5)
+    // or const triangular = n => n > 0 ? n * (n + 1) / 2 : 0
+    let n = "You're a(n)"
+    const describeAge = age => age <= 12 ? `${n} kid` : age >= 13 && age <= 17 ? `${n} teenager` : age >= 18 && age <= 64 ? `${n} adult` : `${n} elderly`
+
+    function bonusTime(salary, bonus) {
+        if (Number.isInteger(salary) && bonus) {
+            return `£${salary * 10}`
+        } else return `£${salary}`
+    }
+
+    // const bonusTime = (salary, bonus) => bonus ? `£${salary * 10}` : `£${salary}`
+    function saleHotdogs(n) {
+        return n < 5 ? 100 * n : n >= 5 && n < 10 ? 95 * n : n * 90
+    }
+
+    function getRes(myScore) {
+        return myScore < 70 ? `Sorry, you have failed. Better luck next time!` + ' Thank you for taking part.' : "Congratulations, you have passed!" + ' Thank you for taking part.'
+    }
+
+    function ownedCatAndDog(catYears, dogYears) {
+        let cat = 0
+        let dog = 0
+        let result = []
+        if (catYears > 14 && catYears < 24) {
+            result.push(1)
+            if (dogYears > 14 && dogYears < 24) {
+                result.push(1)
+            } else if (dogYears > 23 && dogYears < 29) {
+                result.push(2)
+            } else if (dog === 29) {
+                result.push(3)
+            } else if (dogYears > 29) {
+                dog = Math.floor((dogYears - 29) / 5)
+                result.push(dog + 3)
+            } else if (dog < 15) {
+                result.push(0)
+            }
+        } else if (catYears > 23 && catYears < 28) {
+            result.push(2);
+            if (dogYears > 14 && dogYears < 24) {
+                result.push(1)
+            } else if (dogYears > 23 && dogYears < 29) {
+                result.push(2)
+            } else if (dog === 29) {
+                result.push(3)
+            } else if (dogYears > 29) {
+                dog = Math.floor((dogYears - 29) / 5)
+                result.push(dog + 3)
+            } else if (dog < 15) {
+                result.push(0)
+            }
+        } else if (catYears > 27) {
+            cat = Math.floor((catYears - 28) / 4)
+            result.push(cat + 3)
+            if (dogYears > 14 && dogYears < 24) {
+                result.push(1)
+            } else if (dogYears > 23 && dogYears < 29) {
+                result.push(2)
+            } else if (dogYears > 29) {
+                dog = Math.floor((dogYears - 29) / 5)
+                result.push(dog + 3)
+            } else if (dog < 15) {
+                result.push(0)
+            }
+        } else if (catYears < 15) {
+            result.push(0);
+            if (dogYears > 14 && dogYears < 24) {
+                result.push(1)
+            } else if (dogYears > 23 && dogYears < 29) {
+                result.push(2)
+            } else if (dogYears > 29) {
+                dog = Math.floor((dogYears - 29) / 5)
+                result.push(dog + 3)
+            } else if (dog < 15) {
+                result.push(0)
+            }
+        }
+        console.log(result)
+    }
+
+    ownedCatAndDog(5, 32)
+    function solve(s,g){
+        clear()
+        let result = s-g
+        if (s - result !== g && result > 0 || s === g){
+            console.log([s - result,result])
+        }
+        else if (result < 0 || s - result === g) {
+            console.log(-1)
+        }
+    }
+    solve(3,3)
+    // const solve = (s,g) => (s%g) ? -1 : [g,(s / g-1)*g]
+}
