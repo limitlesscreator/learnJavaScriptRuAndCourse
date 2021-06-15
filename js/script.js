@@ -2079,4 +2079,110 @@ totalPrice(68, 25, 9)
                 return undefined
         }
     }
+
+    // here
+    function polygonName(n) {
+        switch (n) {
+            case 3:
+                return 'triangle'
+            case 4:
+                return 'square'
+            case 5:
+                return 'pentagon'
+            case 6:
+                return 'hexagon'
+            case 7:
+                return 'heptagon'
+            case 8:
+                return 'octahedron'
+            case 9:
+                return 'nonagon'
+            case 10:
+                return 'decagon'
+            default:
+                undefined
+        }
+    }
+
+    function digitToWords(n) {
+        switch (n) {
+            case 0:
+                return ['zero', 'zeroth']
+            case 1:
+                return ['one', 'first']
+            case 2:
+                return ['two', 'second']
+            case 3:
+                return ['three', 'third']
+            case 4:
+                return ['four', 'fourth']
+            case 5:
+                return ['five', 'fifth']
+            case 6:
+                return ['six', 'sixth']
+            case 7:
+                return ['seven', 'seventh']
+            case 8:
+                return ['eight', 'eighth']
+            case 9:
+                return ['nine', 'ninth']
+            case 10:
+                return ['ten', 'tenth']
+            case 11:
+                return ['eleven', 'eleventh']
+            case 12:
+                return ['twelve', 'twelfth']
+        }
+    }
+
+    function calculate(a, b, operation) {
+        switch (a, b, operation) {
+            case '*':
+                return `${a} * ${b} = ${a * b}`
+            case '/':
+                return `${a} / ${b} = ${Math.round(a / b)}`
+            case '-':
+                return `${a} - ${b} = ${a - b}`
+            case '+':
+                return `${a} + ${b} = ${a + b}`
+            case '%':
+                return `${a} % ${b} = ${a % b}`
+        }
+    }
+
+    // Дни недели пронумерованы так: 0 - 'Sunday', 1 - 'Monday', 2 - 'Tuesday', 3 - 'Wednesday', 4 - 'Thursday', 5 - 'Friday', 6 - 'Saturday'.
+    //
+    // Дано целое число k (от 1 до 365). Определите название дня недели для k-го дня года, если считать, что 1 января был понедельник.
+    // Напишите функцию с именем dayOfWeek, которая принимает число k в качестве аргумента (число от 1 до 365 - номер дня года) и возвращает название дня недели.
+    // Примеры:
+    // функция dayOfWeek(3) должна возвратить "Wednesday";
+    // функция dayOfWeek(14) должна возвратить "Sunday".
+
+    function dayOfWeek(k) {
+        switch (k % 7) {
+            case 0 :
+                console.log('Sunday');
+                break
+            case 1 :
+                console.log('Monday');
+                break
+            case 2 :
+                console.log('Tuesday');
+                break
+            case 3 :
+                console.log('Wednesday');
+                break
+            case 4 :
+                console.log('Thursday');
+                break
+            case 5 :
+                console.log('Friday');
+                break
+            case 6 :
+                console.log('Saturday');
+                break
+        }
+    }
+
+    dayOfWeek(152)
 }
