@@ -1849,16 +1849,234 @@ totalPrice(68, 25, 9)
     }
 
     ownedCatAndDog(5, 32)
-    function solve(s,g){
+
+    function solve(s, g) {
         clear()
-        let result = s-g
-        if (s - result !== g && result > 0 || s === g){
-            console.log([s - result,result])
-        }
-        else if (result < 0 || s - result === g) {
+        let result = s - g
+        if (s - result !== g && result > 0 || s === g) {
+            console.log([s - result, result])
+        } else if (result < 0 || s - result === g) {
             console.log(-1)
         }
     }
-    solve(3,3)
+
+    solve(3, 3)
     // const solve = (s,g) => (s%g) ? -1 : [g,(s / g-1)*g]
+}
+// here
+{
+    clear()
+    let day = 6;
+    switch (day) {
+        case 6: // группируем оба case
+        case 7:
+            console.log('weekend');
+            break;
+        default:
+            console.log('work day');
+    }
+
+    function unitsOfLength(n, unit) {
+        switch (n, unit) {
+            case 'm':
+                return n * 1
+                break;
+            case 'km':
+                return n * 1000
+                break;
+            case 'dm':
+                return n / 10
+                break;
+            case 'cm':
+                return n / 100
+                break;
+            case 'mm':
+                return n / 1000
+                break;
+        }
+    }
+
+    function daysInMonth(month) {
+        switch (month) {
+            case 1:
+                return 31
+                break;
+            case 2:
+                return 28
+                break;
+            case 3:
+                return 31
+                break;
+            case 4:
+                return 30
+                break;
+            case 5:
+                return 31
+                break;
+            case 6:
+                return 30
+                break;
+            case 7:
+                return 31
+                break;
+            case 8:
+                return 31
+                break;
+            case 9:
+                return 30
+                break;
+            case 10:
+                return 31
+                break;
+            case 11:
+                return 30
+                break;
+            case 12:
+                return 31
+                break;
+            default :
+                return "Wrong month"
+        }
+    }
+
+    function greetings(name, language) {
+        switch (name, language) {
+            case 'English':
+                return `Hello ${name}!`
+            case 'German':
+                return `Hallo ${name}!`
+            case 'French':
+                return `Bonjour ${name}!`
+            case 'Spanish':
+                return `Hola ${name}!`
+            case 'Italian':
+                return `Saluto ${name}!`
+            case 'Russian':
+                return `Привет ${name}!`
+            case 'Czech':
+                return `Nazdar ${name}!`
+            default:
+                return `Hello ${name}!`
+        }
+    }
+
+    function dayOfWeek(day) {
+        switch (day) {
+            case 1:
+                return 'Monday'
+            case 2:
+                return 'Tuesday'
+            case 3:
+                return 'Wednesday'
+            case 4:
+                return 'Thursday'
+            case 5:
+                return 'Friday'
+            case 6:
+                return 'Saturday'
+            case 7:
+                return 'Sunday'
+            default:
+                return 'Wrong day'
+        }
+    }
+
+    function workdayOrWeekend(day) {
+        switch (day) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return 'Work day'
+            case 6:
+            case 7:
+                return 'Weekend'
+            default:
+                return 'Wrong input'
+        }
+    }
+
+    function robot(x, y, direction) {
+        switch (x, y, direction) {
+            case 'N' :
+                return [x, y + 1]
+            case 'S' :
+                return [x, y - 1]
+            case 'E' :
+                return [x + 1, y]
+            case 'W' :
+                return [x - 1, y]
+        }
+    }
+
+    function examinationMark(mark) {
+        switch (mark) {
+            case 1:
+                return 'bad'
+            case 2:
+                return 'unsatisfactory'
+            case 3:
+                return 'mediocre'
+            case 4:
+                return 'good'
+            case 5:
+                return 'excellent'
+            default:
+                return 'wrong data'
+        }
+    }
+
+    function season(month) {
+        let res;
+        switch (month) {
+            case 1 :
+            case 2 :
+            case 12:
+                res = 'Winter'
+                break;
+
+            case 3:
+            case 4:
+            case 5:
+                res = 'Spring';
+                break;
+
+            case 6:
+            case 7:
+            case 8:
+                res = 'Summer';
+                break;
+
+            case 9:
+            case 10:
+            case 11:
+                res = 'Autumn';
+                break;
+            default:
+                res = 'Wrong month';
+        }
+        return res;
+    }
+
+    function digitToName(n) {
+        switch (n) {
+            case 1:
+                return 'wardrobe'
+            case 2:
+                return 'table'
+            case 3:
+                return 'chair'
+            case 4:
+                return 'bed'
+            case 5:
+                return 'bookshelf'
+            case 6:
+                return 'exercise bike'
+            case 7:
+                return 'air-conditioner'
+            default:
+                return undefined
+        }
+    }
 }
