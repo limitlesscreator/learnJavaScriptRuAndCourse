@@ -2185,4 +2185,194 @@ totalPrice(68, 25, 9)
     }
 
     dayOfWeek(152)
+
+    // here
+    function getPlanetName(id) {
+        var name;
+        switch (id) {
+            case 1:
+                name = 'Mercury';
+                break;
+            case 2:
+                name = 'Venus';
+                break;
+            case 3:
+                name = 'Earth';
+                break;
+            case 4:
+                name = 'Mars';
+                break;
+            case 5:
+                name = 'Jupiter';
+                break;
+            case 6:
+                name = 'Saturn';
+                break;
+            case 7:
+                name = 'Uranus';
+                break;
+            case 8:
+                name = 'Neptune';
+                break;
+        }
+
+        return name;
+    }
+
+    // or
+    {
+        function getPlanetName(id) {
+            return {
+                1: 'Mercury',
+                2: 'Venus',
+                3: 'Earth',
+                4: 'Mars',
+                5: 'Jupiter',
+                6: 'Saturn',
+                7: 'Uranus',
+                8: 'Neptune'
+            }[id]
+        }
+    }
+
+    function calculate(num1, operation, num2) {
+        if (num1 === 0 && operation === '/' || num2 === 0 && operation === '/') {
+            return null
+        } else {
+            switch (num1, num2, operation) {
+                case '/':
+                    return num1 / num2;
+                case '*':
+                    return num1 * num2;
+                case '+':
+                    return num1 + num2
+                case '-':
+                    return num1 - num2
+            }
+        }
+    }
+
+    function calculate(num1, operation, num2) {
+        switch (num1, num2, operation) {
+            case '*':
+                return num1 * num2;
+            case '+':
+                return num1 + num2
+            case '-':
+                return num1 - num2
+            case '/':
+                return num1 !== 0 && num2 !== 0 ? num1 / num2 : null;
+            default:
+                return null
+
+        }
+    }
+
+    function howManydays(month) {
+        var days;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+                break;
+
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+                break;
+
+            case 2:
+                return 28;
+                break;
+        }
+        return days;
+    }
+
+    function basicOp(operation, value1, value2) {
+        clear()
+        let obj = {
+            '/': value1 / value2,
+            '+': value1 + value2,
+            '-': value1 - value2,
+            '*': value1 * value2
+        }
+
+    }
+
+    basicOp('*', 'f', 5)
+
+    function calculator(value1, value2, operation) {
+        let obj = {
+            '/': value1 / value2,
+            '+': value1 + value2,
+            '-': value1 - value2,
+            '*': value1 * value2
+        }
+        return Number.isInteger(Math.round(value1)) && Number.isInteger(Math.round(value2)) && operation === '/' || operation === '*' || operation === '+' || operation === '-' ? obj[operation] : 'unknown value'
+    }
+
+    {
+        let i = 3;
+        while (i <= 10) {
+            z = i++;
+            i += 2;
+        }
+    }
+
+    function noBoringZeros(n) {
+        let arr = String(n).split('')
+        for (let i = 0; i < 100; i++) {
+            if (arr[arr.length - 1] === '0') {
+                arr.pop()
+            }
+        }
+        arr = +(arr.map(n => isNaN(n) ? n : +n).join(''))
+        console.log(arr)
+    }
+
+    noBoringZeros(-2500)
+    let num = 2
+    console.log(num & (num - 1) ? false : true)
+    clear()
+
+    function differenceOfSquares(n) {
+        let result = 0
+        let squareOne = 0
+        let squareAll = 0
+        for (let i = 1; i <= n; i++) {
+            squareOne += i
+            squareAll += Math.pow(i, 2)
+        }
+        console.log(squareAll)
+
+        result = Math.pow(squareOne, 2)
+        console.log(result - squareAll)
+    }
+
+    differenceOfSquares(10)
+
+    //
+    // function movie(card, ticket, perc) {
+    //     clear()
+    //     let result = 0
+    //     let resultA = 0
+    //     let betterTickets = 0
+    //     let resultB = Math.ceil(card + ticket * perc + (ticket * perc) * perc + (ticket * perc * perc) * perc)
+    //     while (resultA < resultB){
+    //         resultA += 15
+    //         betterTickets++
+    //     }
+    //     console.log(betterTickets)
+    //     for (let i = 0; i < 100; i++){
+    //         betterTickets *= 0.9
+    //     }
+    // };
+    // movie(500,15,0.9) //43
 }
