@@ -2375,4 +2375,106 @@ totalPrice(68, 25, 9)
     //     }
     // };
     // movie(500,15,0.9) //43
+
+
+    // here
+
+    // P - money that he wants to invest
+    // Y - how many years need for make D
+    // D - dream money
+    // I - percent every year
+    // T - taxes of invest - nalog pered reinvestirovaniem
+
+    {
+        function calculateYears(principal, interest, tax, desired) {
+            clear()
+            let years = 0
+            let newSum = 0
+
+            while (principal < desired) {
+                newSum = principal + (interest * principal) - ((principal * interest) * tax)
+                console.log(newSum)
+                principal = newSum
+                years++
+            }
+        }
+
+        calculateYears(1000, 0.05, 0.18, 1041) //1041 , 1083.86
+    }
+    clear()
+
+    function quotientAndRemainder(n, k) {
+        let result = 0
+        let remainder = 0
+        while (n >= k) {
+            n -= k
+            result++
+        }
+        remainder = n
+        console.log([result, remainder])
+    }
+
+    quotientAndRemainder(80, 2)// [40,0]
+    clear()
+
+    // Напишите функцию с именем multOfEven, которая принимает число n в качестве аргумента и возвращает произведение четных чисел от 2 до n. При решении используйте цикл while.
+    function multOfEven(n) {
+        let result = 1
+        while (n > 0) {
+            if (n % 2 === 0) {
+                result *= n
+            }
+            n--
+        }
+        console.log(result)
+    }
+
+    multOfEven(6)
+
+    // Напишите функцию с именем numberOfDigits, которая принимает неотрицательное число n (n>=0) в качестве аргумента и возвращает количество цифр этого числа. При решении используйте цикл while. Запрещено использовать методы и свойства строк и массивов.
+    function numberOfDigits(n) {
+        clear()
+        let result = 0
+        while (n >= 0) {
+            n /= 10
+            n -= 1
+            result++
+        }
+        console.log(result)
+    }
+
+    numberOfDigits(11111)
+
+    // Найдите эту степень (число k).
+    function powerOf2(n) {
+        clear()
+        let result = 0
+        while (n !== 1) {
+            n -= n / 2
+            result++
+        }
+        console.log(result)
+    }
+
+    // Дано целое положительное число n. Найдите факториал числа n (n! = 1 * 2 * 3 *... * n)
+    //
+    // Напишите функцию с именем factorial, которая принимает число n в качестве аргумента и возвращает факториал числа n, т.е. произведение чисел от 1 до n. При решении используйте цикл while.
+    clear()
+
+    function factorial(n) {
+        let result = []
+        let finish = 1
+        while (n > 0) {
+            result.push(n)
+            n--
+        }
+        let i = 0
+        while (i < result.length) {
+            finish *= result[i]
+            i++
+        }
+        console.log(finish)
+    }
+
+    factorial(5)
 }
