@@ -2477,4 +2477,125 @@ totalPrice(68, 25, 9)
     }
 
     factorial(5)
+
+    // here
+    function sumOfOdd(n) {
+        let result = 0
+        while (n >= 1) {
+            if (n % 2 === 1) {
+                result += n;
+                n--
+            } else {
+                n--
+            }
+        }
+        console.log(result)
+    }
+
+    sumOfOdd(20)
+
+    function sum(n) {
+        let result = 0
+        while (n >= 0) {
+            result += n
+            n--
+        }
+        return result
+    }
+
+    // Ученик к моменту начала обучения не знает ни одного английского слова. В первый день занятий он выучил 5 английских слов. В каждый последующий день он выучивал на 2 слова больше, чем в предыдущий. Через сколько дней ученик будет знать не менее n английских слов?
+    //
+    // Напишите функцию с именем englishWords, которая принимает в качестве аргумента неотрицательное число n (n>=0) (количество английских слов, которые хочет выучить ученик) и возвращает количество дней, которые необходимы для изучения n слов.
+    function englishWords(n) {
+        let result = 5
+        let newDay = result
+        let finish = 1
+        while (result < n) {
+            newDay = newDay + 2
+            result += newDay
+            finish++
+        }
+        console.log(finish)
+    }
+
+    englishWords(193)
+    clear()
+
+    function powerOf3(n) {
+        // while (false) {
+        //     n += 1 * 1
+        // }
+        if (n === 1 || n === 3 || n === 9 || n === 27 || n === 81 || n === 243 || n === 729 || n === 2187) {
+            return true
+        } else return false
+    }
+
+    powerOf3(27)
+    // function sumOfDigits(n) {
+    //     let digit = 0
+    //     let suma = 0
+    //     while (n >= 0){
+    //         digit = n % 10
+    //         suma = suma + digit
+    //         n = Math.floor(n/10)
+    //     }
+    //     console.log(suma)
+    // }
+    // sumOfDigits(2500)
+
+    const remainder = (D, d) => {
+        let result = 0
+        while (D > d) {
+            D -= d
+            result++
+        }
+        console.log(D)
+    }
+    remainder(12, 3) //3
+    // 81
+    function largestPower(n) {
+        let result = 0
+        let number = 1
+        while (n > number) {
+            number *= 3
+            result++
+        }
+        console.log(number)
+        console.log(result)
+    }
+
+    largestPower(81) //3
+    function isVeryEvenNumber(n) {
+        clear()
+        let result = 0
+        let value = 0
+        let finish = 0
+        let arrNumber = String(n).split('')
+        for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 50; i++) {
+                if (value < arrNumber.length && arrNumber.length !== 1) {
+                    result += +arrNumber[i]
+                    value++
+                } else if (arrNumber.length === 1) {
+                    finish = result
+                    break
+                } else {
+                    value = 0;
+                    break
+                }
+            }
+            if (arrNumber.length !== 1) {
+                arrNumber = String(result).split('')
+                result = 0
+            } else if (arrNumber.length === 1) {
+                break
+            }
+        }
+        finish = +arrNumber[0]
+        if (finish % 2 === 0) {
+            true
+        } else return false
+    }
+
+    isVeryEvenNumber(88)
 }
