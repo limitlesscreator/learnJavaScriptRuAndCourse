@@ -2598,4 +2598,97 @@ totalPrice(68, 25, 9)
     }
 
     isVeryEvenNumber(88)
+    {
+        clear()
+
+        // Get the next prime number
+        function nextPrime(n) {
+            let result = 0
+            for (let i = 2; result <= n; i++) {
+                for (let j = 2; j <= i; j++) {
+                    if ((i % j == 0) && (j != i)) {
+                        break;
+                    } else {
+                        console.log(i);
+                        result = i
+                        break;
+                    }
+                }
+            }
+        }
+
+        // nextPrime(2971) //2999
+    }
+    const nextPrime2 = n => {
+        for (; n++;) {
+            for (c = 0, b = 2; b < n; b++) n % b || c++;
+            if (!c) return n;
+        }
+    }
+    clear()
+    // Начало перебора.
+    let i = 2;
+// Массив делителей (простых чисел)
+    const dividers = [i];
+
+    function nextPrime(n) {
+        // сначала ищем число больше данного в массиве уже найденных делителей, чтоб лишний раз не считать.
+        const next = dividers.find(d => d > n);
+        // если такое есть - просто выводим его
+        if (next) return next;
+        // перебираем числа по одному, пока самый большой найденный делитель меньше либо равен полученному числу
+        while (dividers[dividers.length - 1] <= n) {
+            // проверяем, делиться ли число на какое-либо из уже найденных простых
+            if (dividers.every(d => i % d)) {
+                // если нет - добавляем в массив простых чисел
+                dividers.push(i);
+            }
+            // увеличиваем счетчик. в следующий раз подсчет начнется с того места, на котором остановился (мемоизация)
+            i++;
+        }
+        // цикл кончился - последний найденный делитель в массиве - искомое простое число больше данного.
+        return dividers[dividers.length - 1];
+    }
+
+    function squaresNeeded(grains) {
+        if (grains <= 2) {
+            return grains;
+        }
+        if (grains > 2) {
+            let i = 0;
+            while (2 ** i <= grains) {
+                i++;
+            }
+            return i;
+        }
+    }
+
+    // squaresNeeded(5288) //13
+    // Count the number of divisors of a positive integer n.
+    function getDivisorsCnt(n) {
+        let counter = 0
+        for (let i = 0; i <= n; i++) {
+            if (n % i === 0) {
+                counter++
+            }
+        }
+        console.log(counter)
+    }
+
+    getDivisorsCnt(12)
+
+    function divisors(integer) {
+        clear()
+        let arr = []
+        for (let i = 0; i < integer; i++) {
+            if (integer % i === 0) {
+                arr.push(i)
+            }
+        }
+        arr.shift()
+        arr.length === 0 ? console.log(`${integer} is prime`) : console.log(arr)
+    }
+
+    divisors(15)
+
 }
