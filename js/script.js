@@ -2689,6 +2689,12 @@ totalPrice(68, 25, 9)
         arr.length === 0 ? console.log(`${integer} is prime`) : console.log(arr)
     }
 
+    // сумма четных чисел от 20 до 40.
     divisors(15)
-
+    {
+        let sum = 0;
+        for (let i = 20; i <= 40; i += 2) {
+            sum = sum + i;
+        }
+    }
 }
