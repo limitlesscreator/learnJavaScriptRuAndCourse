@@ -2796,4 +2796,110 @@ function pickIt(arr) {
     }
 
     sumTriangularNumbers(6)
+    clear()
+
+    function drawStairs(n) {
+        let str = ''
+        let point = 0
+        for (let i = 1; i <= n; i++) {
+            if (n === i) {
+                str += 'I'
+                break
+            } else {
+                str += 'I\n'
+            }
+            point++
+            for (let i = 0; i < point; i++) {
+                str += ' '
+            }
+        }
+        console.log(str)
+    }
+
+    drawStairs(3)
+    clear()
+
+    function divBy9(ns) {
+        console.log(+ns % 9 === 0 ? true : false)
+        ns = +ns
+        while (ns > 0) {
+            ns -= 9
+            console.log(ns)
+        }
+    }
+
+    // divBy9('777')
+    for (let i = 0; i <= 10; i++) {
+        console.log(i);
+    }
+    for (let i = 10; i >= 1; i -= 5) {
+        console.log(i);
+    }
+    clear()
+
+    // Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+    //
+    // For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+    //
+    // Note: The function accepts an integer and returns an integer
+    function squareDigits(num) {
+        let result = String(num).split('')
+        let arr = []
+
+        for (let i = 0; i < result.length; i++) {
+            console.log('hi')
+            arr.push(Math.pow(result[i], 2))
+        }
+        console.log(+arr.join(''))
+    }
+
+    squareDigits(3212) //9414'
+    // Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descendinng order. Essentially, rearrange the digits to create the highest possible number.
+    function descendingOrder(n) {
+
+        let result = String(n).split('')
+        result.sort((a, b) => b - a)
+        console.log(result)
+    }
+
+    descendingOrder(128456739)
+
+    function sumOfFractionals(n) {
+        let result = 1
+        let point = 2
+        for (let i = 1; i < n; i++) {
+            result += 1 / point
+            point++
+        }
+        console.log(+result.toFixed(2))
+    }
+
+    sumOfFractionals(10) //2.93
+    function fractional(n) {
+        clear()
+        let result = 0
+        let plus = 0
+        let multiplier = 1
+        for (let i = 1; i <= n; i++) {
+            plus += i;
+            multiplier *= i
+        }
+        console.log(+(plus / multiplier).toFixed(3))
+    }
+
+    fractional(4)
+    // Дано число n > 0. Найдите количество делителей этого числа. Делитель - это число, на которое данное число делится без остатка.
+    //
+    // Напишите функцию с именем numberOfDividers, которая принимает число n и возвращает количество делителей этого числа.
+    function numberOfDividers(n) {
+        let result = 0
+        for (let i = 1; i <= n; i++) {
+            if (n % i === 0) {
+                result++
+            }
+        }
+        console.log(result)
+    }
+
+    numberOfDividers(3)
 }
