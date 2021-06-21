@@ -2902,4 +2902,112 @@ function pickIt(arr) {
     }
 
     numberOfDividers(3)
+
+    function dividers(n) {
+        let arr = []
+        for (let i = 1; i <= n; i++) {
+            if (n % i === 0) {
+                arr.push(i)
+            }
+        }
+    }
+
+    dividers(12) //[1, 2, 3, 4, 6, 12]
+    function isPrime(n) {
+        for (var i = 2; i < n; i++)
+            if (n % i === 0) return false;
+        return n > 1;
+    }
+
+    // Напишите функцию с именем power, которая принимает числa a и n в качестве аргументов и возвращает значение a в степени n (a и n - целые неотрицательные числа). В решении используйте цикл for. В этом задании нельзя использовать операцию возведения в степень и методы объекта Math
+    function power(a, n) {
+        let result = 1
+        for (let i = 0; i < n; i++) {
+            result *= a
+        }
+        return result
+    }
+
+    // Числа Фибоначчи - последовательность, в которой первые два числа равны 0 и 1, а каждое последующее число равно сумме двух предыдущих чисел: 0, 1, 1, 2, 3, 5,
+    function fibonacciNumbers(n) {
+        clear()
+        let arr = [0, 1]
+        let result = 0
+        for (let i = 0; i < n - 2; i++) {
+            result = arr[arr.length - 1] + arr[arr.length - 2]
+            arr.push(result)
+        }
+        console.log(arr)
+    }
+
+    fibonacciNumbers(10)
+    {
+        let x = 10;
+        do {
+            console.log(x);
+            x--;
+        } while (x === 0);
+    }
+    {
+        let i = 10
+        let result = 0
+
+        do {
+            result += i
+            i++
+        } while (i < 100);
+        // return result
+    }
+    {
+        function frogPrincess(n) {
+            let result = n
+            let howMuchMosquito = n
+            let days = 1
+            do {
+                howMuchMosquito += 3
+                result += howMuchMosquito
+                days++
+            } while (1000 >= result)
+            return days
+        }
+
+
+    }
+    // Начав тренировки, спортсмен в первый день занятий пробежал n км. Каждый последующий день он увеличивал норму на 10% от нормы предыдущего дня. Определите, сколько километров пробежит спортсмен в 10-й день занятий.
+    {
+        function running(n) {
+            clear()
+            let days = 1
+            let km = n
+            let result = n
+            let procent = 0.1
+            let plus = 0
+            do {
+                result += (result * procent)
+                days++
+                console.log(result)
+            } while (10 > days)
+            console.log(Math.round(result))
+        }
+
+        running(10)//12
+        // Вкладчик положил 1000 долларов в банк. Ежегодно эта сумма увеличивается на p (p > 0) процентов от начальной суммы вклада. Через сколько лет на счету будет 1500 долларов?
+        {
+            function bankPercent(p) {
+                clear()
+                let dollars = 1000
+                let years = 0
+                let procent = p / 100
+                let plus = dollars * procent
+                do {
+                    dollars += plus
+                    years++
+                } while (dollars < 1500)
+                console.log(years)
+            }
+
+            bankPercent(16)
+        }
+    }
 }
+
