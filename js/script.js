@@ -3117,4 +3117,122 @@ function pickIt(arr) {
         roundToNext5(-2)
     }
 }
+{
+    clear()
+
+    // Math.pow and some other Math functions like eval() and ** are disabled.
+    function numberToPower(number, power) {
+        let newNumber = number
+        if (power === 0) {
+            return 1
+        } else {
+            for (let i = 1; i < power; i++) {
+                newNumber *= number
+            }
+            return (newNumber)
+        }
+    }
+
+    numberToPower(4, 2)
+
+    // You need to write a loop statement within the function that loops n times. Each time through the loop it will add one * to str, alternating on which side it is padded: the first time will add a * to the left side of str, the second time will add a * to the right side, and so on.
+    function padIt(str, n) {
+        let i = 0
+        let result = [str]
+        do {
+            if (i % 2 === 0) {
+                result.unshift('*')
+                i++
+            } else {
+                result.push('*')
+                i++
+            }
+        } while (i < n)
+        return result.join('')
+    }
+
+    function halvingSum(n) {
+        let result = 0
+        let newPlus = n
+        for (let i = 0; newPlus >= 1; i++) {
+            result += newPlus
+            newPlus = Math.floor(newPlus / 2)
+            console.log(i)
+        }
+        console.log(result)
+    }
+
+    halvingSum(25) //47
+
+    function isNegativeInArray(arr) {
+        let result = false
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 0) {
+                result = true
+            } else continue
+        }
+        return result
+    }
+
+    function firstEvenElement(arr) {
+        let result = []
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                result = [arr[i], i];
+                break
+            }
+        }
+        return result
+    }
+
+    function isElementIncluded(arr, x) {
+        let result = false
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === x) {
+                result = true;
+                break
+            }
+        }
+        return result
+    }
+
+    // Напишите функцию с именем iSymbInString, которая принимает строку str и символ symb в качестве аргументов и возвращает true, если в строке встречается хотя бы один символ symb, и false в противном случае.
+    // В решении необходимо использовать оператор break. Запрещено использование методов строк.
+    function iSymbInString(str, symb) {
+        let result = false
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === symb) {
+                result = true;
+                break;
+            }
+        }
+        return result
+    }
+
+    // Напишите функцию с именем fillArray, которая принимает числа n (n >= 1) и x (1 <= x <= n) в качестве аргументов и возвращает массив из целых чисел от 1 до n включительно, за исключением числа x.
+    // В решении необходимо использовать оператор continue.
+    function fillArray(n, x) {
+        let arr = []
+        for (let i = 1; i <= n; i++) {
+            if (i === x) {
+                continue
+            } else arr.push(i)
+        }
+        console.log(arr)
+    }
+
+    fillArray(5, 2)
+    // Напишите функцию с именем fillArray, которая принимает число n (n >= 2) в качестве аргумента и возвращает массив из четных чисел от 2 до n, за исключением чисел кратных 3.
+    {
+        function fillArray(n) {
+            let arr = []
+            for (let i = 2; i <= n; i++) {
+                console.log('hi')
+            }
+            console.log(arr)
+        }
+
+        fillArray(7)
+    }
+}
 
