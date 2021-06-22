@@ -3009,5 +3009,112 @@ function pickIt(arr) {
             bankPercent(16)
         }
     }
+    {
+        clear()
+
+        function bankPercent(money, percent, period) {
+            let startMoney = money
+            let sumPercent = 0
+            for (let i = 0; i < period; i++) {
+                sumPercent = startMoney * (percent / 100)
+                startMoney += sumPercent
+                console.log(startMoney)
+            }
+            return startMoney.toFixed(2)
+        }
+
+        bankPercent(1000, 10, 2) //"1210.00"
+    }
+    {
+        // Дано целое положительное число. Получите другое целое число, полученное из исходного числа путем чтения его справа налево. Используйте операции умножения, деления и нахождения остатка от деления. Запрещено использование методов строк и массивов. В решении используйте цикл do while.
+        // Напишите функцию с именем invertNumber, которая принимает в качестве аргумента число n и возвращает перевернутое число.
+        // Если в результате переворачивания числа первой цифрой становится цифра 0, число следует выводить без нуля в начал
+        function invertNumber(n) {
+            clear()
+            let result = ''
+            let str = `${n}`
+            let i = 1
+            if (str[str.length - i] === "0") {
+                str += '';
+                i++
+            } else {
+                do {
+                    result += str[str.length - i]
+                    i++
+                } while (i <= str.length)
+            }
+
+            console.log(result)
+        }
+
+        invertNumber(15670) //7651
+        {
+            function arrayOfDigits(n) {
+                let result = ''
+                let str = `${n}`
+                let i = 1
+                let arr = []
+                do {
+                    result = str[str.length - i]
+                    i++
+                    arr.push(+result)
+                } while (i <= str.length)
+                return (arr)
+            }
+
+            // Напишите функцию с именем doesNumberContain2, которая принимает в качестве аргумента число n и возвращает true, если число содержит цифру 2, и false - в противном случае. Запрещено использование методов строк и массивов. В решении используйте цикл do whil
+            function doesNumberContain2(n) {
+                let i = 0
+                let str = `${n}`
+                let result = false
+                do {
+                    if (str[i] === '2') {
+                        result = true
+                    }
+                    i++
+
+                } while (i < str.length)
+                console.log(result)
+            }
+
+            doesNumberContain2(4453)
+
+            // Напишите функцию с именем evenDigits, которая принимает в качестве аргумента число n и возвращает массив четных цифр. Если таких цифр в числе нет, возвратить пустой массив. Запрещено использование методов строк и массивов. В решении используйте цикл do while. Порядок цифр в массиве должен совпадать с порядком цифр в исходном числе.
+            function evenDigits(n) {
+                let result = ''
+                let str = `${n}`
+                let i = 0
+                let arr = []
+                do {
+                    result = str[i]
+                    ++i
+                    if (+result % 2 === 0) {
+                        arr.push(+result)
+                    }
+
+                } while (i <= str.length)
+                return (arr)
+            }
+        }
+
+        // Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+        function roundToNext5(n) {
+            clear()
+            let result = n
+            for (let i = 0; i < 5; i++) {
+                if (result % 5 === 0) {
+                    break
+                } else if ((result + i) % 5 === 0) {
+                    result += i;
+                    break
+                } else {
+                    result++
+                }
+            }
+            console.log(result)
+        }
+
+        roundToNext5(-2)
+    }
 }
 
