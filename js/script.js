@@ -3234,5 +3234,117 @@ function pickIt(arr) {
 
         fillArray(7)
     }
+    // Coding in function ```grabDoll```. function accept 1 parameter:```dolls```. it's a string array, a list of some dolls.
+    //
+    // You need traverse ```dolls``` by using ```for``` loop. If element is  "Hello Kitty" or "Barbie doll", you should push it to a ```bag```(bag is an array, I've defined in the function); if it's other strings, we should use ```continue``` skip it.
+
+    {
+        function grabDoll(dolls) {
+            let bag = [];
+            for (let i = 0; i < dolls.length; i++) {
+                if (bag.length === 3) {
+                    break;
+                }
+                if (dolls[i] === "Hello Kitty" || dolls[i] === "Barbie doll") {
+                    bag.push(dolls[i])
+                } else continue
+            }
+            return bag;
+        }
+    }
+    {
+        clear()
+        for (let i = 0; i < 4; i++) {
+            let str = '';
+            for (let j = 0; j < 5; j++) {
+                str = str + 3 + ' ';
+            }
+            console.log(str);
+        }
+        //Выполнить таблицу умножения от 1 до 10
+        {
+            for (let i = 1; i <= 10; i++) {
+                for (let j = 1; j <= 10; j++) {
+                    console.log(`${i} * ${j} = ${i * j}`);
+                }
+
+                console.log('--------------');
+            }
+        }
+    }
+    {
+        clear()
+        for (let i = 1; i <= 20; i += 5) {
+            let str = '';
+            for (let j = i; j < i + 5; j++) {
+                if (j < 10) str = str + j + '  ';  // если число однозначное, то вывести после числа два пробела
+                else str = str + j + ' ';          // если число двухзначное, то вывести после числа один пробел
+            }
+
+            console.log(str);
+        }
+    }
+    {
+        // Напишите функцию с именем sumsInArray, которая принимает двухмерный массив arr в качестве аргумента и возвращает массив, содержащий суммы элементов вложенных массивов.
+        function sumsInArray(arr) {
+            let count = 0
+            let arrResult = []
+            for (let i = 0; i < arr.length; i++) {
+                let newArr = arr[i]
+                for (let j = 0; j < newArr.length; j++) {
+                    count += newArr[j]
+                }
+                arrResult.push(count)
+                count = 0
+            }
+            console.log(arrResult)
+        }
+
+        sumsInArray([[1, 2], [2, -3, 1, 1], [3, 5, 10], [3, 7]]) //[3, 1, 18, 10]
+    }
+    // Напишите функцию с именем numericalTable, которая принимает число n в качестве аргумента и возвращает таблицу чисел от 1 до n.
+    // Каждая строка содержит 5 чисел, разделенных пробелом. Все строки кроме последней, заканчиваются символом \n перевода строки.
+    {
+        function numericalTable(n) {
+            let result = ''
+            for (let i = 1; i <= n; i++) {
+                for (let j = 0; j < 5; j++) {
+                    if (j < 4) {
+                        result += `${i} `
+                    } else if (j === 4 && i !== n) {
+                        result += `${i}\n`
+                    } else {
+                        result += `${i}`
+                    }
+                }
+            }
+            console.log(result)
+        }
+
+        numericalTable(4) //"1 1 1 1 1\n2 2 2 2 2\n3 3 3 3 3"
+    }
+    // Напишите функцию с именем numericalTriangle, которая принимает число n в качестве аргумента и возвращает треугольник из чисел от 1 до n, разделенных пробелом.
+    // Все строки кроме последней, заканчиваются символом \n перевода строки.
+    {
+        clear()
+
+        function numericalTriangle(n) {
+            let str = ''
+            for (let i = 1; i <= n; i++) {
+                for (let j = 1; j <= i; j++) {
+                    if (j !== i) {
+                        str += `${i} `
+                    } else str += `${i}`
+                }
+                if (i !== n) {
+                    str += `\n`
+                }
+            }
+            console.log(str)
+        }
+
+        numericalTriangle(3) //"1\n2 2\n3 3 3"
+    }
 }
+
 
