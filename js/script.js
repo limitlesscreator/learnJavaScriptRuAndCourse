@@ -3345,6 +3345,139 @@ function pickIt(arr) {
 
         numericalTriangle(3) //"1\n2 2\n3 3 3"
     }
+
+    // Напишите функцию с именем countLinesWithNegativeElements, которая принимает двухмерный массив arr в качестве аргумента и возвращает количество строк, содержащих хотя бы один отрицательный элемент.
+    function countLinesWithNegativeElements(arr) {
+        clear()
+        let count = 0
+        let arrResult = []
+
+        for (let i = 0; i < arr.length; i++) {
+            let newArr = arr[i]
+            for (let j = 0; j < newArr.length; j++) {
+                if (newArr[j] < 0) {
+                    arrResult.push(newArr[i])
+                    break
+                }
+            }
+            count = 0
+        }
+        console.log(arrResult.length)
+    }
+
+    countLinesWithNegativeElements([[1, -2], [2, -2, -3], [3, 5], [3, 4, 5, -1, 8], [-3, -1]]) //4
+    clear()
+
+    // Напишите функцию с именем numericalTable, которая принимает числа n и m в качестве аргументов и возвращает таблицу чисел от 1 до n. Каждая строка содержит m чисел, разделенных пробелом. Все строки кроме последней, заканчиваются символом \n перевода строки
+    function numericalTable(n, m) {
+        let result = ''
+        for (let i = 1; i <= n; i++) {
+            for (let j = 0; j < m; ++j) {
+                if (m - 1 === j && i !== n) {
+                    result += `${i}\n`
+                } else if (!(m - 1 === j && i !== n - 1)) {
+                    result += `${i} `
+                } else result += `${i}`
+            }
+        }
+        console.log(result)
+    }
+
+    numericalTable(3, 5)
+    // Напишите функцию с именем upsideDown, которая принимает число n в качестве аргумента и возвращает треугольник из n строк, состоящих из звездочек (*). В первой строке n звездочек, во второй - (n-1) звездочка, ... , в последней строке 1 звездочка.
+    //
+    // Все строки кроме последней, заканчиваются символом \n перевода строки.
+    clear()
+
+    function upsideDown(n) {
+        let str = ''
+        for (let i = n; i >= 1; i--) {
+            for (let j = i; j >= 1; j--) {
+                if (j !== 1) {
+                    str += 'Qean*'
+                } else if (j === 1 && i !== j) {
+                    str += "Qean*\n"
+                } else if (j === 1 && i === j) {
+                    str += "Qean*"
+                }
+            }
+        }
+        console.log(str)
+    }
+
+    upsideDown(15) //"***\n**\n*"
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 3; j++) {
+            for (let k = 0; k < 4; k++) {
+                console.log(5);
+            }
+        }
+    }
+    clear()
+    // There is enough money available on ATM in nominal value 10, 20, 50, 100, 200 and 500 dollars.
+    // You are given money in nominal value of n with 1<=n<=1500.
+    // Try to find minimal number of notes that must be used to repay in dollars, or output -1 if it is impossible.
+    function solve(n) {
+        let result = 0
+        let money = n
+        for (let i = 0; i < 10; i++) {
+            if (n - 500 >= 0) {
+                for (let j = 0; j < 100; j++) {
+                    if (money - 500 >= 0) {
+                        result++
+                        money -= 500
+                    }
+                }
+            }
+            if (n - 200 >= 0) {
+                for (let a = 0; a < 100; a++) {
+                    if (money - 200 >= 0) {
+                        result++
+                        money -= 200
+                    }
+                }
+            }
+            if (n - 100 >= 0) {
+                for (let b = 0; b < 100; b++) {
+                    if (money - 100 >= 0) {
+                        result++
+                        money -= 100
+                    }
+                }
+            }
+            if (n - 50 >= 0) {
+                for (let c = 0; c < 100; c++) {
+                    if (money - 50 >= 0) {
+                        result++
+                        money -= 50
+                    }
+
+                }
+            }
+            if (n - 20 >= 0) {
+                for (let e = 0; e < 100; e++) {
+                    if (money - 20 >= 0) {
+                        result++
+                        money -= 20
+                    }
+
+                }
+            }
+            if (n - 10 >= 0 && n % 10 === 0) {
+                for (let f = 0; f < 100; f++) {
+                    if (money - 10 >= 0) {
+                        result++
+                        money -= 10
+                    }
+
+                }
+            } else result = -1
+        }
+        console.log(result)
+    }
+
+    solve(770) // 4
 }
 
+// 50
 
