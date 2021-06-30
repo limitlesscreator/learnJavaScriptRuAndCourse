@@ -112,3 +112,110 @@ const clear = () => {
 
     isArgNaN("13.826074336985506")
 }
+{
+    function multBy5(value) {
+        if (Number.isNaN(value)) {
+            return "Value is NaN"
+        } else return value * 5
+    }
+
+    function countNaN(arr) {
+        let points = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (Number.isNaN(arr[i])) {
+                points++
+            }
+        }
+        console.log(points)
+    }
+
+    countNaN([NaN, 1, NaN + 1, "a" * 2]) //3
+    console.log(-1 / Infinity)
+    console.log(isFinite('1312312'))
+    console.log(isFinite(true))
+    console.log(Number.isFinite(2221312))
+
+    function checkingForFinite(a, b) {
+        let result = a / b
+        return Number.isFinite(result) ? true : false
+    }
+
+    function countInfinity(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (!Number.isFinite(arr[i])) {
+                result++
+            }
+        }
+        console.log(result)
+    }
+
+    countInfinity([Infinity, 1 / 0, -10 / 0, 12]) // 3
+    // Number.MAX_SAFE_INTEGER - максимальное безопасное целочисленное значение (равно 9007199254740991 или "2 в 53-й степени минус 1"),
+    // Number.MIN_SAFE_INTEGER - минимальное безопасное целочисленное значение (равно -9007199254740991 или "-(2 в 53-й степени минус 1)").
+    console.log(Number.isSafeInteger(9007199254740991 + 10)); // false
+    console.log(Number.isSafeInteger(9007199254740991)); // true
+    console.log(Number.isSafeInteger(-5000)); // true
+    clear()
+    console.log(Number.isSafeInteger(-156576576576))
+    console.log(Number.isSafeInteger(676876360))
+    console.log(Number.isSafeInteger(-1308e+500))
+    console.log(Number.isSafeInteger(Infinity))
+
+    function checkingForfSafe(a, b) {
+        return Number.isSafeInteger(a * b)
+    }
+
+    function isSumEqualsNumber(a, b, c) {
+        return +(a + b).toFixed(2) === +(c.toFixed(2))
+    }
+
+    isSumEqualsNumber(0.41, 0.81, 1.22)
+
+    function safeNumber(x) {
+        return Number.isSafeInteger(x)
+    }
+
+    function countOfSafeNumbers(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            Number.isSafeInteger(arr[i]) ? result++ : null
+        }
+        return result
+    }
+
+    console.log(-(-2 - 1))
+    console.log(25 / -5)
+    {
+
+        let num = 3;
+        num = -num;
+        console.log(num)
+    }
+    {
+        function invert(array) {
+            return array = array.map(n => n * -1)
+        }
+
+        function changeMax(a, b) {
+            return a === b ? "The numbers are equal" : a > b ? -a : -b
+        }
+
+        function oppositePoint(x, y) {
+            return `N(${-x}, ${-y})`
+        }
+
+        function oppositeInArray(arr, num) {
+            let indexNum = undefined
+            for (let i = 0; i < arr.length; i++) {
+                if (-arr[i] === num) {
+                    indexNum = i
+                    break;
+                }
+            }
+            return indexNum
+        }
+
+        oppositeInArray([100, 36, 1, 50], -50)//3
+    }
+}
