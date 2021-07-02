@@ -218,4 +218,92 @@ const clear = () => {
 
         oppositeInArray([100, 36, 1, 50], -50)//3
     }
+    {
+        clear()
+        Math.abs('-100'); // 100, работает численное преобразование
+        Math.abs(-200); // 200
+        Math.abs(null); // 0, работает численное преобразование
+        Math.abs(''); // 0, работает численное преобразование
+        Math.abs('10a'); // NaN, в метод передана нечисловая строка
+        // Три точки a, b, c с различными координатами лежат на числовой оси. Определите, какая из двух точек: b или c ближе к точке a.
+        //
+        // threePoints
+        //
+        // Напишите функцию с именем nearestPoint, которая принимает три числа a, b, c (координаты трех точек на числовой оси) в качестве аргументов и возвращает:
+        //
+        // строку "b", если точка b ближе к точке a,
+        // строку "c", если точка c ближе к точке a,
+        // строку "distances are equal", если расстояния от точек b и c до точки a равны.
+        function nearestPoint(a, b, c) {
+            let ab = Math.abs(a - b)
+            let ac = Math.abs(a - c)
+            if (ab < ac) {
+                return 'b'
+            } else if (ac < ab) {
+                return 'c'
+            } else if (ab === ac) {
+                return 'distances are equal'
+            }
+        }
+
+        // Напишите функцию с именем nearestCafe, которая в качестве аргументов принимает три различные числа x, n, m (x - этаж, где вы находитесь; n, m - этажи, где расположены кафетерии) и возвращает название ближайшего кафетерия. В случае, если количество этажей до кафетериев одинаковое, вы предпочитаете завтракать в кафе "Merci".
+        function nearestCafe(x, n, m) {
+            let xn = Math.abs(x - n)
+            let xm = Math.abs(x - m)
+            if (xn < xm) {
+                return 'Nonstop'
+            } else if (xm < xn) {
+                return 'Merci'
+            } else if (xn === xm) {
+                return 'Merci'
+            }
+        }
+
+        function expressionValue(a, b, c) {
+            let result = (Math.abs(a - c) + Math.abs(b - c)) / Math.abs((a + b + c))
+            return +(result.toFixed(2))
+        }
+
+        // Напишите функцию с именем absValue, которая принимает число x в качестве аргумента и возвращает модуль этого числа. Решите эту задачу без использования метода Math.abs(x)
+    }
+
+    function absValue(x) {
+        return x < 0 ? -x : x
+    }
+
+    // function multiply(number) {
+    //     let result = 0
+    //     debugger
+    //     for (let i = 0; i < number ; i++) {
+    //         result += number * number
+    //         number--
+    //     }
+    //     console.log(result+1)
+    // }
+    //
+    // multiply(10) //250
+    // You must return the number of toast the you need to put in (or to take out). In case of 5 you can still put 1 toast in:
+    function sixToast(num) {
+        return Math.abs(num - 6)
+    }
+
+    function multiply(number) {
+        return number * (5 ** String(Math.abs(number)).length);
+    }
+
+    Math.pow(3, 0); // 1, любое число в степени 0 равно единице
+    Math.pow(9, 0.5); // 3, то же самое что корень квадратный из 9
+    Math.pow(81, 1 / 2); // 9, то же самое что корень квадратный из 81
+    Math.pow(-81, 1 / 2); // NaN, нельзя получить квадратный корень отрицательного числа
+    // You are given an array with positive numbers and a non-negative number N.
+    // \You should find the N-th power of the element in the array with the index N. If N is outside of the array, then return -1. Don't forget that the first element has the index 0.
+    function index(array, n) {
+        let result = 0
+        if (array.length > n) {
+            result = array[n] ** n
+        } else result = -1
+        console.log(result)
+    }
+
+    index([5, 8], 4) //1000000
 }
