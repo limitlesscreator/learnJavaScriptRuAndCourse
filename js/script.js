@@ -306,4 +306,108 @@ const clear = () => {
     }
 
     index([5, 8], 4) //1000000
+    {
+        function power(x, y) {
+            return Math.pow(x, y)
+        }
+
+        // Напишите функцию с именем square, которая принимает четыре числа a, b, c, d в качестве аргументов и возвращает общую площадь квартиры.
+        function square(a, b, c, d) {
+            return (a * a) + (b * b) + (c * c) + (d * d)
+        }
+
+        // Напишите функцию с именем powersOfTwo, которая принимает число n в качестве аргумента, и возвращает массив степеней числа 2 (степени от 0 до n).
+        function powersOfTwo(n) {
+            let result = [1]
+            for (let i = 1; i <= n; i++) {
+                result.push(Math.pow(2, i))
+            }
+            return (result)
+        }
+
+        powersOfTwo(4)
+    }
+
+    function squareOfHypotenuse(a, b) {
+        return Math.pow(a, 2) + Math.pow(b, 2)
+    }
+
+    // Напишите функцию с именем powerArray, которая принимает массив arr, возводит каждый четный элемент в квадрат, каждый нечетный элемент - в куб, и возвращает измененный массив.
+    function powerArray(arr) {
+        clear()
+        let newArr = []
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                newArr.push(Math.pow(arr[i], 2))
+            } else newArr.push(Math.pow(arr[i], 3))
+        }
+        console.log(newArr)
+    }
+
+    powerArray([2, -1, -1])
+
+    // Напишите функцию с именем sumOfSquares, которая принимает число n в качестве аргумента, и возвращает сумму квадратов чисел от 1 до n.
+    function sumOfSquares(n) {
+        let result = 0
+        for (let i = 1; i <= n; i++) {
+            result += Math.pow(i, 2)
+        }
+        return result
+    }
+
+    clear()
+
+    function squareOrSquareRoot(array) {
+        let newArr = []
+        for (let i = 0; i < array.length; i++) {
+            if (Number.isInteger(Math.pow(array[i], 0.5))) {
+                newArr.push(Math.pow(array[i], 0.5))
+            } else newArr.push(Math.pow(array[i], 2))
+        }
+        return newArr
+    }
+
+    squareOrSquareRoot([4, 3, 9, 7, 2, 1])
+
+    // Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
+    function squares(x, n) {
+        if (n <= 0) {
+            return []
+        } else {
+            let result = [x]
+            for (let i = 0; i < n - 1; i++) {
+                result.push(Math.pow(result[i], 2))
+            }
+            return result
+        }
+    }
+
+    // In this kata you will create a function that takes non negative integers (from 0 to n) and return the amount of cubes that the Menger Sponge would have in that specific iteration.
+    function calc_ms(n) {
+        let result = 1
+        for (let i = 0; i < n; i++) {
+            result *= 20
+        }
+        return result
+    }
+
+    console.log(Math.sqrt('64')); // 8
+    console.log(Math.sqrt(-64)); // NaN
+    console.log(Math.sqrt(Infinity)); // Infinity
+    console.log(Math.sqrt('12a')); // NaN
+    console.log(Math.sqrt(true)); // 1
+
+    function quadraticEquation(a, b, c) {
+        let d = Math.pow(b, 2) - 4 * a * c
+        let x1 = 0
+        let x2 = 0
+        if (d < 0) {
+            return "There are no roots"
+        } else {
+            x1 = (-b + Math.sqrt(d)) / (2 * a)
+            x2 = (-b - Math.sqrt(d)) / (2 * a)
+            return [x1, x2]
+        }
+    }
 }
+
