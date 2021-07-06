@@ -409,5 +409,107 @@ const clear = () => {
             return [x1, x2]
         }
     }
+
+    {
+        function isSquare(x) {
+            if (Number.isInteger(Math.sqrt(x))) {
+                return `${x} is square of ${Math.sqrt(x)}`
+            } else return `${x} is not a square`
+        }
+
+        function squareRoot(x) {
+            if (x >= 0) {
+                return +Math.sqrt(x).toFixed(2)
+            } else if (x <= 0) {
+                return "Root of a negative number is NaN"
+            }
+        }
+
+        function expression(a, b, c) {
+            function expression(a, b, c) {
+                return +(Math.sqrt(a) + (Math.sqrt(Math.abs(b - c))) / (Math.pow(a, 3) + Math.pow(b, 2) + Math.pow(c, 4))).toFixed(2)
+            }
+        }
+
+        function perimeter(x1, y1, x2, y2, x3, y3) {
+            let ab = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y2 - y1, 2))
+            let ac = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2))
+            let bc = Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2))
+            return +(ab + ac + bc).toFixed(2)
+        }
+
+        // console.log(Math.sqrt('9') === Math.pow(9,0.5))
+        isSquare = function (n) {
+            if (Number.isInteger(Math.sqrt(n))) {
+                return `${n} is a square number (${Math.sqrt(n)} * ${Math.sqrt(n)})`
+            } else return `${n} is not a square number`
+
+        }
+
+        // const isSquare = n => Number.isInteger(Math.sqrt(n)) also my solution btw))
+        function cutCube(volume, n) {
+            clear()
+            if (Number.isInteger(Math.cbrt(n)) && Number.isInteger(Math.cbrt(volume))) {
+                if (Number.isInteger(volume / n)) {
+                    console.log(true)
+                } else console.log(false)
+            } else console.log(false)
+        }
+
+        cutCube(256, 8)
+        console.log(Math.log(9))
+        console.log(Math.log(Math.E))
+        console.log(Math.log(-9))
+        console.log(Math.log(0))
+        console.log(Math.log2(0.5))
+        console.log(Math.log2(1))
+
+        function logs(x, a, b) {
+            return (Math.log(a * b) / Math.log(x));
+        }
+
+        function isPowerOfTwo(n) {
+            if (Number.isInteger(Math.log2(n))) {
+                return true
+            } else return false
+        }
+
+        // Напишите функцию countPowersInArray, которая принимает массив arr в качестве аргумента и возвращает количество элементов массива, являющихся степенью числа 2 или степенью числа 10.
+        function countPowersInArray(arr) {
+            clear()
+            let result = 0
+            for (let i = 0; i < arr.length; i++) {
+                if (Number.isInteger(Math.log2(arr[i])) || Number.isInteger(Math.log10(arr[i]))) {
+                    result++
+                }
+            }
+            console.log(result)
+        }
+
+        countPowersInArray([10, 100, 0.1, 4, 8])
+        console.log(Math.log10(10))
+
+        function isPowerOfTen(n) {
+            return Number.isInteger(Math.log10(n))
+        }
+
+        console.log(Math.floor(-100.1))
+
+        function amountOfMinutes(n) {
+            return Math.floor(n / 60)
+        }
+
+        function countOfRugs(a, b) {
+            return Math.floor(a / b)
+        }
+
+        function cockroachSpeed(s) {
+            clear()
+            let result = s / 60 / 60 * 100000
+            console.log(Math.floor(result))
+        }
+
+        cockroachSpeed(0.8764817860669847) // 24
+    }
 }
 
