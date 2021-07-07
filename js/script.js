@@ -511,5 +511,119 @@ const clear = () => {
 
         cockroachSpeed(0.8764817860669847) // 24
     }
-}
+    {
+        clear()
 
+        function dutyFree(normPrice, discount, hol) {
+            console.log(Math.floor(hol / (normPrice * (discount / 10)) * 10))
+        }
+
+        dutyFree(17, 10, 500) //294
+    }
+    {
+        function toTime(seconds) {
+            clear()
+            let hourS = Math.floor(seconds / 60 / 60)
+            let menuteS = Math.floor((seconds / 60) - (hourS * 60))
+            let result = `${hourS} hour(s) and ${menuteS} minute(s)`
+            console.log(result)
+        }
+
+        toTime(323500) // '89 hour(s) and 51 minute(s)'
+
+        // Клавдия покупает сладости в магазине, ее покупка составляет $XX.XX. Она собирается расплатиться наличными, у нее есть пачка долларовых банкнот, и нет никаких монет. Какое минимальное количество долларов должна Клавдия передать кассиру, чтобы расплатиться за покупку?
+        function numberOfDollars(cost) {
+            return Math.ceil(cost)
+        }
+
+        // Напишите функцию с именем century, которая принимает целое положительное число year (номер года) в качестве аргумента и возвращает номер столетия.
+        function century(year) {
+            return Math.ceil(year / 100)
+        }
+
+        function officeRooms(k, number) {
+            return Math.ceil(number / k)
+        }
+
+        // Получите строку вида "Outside the window is 32.3 degrees Celsius. That is almost 33"
+        // Напишите функцию с именем temperatureOutside, которая принимает целое положительное число temperatureExact (точное значение температуры) в качестве аргумента и возвращает строку, как указано выше
+        function temperatureOutside(temperatureExact) {
+            return `Outside the window is ${temperatureExact} degrees Celsius. That is almost ${Math.ceil(temperatureExact)}`
+        }
+
+        // Площадь поверхности стен в комнате составляет s квадратных метров. Трубка обоев имеет длину 10 метров и ширину w метров. Сколько минимальное количество трубок обоев надо купить, чтобы сделать ремонт в комнате?
+        function numberOfWallpapers(s, w) {
+            return Math.ceil(s / (10 * w))
+        }
+
+        function cookingTime(eggs) {
+            const cookingTime = eggs => Math.ceil(eggs / 8) * 5;
+        }
+
+        cookingTime(4260) //should equal 3275
+        function quotient(a, b) {
+            return Math.round(a / b)
+        }
+
+        function forceOfGravity(m) {
+            return Math.round(m * 9.81)
+        }
+
+        // Напишите функцию roundElementsOfArray, которая принимает массив arr в качестве аргумента и возвращает массив, в котором все элементы округлены до ближайшего целого числа.
+        function roundElementsOfArray(arr) {
+            arr.map(n => Math.round(n))
+        }
+
+        function distanceToMoon(distance) {
+            return [Math.round(distance / 100000), Math.round(distance / 100)]
+        }
+
+        distanceToMoon(38020012375) //[380200, 380200124]
+        function newFunction(numbers, precision) {
+            console.log(numbers.toFixed(precision))
+        }
+
+        newFunction(3.1415926535, 4) //3.1416
+
+        function danspower(num, power) {
+            let result = num ** power;
+            if (result % 2 == 1)
+                result = Math.round(result / 10) * 10;
+            return result;
+        }
+
+        danspower(6, 9) //10077696
+        console.log(Math.trunc('15.56$')); // NaN, если значение не может быть преобразовано в число
+        console.log(Math.trunc('5' / 2)); // 2
+        function nDecimalDigits(num, n){
+            clear()
+            // let firstN = Math.trunc(num)
+            // let secondN = num - firstN
+            // let result = firstN
+            // for (let i = 0; i < n; i++){
+            //     secondN *= 10
+            // }
+            // secondN = Math.trunc(secondN)
+            // for (let j = 0; j < n; j++) {
+            //     secondN /= 10
+            // }
+            // secondN = +secondN.toFixed(n)
+            //     console.log(result + secondN)
+        }
+        nDecimalDigits(3.2083652, 3) // 3.208
+        const coinCombo = function(cents) {
+            let money = cents
+            let result = [0,0,0,0]
+            for (let i = 0; money > 0;i++){
+                if (money - 0.25 >= 0){result[3]++;money -= 0.25}
+                else if (money - 0.10 >= 0){result[2]++;money -= 0.10}
+                else if (money - 0.05 >= 0){result[1]++;money -= 0.05}
+                else if (money - 0.01 >= 0){result[0]++; money -= 0.01}
+            }
+            console.log(result)
+        }
+        coinCombo(6) //[1, 1, 0, 0]
+        // finishLater
+    }
+}
+// 525
