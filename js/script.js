@@ -595,7 +595,7 @@ const clear = () => {
         danspower(6, 9) //10077696
         console.log(Math.trunc('15.56$')); // NaN, если значение не может быть преобразовано в число
         console.log(Math.trunc('5' / 2)); // 2
-        function nDecimalDigits(num, n){
+        function nDecimalDigits(num, n) {
             clear()
             // let firstN = Math.trunc(num)
             // let secondN = num - firstN
@@ -610,20 +610,132 @@ const clear = () => {
             // secondN = +secondN.toFixed(n)
             //     console.log(result + secondN)
         }
+
         nDecimalDigits(3.2083652, 3) // 3.208
-        const coinCombo = function(cents) {
+        const coinCombo = function (cents) {
             let money = cents
-            let result = [0,0,0,0]
-            for (let i = 0; money > 0;i++){
-                if (money - 0.25 >= 0){result[3]++;money -= 0.25}
-                else if (money - 0.10 >= 0){result[2]++;money -= 0.10}
-                else if (money - 0.05 >= 0){result[1]++;money -= 0.05}
-                else if (money - 0.01 >= 0){result[0]++; money -= 0.01}
+            let result = [0, 0, 0, 0]
+            for (let i = 0; money > 0; i++) {
+                if (money - 25 >= 0) {
+                    result[3]++;
+                    money -= 25
+                } else if (money - 10 >= 0) {
+                    result[2]++;
+                    money -= 10
+                } else if (money - 5 >= 0) {
+                    result[1]++;
+                    money -= 5
+                } else if (money - 1 >= 0) {
+                    result[0]++;
+                    money -= 1
+                }
             }
             console.log(result)
         }
         coinCombo(6) //[1, 1, 0, 0]
-        // finishLater
+        // finished
+    }
+    {
+        clear()
+
+        // freecodecamp
+        function sequentialSizes(val) {
+            var answer = "";
+            // Only change code below this line
+            switch (val) {
+                case 1:
+                case 2:
+                case 3:
+                    return 'Low';
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    return 'Mid';
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    return 'High';
+                    break;
+            }
+
+            // Only change code above this line
+            return answer;
+        }
+
+        sequentialSizes(1);
+
+        function chainToSwitch(val) {
+            var answer = "";
+            // Only change code below this line
+            switch (val) {
+                case 'bob':
+                    return 'Marley';
+                    break;
+                case 42:
+                    return 'The Answer';
+                    break;
+                case 1:
+                    return 'There is no #1';
+                    break;
+                case 99:
+                    return 'Missed me by this much!';
+                    break;
+                case 7:
+                    return 'Ate Nine'
+            }
+
+            // Only change code above this line
+            return answer;
+        }
+
+        chainToSwitch(7);
+    }
+    {
+        function nDecimalDigits(num, n) {
+            num = num.toString();
+            num = num.slice(0, (num.indexOf(".")) + n + 1);
+            console.log(+num)
+        }
+
+        nDecimalDigits(8.76173981, 4)
+    }
+
+    function integerPartsOfElements(arr) {
+        return arr.map(n => Math.trunc(n))
+    }
+
+    {
+        function cc(card) {
+            clear()
+            let count = 0
+            switch (card) {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    count++;
+                    break;
+                case 10:
+                case "J":
+                case "Q":
+                case "K":
+                case "A":
+                    count--;
+                    break;
+            }
+            console.log(count)
+        }
+
+        cc(5)
+        // Math.min(1, 3); // 1
+        // Math.min('2', 2); // 2
+        // Math.min(undefined, 3); // NaN
+        {
+            let arr = [1, 5, 8];
+            console.log(Math.min(...arr)); // 1
+        }
     }
 }
-// 525
