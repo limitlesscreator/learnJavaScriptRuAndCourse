@@ -738,4 +738,108 @@ const clear = () => {
             console.log(Math.min(...arr)); // 1
         }
     }
+    {
+        clear()
+
+        function min(a, b) {
+            return Math.min(a, b)
+        }
+
+        // Напишите функцию minPositive, которая принимает массив arr в качестве аргумента и возвращает минимальный положительный элемент в массиве. Если массив arr не содержит положительных элементов, вернуть null.
+        function minPositive(arr) {
+            let result = 0
+            let newArr = []
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > 0) {
+                    newArr.push(arr[i])
+                }
+            }
+            if (newArr.length > 0) {
+                return Math.min(...newArr)
+
+            } else return null
+        }
+
+        minPositive([3, 6, 8, -4, -3, 2, 16])// 2
+        // Напишите функцию minValue, которая принимает два числа a, b в качестве аргументов и возвращает меньшее значение из суммы (a + b) и разности (a - b).
+        clear()
+
+        function minValue(a, b) {
+            let result1 = a - b
+            let result2 = a + b
+            return result1 > result2 ? result2 : result1
+        }
+
+        // Напишите функцию min, которая принимает массив arr в качестве аргумента и возвращает минимальный элемент этого массива. Если массив пустой, функция должна вернуть []
+        function min(arr) {
+            return arr.length > 0 ? Math.min(...arr) : []
+        }
+
+        min([7, 23, 34, 9, 4, 45])// 4
+        // Напишите функцию с именем victoryInSwim, которая принимает массив arr, хранящий результаты соревнований, в качестве аргумента и возвращает наименьшее время. Во всех тестах количество спортсменов всегда равно 3.
+        function victoryInSwim(arr) {
+            let arrResults = []
+            for (let i = 0; i < arr.length; i++) {
+                arrResults.push(arr[i][1])
+            }
+            console.log(Math.min(...arrResults))
+        }
+
+        victoryInSwim([['Nick', 8], ['Bob', 10], ['Kim', 6]]) //6
+        // сделал задачу лучше (решение для неограниченного кол-во участников)
+
+        // Напишите функцию minSquareSide, которая принимает четыре числа a, b, c, d (площади четырех квадратов) в качестве аргументов и возвращает сторону наименьшего квадрата.
+        function minSquareSide(a, b, c, d) {
+            return Math.min(Math.sqrt(a), Math.sqrt(b), Math.sqrt(c), Math.sqrt(d))
+        }
+
+        function minMax(arr) {
+            let min = Math.min(...arr)
+            let max = Math.max(...arr)
+            return [min, max]
+        }
+
+        // Given a 2D array of size m * n. Your task is to find the sum of minimum value in each row.
+        function sumOfMinimums(arr) {
+            let result = 0
+            for (let i = 0; i < arr.length; i++) {
+                result += (Math.min(...arr[i]))
+            }
+            console.log(result)
+        }
+
+        sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]) //9
+
+        function minimum(a, x) {
+            let result = a % x;
+            let result2 = x - result;
+
+            return result < result2 ? result : result2;
+        }
+
+        minimum(10, 6) // 2
+        console.log(Math.min('2', 1.99, 4))
+        console.log(Math.min(undefined, 0, 1))
+        // Math.max(1, 3); // 3
+        // Math.max('2', 2); // 2
+        // Math.max(undefined, 3); // NaN
+        let arr = [1, 5, 8];
+        console.log(Math.max(...arr)); // 8
+
+        // Напишите функцию differenceMaxMin, которая принимает массив arr в качестве аргумента и возвращает разность между максимальным и минимальным значением. Если массив пустой, вернуть null.
+        function differenceMaxMin(arr) {
+            return arr.length > 0 ? Math.max(...arr) - Math.min(...arr) : null
+        }
+
+        // Напишите функцию maxMin, которая принимает массив arr в качестве аргументов и возвращает массив, содержащий максимальное и минимальное значение: [max, min]. Если массив пустой, вернуть [].
+        function maxMin(arr) {
+            return arr.length > 0 ? [Math.max(...arr), Math.min(...arr)] : []
+        }
+
+        // Напишите функцию max, которая принимает массив arr в качестве аргумента и возвращает максимальный элемент этого массива. Если массив пустой, функция должна вернуть [].
+        function max(arr) {
+            return arr.length > 0 ? Math.max(...arr) : []
+        }
+    }
 }
+// 845
