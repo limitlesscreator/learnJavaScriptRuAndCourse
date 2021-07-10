@@ -841,5 +841,91 @@ const clear = () => {
             return arr.length > 0 ? Math.max(...arr) : []
         }
     }
+    {
+        // Напишите функцию maxNegative, которая принимает массив arr в качестве аргумента и возвращает максимальный отрицательный элемент в массиве. Если массив arr не содержит отрицательных элементов, вернуть null.
+        function maxNegative(arr) {
+            if (arr.length > 0) {
+                let newArr = []
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] < 0) {
+                        newArr.push(arr[i])
+                    }
+                }
+                if (newArr.length > 0) {
+                    let result = []
+                    for (let i = 0; i < arr.length; i++) {
+                        if (arr[i] < 0) {
+                            result.push(arr[i])
+                        }
+                    }
+                    return Math.max(...result)
+                } else return null
+
+            } else return null
+        }
+    }
 }
-// 845
+clear()
+{
+    // 7kyu
+    // Create the function consecutive(arr) that takes an array of integers and
+    // return the minimum number of integers needed to make the contents of arr consecutive from the lowest number to the highest number
+    function consecutive(arr) {
+        let min = Math.min(...arr)
+        let max = Math.max(...arr)
+        let points = 0
+        for (let i = min; i <= max; i++) {
+            points++
+        }
+        return points - arr.length
+    }
+
+    consecutive([4, 8, 6])// 2
+
+    //8kyu Given the a list of numbers, return the list so that the values increment by 1 for each index up to the maximum value.
+    function pipeFix(numbers) {
+        let min = Math.min(...numbers)
+
+        let max = Math.max(...numbers)
+        let newArr = []
+        for (let i = min; i <= max; i++) {
+            newArr.push(i)
+        }
+        return newArr
+    }
+
+    // Given an array of numbers, return the difference between the largest and smallest values.
+    function betweenExtremes(numbers) {
+        let minNum = Math.min(...numbers)
+        let maxNum = Math.max(...numbers)
+        return maxNum - minNum
+    }
+
+    function getMinMax(arr) {
+        let min = Math.min(...arr)
+        let max = Math.max(...arr)
+        return [min, max]
+    };
+    // The numbers are always positive.
+    // The numbers are in the range (1  ≤  a, b, c  ≤  10).
+    // You can use the same operation more than once.
+    // It's not necessary to place all the signs and brackets.
+    // Repetition in numbers may occur .
+    // You cannot swap the operands. For instance, in the given example you cannot get expression (1 + 3) * 2 = 8.
+
+    function expressionMatter(a, b, c) {
+        let firstResult = a * (b + c)
+        let secondResult = a * b * c
+        let thirdResult = a + b * c
+        let fourthResult = (a + b) * c
+        let fifth = a + b + c
+        return Math.max(firstResult, secondResult, thirdResult, fourthResult, fifth)
+    }
+    console.log(Math.random()); // 0.4879408610989855
+
+    // Напишите функцию с именем integerFromMinToMax, которая принимает два целых положительных числа min, max (min < max) в качестве аргументов и возвращает случайное число от min (включительно) до max (включительно).
+    function integerFromMinToMax(min, max){
+        return Math.floor(Math.random() * Math.round(max)) + Math.round(min);
+    }
+}
+// almost done
