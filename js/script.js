@@ -921,11 +921,123 @@ clear()
         let fifth = a + b + c
         return Math.max(firstResult, secondResult, thirdResult, fourthResult, fifth)
     }
-    console.log(Math.random()); // 0.4879408610989855
+
+    console.log(); // 0.4879408610989855
 
     // Напишите функцию с именем integerFromMinToMax, которая принимает два целых положительных числа min, max (min < max) в качестве аргументов и возвращает случайное число от min (включительно) до max (включительно).
-    function integerFromMinToMax(min, max){
-        return Math.floor(Math.random() * Math.round(max)) + Math.round(min);
+    function integerFromMinToMax(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min)
     }
+
+    function integerFrom0To99() {
+        return Math.floor(Math.random() * 100)
+    }
+
+    function integerFrom0To10() {
+        return Math.ceil(Math.random() * 10)
+    }
+
+    function integerFrom0To100() {
+        return Math.floor(Math.random() * 101);
+    }
+
+    function integerFrom10To99() {
+        return Math.floor((Math.random() * 90) + 10);
+    }
+
+    // one another version
+    {
+        const randomWithBorder = (min, max) => {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            console.log(Math.floor(Math.random() * (max - min) + 1) + min)
+        }
+        randomWithBorder(5, 10)
+    }
+
+    function integerFrom0ToN(n) {
+        return Math.floor(Math.random() * (n))
+    }
+
+    function integerFrom100To999() {
+        let min = 100
+        let max = 999
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    // Напишите функцию с именем createPhoneNumber, которая возвращает случайный номер телефона в виде строки длиной 12, начинающейся с '+1', и случайных цифр.
+    function createPhoneNumber() {
+        let arrStr = ['+', '1']
+        for (let i = 0; i <= 9; i++) {
+            arrStr.push(Math.floor(Math.random() * 10))
+        }
+        return arrStr.join('')
+    }
+
+    function yourFutureCareer() {
+        let random = Math.random()
+        if (random <= 0.32) {
+            return "FrontEnd Developer"
+        } else if (random <= 0.65) {
+            return "BackEnd Developer"
+        } else {
+            return 'Full-Stack Developer'
+        }
+    }
+
+    yourFutureCareer();
+
+    clear()
+    const binaryArrayToNumber = arr => {
+        switch (arr.join('')) {
+            case '0001':
+                return 1;
+                break;
+            case '0101':
+                return 5;
+                break;
+            case '0010':
+                return 2;
+                break;
+        }
+    };
+    binaryArrayToNumber([0, 0, 1, 0])//2
+
+    // Don't give me five!
+    // In this kata you get the start number and the end number of a region and should return
+    // the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+
+    // 7kyy
+    function dontGiveMeFive(start, end) {
+        clear()
+        let points = 0
+        //     for (let i = start; i <= end; i++){
+        //         if (i % 5 === 0 && i % 10 !== 0 || i % 50 === 0 || i % 500 === 0){continue}
+        //         else points++
+        //     }
+        //     return points;
+        // }
+        let arr = []
+
+        function dontGiveMeFive(start, end) {
+            let points = 0
+            for (let i = start; i <= end; i++) {
+                let isFiveHere = String(i).split(' ')
+                for (let j = 0; j < isFiveHere.length; j++) {
+                    if (isFiveHere[j][0] == 5 || isFiveHere[j][1] == 5 || isFiveHere[j][2] == 5 || isFiveHere[j][3] == 5) {
+                        continue
+                    } else points++;
+                    break
+                }
+            }
+            return points
+        }
+
+        console.log(points)
+    }
+
+    dontGiveMeFive(4, 17) //12
 }
-// almost done
+// 935
