@@ -1040,4 +1040,105 @@ clear()
 
     dontGiveMeFive(4, 17) //12
 }
-// 935
+{
+    clear()
+    // [[Prototype]], prototype
+    const animal = {
+        eats: true
+    };
+    const cat = {
+        jumps: true
+    };
+
+    cat.__proto__ = animal; // устанавливаем animal как прототип для cat
+
+    console.log(cat.jumps); // true
+    console.log(cat.eats); // true
+    console.log(cat.eats = false)
+    console.log(animal.eats = false)
+    console.log(animal.eats)
+    const object = {};
+    console.log(object); // [object Object] { ... }
+    console.log(object.__proto__ === Object.prototype); // true
+    console.log(object.__proto__.toString == Object.prototype.toString); // true
+    console.log(Object.prototype.__proto__); // null
+    clear()
+    {
+        const array = ['a', 'b', 'c'];
+        console.log(array.__proto__ === Array.prototype); // true,
+// array наследует методы массивов от Array.prototype
+        console.log(array.__proto__.__proto__ === Object.prototype); // true,
+// array наследует другие методы (не массивов) от Object.prototype
+    }
+    // Любой объект создаётся через функции конструктора либо же класса и у любого объекта есть __proto__
+    clear()
+    // let element = document.querySelector('.thisElement')
+    // let newElement = "<span>momo u, </span>"
+    // // {element.innerHTML += newElement}
+    // setInterval(() => {element.innerHTML += newElement},50)
+    console.log((-100).toString()); // "-100"
+    console.log((10).toString(2)); // "1010"
+    // console.log((100).toString(37)); // RangeError
+    console.log(" " + -20)
+
+    // Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+    function addBinary(a, b) {
+        return (a + b).toString(2)
+    }
+
+    // This kata is about converting numbers to their binary or hexadecimal representation:
+    // If a number is even, convert it to binary.
+    // If a number is odd, convert it to hex.
+    function evensAndOdds(num) {
+        return num % 2 === 0 ? num.toString(2) : num.toString(16)
+    }
+
+    function toBinary(n) {
+        return +n.toString(2);
+    }
+
+    function convertNumber(num) {
+        return [num, +num.toString(2), +num.toString(8), num.toString(16)]
+    }
+
+    function numToHexadecimal(num) {
+        return num.toString(16)
+    }
+
+    function convertNumber(num, n) {
+        return n <= 36 && n >= 2 ? num.toString(n) : undefined
+    }
+
+    console.log((1234567890).toString(10))
+    // console.log((9).toString(0))
+    console.log((0.012345).toString(10))
+    {
+        // console.log((900.7199254740991).toFixed(101)); // "RangeError"
+        // console.log(('153425').toFixed(1)); // "TypeError"
+        // console.log(('35$').toFixed(2)); // "TypeError"
+        // console.log((35).toFixed(-1)); // "RangeError"
+    }
+    {
+        let num = 1289.56;
+        console.log(num.toFixed(1)); // "1289.6", "string"
+        console.log(+num.toFixed(1)); // 1289.6, "number"
+        console.log(Number(num.toFixed(1))); // 1289.6, "number"
+    }
+    {
+        function averageSpeed(s1, t1, s2, t2) {
+            console.log(+(((s1 / t1) * (s2 / t2)) / (t1 * t2)).toFixed(2))
+        }
+
+        averageSpeed(17, 5, 20, 4)
+        // almost done
+    }
+
+    //return price without vat
+    // your code
+    function excludingVatPrice(price) {
+        let sail = 100 - 15
+        let result = price * (sail / 10)
+        return result = price / 15 * 0.15
+        // will improve
+    }
+}
