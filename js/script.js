@@ -1124,15 +1124,6 @@ clear()
         console.log(+num.toFixed(1)); // 1289.6, "number"
         console.log(Number(num.toFixed(1))); // 1289.6, "number"
     }
-    {
-        function averageSpeed(s1, t1, s2, t2) {
-            console.log(+(((s1 / t1) * (s2 / t2)) / (t1 * t2)).toFixed(2))
-        }
-
-        averageSpeed(17, 5, 20, 4)
-        // almost done
-    }
-
     //return price without vat
     // your code
     function excludingVatPrice(price) {
@@ -1141,4 +1132,99 @@ clear()
         return result = price / 15 * 0.15
         // will improve
     }
+
+    function averageSpeed(s1, t1, s2, t2) {
+        return +((s1 + s2) / (t1 + t2)).toFixed(2)
+    }
+
+    console.log(Math.PI)
+
+    function ringSquare(r1, r2) {
+        return +(Math.PI * (Math.pow(r1, 2) - Math.pow(r2, 2))).toFixed(2)
+    }
+
+    // Напишите функцию convertRadiansToDegrees, которая принимает значение n (угол в радианах) в качестве аргумента и возвращает значение угла в градусах.
+    // Результат округлите до 2 знаков после запятой и возвратите в виде числа.
+    function convertRadiansToDegrees(n) {
+        return +(180 * n / Math.PI).toFixed(2)
+    }
+
+    // Напишите функцию average, которая принимает массив marks (массив отметок учеников) в качестве аргумента и возвращает средний балл успеваемости в классе.
+    // Результат округлите до 1 знака после запятой и возвратите в виде строки.
+    function average(marks) {
+        let result = 0
+        for (let i = 0; i < marks.length; i++) {
+            result += marks[i]
+        }
+        return (result / marks.length).toFixed(1)
+    }
+
+    average([4, 5, 4, 5]) //должна возвратить "4.5".
+    // Необходимо отформатировать элементы массива:// элемент с индексом 0 - до 0 знаков после запятой;// элемент с индексом 1 - до 1 знаков после запятой;
+    // элемент с индексом 2 - до 2 знаков после запятой;// элемент с индексом 3 - до 3 знаков после запятой; и так далее.
+    // Напишите функцию с именем formatArray, которая принимает массив arr в качестве аргумента и и возвращает массив, в котором каждый элемент отформатирован в соответствии с данным правилом.
+    function formatArray(arr) {
+        let newArr = []
+        for (let i = 0; i < arr.length; i++) {
+            newArr.push(+arr[i].toFixed(i))
+        }
+        return newArr
+    }
+
+    formatArray([1.345, 2.234, 3.1234, 4.56789])
+    console.log(parseInt('56.5ab', 10)); // 56
+    console.log(parseInt('     5abc   ', 16)); // 23228
+    console.log(parseInt(56.15, 10)); // 56
+    console.log(Number.parseInt('-56.15', 10)); // -56
+    console.log(Number.parseInt(100, 2)); // 4
+    console.log(Number.parseInt('$56abc', 16)); // NaN
+    console.log(parseInt('abc5.6')); // NaN
+    clear()
+
+    function getDay(answer) {
+        return parseInt(answer, 10)
+    }
+
+    // Напишите функцию hydrate, которая принимает массив arr, содержащий строки с названием и количеством стаканов выпитого напитка, и возвращает общее количество выпитой жидкости в мл.
+    function hydrate(arr) {
+        let glass = 0
+        for (let i = 0; i < arr.length; i++) {
+            glass += parseInt(arr[i])
+        }
+        return `${glass * 200} ml`
+    }
+
+    hydrate(["3 glasses of water", "1 glass of milk", "2 glasses of juice", "1 glass of wine"]) //1400 ml
+
+    // Напишите функцию isStringContainsNumber, которая принимает строку str в качестве аргумента и возвращает true, если строка содержит целое число, и false, в противном случае.
+    function isStringContainsNumber(str) {
+        return Number.parseInt(str) == str
+    }
+
+    function getAge(inputString) {
+        return Number.parseInt(inputString)
+    }
+
+    // Complete the function which converts hex number (given as a string) to a decimal number.
+    function hexToDec(hexString) {
+        return parseInt(hexString, 16)
+    }
+
+    function binToDec(bin) {
+        return +parseInt(bin, 2)
+    }
+
+    console.log(parseInt(15.5))
+    console.log(parseInt('QA100'))
+    console.log(parseInt(0.314, 10))
+    console.log(parseInt(8989898989, 2))
+
+    // Number.parseFloat()
+    console.log(parseFloat('2.05')); // 2.05
+    console.log(Number.parseFloat('32.32.32')); //32.32
+    console.log(parseFloat('11 + true')); // 11
+    console.log(Number.parseFloat('1t')); // 1
+    console.log(parseFloat('2e+1')); // 20
+    console.log(Number.parseFloat('.15a')); // 0.15
+    console.log(Number.parseFloat('-18+2')); // -18
 }
