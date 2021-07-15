@@ -1228,3 +1228,151 @@ clear()
     console.log(Number.parseFloat('.15a')); // 0.15
     console.log(Number.parseFloat('-18+2')); // -18
 }
+clear()
+//just a little reduce))
+
+const initialState = {
+    count: 0,
+    cake: true,
+    switches: 'zilents',
+    user: {name: 'cassidy'}
+}
+
+const actions = [
+    {type: 'ADD', by: 2},
+    {type: 'MINUS', by: 4},
+    {type: 'MINUS', by: -4},
+    {type: 'EAT_CAKE'},
+    {type: 'SWITCH_THE_SWITCH', clack: "Zealios"},
+]
+
+function reducer(state, action) {
+    if (action.type === 'ADD') {
+        return {...state, count: state.count + action.by}
+    } else if (action.type === "MINUS") {
+        return {...state, count: state.count - action.by}
+    } else if (action.type === "EAT_CAKE") {
+        return {...state, cake: false}
+    } else if (action.type === 'SWITCH_THE_SWITCH') {
+        return {...state, switches: action.clack}
+    }
+    return state
+}
+
+console.log(actions.reduce(reducer, initialState))
+
+console.log(Number.parseFloat('1854.359     ')); // 1854.359
+console.log(Number.parseFloat('   .156')); // 0.156
+console.log(parseFloat('     2.05aa     ')); // 2.
+
+function priceOfItem(receipt) {
+    return +parseFloat(receipt)
+}
+
+function isStringContainsNumber(str) {
+    return parseFloat(str) == str
+}
+
+// Напишите функцию purchaseValue, которая принимает массив values, содержащий цены и название каждого купленного товара в качестве аргумента и возвращает общую стоимость покупки.
+function purchaseValue(values) {
+    let result = 0
+    for (let i = 0; i < values.length; i++) {
+        result += +parseFloat(values[i])
+    }
+    return result
+
+}
+
+purchaseValue(['1.31 bread', '7.96 cabbage', '2.10 candies', '0.84 salad'])
+
+function parseF(s) {
+    return +parseFloat(s) == s ? parseFloat(s) : null;
+}
+
+clear()
+{
+    function pushElement(arr, value) {
+        arr.push(value)
+        return arr
+    }
+
+    pushElement([1, 2, 3, 5, 6], 9)
+}
+
+function createArray(n, m) {
+    let newArr = []
+    for (let i = 0; i < n.length; i++) {
+        newArr.push(m)
+    }
+    return newArr
+}
+
+{
+    clear()
+
+    function createArray(n, m) {
+        let newArr = []
+        for (let i = 0; i < n; i++) {
+            newArr.push(m)
+        }
+        console.log(newArr)
+    }
+
+    createArray(3, 40)
+}
+// Напишите функцию createOddArray, которая принимает целое неотрицательное число n в качестве аргумента и возвращает массив, содержащий n нечетных чисел.
+{
+    function createOddArray(n) {
+        let newArr = []
+        for (let i = 0; newArr.length < n; i++) {
+            if (i % 2 !== 0) {
+                newArr.push(i)
+            }
+        }
+        return newArr
+    }
+
+    // Напишите функцию alternationArray, которая принимает целое неотрицательное число n в качестве аргумента и возвращает массив, содержащий числа от 0 до n, в котором четные числа положительны, а нечетные отрицательны.
+    function alternationArray(n) {
+        let newArr = []
+        for (let i = 0; i <= n; i++) {
+            if (i % 2 !== 0 && i !== 0) {
+                newArr.push(-i)
+            } else newArr.push(i)
+        }
+        return newArr
+    }
+
+    {
+        function createArray(n) {
+            if (n === 0) {
+                return []
+            } else {
+                let newArr = []
+                for (let i = 1; i <= n; i++) {
+                    newArr.push(i)
+                }
+                return newArr
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
