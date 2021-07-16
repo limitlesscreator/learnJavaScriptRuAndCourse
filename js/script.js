@@ -1356,23 +1356,130 @@ function createArray(n, m) {
             }
         }
     }
+    {
+        function createReverseArray(n) {
+            let arr = []
+            for (let i = n; i >= 0; i--) {
+                arr.push(i)
+            }
+            return arr
+        }
+    }
+
+    function createNegativeArray(n) {
+        let arr = []
+        for (let i = -1; i >= -n; i--) {
+            arr.push(i)
+        }
+        return arr
+    }
+
+    function createArrayFromNToM(n, m) {
+        let newArr = []
+        for (let i = n; i <= m; i++) {
+            newArr.push(i)
+        }
+        return newArr
+    }
+
+    function createArray(n) {
+        let newArr = []
+        for (let i = 1; i <= n; i++) {
+            newArr.push(i * 10)
+        }
+        return newArr
+    }
+
+    // Sum Numbers
+    const sum = numbers => {
+        let add = (x, y) => x + y
+        let sum = numbers.reduce(add, 0)
+        return sum
+    }
+    console.log(Array.isArray([1, 2, 3])); // true
+    console.log(Array.isArray(new Date)); // false
+    console.log(Array.isArray({})); // false
+    // console.log({}.toString.call(num)); // "[object Number]"
+    // console.log({}.toString.call(str)); // "[object String]"
+    // console.log({}.toString.call(bool)); // "[object Boolean]"
+    // console.log({}.toString.call(arr)); // "[object Array]"
+    // console.log({}.toString.call(obj)); // "[object Object]"
+    // console.log({}.toString.call(data)); // "[object Date]"
+    // console.log({}.toString.call(zero)); // "[object Null]"
+    // console.log({}.toString.call(unknown)); // "[object Undefined]"
+    function typeOfArg(value) {
+        return {}.toString.call(value)
+    }
+
+    function isArrayContainsArray(arr) {
+        clear()
+        let result = false
+        for (let i = 0; i <= arr.length; i++) {
+            if ({}.toString.call(arr[i]) === '[object Array]') {
+                result = true
+                break;
+            }
+        }
+        console.log(result)
+    }
+
+    isArrayContainsArray([[], true, false, [12]])
+
+    function isArgArray(value) {
+        return Array.isArray(value)
+    }
+
+    function isArrayInArg(value1, value2) {
+        return Array.isArray(value1) || Array.isArray(value2)
+    }
+
+    function type(value) {
+        switch ({}.toString.call(value)) {
+            case "[object Array]": {
+                return 'array'
+            }
+            case "[object Number]": {
+                return 'number'
+            }
+            case "[object String]": {
+                return 'string'
+            }
+            case "[object Object]": {
+                return 'object'
+            }
+            case "[object Date]": {
+                return 'date'
+            }
+            case "[object Null]": {
+                return 'null'
+            }
+            case "[object Undefined]": {
+                return 'undefined'
+            }
+        }
+    }
+
+    console.log({}.toString.call(null))
+
+    clear()
+    {
+        const arrCheck = value => {
+            let result = false
+            if (value.length === 0) {
+                result = true;
+            } else {
+                for (let i = 0; i <= value.length - 1; i++) {
+                    if ({}.toString.call(value[i]) === '[object Array]') {
+                        result = true
+                    } else {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+            console.log(result)
+        }
+        arrCheck([]) // true
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// 1460
