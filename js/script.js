@@ -1463,12 +1463,49 @@ function createArray(n, m) {
 
     clear()
     {
+        let xArray = [9, 1, 2, 3]
+        let yArray = xArray
+
+        const addToScoreHistory = (array, score) => {
+            array.push(score)
+            return array
+        }
+        const scoreArray = [44, 23, 12]
+        console.log(addToScoreHistory(scoreArray, 15))
+
+        //Shallow copy vs Deep copy (clones)
+        clear()
+        const zArray = [...yArray, 10]
+        console.log(zArray)
+        console.log(yArray)
+
+        yArray.push([8, 9, 10])
+        const vArray = [...yArray]
+        console.log(vArray)
+        vArray[4].push(5)
+        console.log(vArray)
+        console.log(yArray)
+        // nested structural data types still share references
+
+        const scoreObj = {
+            'first': 44,
+            'second': 12,
+            'third': {'a': 1, 'b': 2}
+        }
+
+        Object.freeze(scoreObj)
+        scoreObj.third.a = 8
+        console.log(scoreObj)
+    }
+    clear()
+    {
         const arrCheck = value => {
             let result = false
-            if (value.length === 0) {
-                result = true;
-            } else {
-                for (let i = 0; i <= value.length - 1; i++) {
+
+            if ({}.toString.call(value) === '[object Array]' && value.length === 0) {
+                console.log(true)
+            } else if ({}.toString.call(value) === '[object Array]') {
+                for (let i = 0; i < value.length; i++) {
                     if ({}.toString.call(value[i]) === '[object Array]') {
                         result = true
                     } else {
@@ -1476,10 +1513,80 @@ function createArray(n, m) {
                         break;
                     }
                 }
+            } else {
+                console.log(result)
             }
             console.log(result)
         }
-        arrCheck([]) // true
+        arrCheck([[], {}])
+    }
+    {
+        let arr = [2, 15, 7, 13, 10, -14, 9, 11];
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (Math.abs(arr[i]) > 10) {
+                count++;
+            }
+        }
+        console.log(count)
+    }
+
+    // simple tasks with arr again)..
+    function countEven(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] % 2 === 0 ? result++ : null
+        }
+        return result
+    }
+
+    function countNumbers(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if ({}.toString.call(arr[i]) === '[object Number]') {
+                result++
+            }
+        }
+        return result
+    }
+
+    function countOfWords5(names) {
+        let result = 0
+        for (let i = 0; i < names.length; i++) {
+            if (names[i].length === 5) {
+                result++
+            }
+        }
+        return result
+    }
+
+    countOfWords5(['Noah', 'Liam', 'William', 'Mason', 'James'])//2
+    // Напишите функцию isElementInArray, которая принимает массив arr в качестве аргумента и, если массив содержит хотя бы один элемент, равный сумме своих соседей слева и справа, находит первый такой элемент и возвращает строку вида:
+    // "true: it is <element>", где <element> - значение элемента.
+    // или false, в противном случае.
+    function isElementInArray(arr) {
+        let leftNum, rightNumber
+        let result = false
+        for (let i = 0; i < arr.length; i++) {
+            leftNum = arr[i - 1]
+            rightNumber = arr[i + 1]
+            if (leftNum + rightNumber === arr[i]) {
+                result = `true: it is ${arr[i]}`;
+                break;
+            }
+        }
+        console.log(result)
+    }
+
+    isElementInArray([-5, 0, 0, -2, 0, 2])
+
+    function countOppositeSignsPairs(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] < 0 && arr[i + 1] > 0 || arr[i + 1] < 0 && arr[i] > 0) {
+                result++
+            }
+        }
+        return (result)
     }
 }
-// 1460
