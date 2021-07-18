@@ -1590,3 +1590,119 @@ function createArray(n, m) {
         return (result)
     }
 }
+{
+    function countEvenPositive(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0 && arr[i] % 2 === 0) {
+                result++
+            }
+        }
+        return result
+    }
+
+    // Напишите функцию counOfPositivePairs, которая принимает массив arr в качестве аргумента, и возвращает количество пар соседних элементов, являющихся положительными числами.
+    function counOfPositivePairs(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0 && arr[i + 1] > 0) {
+                result++
+            }
+        }
+        return (result)
+    }
+
+    // Напишите функцию lastEvenElement, которая принимает числовой массив arr в качестве аргумента, и возвращает последний четный элемент и его индекс в виде массива [element, index], или undefined, если массив не содержит четных элементов.
+    function lastEvenElement(arr) {
+        let result = []
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                result = [arr[i], i]
+            } else result = undefined
+        }
+        return result
+    }
+
+    function lastEvenElement(arr) {
+        let result = []
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                result = [arr[i], i]
+            }
+        }
+        if (result.length > 0) {
+            return result
+        } else return undefined
+    }
+
+    clear()
+    // Напишите функцию equalElementsInArray, которая принимает массив чисел arr в качестве аргумента,
+    // и определяет, есть ли в массиве одинаковые элементы, и если есть, возвращает их в виде массива [element, element].
+    // Если таких пар несколько, вернуть первую из них. Если в массиве нет одинаковых элементов, вернуть сообщение "All elements are different". Если исходный массив пустой, вернуть пустой массив.
+    function equalElementsInArray(arr) {
+        if (arr.length > 0) {
+            let firstNumber
+            let result = []
+            let again = 1
+            for (let i = 0; i < arr.length; i++) {
+                firstNumber = arr[i]
+                for (let j = again; j < arr.length; j++) {
+                    if (firstNumber === arr[j]) {
+                        result = [arr[i], arr[i]];
+                        i = 100;
+                        break;
+                    }
+                }
+                again++
+            }
+            if (result.length > 0) {
+                console.log(result)
+            } else {
+                console.log("All elements are different")
+            }
+        } else return []
+    }
+
+    equalElementsInArray([5, 14, 8, 3, 3, 3, 10, 8]) //8 8
+
+    function changeArray(prices) {
+        return prices.map(n => n * 2)
+    }
+
+    function isNegativeInArray(arr) {
+        let result = false
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                result = true;
+                break
+            }
+        }
+        return result
+    }
+
+    function countSheeps(arrayOfSheep) {
+        let result = 0
+        for (let i = 0; i < arrayOfSheep.length; i++) {
+            if (arrayOfSheep[i] === true) {
+                result++
+            }
+        }
+        return result
+    }
+
+    clear()
+
+    function findDifference(a, b) {
+        let result1 = 1
+        let result2 = 1
+        for (let i = 0; i < a.length; i++) {
+            result1 *= a[i]
+        }
+        for (let i = 0; i < a.length; i++) {
+            result2 *= b[i]
+        }
+        return Math.abs((result2 - result1))
+    }
+
+    findDifference([2, 2, 3], [5, 4, 1])
+}
