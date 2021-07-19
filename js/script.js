@@ -1706,3 +1706,116 @@ function createArray(n, m) {
 
     findDifference([2, 2, 3], [5, 4, 1])
 }
+{
+    clear()
+
+    // Напишите функцию numberOfOrderedTriples, которая принимает массив arr в качестве аргумента, и возвращает количество троек соседних элементов, которые строго упорядочены по возрастанию.
+    function numberOfOrderedTriples(arr) {
+        let result = 0
+        let main, firstLeft, secondLeft
+        for (let j = 0; j < arr.length; j++) {
+            main = arr[j]
+            firstLeft = arr[j + 1]
+            secondLeft = arr[j + 2]
+            if (main < firstLeft && firstLeft < secondLeft) {
+                result++
+            }
+        }
+        console.log(result)
+    }
+
+    numberOfOrderedTriples([5, 5, 0, 3, 5, 9, 5])//2
+    // Напишите функцию firstNegative, которая принимает массив arr в качестве аргумента, и возвращает первый отрицательный элемент массива и его индекс (в виде массива [element, index]), или undefined, если массив не содержит отрицательных элементов.
+    function firstNegative(arr) {
+        let result = []
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                result = [arr[i], i]
+                break;
+            }
+        }
+        return result.length > 0 ? result : undefined
+    }
+
+    clear()
+
+    // Напишите функцию fahrenheit, которая принимает два целых числа t1 и t2 (t1 < t2 - начальное и конечное значение температур в градусах Цельсия), и возвращает массив температур по Фаренгейту для данного диапазона температур.
+    function fahrenheit(t1, t2) {
+        let result = []
+        let allCount = t2 - t1
+        for (let i = 0; i <= allCount; i++) {
+            result.push((t2 * (9 / 5) + 32).toFixed(1) * 1)
+            console.log(result)
+            t2--
+        }
+        return (result.reverse())
+    }
+
+    fahrenheit(20, 25)
+
+    // Напишите функцию countIntegers, которая принимает массив arr в качестве аргумента, и возвращает количество элементов, являющихся целыми числами.
+    function countIntegers(arr) {
+        let numbers = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (Number.isInteger(arr[i]) && {}.toString.call(arr[i]) === '[object Number]') {
+                numbers++
+            }
+        }
+        return numbers
+    }
+
+    console.log({}.toString.call(2.2))
+    // Напишите функцию counOfSquares, которая принимает массив arr в качестве аргумента, и возвращает количество элементов, являющихся квадратами целых чисел.
+    clear()
+    let q, w, e, r, t, y, u, i, o, p, a, s, d, f, g, h, j, k, l, z, x, c, v, b, n, m
+
+    function counOfSquares(arr) {
+        // let q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (Number.isInteger(Math.sqrt(arr[i])) && {}.toString.call(arr[i]) !== '[object Boolean]') {
+                result++
+            } else continue
+        }
+        console.log(result)
+    }
+
+    counOfSquares([-4, -4.2, j, true, 16, -4, 1.8, o, false, 16, 1, -2.3, j, false, 1]) //4
+    // Напишите функцию firstBigger, которая принимает числовой массив arr в качестве аргумента, и возвращает первый элемент массива, который больше своего соседа справа, или undefined, если массив упорядочен по возрастанию.
+    clear()
+
+    function firstBigger(arr) {
+        let result = undefined
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[i + 1]) {
+                result = 'all good'
+                break;
+            }
+        }
+        if (result === 'all good') {
+            for (let j = 0; j < arr.length; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    result = arr[j]
+                    break;
+                }
+            }
+        }
+        console.log(result)
+    }
+
+    firstBigger([0, 8, 4, 1]) //8
+
+    // easyTask
+    // Напишите функцию isZeroInArray, которая принимает массив arr в качестве аргумента и возвращает true, если массив содержит хотя бы один нулевой элемент, и false, в противном случае.
+    function isZeroInArray(arr) {
+        let result = false
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === 0) {
+                result = true
+                break;
+            }
+        }
+        return result
+    }
+}
+// 1810
