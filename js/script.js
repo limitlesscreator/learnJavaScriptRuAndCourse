@@ -1818,4 +1818,119 @@ function createArray(n, m) {
         return result
     }
 }
-// 1810
+{
+    clear()
+
+    function hello() {
+        console.log('hello', this)
+    }
+
+    hello()
+
+    const person = {
+        name: 'Vladilen',
+        age: 25,
+        sayHello: hello
+    }
+    clear()
+
+    function newBg() {
+        this.style.background = 'hsl(100, 100%, 50%)'
+
+    }
+
+    // document.querySelector('p').onclick = newBg
+    let p = document.querySelectorAll('p')
+    p.forEach(function (element) {
+        element.onclick = newBg
+    })
+
+    // document.querySelector('button').onclick = function (){
+    //     this.style.background = 'hsl(210, 100%, 50%)'
+    // }
+    let collection = document.querySelectorAll('button')
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].onclick = function () {
+            this.style.background = 'hsl(210, 100%, 50%)'
+        }
+    }
+    console.log(collection)
+    clear()
+
+    function firstNonConsecutive(arr) {
+        let firstNumber = null
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] !== arr[arr.length - 1]) {
+                if (arr[i] !== (arr[i + 1] - 1)) {
+                    firstNumber = arr[i + 1]
+                    break;
+                }
+            } else break
+        }
+        console.log(firstNumber)
+    }
+
+    firstNonConsecutive([-8, -7, -6, -5, -4, -3, -2, -1, 0, 1])
+    // In this Kata your task will be to return the count of pairs that have consecutive numbers as follows:// pairs([1,2,5,8,-4,-3,7,6,5]) = 3
+    // The pairs are selected as follows [(1,2),(5,8),(-4,-3),(7,6),5]// --the first pair is (1,2) and the numbers in the pair are consecutive; Count = 1
+    // --the second pair is (5,8) and are not consecutive// --the third pair is (-4,-3), consecutive. Count = 2// --the fourth pair is (7,6), also consecutive. Count = 3.
+    // --the last digit has no pair, so we ignore.
+    function pairs(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i += 2) {
+            if ((arr[i] === arr[i + 1] - 1) || (arr[i] === arr[i + 1] + 1)) {
+                result++
+            }
+        }
+        console.log(result)
+    }
+
+    pairs([1, 2, 5, 8, -4, -3, 7, 6, 5])
+
+    function solve(a, b) {
+        let firstPoints = 0
+        let secondPoints = 0
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] > b[i]) {
+                firstPoints++
+            } else if (a[i] < b[i]) {
+                secondPoints++
+            }
+        }
+        if (firstPoints > secondPoints) {
+            return `${firstPoints}, ${secondPoints}: Alice made "Kurt" proud!`
+        } else if (firstPoints < secondPoints) {
+            return `${firstPoints}, ${secondPoints}: Bob made "Jeff" proud!`
+        } else if (firstPoints === secondPoints) {
+            return `${firstPoints}, ${secondPoints}: that looks like a "draw"! Rock on!`
+        }
+    }
+
+    solve([47, 7, 2], [47, 7, 2])
+
+    // Count how often sign changes in array.
+    clear()
+    const catchSignChange = arr => {
+        let result = 0
+        let lastResult
+        if (arr[0] < 0) {
+            lastResult = 'minus'
+        } else if (arr[0] > 0) {
+            lastResult = 'plus'
+        }
+        if (arr.length > 0) {
+            for (let i = 1; i < arr.length; i++) {
+                if (lastResult === 'minus' && arr[i] >= 0) {
+                    result++
+                    lastResult = 'plus'
+                } else if (lastResult === 'plus' && arr[i] < 0) {
+                    result++
+                    lastResult = 'minus'
+                }
+            }
+        } else result = 0
+
+        console.log(result)
+    }
+    catchSignChange([-47, 84, -30, -11, -5, 74, 77])
+}
