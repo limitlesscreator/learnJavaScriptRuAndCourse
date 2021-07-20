@@ -1934,3 +1934,107 @@ function createArray(n, m) {
     }
     catchSignChange([-47, 84, -30, -11, -5, 74, 77])
 }
+{
+    clear()
+
+    // Напишите функцию sumOfSquares, которая принимает массив arr в качестве аргумента и возвращает сумму квадратов элементов массива.
+    function sumOfSquares(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            result += Math.pow(arr[i], 2)
+        }
+        return result
+    }
+
+    // Напишите функцию productOfElements, которая принимает массив arr в качестве аргумента и возвращает произведение элементов массива.
+    function productOfElements(arr) {
+        let result = 1
+        if (arr.length > 0) {
+            for (let i = 0; i < arr.length; i++) {
+                result *= arr[i]
+            }
+            return result
+        } else return 0
+    }
+
+    // Напишите функцию sumOfEvenPositive, которая принимает массив arr в качестве аргумента и возвращает сумму четных положительных элементов массива.
+
+    function sumOfEvenPositive(arr) {
+        let sum = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0 && arr[i] > 0) {
+                sum += arr[i]
+            }
+        }
+        return sum
+    }
+
+    // Напишите функцию squares, которая принимает массив arr в качестве аргумента и возвращает разность квадрата суммы элементов и суммы квадратов элементов массива .
+    function squares(arr) {
+        let sqrElements = 0
+        let sumSqrElements = 0
+        for (let i = 0; i < arr.length; i++) {
+            sqrElements += arr[i]
+            sumSqrElements += arr[i] ** 2
+        }
+        sqrElements = sqrElements ** 2
+        console.log(sqrElements)
+        console.log(sumSqrElements)
+        return sqrElements - sumSqrElements
+    }
+
+    squares([2, 1, 4])
+
+    // Напишите функцию sumOfGoals, которая принимает массив arr, хранящий данные о количестве голов, забитых каждым футболистом в разных играх,
+    // и возвращает общее количество голов, забитых футбольной командой.
+    clear()
+
+    function sumOfGoals(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                result += arr[i][j]
+            }
+        }
+        console.log(result)
+    }
+
+    sumOfGoals([[2, 2], [3, 2, 1], [4, 3, 3]]) //20
+    // Напишите функцию aboveAverageScore, которая принимает массив отметок arr в качестве аргумента и возвращает количество учеников, у которых балл выше среднего. Во всех тестах массив непустой.
+    function aboveAverageScore(arr) {
+        let sumScore = 0
+        let averageScore = 0
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            sumScore += arr[i]
+        }
+        averageScore = sumScore / arr.length
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > averageScore) {
+                result++
+            }
+        }
+        return result
+    }
+
+    // Напишите функцию average, которая принимает массив arr в качестве аргумента и возвращает среднее арифметическое элементов массива.
+    // Результат округлите до двух десятичных знаков. Во всех тестах массив непустой.
+    function average(arr) {
+        let sumScore = 0
+        let averageScore = 0
+        for (let i = 0; i < arr.length; i++) {
+            sumScore += arr[i]
+        }
+        averageScore = +(sumScore / arr.length).toFixed(2)
+        return averageScore
+    }
+
+    // Complete the square sum function so that it squares each number passed into it and then sums the results together. //8kyu
+    function squareSum(numbers) {
+        let result = 0
+        for (let i = 0; i < numbers.length; i++) {
+            result += numbers[i] ** 2
+        }
+        return result
+    }
+}
