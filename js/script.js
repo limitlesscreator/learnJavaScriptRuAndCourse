@@ -2038,3 +2038,124 @@ function createArray(n, m) {
         return result
     }
 }
+{
+    // Какая дата соответствует 100-му дню года? А какая дата соответствует дню с номером 200? А ведь ответ зависит еще от того, является ли год високосным или нет!
+    // Напишите функцию, которая поможет определить дату, если известен номер дня в году, а также то, каким является год - високосным или нет.
+    // Функция принимает номер дня day и булеву величину isLeap в качестве аргументов и возвращает дату года в виде строки "Month, day". Во всех тестах номер дня - число от 1 до
+    function getDay(day, isLeap) {
+        if (day <= 365) {
+            if (isLeap) {
+                if (day >= 1 && day <= 31) {
+                    return `January, ${day}`
+                }
+                if (day >= 32 && day <= 60) {
+                    return `February, ${day - 31}`
+                }
+                if (day >= 61 && day <= 91) {
+                    return `March, ${day - 60}`
+                }
+                if (day >= 92 && day <= 121) {
+                    return `April, ${day - 91}`
+                }
+                if (day >= 122 && day <= 152) {
+                    return `May, ${day - 121}`
+                }
+                if (day >= 153 && day <= 182) {
+                    return `June, ${day - 152}`
+                }
+                if (day >= 183 && day <= 213) {
+                    return `July, ${day - 182}`
+                }
+                if (day >= 214 && day <= 244) {
+                    return `August, ${day - 213}`
+                }
+                if (day >= 245 && day <= 274) {
+                    return `September, ${day - 244}`
+                }
+                if (day >= 275 && day <= 305) {
+                    return `October, ${day - 274}`
+                }
+                if (day >= 306 && day <= 335) {
+                    return `November, ${day - 305}`
+                }
+                if (day >= 335 && day <= 366) {
+                    return `December, ${day - 335}`
+                }
+            } else {
+                if (day >= 1 && day <= 31) {
+                    return `January, ${day}`
+                }
+                if (day >= 32 && day <= 59) {
+                    return `February, ${day - 31}`
+                }
+                if (day >= 60 && day <= 90) {
+                    return `March, ${day - 59}`
+                }
+                if (day >= 91 && day <= 120) {
+                    return `April, ${day - 90}`
+                }
+                if (day >= 121 && day <= 151) {
+                    return `May, ${day - 120}`
+                }
+                if (day >= 152 && day <= 181) {
+                    return `June, ${day - 151}`
+                }
+                if (day >= 182 && day <= 212) {
+                    return `July, ${day - 181}`
+                }
+                if (day >= 213 && day <= 243) {
+                    return `August, ${day - 212}`
+                }
+                if (day >= 244 && day <= 273) {
+                    return `September, ${day - 243}`
+                }
+                if (day >= 274 && day <= 304) {
+                    return `October, ${day - 273}`
+                }
+                if (day >= 305 && day <= 334) {
+                    return `November, ${day - 304}`
+                }
+                if (day >= 334 && day <= 365) {
+                    return `December, ${day - 334}`
+                }
+            }
+        } else return NaN
+    }
+
+    function betterThanAverage(classPoints, yourPoints) {
+        let otherScore = 0
+        for (let i = 0; i < classPoints.length; i++) {
+            otherScore += classPoints[i]
+        }
+        if (otherScore / classPoints.length < yourPoints) {
+            return true
+        } else return false
+    }
+
+    const number = function (busStops) {
+        let result = 0
+        for (let i = 0; i < busStops.length; i++) {
+            result += busStops[i][0]
+            result -= busStops[i][1]
+        }
+        return result
+    }
+    clear()
+
+    // Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers.
+    function countPositivesSumNegatives(input) {
+        let positive = 0
+        let negative = 0
+        for (let i = 0; i < input.length; i++) {
+            if (input[i] < 0) {
+                negative += input[i]
+            } else if (input[i] > 0) {
+                positive++
+            }
+        }
+        console.log([positive, negative])
+        console.log({}.toString.call(input))
+    }
+
+    countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]) //10 -65
+}
