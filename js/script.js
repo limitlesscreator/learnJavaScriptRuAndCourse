@@ -2158,4 +2158,112 @@ function createArray(n, m) {
     }
 
     countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]) //10 -65
+    clear()
+    {
+        const obj = {
+            name: 'Adam',
+            getField() {
+                console.log(this.age)
+                // this указывает на текущий контекст
+            }
+        }
+
+        const obj2 = {
+            age: 23
+        }
+        //вызов новой функции и смена контекста
+        obj.getField.call(obj2)
+        clear()
+
+        //замыкание
+        function buySomething() {
+            let cost = 0
+            return function buy() {
+                cost += 10
+                console.log(cost)
+            }
+        }
+
+        const byOne = buySomething()
+        byOne()
+        byOne()
+        byOne()
+        const byTwo = buySomething()
+        console.log('----------------')
+        byTwo()
+        byTwo()
+    }
+
+    // Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string intege
+    function divCon(x) {
+        let result = 0
+        for (let i = 0; i < x.length; i++) {
+            if ({}.toString.call(x[i]) === '[object Number]') {
+                result -= x[i]
+            } else result += +x[i]
+        }
+        return -result
+    }
+
+    // Find the sum of the odd numbers within an array, after cubing the initial integers. The function should return undefined/None/nil/NULL if any of the values aren't numbers.
+    clear()
+
+    function cubeOdd(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (Math.pow(arr[i], 3) % 2 !== 0 && {}.toString.call(arr[i]) === '[object Number]') {
+                result += Math.pow(arr[i], 3)
+                console.log(arr[i])
+            } else if ({}.toString.call(arr[i]) === '[object String]') {
+                result = undefined;
+                break
+            }
+        }
+        console.log(result)
+    }
+
+    cubeOdd(["a", 12, 9, "z", 42]) //28
+    // sumEvenNumbers = input => input.filter(x => x % 2 == 0).reduce((x, y) => x + y, 0)
+    function inviteMoreWomen(L) {
+        let women = 0
+        let men = 0
+        for (let i = 0; i < L.length; i++) {
+            if (L[i] < 0) {
+                women++
+            } else men++
+        }
+        return women < men
+    }
+
+    function oddOrEven(array) {
+        let result = 0
+        for (let i = 0; i < array.length; i++) {
+            result += array[i]
+        }
+        return result % 2 === 0 ? 'even' : 'odd'
+    }
+
+    function oddOrEven(arr) {
+        return arr.reduce((a, b) => a + b, 0) % 2 ? 'odd' : 'even';
+    }
+
+    // Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1,
+    // and the second one is the total weight of team 2.
+    clear()
+
+    function rowWeights(array) {
+        let result = [0, 0]
+        if (array.length > 1) {
+            for (let i = 0; i < array.length; i++) {
+                if (i % 2 === 0) {
+                    result[0] += array[i]
+                } else {
+                    result[1] += array[i]
+                }
+            }
+        } else result = [array[0], 0]
+        console.log(result)
+    }
+
+    rowWeights([100, 50]) // [100,50]
 }
