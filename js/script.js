@@ -2266,4 +2266,120 @@ function createArray(n, m) {
     }
 
     rowWeights([100, 50]) // [100,50]
+
+    const arr = [1, 2, -3, 4, -5];
+    let s = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) s = s + arr[i];
+    }
+    console.log(s)
+
+    //immutable js
+    let a = [{name: 'D', a: {}}, {name: 'M'}]
+    let b = a.map(el => {
+        return {
+            ...el, a: {...el.a}
+        }
+    })
+    b[0].name = 'A'
+    console.log(a)
+
+    clear()
+
+    function order(words) {
+        let getNumber = 0
+        let arrStr = words.split(' ')
+        let result = words.split(' ')
+        for (let i = 0; i < arrStr.length; i++) {
+            for (let j = 0; j < arrStr[i].length; j++) {
+                if (arrStr[i][j] >= 0 || arrStr[i][j] <= 9) {
+                    result[arrStr[i][j] - 1] = arrStr[i]
+                }
+            }
+        }
+        return (result.join(' '))
+    }
+
+    order('is2 Thi1s T4est 3a')
+
+    clear()
+
+    function toCamelCase(str) {
+        let whatKindSplit = ''
+        if (str !== '') {
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === '_') {
+                    whatKindSplit = '_'
+                    break
+                } else if (str[i] === '-') {
+                    whatKindSplit = '-'
+                    break
+                }
+            }
+            if (whatKindSplit === '_') {
+                let result = str.split('_')
+                for (let i = 1; i < result.length; i++) {
+                    let addLetter = result[i][0].toUpperCase()
+                    let newWord = (result[i].split(''))
+                    newWord[0] = addLetter
+                    console.log(newWord)
+                    result[i] = newWord.join('')
+                }
+                console.log(result.join(''))
+            } else if (whatKindSplit === '-') {
+                let result = str.split('-')
+                for (let i = 1; i < result.length; i++) {
+                    let addLetter = result[i][0].toUpperCase()
+                    let newWord = (result[i].split(''))
+                    newWord[0] = addLetter
+                    console.log(newWord)
+                    result[i] = newWord.join('')
+                }
+                console.log(result.join(''))
+            }
+
+        } else console.log('пусто')
+
+    }
+
+    toCamelCase("the-stealth-warrior")
+    clear()
+
+    // Напишите функцию changeMaxAndMin, которая принимает массив arr в качестве аргумента и возвращает массив, в котором максимальный и минимальный элементы поменялись местами. Если в массиве несколько максимальных или несколько минимальных элементов, поменять местами первые из них. Во всех тестах массив содержит минимум два элемента.
+    function changeMaxAndMin(arr) {
+        let result = arr
+
+        let min = arr[0]
+        let max = arr[0]
+        let indexMin
+        let indexMax
+        for (let i = 0; i < arr.length; i++) {
+            if (min > arr[i]) {
+                min = arr[i]
+            }
+            if (max < arr[i]) {
+                max = arr[i]
+            }
+        }
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] === min) {
+                indexMin = i
+                break;
+            }
+        }
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] === max) {
+                indexMax = i
+                break;
+            }
+        }
+        result[indexMin] = max
+        result[indexMax] = min
+        console.log(min)
+        console.log(max)
+        console.log(result)
+    }
+
+    changeMaxAndMin([8, 20, 2, 5, 4, 0, 26])//[8,20,2,5,4,26,0]
 }
+// 2370
