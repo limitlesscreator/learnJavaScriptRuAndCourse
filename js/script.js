@@ -2381,5 +2381,115 @@ function createArray(n, m) {
     }
 
     changeMaxAndMin([8, 20, 2, 5, 4, 0, 26])//[8,20,2,5,4,26,0]
+    {
+        // Не разрешается использование метода Math.max().
+        function minInArray(arr) {
+            let result = arr[0]
+            for (let i = 0; i < arr.length; i++) {
+                if (result > arr[i]) {
+                    result = arr[i]
+                }
+            }
+            return result
+        }
+
+        // Напишите функцию words, которая принимает массив строк arr в качестве аргумента и возвращает самое короткое и самое длинное слово в виде массива [shortestWord, longestWord]. Гарантируется, что во всех тестах массив содержит хотя бы одно слово. Если слова одинаковой длины, то возвращается первое из них в списке.
+        // Используйте в решении циклы. Не разрешается использование методов Math.min() и Math.max()..
+        clear()
+
+        function words(arr) {
+            let result
+            if (arr.length < 2) {
+                result = [arr[0], arr[0]]
+            } else if (arr.length >= 2) {
+                result = [arr[0], arr[0]]
+                for (let i = 0; i < arr.length; i++) {
+                    // bellow is min number
+                    if (result[0].length > arr[i].length) {
+                        result[0] = arr[i]
+                    }
+                    // bellow is max number
+                    if (result[1].length < arr[i].length) {
+                        result[1] = arr[i]
+                    }
+                }
+            }
+
+            console.log(result)
+        }
+
+        words(["squirrel", "badger", "kangaroo", "leopard"])//[ 'badger', 'squirrel']
+        // Напишите функцию maxAbsValue, которая принимает массив arr в качестве аргумента и возвращает элемент, который имеет максимальную абсолютную величину (модуль). При равных значениях возвращается первое в списке.
+
+        function maxAbsValue(arr) {
+            let result = arr[0]
+            for (let i = 0; i < arr.length; i++) {
+                if (Math.abs(result) < Math.abs(arr[i])) {
+                    result = arr[i]
+                }
+            }
+            return result
+        }
+
+        // Напишите функцию maxEven, которая принимает массив arr в качестве аргумента и возвращает максимальный четный элемент массива. Если массив не содержит четных элементов или массив пустой, вернуть undefined.
+        // Используйте в решении цикл. Не разрешается использование метода Math.max().
+        function maxEven(arr) {
+            let result = -999999
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0 && result < arr[i]) {
+                    result = arr[i]
+                }
+            }
+            if (result % 2 === 0) {
+                console.log(result)
+            } else console.log('undefined))')
+        }
+
+        maxEven([29, 8, 8, 28, 27, 14, 6, 1, 25, 15]) //28
+    }
+    clear()
+
+    // Массив хранит информацию о машинах в автосалоне и их ценах. Данные о каждой машине представлены в виде массива [made, price] (например, ["Mazda", 17000]). Получить название самой дорогой машины. Если в массиве окажется несколько машин с одинаковой ценой, вернуть первую из них.
+    function mostExpensiveCar(arr) {
+        let firstPrice = arr[0][1]
+        let resultCar = arr[0][0]
+        console.log(resultCar)
+        for (let i = 0; i < arr.length; i++) {
+            if (firstPrice < arr[i][1]) {
+                firstPrice = arr[i][1]
+                resultCar = arr[i][0]
+            }
+        }
+        console.log(resultCar)
+    }
+
+    mostExpensiveCar([["Honda", 18500], ["Toyota", 21200], ["BMW", 19900]]) //Toyota
+    // mostExpensiveCar([["Honda", 18000], ["Toyota", 18000]]) //Honda
+    // Дети собирали грибы, затем пересчитали их и полученные данные занесли в массив. Массив хранит информацию о том, сколько грибов собрал каждый из ребят. Данные представлены в виде массива [name, number] (например, ["Alice", 19]). Определить, кто из ребят собрал грибов больше всех.
+    function largestNumberOfMushrooms(arr) {
+        let maxMushrooms = arr[0][1]
+        let namePerson = arr[0][0]
+        for (let i = 0; i < arr.length; i++) {
+            if (maxMushrooms < arr[i][1]) {
+                maxMushrooms = arr[i][1]
+                namePerson = arr[i][0]
+            }
+        }
+        return `${namePerson}: ${maxMushrooms}`
+    }
+
+    largestNumberOfMushrooms([["Maria", 15], ["Anna", 21], ["Ivan", 32]])// "Ivan: 32"
+
+    // Напишите функцию theColdestDay, которая принимает массив arr, содержащий данные о температуре в апреле, и возвращает информацию о самом холодном дне апреля в виде строки:
+    function theColdestDay(arr) {
+        let day = 0
+        let minimumDegrees = 100
+        for (let i = 0; i < arr.length; i++) {
+            if (minimumDegrees >= arr[i]) {
+                minimumDegrees = arr[i]
+                day = i + 1
+            }
+        }
+        return `April ${day} was the coldest day of the month: it was ${minimumDegrees} degrees.`
+    }
 }
-// 2370
