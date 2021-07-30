@@ -2492,4 +2492,109 @@ function createArray(n, m) {
         }
         return `April ${day} was the coldest day of the month: it was ${minimumDegrees} degrees.`
     }
+
+    {
+        clear()
+        // As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+        let gimme = function (inputArray) {
+            let mainResult
+            let result
+            let firstIndex = 0
+            let secondIndex = 0
+            let min = inputArray[0]
+            let max = inputArray[0]
+            for (let i = 0; i < inputArray.length; i++) {
+                if (min > inputArray[i]) {
+                    min = inputArray[i]
+                    firstIndex = i
+                }
+                if (max < inputArray[i]) {
+                    max = inputArray[i]
+                    secondIndex = i
+                }
+            }
+            result = inputArray.filter((n, index) => index !== firstIndex && index !== secondIndex)
+            for (let i = 0; i < inputArray.length; i++) {
+                if (result[0] === inputArray[i]) {
+                    mainResult = i
+                    break;
+                }
+            }
+            console.log(mainResult)
+        };
+        gimme([5, 10, 14]) //1
+        // Sum all the numbers of the array (in F# and Haskell you get a list) except the highest and the lowest element (the value, not the index!).
+        // (The highest/lowest element is respectively only one element at each edge, even if there are more than one with the same value!)
+        function sumArray(array) {
+            let sum = 0
+            // let min = Math.min(...array)
+            let min = array[0];
+            let max = array[0];
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] < min) {
+                    min = array[i];
+                }
+                if (array[i] > max) {
+                    max = array[i];
+                }
+            }
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] !== min && array[i] !== max) {
+                    sum += array[i]
+                }
+            }
+            console.log(sum)
+        }
+
+        sumArray([6, 2, 1, 8, 10])
+        // You must implement a function that return the difference between the biggest and the smallest value in a list(lst) received as parameter.
+        // If the list is empty or contains a single element, return 0.
+        function maxDiff(list) {
+            if (list.length > 1) {
+                let min = Math.min(...list)
+                let max = Math.max(...list)
+                return max - min
+            } else return 0
+        };
+    }
+    {
+        const arr = [];          // задан пустой массив
+        console.log(arr.length); // 0 – длина пустого массива
+        let m = arr.push(10);    // добавляем число 10 в конец массива
+        console.log(m);          // 1 (новая длина массива после того, как в него добавлен элемент 10)
+        console.log(arr);        // [10]
+        {
+            const arr = [1, 2, 3, 4, 5];
+            let sum = 0;         // начальное значение суммы
+            let prod = 1;        // начальное значение произведения
+            const res = [];      // пустой массив для результата
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];     // нахождение суммы элементов массива
+                prod *= arr[i];    // нахождение произведения элементов массива
+            }
+            res.push(sum, prod);  // добавление значений суммы и произведения в массив res
+            console.log(res);     // [15, 120]
+        }
+    }
+
+    // Напишите функцию addValue, которая принимает массив arr и величину value в качестве аргументов, добавляет величину value в конец массива и возвращает новую длину массива. В этой задаче нельзя использовать свойство length
+    function addValue(arr, value) {
+        let result = arr.push(value)
+        return result
+    }
+
+    // Напишите функцию separateNumsAndStrings, которая принимает смешанный массив arr в качестве аргумента, возвращает массив, содержащий массив чисел и массив строк в виде: [[array of numbers], [array of strings]]
+    function separateNumsAndStrings(arr) {
+        let result = [[], []]
+        for (let i = 0; i < arr.length; i++) {
+            if ({}.toString.call(arr[i]) === "[object String]") {
+                result[1].push(arr[i])
+            } else if ({}.toString.call(arr[i]) === "[object Number]") {
+                result[0].push(arr[i])
+            }
+        }
+        return result
+    }
+
+    separateNumsAndStrings([1, 2, "a", 3, "b"]) //[[1, 2, 3],["a", "b"]]
 }
