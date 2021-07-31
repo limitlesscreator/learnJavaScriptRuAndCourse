@@ -2597,4 +2597,106 @@ function createArray(n, m) {
     }
 
     separateNumsAndStrings([1, 2, "a", 3, "b"]) //[[1, 2, 3],["a", "b"]]
+
+}
+{
+    clear()
+
+    // Дан массив, содержащий имена. Получить массив, состоящий из первых букв имен, содержащихся в исходном массиве.
+    function arrayOfFirstLetters(names) {
+        let result = []
+        for (let i = 0; i < names.length; i++) {
+            result.push(names[i][0])
+        }
+        console.log(result)
+    }
+
+    arrayOfFirstLetters(["Alice", "Bob"]) // [A,B]
+
+    // Напишите функцию separatePosAndNeg, которая принимает числовой массив arr в качестве аргумента, возвращает массив, содержащий массив положительных чисел и массив отрицательных
+    function separatePosAndNeg(arr) {
+        let posArrNegativeArr = [[], []]
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                posArrNegativeArr[0].push(arr[i])
+            } else if (arr[i] < 0) {
+                posArrNegativeArr[1].push(arr[i])
+            }
+        }
+        return posArrNegativeArr
+    }
+
+    separatePosAndNeg([-2, 3, 7, -4]);
+
+    // Напишите функцию separateEvenAndOdd, которая принимает числовой массив arr в качестве аргумента, возвращает массив, содержащий массив четных чисел и массив нечетных чисел в виде: [[array of even numbers], [array of odd numbers]].
+    function separateEvenAndOdd(arr) {
+        let EvenArrOddArr = [[], []]
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                EvenArrOddArr[0].push(arr[i])
+            } else if (arr[i] % 2 !== 0) {
+                EvenArrOddArr[1].push(arr[i])
+            }
+        }
+        return EvenArrOddArr
+    }
+
+    separateEvenAndOdd([-2, -3, 7, 4])
+
+    // Напишите функцию splitString, которая принимает строку str в качестве аргумента, и возвращает массив, содержащий буквы этой строки. В решении используйте цикл по строке и метод push. В этой задаче запрещено использование метода split().
+    function splitString(str) {
+        let newArr = []
+        for (let i = 0; i < str.length; i++) {
+            newArr.push(str[i])
+        }
+        return newArr
+    }
+
+    splitString("Monkey") // ["M", "o", "n", "k", "e", "y"]
+    // Implement a function named generateRange(min, max, step), which takes three arguments and generates a range of integers from min to max, with the step.
+    // The first integer is the minimum value, the second is the maximum of the range and the third is the step. (min < max)
+    function generateRange(min, max, step) {
+        let resultArr = []
+        for (let i = min; i <= max; i += step) {
+            resultArr.push(i)
+        }
+        console.log(resultArr)
+    }
+
+    // Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n (inclusive).
+    function powersOfTwo(n) {
+        let result = []
+        for (let i = 0; i <= n; i++) {
+            let number = Math.pow(2, i)
+            result.push(number)
+        }
+        console.log(result)
+    }
+
+    powersOfTwo(4) //[1, 2, 4, 8, 16])
+    clear()
+
+    // Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+    function multiples(s1, s2, s3) {
+        let resultArr = []
+        let pushNum = 0
+        let number = 0
+        for (let i = 0; s3 > pushNum; i++) {
+            number = s1 * s2
+            pushNum = number + pushNum
+            resultArr.push(pushNum)
+        }
+        resultArr.pop()
+        console.log(resultArr)
+    }
+
+    multiples(2, 4, 40) //[ 4, 8, 12, 16, 20, 24, 28, 32, 36 ]
+    // almost work)))
+    function findMultiples(int, limit) {
+        let multiples = [];
+        for (let i = int; i <= limit; i += int) {
+            multiples.push(i);
+        }
+        return multiples;
+    }
 }
