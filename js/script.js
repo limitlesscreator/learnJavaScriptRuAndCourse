@@ -211,7 +211,101 @@ clear()
 
     deleteNotNumbers(['y', 'p', 's', 'd', 't']) //  5, -8, -4, 'z', 'e', 'j'
 }
+{
+    // Метод includes() проверяет, содержит ли массив определённый элемент.
+    // const arr = ['a', 'b', 'c', 'da', 'e', 1];
+    // console.log(arr.includes('a')); // true, from здесь по умолчанию равен 0
+    // console.log(arr.includes('a', 1)); // false, элемент "a" находится на 0-м индексе
+    // console.log(arr.includes('1')); // false
+// так как в массиве нет строки со значением "1", есть число с таким значением
+    // console.log(arr.includes('d')); // false, нельзя получить часть элемента массива
+    // console.log(arr.includes('c', -7)); // true
+// длина массива равна 6 => индекс для начала поиска будет равен 6 + (-7) = -1
+// поиск пойдет с 0-ого индекса массива
+//     console.log(arr.includes('c', -4)); // true
+// индекс для начала поиска будет равен 6 + (-4) = 2
+// поиск пойдет начиная со 2-ого индекса массива
+//     Create a method that accepts a list and an item, and returns true if the item belongs to the list, otherwise false.
+    function include(arr, item) {
+        return arr.includes(item)
+    }
 
+    function includeZero(arr) {
+        return arr.includes(0)
+    }
+
+    // Напишите функцию includeGreaterThanMin, которая принимает непустой массив arr в качестве аргумента, и возвращает true, если массив содержит элемент, который на единицу больше минимального элемента, и false - в противном случае.
+    function includeGreaterThanMin(arr) {
+        let min = Math.min(...arr)
+        return arr.includes(min + 1)
+    }
+
+    // Напишите функцию includesFirstLetter, которая принимает массив букв arr и слово word в качестве аргументов, и возвращает true, если массив содержит первую букву данного слова, и false - в противном случае.
+    function includesFirstLetter(arr, word) {
+        let firstLetter = word[0]
+        console.log(arr.includes(firstLetter))
+    }
+
+    includesFirstLetter(['a', 'b', 'c'], 'banana') //true
+    clear()
+
+    // Напишите функцию includesOtherMax, которая принимает два числовых массива arr1 и arr2 в качестве аргументов, и возвращает true, если массив arr1 содержит максимальный элемент массива arr2, и false - в противном случае.
+    function includesOtherMax(arr1, arr2) {
+        let max2 = Math.max(...arr2)
+        return arr1.includes(max2)
+    }
+
+    includesOtherMax([2, 7, 3, 6, 1, 4], [6, 2]) // true
+
+    // Метод массива indexOf() осуществляет поиск первого индекса искомого элемента в массиве (поиск идёт через строгое сравнение ===).
+    // Возвращает первый индекс найденного элемента или -1, если элемент не найден.
+    // const arr = [0, 'a', 'a', 2, 6];
+    // console.log(arr.indexOf('a', 0));  // 1, возвращен индекс первого найденного элемента "a"
+    // console.log(arr.indexOf(2, 2));   // 3, поиск начинается с элемента под индексом 2
+    // console.log(arr.indexOf('2', 1)); // -1, поиск идет через строгое равенство
+    // console.log(arr.indexOf('a'));   // 1
+
+    // Напишите функцию three, которая всегда возвращает число 3. Совсем просто? Да, если не учитывать условия, что в функции вы не должны использовать:
+    // цифры 0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
+    // знаки операций +, -, *, /, %
+    // свойство length
+    function three() {
+        let arr = ["a", "b", "c", "f", "g"]
+        return arr.indexOf("f")
+    }
+
+    clear()
+
+    // Напишите функцию indexOfMin, которая принимает непустой массив arr в качестве аргумента, и возвращает индекс минимального элемента массива. Если массив содержит несколько минимальных элементов, возвратить индекс первого такого элемента.
+    function indexOfMin(arr) {
+        let min = Math.min(...arr)
+        return arr.indexOf(min)
+    }
+
+    indexOfMin([10, 3, 4, 3, 5]) //1
+
+    // Напишите функцию indexMaxMin, которая принимает непустой массив arr в качестве аргумента, и возвращает строку "max",
+    // если индекс первого максимального элемента массива меньше индекса первого минимального элемента массива, и строку "min" - в противном случае.
+    // Если в массиве все элементы равны, то возвратить undefined. function indexMaxMin(arr){
+    function indexMaxMin(arr) {
+        let result = undefined
+        let min = Math.min(...arr)
+        let max = Math.max(...arr)
+        if (arr.indexOf(min) > arr.indexOf(max)) {
+            result = "max"
+        } else if (arr.indexOf(min) < arr.indexOf(max)) {
+            result = "min"
+        }
+        return result
+    }
+
+    indexMaxMin([2, 20, 20, 2]) //min
+
+    // Напишите функцию indexOfValue, которая принимает непустой массив arr и величину value в качестве аргументов, и возвращает индекс элемента массива со значением value, или undefined - если такой элемент отсутствует.
+    function indexOfValue(arr, value) {
+        return arr.indexOf(value) === -1 ? undefined : arr.indexOf(value)
+    }
+}
 
 
 
