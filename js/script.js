@@ -305,7 +305,80 @@ clear()
     function indexOfValue(arr, value) {
         return arr.indexOf(value) === -1 ? undefined : arr.indexOf(value)
     }
+
+    // Write a function that can return the smallest value of an array or the index of that value. The function's 2nd parameter will tell whether it should return the value or the index.
+    function min(arr, toReturn) {
+        let result
+        let min = Math.min(...arr)
+        if (toReturn === "value") {
+            result = min
+        } else if (toReturn === "index") {
+            result = arr.indexOf(min)
+        }
+        return result
+    }
+
+    min([1, 2, 3, 4, 5], 'value')// 1
+    min([1, 2, 3, 4, 5], 'index')// 0
+
+    function findNeedle(haystack) {
+        let foundIndex = haystack.indexOf("needle")
+        return `found the needle at position ${foundIndex}`
+    }
+
+    findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk']) //"found the needle at position 5"
+    // Provided is a function find which accepts two parameters in the following order: array, element and returns the index of the element if found and "Not found" otherwise.
+    // Your task is to shorten the code as much as possible in order to meet the strict character count requirements of the Kata. (no more than 85) You may assume that all array elements are
+    const find = (array, element) => {
+        let r = array.indexOf(element)
+        return r == -1 ? "Not found" : r
+    }
+
+    // You are given a list of unique integers arr, and two integers a and b. Your task is to find out whether or not a and b appear consecutively in arr, and return a boolean value (True if a and b are consecutive, False otherwise).
+    function consecutive(arr, a, b) {
+        let mainResult = false
+        let result1 = arr.indexOf(a)
+        let result2 = arr.indexOf(b)
+        if (result1 + 1 === result2 || result1 - 1 === result2) {
+            mainResult = true
+        }
+        return mainResult
+    }
+
+    {
+        const arr = ['cat', 'CAT', '1 ', 1, 'cat'];
+        console.log(arr.indexOf("cat", 0))
+        console.log(arr.indexOf(1, -3))
+        console.log(arr.indexOf("cat", 1))
+        console.log(arr.indexOf("1", 5))
+    }
+    {
+        const arr = [100, 1, 100, 3, 100, 100, 6];
+        let elem = 100;
+        const indices = [];
+        let i = arr.indexOf(elem);
+        while (i !== -1) {
+            indices.push(i);
+            i = arr.indexOf(elem, i + 1);
+        }
+        indices; // [0, 2, 4, 5]
+        clear()
+    }
+    {
+        const arr = ['b', 'a', 'b', 'a', 'b', 'c'];
+        console.log(arr.lastIndexOf('b', 6))
+        console.log(arr.lastIndexOf('b', -4))
+        console.log(arr.lastIndexOf('c', -2))
+    }
+
+    function lastIndexOfValue(arr, value) {
+        let result = arr.lastIndexOf(value)
+        return result === -1 ? "Not found" : result
+    }
 }
+
+
+
 
 
 
