@@ -375,6 +375,88 @@ clear()
         let result = arr.lastIndexOf(value)
         return result === -1 ? "Not found" : result
     }
+
+    // Напишите функцию uniqueElement, которая принимает непустой массив arr и величину value в качестве аргументов, и возвращает true, если элемент со значением value является уникальным
+    // (т.е. встречается в массиве только один раз), и false - в противном случае.
+    function uniqueElement(arr, value) {
+        let firstIndex = arr.indexOf(value)
+        let secondIndex = arr.lastIndexOf(value)
+        return firstIndex === secondIndex
+    }
+
+    clear()
+    // Return a new array that contains exactly the same elements as the input array, but with elements a and b swapped. // If the array has multiple copies of a, swap only the first one that appears in the array.
+    // If the array has multiple copies of b, swap only the last one that appears in the array.
+    function swapTwo(array, a, b) {
+        let firstIndex = array.indexOf(a)
+        let secondIndex = array.lastIndexOf(b)
+        array[firstIndex] = b
+        array[secondIndex] = a
+        return [...array]
+    }
+
+    // const newArray = array.filter(func(element[, index[, array]])[, thisArg])
+
+    const array = ['a', 'b', 'c', 'd', 'e'];
+    const oddIndex = array.filter((el, i) => i % 2); // где el - сокращенное от element, i - от index
+    console.log(oddIndex); // ["b", "d"]
+    // JavaScript Arrays support a filter function (starting in JavaScript 1.6). Use the filter functionality to complete the function given.
+    function getEvenNumbers(numbersArray) {
+        let newArr = numbersArray.filter(e => e % 2 === 0)
+        return newArr
+    }
+
+    clear()
+
+
+    // create a function called one that accepts two params: a sequence a function
+// and returns true only if the function in the params returns true for exactly one (1) item in the sequence.
+    function one(arr, fun) {
+        let result = arr.filter(e => fun(e))
+        return result.length === 1
+    }
+
+    one([1, 2, 3, 4, 5], function (item) {
+        return item < 2
+    })// true
+    one([1, 2, 3, 4, 5], function (item) {
+        return item % 2
+    })// false
+    one([1, 2, 3, 4, 5], function (item) {
+        return item > 5
+    })// false
+
+    // Make a program that filters a list of strings and returns a list with only your friends name in it.
+    // If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+    function friend(friends) {
+        let friendList = friends.filter(f => f.length === 4)
+        return friendList
+    }
+
+    const divisibleBy = (numbers, divisor) => numbers.filter(e => e % divisor === 0)
+
+    function removeEveryOther(arr) {
+        return arr.filter((e, i) => i % 2 === 0)
+    }
+
+    clear()
+    // Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+    // It should remove all values from list a, which are present in list b keeping their order.arrayDiff([1,2],[1]) == [2]
+    // If a value is present in b, all of its occurrences must be removed from the other:
+    function arrayDiff(a, b) {
+        let newResult = []
+        if (b.length < a.length && a.length !== 0 || b.length !== 0) {
+            newResult = a.filter((e) => !b.includes(e))
+        } else if (a.length < b.length && b.length !== 0) {
+            newResult = b.filter(e => !a.includes(e))
+        }
+
+        console.log(newResult)
+    }
+
+    arrayDiff([], [4, 5])// []
+    arrayDiff([1, 8, 2], [])// [1,8,2]
+    arrayDiff([1, 2, 3], [1, 2])// [3]
 }
 
 
