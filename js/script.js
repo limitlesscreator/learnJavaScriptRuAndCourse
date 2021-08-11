@@ -87,49 +87,105 @@ let filterLucky = x => {
     console.log(newResult)
 }
 filterLucky([1, 2, 3, 4, 5, 6, 7, 68, 69, 70, 15, 17])// [7,70,17]
+clear()
 
 // Write a function that combines two arrays by alternatingly taking elements from each array in turn.
 function mergeArrays(a, b) {
     let result = []
-    if (a.length >= b.length){
-        for (let i = 0; i < a.length; i++){
+    if (a.length >= b.length) {
+        for (let i = 0; i < a.length; i++) {
 
+            if (a[i] === undefined) {
+            } else {
+                result.push(a[i])
+            }
+
+            if (b[i] === undefined) {
+            } else {
                 result.push(b[i])
 
+            }
+
+        }
+    } else {
+        for (let i = 0; i <= b.length; i++) {
+
+            if (a[i] === undefined) {
+            } else {
                 result.push(a[i])
+            }
+
+            if (b[i] === undefined) {
+            } else {
+                result.push(b[i])
+
+            }
+
         }
     }
     console.log(result)
 }
 
-mergeArrays([1, 2, 3, 4, 5, 6, 7, 8], ['a', 'b', 'c', 'd', 'e'])//, [1, "a", 2, "b", 3, "c", 4, "d", 5, "e", 6, 7, 8]
-// dont work yet, but i'll be fix it))
-// a little have headache
+// mergeArrays([1, 2, 3, 4, 5, 6, 7, 8], ['a', 'b', 'c', 'd', 'e'])//, [1, "a", 2, "b", 3, "c", 4, "d", 5, "e", 6, 7, 8]
+mergeArrays([66, 88, 75], ['w', 'd', 't', 'j', 'b'])//, [66, \'w\', 88, \'d\', 75, \'t\', \'j\', \'b\']
 
-// abstract -------------------------------------------------------------------
-// React – это библиотека которая за счёт своего Virtual DOM отрисовывает эффективно UI
-//
-// Dom -
-// Virtual DOM: – Объектное представление HTML документа, мы обращаемся к элементам как к обычным объектам.
-//
-//     Чистая функция – та которая  если принимает одни и те же параметры , то  возвращает один и тот же результат, так же если она не содержит side(изменяет состояние системы  в ходе работы) эффектов. Она имъютабельная
-//
-//
-// Redux:
-//     Action – это объект который имеет обязательное поле type.
-//     Reducer – это функция она нам нужна чтобы хорошо управлять изменениями стэйта она принимает старый стейт и объект action в котором будет написана инструкция по которой мы должны изменить стейт и после возвращает изменённый стейт
-//
-// Prototype – в JS всё является объектами так как всё наследуется начиная с глобального объекта Object,
-// например создавая массив, мы увидим в прото , прототипы класса Array, класс Array будет содержать __proto__ от класса Object  ,
-// например если мы используем тип данных String, то мы можем вызывать методы у строки например Indexof,trim.
-// JS является прототипным языком , всё построено на прототипах определённых объектов. Свойство __proto__ является ссылкой на прототип родителя . В JS присутствует глобальный объект Object . У любого объекта есть prototype
-//
-//
-// UseCallBack – понадобится нам для мемоизации функции, если мы передаём какой-либо каллбэк в дочернюю компоненту ,то при перерисовки родительского компонента будет перерысовываться дочерняя,
-// так как она сравнивает сылки прошлой функции и новой и если они разные, она делает перерисовку.
-//     UseMemo – понадобится для мемоизации результата функции , если у нас есть тяжелая функция,
-//     то мы можем использовать UseMemo , чтобы замемоизировать её значение и тогда при перерисовке компоненты она не будет выполняться если зависимости не поменялись.
-// abstract -------------------------------------------------------------------
+// Write a function called "filterEvenLengthWords".
+//     Given an array of strings, "filterEvenLengthWords" returns an array containing only the elements of the given array whose length is an even number.
+function filterEvenLengthWords(words) {
+    return words.filter(el => el.length % 2 === 0)
+}
 
+{
+    // const arr = [-3, 8, 67, 32, 5, 101];
+    // let num = arr.find((el, i) => el > 30 && el % 2 && i > 1);
+    // console.log(num)
+    const arr = [1, 2, -3, 6, -5, 0];
+    let num = arr.find(el => el > 30);
+    console.log(num); // undefined; нет элемента
+}
+
+// In this Kata, you will be given an array of integers whose elements have both a negative and a positive value, except for one integer that is either only negative or only positive. Your task will be to find that integer.
+//     Examples: [1, -1, 2, -2, 3] => 3
+clear()
+
+function solve(arr) {
+    let mainResult
+    let resultMinus
+    let resultPlus
+    let find
+    for (let i = 0; i < arr.length; i++) {
+        find = arr[i]
+        resultMinus = arr.find((n, index) => n === -find)
+        resultPlus = arr.find((n, index) => n === find)
+        if (resultMinus === undefined) {
+            mainResult = resultPlus;
+            break
+        } else if (resultPlus === undefined) {
+            mainResult = resultMinus;
+            break
+        }
+        console.log(resultMinus, resultPlus)
+        console.log(`-------------------------`)
+    }
+    console.log(mainResult)
+
+};
+
+solve([-110, 110, -38, -38, -62, 62, -38, -38, -38])// -38
+
+// Дан массив чисел arr. Необходимо вернуть новый массив, в котором будут содержаться только повторяющиеся в исходном массиве элементы (дубликаты).
+const findDublicates = (arr) => {
+    const duplicates = arr.filter(el => arr.indexOf(el) !== arr.lastIndexOf(el));
+    console.log(duplicates); // [-1, 2, 0, 2, 7, 7, 7, -1, 0]
+}
+findDublicates([-1, 2, 0, 2, 7, 7, 7, -1, 0, 8, 3, 4])
+
+// Дан массив чисел arr. Вернуть новый массив, в котором будут содержаться только уникальные значения элементов (у этих элементов нет дубликатов в массиве).
+
+{
+    const arr = [-1, 2, 0, 2, 7, 7, 7, -1, 0, 8, 3, 4];
+    const nonDuplicates = arr.filter(el => arr.indexOf(el) === arr.lastIndexOf(el));
+    console.log(nonDuplicates);
+}
 
 
