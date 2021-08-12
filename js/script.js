@@ -188,4 +188,65 @@ findDublicates([-1, 2, 0, 2, 7, 7, 7, -1, 0, 8, 3, 4])
     console.log(nonDuplicates);
 }
 
+// You have to write a function which returns unique numbers array. You don't need to validate input arg arr. Retain the original order of the input.
+function uniqueNumbers(numbersArray) {
+    console.log(numbersArray.filter((el, i) => i === numbersArray.indexOf(el)))
+}
 
+uniqueNumbers([1, 1, 2, 2, 3, 3, 3, 10, 10])
+clear()
+
+// Create a function called noRepeat() that takes a string argument and returns a single letter string of the first not repeated character in the entire string.
+function noRepeat(str) {
+    let newStr = str.split("")
+    return newStr.filter(el => newStr.indexOf(el) === newStr.lastIndexOf(el))[0]
+}
+
+noRepeat("wxyz")//"w"
+function fixTheMeerkat(arr) {
+    return arr.reverse()
+}
+
+
+// 6kyu
+// Write a function that will take in any array and reverse it.
+//     Sounds simple doesn't it? NOTES:
+//     Array should be reversed in place! (no need to return it)
+// Usual builtins have been deactivated. Don't count on them.
+// You'll have to do it fast enough, so think about performances
+
+function reverse(arr) {
+    for (let i = 0; i < arr.length / 2; i++) {
+        let newLetter = arr[i]
+        arr[i] = arr[arr.length - 1 - i]
+        arr[arr.length - 1 - i] = newLetter
+    }
+    return arr
+}
+
+{
+    const arr = [1, 2];
+    const arr2 = [3, 4];
+    const res = arr.concat(arr2); // res = [1, 2, 3, 4],
+// arr объединяем с arr2 и получаем новый массив res
+
+    const res2 = arr.concat('a', 'b'); // res2 = [1, 2, "a", "b"],
+// arr объединяем со списком значений и получаем новый массив res2
+
+    const res3 = arr.concat('cat', ['f'], arr2); // res3 = [1, 2, "cat", "f", 3, 4],
+// можно одновременно объединять и массив, и значения,
+}
+
+// AddExtra method adds a new item to the list and returns the list. The new item can be any object, and it does not matter. (lets say you add an integer value, like 13)
+function addExtra(listOfNumbers) {
+    let newItem = listOfNumbers.concat(5)
+    return newItem
+}
+
+// sort
+{
+    const arr = ['nose', 'pen', 'apple', 'eye', 'zip'];
+    arr.sort(); // не нужно передавать функцию в качестве аргумента метода,
+// метод сортирует элементы, как строки
+    console.log(arr); // ["apple", "eye", "nose", "pen", "zip"]
+}
