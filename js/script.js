@@ -171,7 +171,7 @@ function solve(arr) {
 
 };
 
-solve([-110, 110, -38, -38, -62, 62, -38, -38, -38])// -38
+// solve([-110, 110, -38, -38, -62, 62, -38, -38, -38])// -38
 
 // Дан массив чисел arr. Необходимо вернуть новый массив, в котором будут содержаться только повторяющиеся в исходном массиве элементы (дубликаты).
 const findDublicates = (arr) => {
@@ -250,3 +250,104 @@ function addExtra(listOfNumbers) {
 // метод сортирует элементы, как строки
     console.log(arr); // ["apple", "eye", "nose", "pen", "zip"]
 }
+clear()
+{
+    console.log('hi')
+    const arr = [1, 10, 6, 160, 2, 5];
+    // arr.sort(); //[1, 10, 160, 2, 5, 6]
+    // arr.sort((a,b) => a - b) [1, 2, 5, 6, 10, 160]
+    arr.sort((a, b) => b - a) //[160, 10, 6, 5, 2, 1]
+    console.log(arr);
+}
+
+// The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
+const twoOldestAges = ages => {
+    let newAges = ages.sort((a, b) => a - b)
+    return [newAges[newAges.length - 2], newAges[newAges.length - 1]]
+}
+
+twoOldestAges([1, 5, 87, 45, 8, 8])// [45,87]
+
+console.log({}.toString.call([]))
+
+// Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
+function solution(nums) {
+    if ({}.toString.call(nums) !== "[object Array]") {
+        return []
+    } else {
+        let arr = nums.sort((a, b) => a - b)
+        return arr
+    }
+}
+
+solution([1, 2, 10, 50, 5]); //[1,2,5,10,50]
+clear()
+
+function longest(s1, s2) {
+    let newStr = (s1 + s2).split("")
+    let betterArr = newStr.filter((el, i) => i === newStr.indexOf(el))
+    console.log(betterArr.sort().join(""))
+}
+
+longest("aretheyhere", "yestheyarehere") //"aehrsty"
+
+function bigToSmall(arr) {
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        result = result.concat(arr[i])
+    }
+    result = result.sort((a, b) => a - b)
+    console.log(result.reverse().join(">"))
+}
+
+bigToSmall([[1, 2], [3, 4], [5, 6]]) //"6>5>4>3>2>1"
+
+// Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
+function sortByLength(array) {
+    return array.sort((a, b) => a.length - b.length)
+};
+
+// In this Kata, you will be given an array of unique elements, and your task is to rearrange the values so that the first max value is followed by the first minimum, followed by second max value then second min value, etc.
+function solve(arr) {
+    let newArr = [...arr].sort((a, b) => a - b)
+    let result = []
+    for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0) {
+            result.push(Math.max(...newArr))
+            newArr.pop()
+        } else if (i % 2 !== 0) {
+            result.push(Math.min(...newArr))
+            newArr.shift()
+        }
+    }
+    console.log(result)
+};
+
+solve([15, 11, 10, 7, 12])//[15,7,12,10,11]
+clear()
+
+// Christmas is coming, and Santa has a long list to go through, to find who deserves presents for the big day. Go through a list of children, and return a list containing every child who appeared on Santa's list. Do not add any child more than once. Output should be sorted.
+// Comparison should be case sensitive and the returned list should contain only one copy of each name: "Sam" and "sam" are different, but "sAm" and "sAm" are not.
+function findChildren(santasList, children) {
+    let result = []
+
+    if (santasList.length >= children.length) {
+        console.log("santa")
+        for (let i = 0; i < santasList.length; i++) {
+            if (santasList.includes(children[i])) {
+                result.push(children[i])
+            }
+        }
+    } else {
+        console.log("children")
+        for (let i = 0; i < children.length; i++) {
+            if (santasList.includes(children[i])) {
+                result.push(children[i])
+            }
+        }
+    }
+    result = result.sort()
+    console.log(result)
+}
+
+findChildren(["Jason", "Jackson", "Jordan", "Johnny"], ["Jason", "Jordan", "Jennifer"])// ["Jason", "Jordan"]

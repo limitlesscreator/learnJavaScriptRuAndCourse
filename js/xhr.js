@@ -1,22 +1,25 @@
 const requestURL = "https://jsonplaceholder.typicode.com/users"
 
-const xhr = new XMLHttpRequest()
+function sendRequest(){
+    return new Promise()
+    const xhr = new XMLHttpRequest()
 
-xhr.open("GET", requestURL)
+    xhr.open("GET", requestURL)
 
-xhr.responseType = "json"
+    xhr.responseType = "json"
 
-xhr.onload = () => {
-    if (xhr.status >= 400){
-        console.error(xhr.response)
+    xhr.onload = () => {
+        if (xhr.status >= 400){
+            console.error(xhr.response)
+        }
+        else {
+            console.log(xhr.response)
+        }
     }
-    else {
+
+    xhr.onerror = () => {
         console.log(xhr.response)
     }
-}
 
-xhr.onerror = () => {
-    console.log(xhr.response)
+    xhr.send()
 }
-
-xhr.send()
