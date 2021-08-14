@@ -1,3 +1,4 @@
+
 const requestURL = "https://jsonplaceholder.typicode.com/users"
 
 function sendRequest(){

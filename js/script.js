@@ -351,3 +351,40 @@ function findChildren(santasList, children) {
 }
 
 findChildren(["Jason", "Jackson", "Jordan", "Johnny"], ["Jason", "Jordan", "Jennifer"])// ["Jason", "Jordan"]
+// ||
+// function findChildren(santasList, children) {
+//     let ans = [];
+//     for (let i=0; i<santasList.length; ++i)
+//         for (let j=0; j<children.length; ++j)
+//             if (ans.indexOf(children[j])==-1 && santasList[i]==children[j])
+//                 ans.push(children[j]);
+//     return ans.sort();
+// }
+
+// Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
+clear()
+
+function minSum(arr) {
+    let total = 0
+    let result = []
+    let newArr = [...arr].sort((a, b) => a - b)
+    console.log(newArr)
+    for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0) {
+            result.push(Math.max(...newArr))
+            newArr.pop()
+        } else if (i % 2 !== 0) {
+            result.push(Math.min(...newArr))
+            newArr.shift()
+        }
+        if (result.length === 2) {
+            total += result[0] * result[1]
+            result = []
+        }
+    }
+    console.log(total)
+}
+
+minSum([12, 6, 10, 26, 3, 24]) //342
+
+// 455
