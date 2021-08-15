@@ -362,7 +362,6 @@ findChildren(["Jason", "Jackson", "Jordan", "Johnny"], ["Jason", "Jordan", "Jenn
 // }
 
 // Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
-clear()
 
 function minSum(arr) {
     let total = 0
@@ -387,4 +386,72 @@ function minSum(arr) {
 
 minSum([12, 6, 10, 26, 3, 24]) //342
 
-// 455
+clear()
+
+// Правильная последовательность скобок
+
+function isValid(s) {
+    let arr = s.split("")
+    let result
+    let stack = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === "(" || arr[i] === "[" || arr[i] === "{") {
+            stack.push(arr[i])
+            arr.shift()
+        }
+    }
+    for (let j = 0; j < stack.length; j++) {
+        if (stack[j] === "(" && arr[arr.length - j - 1] === ")") {
+            stack.pop()
+            arr.pop()
+        } else if (stack[j] === "[" && arr[arr.length - j - 1] === "]") {
+            stack.pop()
+            arr.pop()
+        } else if (stack[j] === "{" && arr[arr.length - j - 1] === "}") {
+            stack.pop()
+            arr.pop()
+        } else break;
+    }
+    if (stack.length === 0 && arr.length === 0) {
+        result = true
+    } else {
+        result = false
+    }
+    console.log(result)
+}
+
+// bellow not working)
+isValid("(())")
+
+clear()
+
+function isValidBetter(s) {
+    let stack = []
+    let brackets = {
+        ")": "(",
+        "]": "[",
+        "}": "{",
+    }
+    for (let i = 0; i < s.length; i++) {
+        const current = s[i]
+
+        if (isClosedBracket(current)) {
+            if (brackets[current] !== stack.pop()) return false;
+        } else {
+            stack.push(current)
+        }
+    }
+
+    function isClosedBracket(ch) {
+        return [")", "}", "]"].indexOf(ch) > -1
+    }
+
+    return (stack.length === 0)
+}
+
+console.log("()", isValidBetter("())"))
+console.log("()[]{}", isValidBetter("()[]{}"))
+console.log("(]", isValidBetter("(]"))
+console.log("(]", isValidBetter("(]"))
+console.log("{[]}", isValidBetter("{[]}"))
+console.log("{[[]{}]}()()", isValidBetter("{[[]{}]}()()"))
