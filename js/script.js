@@ -2,66 +2,6 @@ function clear() {
     console.clear()
 }
 
-// window.addEventListener("DOMContentLoaded",() => {
-//     function req(){
-//         const request = new XMLHttpRequest()
-//         request.open("GET", "https://jsonplaceholder.typicode.com/")
-//         request.setRequestHeader("Content-type", "application/json; charset=utf-8");
-//         request.send();
-//         request.addEventListener("readystatechange", function (){
-//             if (request.readyState === 4 && request.status === 200){
-//                 let data = JSON.parse(request.response)
-//                 console.log(data)
-//             }
-//             else {
-//                 console.error("Something is going wrong  ")
-//             }
-//         })
-//     }
-//     req()
-// })
-// console.log("Request data...")
-// const p = new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//         console.log(("Preparing data..."))
-//         const backendData = {
-//             server: "aws",
-//             port: 2000,
-//             status: "working"
-//         }
-//         resolve(backendData)
-//     }, 2000)
-// })
-
-// p.then(data => {
-//     const p2 = new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             data.modified = true
-//             resolve(data)
-//             // consol.log("Data received", back)
-//         })
-//     })
-//
-//     p2.then(clientData => {
-//         console.log("Data received", clientData)
-//     })
-// {
-//     const arr = [1, -2, 3, -4, 5, -7, 0];
-//
-//     function negative(num) {
-//         return num <= 0;
-//     }
-//
-//     const arr2 = arr.filter(el => el <= 0);
-//     const arr3 = arr.filter(negative);
-//     const arr4 = arr.filter(function (el) {
-//         return el <= 0;
-//     });
-//     // For every good kata idea there seem to be quite a few bad ones!
-//     // In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'.
-//     // If there are no good ideas, as is often the case, return 'Fail!'.
-// }
-
 function well(x) {
     let newResult = x.filter(e => e === 'good')
     if (newResult.length === 0) {
@@ -455,3 +395,52 @@ console.log("(]", isValidBetter("(]"))
 console.log("(]", isValidBetter("(]"))
 console.log("{[]}", isValidBetter("{[]}"))
 console.log("{[[]{}]}()()", isValidBetter("{[[]{}]}()()"))
+
+
+// Your task is to sum the differences between consecutive pairs in the array in descending order.
+function sumOfDifferences(arr) {
+    let newArr = arr.sort((a, b) => b - a)
+    let sum = 0
+    for (let i = 0; i < newArr.length; i++) {
+        if (!!newArr[i] && !!newArr[i + 1] || arr[i] === 0 && !!newArr[i + 1] || arr[i + 1] === 0) {
+            sum += newArr[i] - newArr[i + 1]
+        } else break
+    }
+    console.log(sum)
+}
+
+sumOfDifferences([1, 0, -1, -3, 1])// 4
+clear()
+
+// For this Kata you will be given an array of numbers and another number n. You have to find the sum of the n largest numbers of the array and the product of the n smallest numbers of the array, and compare the two.
+//     If the sum of the n largest numbers is higher, return "sum". If the product of the n smallest numbers is higher, return "product". If the 2 values are equal, return "same"
+function sumOrProduct(array, n) {
+    let newArr = array.sort((a, b) => b - a)
+    let sum = 0
+    let multiply = 1
+    for (let i = 0; i < n; i++) {
+        sum += newArr[i]
+    }
+    newArr.reverse()
+    for (let j = 0; j < n; j++) {
+        multiply *= newArr[j]
+    }
+    return sum === multiply ? "same" : sum > multiply ? "sum" : "product"
+}
+
+sumOrProduct([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 4) //sum
+
+// The list will always consist of integers in range -1000..1000 and will vary in size between 0 and 10000. !!Your function should not mutate the input array, and this will be tested (where applicable).
+// Notice that the returned list will always be of odd size, since there will always be a definitive middle element.
+function mirror(data) {
+    let newData = [...data]
+    let result = []
+    let sort = newData.sort((a, b) => a - b)
+    result.push(...sort);
+    sort.reverse();
+    sort.shift();
+    result.push(...sort)
+    return (result)
+}
+
+mirror([-8, 42, 18, 0, -16]) //[-16, -8, 0, 18, 42, 18, 0, -8, -16]
