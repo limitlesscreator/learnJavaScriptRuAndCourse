@@ -444,3 +444,56 @@ function mirror(data) {
 }
 
 mirror([-8, 42, 18, 0, -16]) //[-16, -8, 0, 18, 42, 18, 0, -8, -16]
+
+// In a certain kingdom, strange mathematics is taught at school. Its main difference from ordinary mathematics is that the numbers in it are not ordered in ascending order, but lexicographically,
+// as in a dictionary (first by the first digit, then, if the first digit is equal, by the second, and so on). In addition, we do not consider an infinite set of natural numbers, but only the first n numbers.
+function strangeMath(n, k) {
+    const arr = [0];
+    for (let i = 1; i <= n; i++) {
+        arr.push(i)
+    }
+    return arr.sort().indexOf(k)
+}
+
+// join
+{
+    const arr = ['c', 'o', 'd', 'e'];
+    console.log(arr.join()); // "c,o,d,e"
+    console.log(arr.join('')); // "code"
+    console.log(arr.join(' : ')); // "c : o : d : e"
+    console.log(arr.join(11)); // "c11o11d11e"
+    const arr2 = [undefined, 'c', 'o', 'd', 'e', null];
+    console.log(arr2.join('?')); // "?c?o?d?e?", значения undefined и null стали пустыми
+    {
+        const arr = ['bag', 'map', 'cod', 'log', 'fa'];
+        let res = arr.join('_');
+        console.log(res); // "bag_map_fa"}
+    }
+
+    // Write a function that takes an array of words and smashes them together into a sentence and returns the sentence. You can ignore any need to sanitize words or add punctuation, but you should add spaces between each word.
+    function smash(words) {
+        return words.join(" ")
+    };
+
+    // Oh no! Timmy hasn't followed instructions very carefully and forgot how to use the new String Template feature, Help Timmy with his string template so it works as he expects!
+    function buildString(...template) {
+        return `I like ${template.join(', ')}!`;
+    }
+
+    // Create a function that returns the CSV representation of a two-dimensional numeric array.
+    function toCsvText(array) {
+        return array.join('\n')
+    }
+
+    // In your class, you have started lessons about arithmetic progression. Since you are also a programmer, you have decided to write a function that will return the first n elements of the sequence with the given common difference d and first element a.
+    // Note that the difference may be zero!
+    function arithmeticSequenceElements(a, r, n) {
+        let arr = []
+        let newValue = 0
+        for (let i = a; newValue < n; i += r) {
+            newValue++
+            arr.push(i)
+        }
+        return arr.join(", ")
+    }
+}
