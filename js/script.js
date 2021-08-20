@@ -496,4 +496,54 @@ function strangeMath(n, k) {
         }
         return arr.join(", ")
     }
+
+    clear()
+    // Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+    // Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+    const binaryArrayToNumber = arr => {
+        arr = arr.map(el => "" + el)
+        console.log(parseInt(arr.join(""), 2))
+    };
+    binaryArrayToNumber([1, 1, 1, 1]) //15
+
+    // Метод every() осуществляет проверку, удовлетворяют ли все элементы массива условию, указанному в передаваемой функции.
+    // Возвращает true, если все элементы отвечают условию, переданному в функцию, и false, если хотя бы один – нет.
+
+    // Create a method all which takes to params: a sequence a function (function pointer in C)
+    // and returns true if the function in the params returns true for every element in the sequence. Otherwise, it should return false. If the sequence is empty, it should return true, since technically nothing failed the test.
+    function all(arr, fun) {
+        return arr.every(fun)
+    }
+
+    all([1, 2, 3, 4, 5], function (v) {
+        return v < 9
+    })// true
+    // You are going to be given a word. Your job will be to make sure that each character in that word has the exact same number of occurrences. You will return true if it is valid, or false if it is not.
+    function validateWord(s) {
+        let newS = s.split('')
+        console.log(newS)
+        newS.every(el => newS.indexOf(el) !== newS.indexOf(el))
+    }
+
+    validateWord("abc!abc!") //true, do not working))
+
+    clear()
+
+    function inAscOrder(arr) {
+        console.log(arr.every((el, index) => el < arr[index + 1] || typeof arr[index + 1] === 'undefined'))
+    }
+
+    inAscOrder([1, 2, 4, 7, 19]) // true
+    // You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+    function smallEnough(a, limit) {
+        return a.every(el => el <= limit)
+    }
+
+    function solve(arr) {
+        let result = arr.filter((el, index) => el > arr[index + 1] || arr[index + 1] === undefined)
+        result = result.filter((el, index) => result.indexOf(el) === index)
+        // let result = arr.filter((el,index) => arr.every(elE => elE > arr[index]))
+        console.log(result)
+    };
+    solve([16, 17, 14, 3, 14, 5, 2])//[ 17,14,5,2])
 }
