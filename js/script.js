@@ -546,4 +546,56 @@ function strangeMath(n, k) {
         console.log(result)
     };
     solve([16, 17, 14, 3, 14, 5, 2])//[ 17,14,5,2])
+    // Метод some() проверяет, удовлетворяет ли какой-либо элемент массива условию, указанному в передаваемой функции.
+    {
+        const arr = [-10, -2, 0, 1, 9, 5];
+        console.log(arr.some(el => el < 0)); // true
+    }
+    {
+        const arr = [-10, -2, 2, 34, 90, 52];
+        console.log(arr.some(el => el % 2)); // false
+    }
+    {
+        const arr = [-12.59, 13.14, 19.32, -12.1, 13.9];
+        console.log(arr.some(el => Math.pow(el, 2) >= 128))//true
+    }
+
+    // Create an any? (JS: any) function that accepts an array and a block (JS: function), and returns true if the block (/function) returns true for any item in the array. If the array is empty, the function should return false.
+    function any(arr, fun) {
+        return arr.some(fun)
+    }
+
+    any([1, 2, 3, 4], function (v, i) {
+        return v > 3
+    })//true
+    any([1, 2, 3, 4], function (v, i) {
+        return v > 4
+    })//false
+    function anyArrows(arrows) {
+        return arrows.some(a => !a.damaged);
+    }
+
+    anyArrows([{range: 5}, {range: 10, damaged: true}, {damaged: true}]) //true
+    anyArrows([{range: 10, damaged: true}, {damaged: true}])// false
+
+    // Метод forEach() выполняет переданную в него функцию один раз для каждого элемента в массиве. Работает, как цикл.
+    {
+        const arr = ['One', 'Two', 'Three', '!'];
+        arr.forEach(el => console.log(el))
+    }
+    {
+        // вывести в консоль значение каждого элемента (el) массива в виде: "Element №i is el", где i - индекс элемента + 1, el - значение элемента массива arr.
+        const arr = ['Good', 'luck', '!!!'];
+        arr.forEach((el, i) => console.log(`Element №${i + 1} is ${el}`));
+    }
+
+    function points(games) {
+        let score = 0
+        // games.forEach(el => console.log(`first el = ${el[0]}, second el = ${el[el.length - 1]}`))
+        games.forEach(el => el[0] > el[el.length - 1] ? score += 3 : el[0] < el[el.length - 1] ? score += 0 : score += 1)
+        console.log(score)
+    }
+
+    points(["1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"]) //30
 }
+
