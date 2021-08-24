@@ -597,5 +597,77 @@ function strangeMath(n, k) {
     }
 
     points(["1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"]) //30
+    clear()
+
+    // Метод reduce() применяет переданную в него функцию один раз для каждого элемента в порядке возрастания и возвращает одно результирующее значение.
+
+    // Дан массив чисел arr. Вернуть сумму всех элементов массива, увеличенную на 100.
+    {
+        const arr = [5, 20, 30, 55];
+        let result = arr.reduce((acc, curr) => acc + curr, 100); //
+        console.log(result); // 210
+    }
+    // Дан массив чисел arr. Вернуть сумму всех элементов массива.
+    {
+        const arr = [1, 2, 5, 8];
+        let result = arr.reduce((acc, curr) => acc + curr)
+        console.log(result); // 16
+    }
+    //    Дан массив чисел arr. Верните произведение всех чисел массива.
+    {
+        const arr = [2, 5, 5, 100];
+        let result = arr.reduce((acc, curr) => acc * curr, 1);
+        console.log(result); // 5000
+    }
+    {
+        const arr = [5, 3, 10, 6, 8];
+        let result = arr.reduce((acc, curr) => acc + curr, 0) / arr.length
+        console.log(result); // 6.4
+    }
+    {
+        const arr1 = [-1, 5, 0, 6];
+        const arr2 = [10, -10, 2, 3];
+        let add1 = arr1.reduce((acc, curr) => acc + curr, 0);
+        let add2 = arr2.reduce((acc, curr) => acc + curr, 0);
+        let mult = add1 * add2;
+        //mult 50
+    }
+    //длина всех желементов
+    {
+        const arr1 = ['year', 'day', 'week', 'weekend'];
+        let result = arr1.reduce((acc, curr) => curr.length + acc, 0)
+        console.log(result) //18
+    }
+
+    // Write a function that takes an array of numbers and returns the sum of the numbers. The numbers can be negative or non-integer. If the array does not contain any numbers then you should return 0.
+    function sum(numbers) {
+        return numbers.reduce((acc, curr) => acc + curr, 0)
+    };
+    // Given an array of integers, calculate the Average of these numbers.
+    // Main challenge is to write shortest and compact function for it.For example: var a = [0, 1, 2]; avg(a) // output should be 1
+    // Output of function will be also checked in tests, however most important is to write the shortest possible function (code length < 100). Input will always be valid.
+    const avg = a => a.reduce((acc, curr) => acc + curr, 0) / a.length
+    clear()
+
+    function mean(lst) {
+        // let str = ""
+        //
+        // let sum = lst.reduce((acc, curr) =>  {
+        //     if(!isNaN(curr)) {
+        //         return acc + +curr
+        //     } else {
+        //         str = str += curr
+        //         return acc
+        //     }
+        // }, 0)
+        let result = []
+        // let sum = lst.reduce((acc, curr) => !isNaN(curr) ? console.log(acc, " Number"): console.log(curr , " String"), 0)
+        let sum = lst.reduce((acc, curr) => !isNaN(curr) ? +curr + acc : acc, 0)
+        let str = lst.reduce((acc, curr) => isNaN(curr) ? curr + acc : acc, '')
+        return [sum / 10, str.split("").reverse().join("")]
+    }
+
+    mean(lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']) //[3.6, "udiwstagwo"]
 }
+//655
 
