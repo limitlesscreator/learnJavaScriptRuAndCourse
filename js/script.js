@@ -668,6 +668,67 @@ function strangeMath(n, k) {
     }
 
     mean(lst = ['u', '6', 'd', '1', 'i', 'w', '6', 's', 't', '4', 'a', '6', 'g', '1', '2', 'w', '8', 'o', '2', '0']) //[3.6, "udiwstagwo"]
+
+    {
+        function multi(arr) {
+            return arr.reduce((acc, curr) => acc * curr, 1)
+        }
+
+        function add(arr) {
+            return arr.reduce((acc, curr) => acc + curr, 0)
+        }
+
+        function reverse(str) {
+            return str.split("").reverse().join("");
+        }
+    }
+    // You are given a program sumSquares that takes an array as input and returns the sum of the squares of each item in an array.
+    // Try researching about built-in Array methods; they may help shorten your code a lot
+    function sumSquares(array) {
+        console.log(array.reduce((acc, curr) => Math.pow(curr, 2) + acc, 0))
+    }
+
+    sumSquares([7, 3, 9, 6, 5]) //200
+
+    // Given two integer arrays a, b, both of length >= 1, create a program that returns true if the sum of the squares of each element in a is strictly greater than the sum of the cubes of each element in b.
+    function arrayMadness(a, b) {
+        let resultA = a.reduce((acc, curr) => Math.pow(curr, 2) + acc, 1)
+        let resultB = b.reduce((acc, curr) => Math.pow(curr, 3) + acc, 1)
+        return resultA > resultB
+    }
+
+    arrayMadness([1, 3, 5, 2, 4], [2, 2, 2, 2, 2, 2, 2, 1])// false
+
+    // An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
+    function findDeletedNumber(arr, mixArr) {
+        let deletion = 0
+        arr.reduce((acc, curr) => mixArr.includes(curr) ? "" : deletion = curr, 0)
+        return deletion
+    }
+
+    findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 9, 7, 4, 6, 2, 3, 8])// 5
+    findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [5, 7, 6, 9, 4, 8, 1, 2, 3])// 0
+    function arrayPlusArray(arr1, arr2) {
+        let result1 = arr1.reduce((acc, curr) => acc + curr, 0)
+        let result2 = arr2.reduce((acc, curr) => acc + curr, 0)
+        return result1 + result2;
+    }
+
+    arrayPlusArray([100, 200, 300], [400, 500, 600]) //2100
+
+    // My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+    // In honor of my grandfather's memory we will write a function using his formula!
+    // Take a list of ages when each of your great-grandparent died.
+    // Multiply each number by itself.
+    // Add them all together.
+    // Take the square root of the result.
+    // Divide by two.
+    function predictAge(...arg) {
+        let result = arg.reduce((acc, curr) => Math.pow(curr, 2) + acc, 0)
+        result = Math.trunc((Math.sqrt(result) / 2))
+        return result
+    }
+
+    predictAge(65, 60, 75, 55, 60, 63, 64, 45) //86
 }
-//655
 
