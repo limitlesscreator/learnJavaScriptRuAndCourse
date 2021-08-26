@@ -730,5 +730,50 @@ function strangeMath(n, k) {
     }
 
     predictAge(65, 60, 75, 55, 60, 63, 64, 45) //86
-}
 
+
+    // Метод map() создает новый массив с результатом вызова функции для каждого элемента исходного массива.
+
+    //Вернуть макс. площадь прямоугл.
+    function maxRectangleSquare(arr) {
+        let count = null
+        let result = arr.map(el => el[0] * el[1] > count ? count = el[0] * el[1] : count)
+        return count
+    }
+
+    {
+        const arr = [1, 4, 9, 36];
+        const numSquare = arr.map(el => el ** 2);
+        console.log(numSquare); //[1, 16, 81, 1296]
+    }
+    // Дан массив десятичных чисел arr. Необходимо вернуть новый массив, содержащий элементы исходного, причем для чисел, имеющих четный индекс, произвести округление до ближайшего целого, значение остальных сделать равным 0.
+    {
+        const arr = [1.57, 2.1, 3.8, 10.67, 25.6];
+        const nums = arr.map((el, i) => i % 2 === 0 ? Math.round(el) : 0);
+        console.log(nums); // [2, 0, 4, 0, 26]
+    }
+
+    // Напишите функцию maxRectanglePerimeter, которая в качестве аргумента принимает массив arr, содержащий размеры прямоугольников, и возвращает максимальный периметр прямоугольника. Если массив пустой, вернуть null.
+    function maxRectanglePerimeter(arr) {
+        let count = null
+        let result = arr.map(el => (el[0] + el[1]) * 2 > count ? count = (el[0] + el[1]) * 2 : count)
+        return count
+    }
+
+    // These are example of how to convert a number to an ascii Character
+    let ArrowFunc = function (arr) {
+        return arr.map(el => String.fromCharCode(el)).join('');
+    }
+    // You probably know the 42 number as "The answer to life, the universe and everything" according to Douglas Adams' "The Hitchhiker's Guide to the Galaxy". For Freud, the answer was quite different.
+    // In the society he lived in, people-women in particular- had to repress their sexual needs and desires. This was simply how the society was at the time. Freud then wanted to study the illnesses created by this, and so he digged to the root of their desires. This led to some of the most important psychoanalytic theories to this day, Freud being the father of psychoanalysis.
+    // Now, basically, when a person hears about Freud, s/he hears "sex" because for Freud, everything was basically related to, and explained by sex.In this kata, the toFreud() function will take a string as its argument, and return a string with every word replaced by the explanation to everything, according to Freud. Note that an empty string, or no arguments, should result in the ouput being ""(empty string).
+    // wtf XD
+    function toFreud(string) {
+        return string.length > 0 ? string.split(" ").map(el => "sex").join(" ") : ""
+    }
+
+    // Create the function that takes as a parameter a sequence of numbers represented as strings and outputs a sequence of numbers.
+    function toNumberArray(stringarray) {
+        return stringarray.map(el => +el)
+    }
+}
