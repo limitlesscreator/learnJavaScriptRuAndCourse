@@ -776,4 +776,81 @@ function strangeMath(n, k) {
     function toNumberArray(stringarray) {
         return stringarray.map(el => +el)
     }
+
+    // Метод splice() изменяет содержимое исходного массива путем удаления/замены/добавления элементов.
+
+    // Задание 3. Удалить 2 элемента по индексу 1 и заменить их на '365' и '7'.
+    {
+        const arr = ['year', 'day', 'week', 'minute', 'second'];
+        let removed = arr.splice(1, 2, '365', '7');
+        console.log(removed); // ["day", "week"]
+        console.log(arr); // ["year", "365", "7", "minute", "second"],
+    }
+
+    // Create a method take that accepts a list/array and a number n, and returns a list/array array of the first n elements from the list/arra
+    function take(arr, n) {
+        let result = arr.splice(0, n)
+        return result
+    }
+
+    take([0, 1, 2, 3, 5, 8, 13], 3) // [0, 1, 2]
+
+    // Удалить все элементы, начиная с индекса 1.
+    {
+        const arr = ['year', 'day', 'week', 'minute', 'second'];
+        let removed = arr.splice(1);
+        console.log(removed); // ["day", "week", "minute", "second"
+        console.log(arr); // ["year"]
+    }
+    // Метод slice() предназначен для копирования элементов массива согласно указанным индексам.
+
+    // Дан массив строк arr. Необходимо вернуть новый массив, который бы содержал все элементы исходного массива. Затем добавить в конец получившегося массива длину исходного массива arr. Вывести значения обоих массивов в консоль.
+    {
+        const arr = ['raw', 'line', 'queue', 'seat'];
+        let result = arr.slice()
+        result.push(arr.length)
+        console.log(arr) //['raw', 'line', 'queue', 'seat']
+        console.log(result) //['raw', 'line', 'queue', 'seat', 4]
+    }
+    // Дан объект obj и массив arr. Необходимо создать новый массив, который бы включал в себя первые два элемента исходного. Затем изменить свойство name объекта obj в новом массиве на 'Elvis'. Вывести данное свойство obj каждого массива в консоль.
+    {
+        const obj = {
+            name: 'Joey',
+            age: 30,
+        };
+        const arr = ['person', obj, 1, 33021];
+        const newArr = arr.slice(0, 2)
+        obj.name = 'Sasha'
+        console.log(arr, newArr, obj.name)
+    }
+    {
+        // Дан массив чисел и строк arr. Сделать копию последних двух элементов массива и вернуть их новым массивом. Убедиться, что значение последнего элемента исходного массива строго равно значению последнего элемента нового массива.
+        const arr = ['umbrella', 2, 3, 'zipper'];
+        let newArr = arr.slice(-2)
+        console.log(arr[arr.length - 1] === newArr[newArr.length - 1]) //true
+    }
+    {
+        // Haskell has some useful functions for dealing with lists:
+        // | HEAD | <----------- TAIL ------------> |
+        // [  1,  2,  3,  4,  5,  6,  7,  8,  9,  10]
+        // | <----------- INIT ------------> | LAST |
+        const head = (arr) => {
+            let result = arr.slice(0, 1)
+            return +result.join("")
+        }
+        const tail = (arr) => {
+
+            return arr.slice(1)
+        }
+        const init = (arr) => {
+            return arr.slice(0, -1)
+        }
+        const last = (arr) => {
+            return +arr.slice(-1).join("")
+        }
+        head([1, 2, 3, 4, 5])// 1
+        tail([1, 2, 3, 4, 5])//[2,3,4,5]
+        init([1, 5, 7, 9]) //[1,5,7]
+        last([7, 2])// 2
+    }
 }
