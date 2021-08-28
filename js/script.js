@@ -853,4 +853,72 @@ function strangeMath(n, k) {
         init([1, 5, 7, 9]) //[1,5,7]
         last([7, 2])// 2
     }
+
+    // This is a spin off of my first kata. You are given a list of character sequences as a comma separated string. Write a function which returns another string containing all the character sequences except the first and the last ones, separated by spaces.
+    // If the input string is empty, or the removal of the first and last items would cause the string to be empty, return a null value.
+    function array(arr) {
+        arr = arr.split(",")
+        let result = null
+        if (arr.length >= 3) {
+            result = arr.slice(arr.length / 2, arr.length / 2 + 1)[0]
+        }
+        return result
+    }
+
+    array('')// null
+    array('1, 3')// null
+    array('1,2,3')// '2'
+    // || function array(arr){
+    //     return arr.split(",").slice(1,-1).join(" ") || null;
+    // }
+
+    // Coding in function cutIt, function accept 1 parameter:arr. arr is a string array. The first mission: Traversing arr, find the shortest string length.
+    // The second mission: Traversing arr again, intercept all strings to the shortest string length(Start from index0). you can use one of slice() substring() or substr() do it. return the result after finished the work.
+    function cutIt(arr) {
+        let result = []
+        let shortest = arr[0].length
+        arr.forEach(el => el.length < shortest ? shortest = el.length : 0)
+        arr.forEach(el => result.push(el.slice(0, shortest)))
+        return result
+    }
+
+    cutIt(["ab", "cde", "fgh"]) // ["ab","cd","fg"]
+    cutIt(["abc", "defgh", "ijklmn"]) // ["abc","def","ijk"]
+    cutIt(["codewars", "javascript", "java"]) // ["code","java","java"]
+
+    function withoutLast(arr) {
+        let result = arr.slice(0, -1)
+        return result
+    }
+
+    {
+        let str = 'Hi';
+        let str2 = 'John';
+        console.log(`${str}, ${str2}!`); // "Hi, John!"
+
+    }
+    {
+        let str = 'Bench'; //
+        str[2] = 'a';
+        console.log(str); // "Bench" – строка осталась неизменной
+    }
+    // Your task is to return the correct string using the Template String Feature.
+    let TempleStrings = function (obj, feature) {
+        return obj + " are " + feature
+    }
+
+    // Finish the uefaEuro2016() function so it return string just like in the examples below:
+    function uefaEuro2016(teams, scores) {
+        let result
+        if (scores[0] === scores[1]) {
+            result = `At match ${teams[0]} - ${teams[1]}, teams played draw.`
+        } else if (scores[0] > scores[1]) {
+            result = `At match ${teams[0]} - ${teams[1]}, ${teams[0]} won!`
+        } else {
+            result = `At match ${teams[0]} - ${teams[1]}, ${teams[1]} won!`
+        }
+        return result
+    }
+
+    uefaEuro2016(['Germany', 'Ukraine'], [2, 0]) //"At match Germany - Ukraine, Germany won!"
 }
