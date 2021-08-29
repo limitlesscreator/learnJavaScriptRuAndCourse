@@ -921,4 +921,92 @@ function strangeMath(n, k) {
     }
 
     uefaEuro2016(['Germany', 'Ukraine'], [2, 0]) //"At match Germany - Ukraine, Germany won!"
+
+    function isValidBetter(s) {
+        debugger
+        let result = false
+        let stack = []
+        let brackets = {
+            ')': '(',
+            ']': '[',
+            '}': '{',
+        }
+
+        for (let i = 0; i < s.length; i++) {
+            let curr = s[i]
+            if (isClose(curr)) {
+                if (brackets[curr] !== stack.pop()) return false
+            } else {
+                stack.push(curr)
+            }
+        }
+        return stack.length === 0
+
+        function isClose(curr) {
+            return [')', ']', '}'].includes(curr)
+        }
+    }
+
+    isValidBetter('()')
+
+    function greet(name) {
+        if (name === "Johnny") {
+            return "Hello, my love!";
+        } else {
+            return "Hello, " + name + "!";
+        }
+    }
+
+    const combineNames = (a, b) => `${a} ${b}`
+
+    let a1 = "A", a2 = "a", b1 = "B", b2 = "b", c1 = "C", c2 = "c", d1 = "D", d2 = "d", e1 = "E", e2 = "e", n1 = "N",
+        n2 = "n"
+
+    function Dad() {
+        //select some variable to combine "Dad"
+        return d1 + a2 + d2;
+    }
+
+    function Bee() {
+        //select some variable to combine "Bee"
+        return b1 + e2 + e2;
+    }
+
+    function banana() {
+        //select some variable to combine "banana"
+        return b2 + a2 + n2 + a2 + n2 + a2;
+    }
+
+    function joinStrings(string1, string2) {
+        return `${string1} ${string2}`
+    }
+
+    function derive(coefficient, exponent) {
+        return `${coefficient * exponent}x^${exponent - 1}`
+    }
+
+    derive(7, 8)//, "56x^7"
+    derive(5, 9)// "45x^8"
+
+    const countSheep = function (num) {
+        let result = []
+        for (let i = 1; i <= num; i++) {
+            result.push(`${i} sheep...`)
+        }
+
+        return result.join('')
+    }
+    countSheep(3) // "1 sheep...2 sheep...3 sheep..."
+
+    {
+        let str = 'Great idea';
+        console.log(str[0]); // "G"
+        console.log(str.charAt(0)); // "G"
+    }
+    console.log("a".codePointAt(0)); // 97
+    console.log(String.fromCodePoint(97)); // "a"
+    // Given 2 strings, a and b, return a string of the form short+long+short, with the shorter string on the outside and the longer string on the inside. The strings will not be the same length, but they may be empty ( length 0 ).
+    function solution(a, b) {
+        return `${b.length > a.length ? a : b}${b.length < a.length ? a : b}${b.length > a.length ? a : b}`
+    }
 }
