@@ -1009,4 +1009,57 @@ function strangeMath(n, k) {
     function solution(a, b) {
         return `${b.length > a.length ? a : b}${b.length < a.length ? a : b}${b.length > a.length ? a : b}`
     }
+
+    function digitsOfNumber(num) {
+        return String(num).length
+    }
+
+    function insertSpaces(str) {
+        return str.split('').join(' ')
+    }
+
+    function getCharacter(str, n) {
+        return str[n] ? str[n] : 'Error'
+    }
+
+    // Write a function which takes a number and returns the corresponding ASCII char for that value.
+    function getChar(c) {
+        return String.fromCodePoint(c)
+    }
+
+    getChar(59)//';'
+    getChar(56)//'8'
+
+    // For Haskell, body has the type of String and tail has the type of Char. For Go, body has type string and tail has type rune
+    function correctTail(body, tail) {
+        let sub = body.substr(body.length - (tail.length))
+        return sub === tail
+    }
+
+    correctTail("Fox", "x")// true
+    correctTail("Meerkat", "t")// true
+
+    function switcher(x) {
+        const alphabet = [" ", "?", "!", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].map(el => el.toLowerCase()).reverse();
+        let result = []
+        for (let i = 0; i < x.length; i++) {
+            result.push(alphabet[x[i] - 1])
+        }
+        return result.join('')
+    }
+
+    switcher(['24', '12', '23', '22', '4', '26', '9', '8'])// 'codewars')
+    switcher(['25', '7', '8', '4', '14', '23', '8', '25', '23', '29', '16', '16', '4'])//'btswmdsbd kkw
+    switcher(['4', '24'])// 'wc')
+
+    // You will be given a string (x) featuring a cat 'C' and a mouse 'm'. The rest of the string will be made up of '.'.
+    // You need to find out if the cat can catch the mouse from it's current position. The cat can jump over three characters. So:
+    function catMouse(x) {
+        let result = x.split('').filter(el => el === ".")
+        return result.length <= 3 ? 'Caught!' : 'Escaped!'
+    }
+
+    catMouse('C....m')// "Escaped!")
+    catMouse('C..m') //"Caught!")
+    catMouse('C.....m')// "Escaped!")
 }
