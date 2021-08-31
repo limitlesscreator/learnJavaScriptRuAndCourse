@@ -923,7 +923,6 @@ function strangeMath(n, k) {
     uefaEuro2016(['Germany', 'Ukraine'], [2, 0]) //"At match Germany - Ukraine, Germany won!"
 
     function isValidBetter(s) {
-        debugger
         let result = false
         let stack = []
         let brackets = {
@@ -1062,4 +1061,63 @@ function strangeMath(n, k) {
     catMouse('C....m')// "Escaped!")
     catMouse('C..m') //"Caught!")
     catMouse('C.....m')// "Escaped!")
+    clear()
+
+    // Determine the total number of digits in the integer (n>=0) given as input to the function. For example, 9 is a single digit, 66 has 2 digits and 128685 has 6 digits. Be careful to avoid overflows/underflows.
+    function digits(n) {
+        return String(n).split('').length
+    }
+
+    // Write a function that always returns 5/ Sounds easy right? Just bear in mind that you can't use any of the following characters: 0123456789*+-/
+    function unusualFive() {
+        return 'hello'.length
+    }
+
+    // Create an algorithm to count the number of zeros that appear between 1 and N.
+    function countZeros(n) {
+        let count = 0
+        for (let i = 0; i <= n; i += 10) {
+            let zeroes = String(i).split('').filter(el => el === '0').length
+            count += zeroes
+        }
+        count--
+        console.log(count)
+    }
+
+    countZeros(100)
+
+
+    // Debug   function getSumOfDigits that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
+    function getSumOfDigits(integer) {
+        return integer.toString().split('').reduce((acc, cur) => +cur + acc, 0)
+    }
+
+    getSumOfDigits(123)// 6
+
+    function doubleChar(str) {
+        let result = []
+        str = str.split('')
+        for (let i = 0; i < str.length; i++) {
+            result.push(str[i])
+            result.push(str[i])
+        }
+        return result.join('')
+    }
+
+    doubleChar("illuminati"), "iilllluummiinnaattii"
+
+    class Animal {
+        constructor(options) {
+            this.name = options.name
+            this.age = options.age
+            this.hasTail = options.hasTail
+        }
+    }
+
+    const animal = new Animal({
+        name: 'Animal',
+        age: 5,
+        hasTail: true
+    })
 }
+
