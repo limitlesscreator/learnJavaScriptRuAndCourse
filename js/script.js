@@ -1119,5 +1119,59 @@ function strangeMath(n, k) {
         age: 5,
         hasTail: true
     })
-}
 
+    // Create a function that will return a string that combines all of the letters of the three inputed strings in groups. Taking the first letter of all of the inputs and grouping them next to each other. Do this for every letter, see example below!
+    // E.g. Input: "aa", "bb" , "cc" => Output: "abcabc"
+
+    function tripleTrouble(one, two, three) {
+        let temp = (one + two + three).length
+        let result = []
+        for (let i = 0; i < temp; i++) {
+            result.push(one[i])
+            result.push(two[i])
+            result.push(three[i])
+        }
+        return result.join('')
+    }
+
+    // Modify the spacify function so that it returns the given string with spaces inserted between each character.
+
+    const spacify = str => str.split('').join(' ')
+    spacify('hello world')// 'h e l l o   w o r l d'
+    spacify('12345')// '1 2 3 4 5'
+
+    function validParentheses(str) {
+        let left = 0
+        let right = 0
+        let result = false
+        let temp = str.split('')
+        for (let i = 0; i < temp.length; i++) {
+            if (temp.every(el => el === '(' || el === ')')) {
+                if (temp[0] === '(') {
+                    if (temp[i] === '(') {
+                        left++
+                    } else if (temp[i] === ')') {
+                        right++
+                    }
+                }
+                if (temp[0] === ')' || temp[temp.length - 1] === '(') {
+                    result = false;
+                    break
+                }
+                result = left === right
+            }
+        }
+        return result
+    }
+
+    validParentheses('()') //true
+    validParentheses('()()(())') //true
+    validParentheses(')((()') //false
+
+    // Write function that checks if a given string (case insensitive) is a palindrome.
+    function isPalindrome(x) {
+        return x.toLowerCase() === x.toLowerCase().split('').reverse().join('')
+    }
+
+    isPalindrome("Abba") // true
+}
