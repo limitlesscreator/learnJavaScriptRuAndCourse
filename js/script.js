@@ -1174,4 +1174,75 @@ function strangeMath(n, k) {
     }
 
     isPalindrome("Abba") // true
+
+    //Write function that checks if a given string (case insensitive) is a palindrome. WITHOUT REVERSE AND SPLIT
+    function isPalindrome1(word) {
+        let result = ''
+        for (let i = word.length - 1; i >= 0; i--) {
+            result += word[i]
+        }
+        return result === word
+    }
+
+    isPalindrome1('aba')
+
+    //Reverse without reverse()
+    function reverseWord(word) {
+        let result = ''
+        for (let i = word.length - 1; i >= 0; i--) {
+            result += word[i]
+        }
+        return result
+    }
+
+    // how much polidrom
+    function countPalindrome(arr) {
+        let result = 0
+        for (let i = 0; i < arr.length; i++) {
+            let temp = ''
+            for (let j = arr[i].length - 1; j >= 0; j--) {
+                temp += arr[i][j]
+            }
+            if (temp === arr[i]) {
+                result++
+            }
+        }
+        return result
+    }
+
+    countPalindrome(['abc', 'dad', 'noon']) //2
+
+    //count '!' at end str
+    function exclamationMarks(str) {
+        let temp = str.split('').reverse()
+        let result = 0
+        for (let i = 0; i < temp.length; i++) {
+            if (temp[i] === '!') {
+                result++
+            } else break
+        }
+        return result
+    }
+
+    exclamationMarks('Hi! What a nice day!!') //2
+
+    // Напишите функцию с именем isPalindrome, которая принимает строку str в качестве аргумента и возвращает true, если строка является палиндромом после удаления из нее всех пробелов и false - в противном случае.
+//     Во всех тестах строки содержат лишь строчные (lowerCase) буквы, поэтому не волнуйтесь из-за регистра. В решении используйте циклы. Использование методов split, reverse, replace запрещено.
+    function isPalindrome(str) {
+        let newWord = ''
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] !== ' ') {
+                newWord += str[i]
+            }
+        }
+
+        let result = ''
+        for (let i = newWord.length - 1; i >= 0; i--) {
+            result += newWord[i]
+        }
+        return result === newWord
+    }
+
+    isPalindrome('pull up if i pull up') //true
+    isPalindrome("every moment is life") //false
 }
