@@ -1245,4 +1245,57 @@ function strangeMath(n, k) {
 
     isPalindrome('pull up if i pull up') //true
     isPalindrome("every moment is life") //false
+
+    // Using n as a parameter in the function pattern, where n>0, complete the codes to get the pattern (take the help of examples):
+    // Note: There is no newline in the end (after the pattern ends)
+    function pattern(n) {
+        let output = '1\n';
+        let strStars = '*'
+        for (let i = 1; i < n; i++) {
+            if (i < n - 1) {
+                output += `1${strStars}${i + 1}\n`
+                strStars += '*'
+            } else {
+                output += `1${strStars}${i + 1}`
+                strStars += '*'
+            }
+        }
+        console.log(output)
+    }
+
+    pattern(3)// "1\n1*2\n1**3"
+
+    // Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+    function XO(str) {
+        let x = 0
+        let o = 0
+        str = str.toLowerCase().split('')
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === 'o') {
+                o++
+            } else if (str[i] === 'x') {
+                x++
+            }
+        }
+        return x === o
+    }
+
+    XO("xxOo") // true
+    XO("ooom") //false
+
+    // Define a method hello that returns "Hello, Name!" to a given name, or says Hello, World! if name is not given (or passed as an empty String).
+    // Assuming that name is a String and it checks for user typos to return a name with a first capital letter (Xxxx).
+    function hello(name) {
+        if (name) {
+            let firstLetter = name.split('')[0].toUpperCase()
+            name = name.toLowerCase().split('')
+            name.shift()
+            name.unshift(firstLetter)
+            return `Hello, ${name.join('')}!`
+        } else return 'Hello, World!'
+    }
+
+    hello('johN') //'Hello, John!', "returns 'Hello, John!' when given 'johN'
+    hello() // 'Hello, World!'
+    hello('alice') //'Hello, Alice!', "returns 'Hello, Alice!' when given 'alice'
 }
