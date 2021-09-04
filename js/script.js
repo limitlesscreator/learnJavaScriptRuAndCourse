@@ -1298,4 +1298,61 @@ function strangeMath(n, k) {
     hello('johN') //'Hello, John!', "returns 'Hello, John!' when given 'johN'
     hello() // 'Hello, World!'
     hello('alice') //'Hello, Alice!', "returns 'Hello, Alice!' when given 'alice'
+
+    // In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+    // make as few changes as possible.
+    // if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+    function solve(s) {
+        let result
+        let big = 0
+        let small = 0
+        let arr = s.split('')
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === arr[i].toUpperCase()) {
+                big++
+            } else if (arr[i] === arr[i].toLowerCase()) {
+                small++
+            }
+        }
+        if (small >= big) {
+            result = s.toLowerCase()
+        } else {
+            result = s.toUpperCase()
+        }
+        return result
+    }
+
+    solve("CODe") //"CODE"
+
+    // Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
+    let capitals = function (word) {
+        let result = []
+        let arr = word.split('')
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === arr[i].toUpperCase()) {
+                result.push(i)
+            }
+        }
+        return result
+    };
+
+    capitals('CodEWaRs') //[0,3,4,6]
+
+    // Given a string, swap the case for each of the letters.
+    // e.g. CodEwArs --> cODeWaRS
+    function swap(str) {
+        let arr = str.split('')
+        let result = []
+        for (let i = 0; i < str.length; i++) {
+            if (arr[i] === arr[i].toUpperCase()) {
+                result.push(arr[i].toLowerCase())
+            } else if (arr[i] === arr[i].toLowerCase()) {
+                result.push(arr[i].toUpperCase())
+            }
+        }
+        return result.join('')
+    }
+
+    swap('HelloWorld')//, 'hELLOwORLD'
+    swap('CodeWars')// 'cODEwARS'
 }
