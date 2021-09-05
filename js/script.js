@@ -1302,7 +1302,7 @@ function strangeMath(n, k) {
     // In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
     // make as few changes as possible.
     // if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
-    function solve(s) {
+    function solve1(s) {
         let result
         let big = 0
         let small = 0
@@ -1322,7 +1322,7 @@ function strangeMath(n, k) {
         return result
     }
 
-    solve("CODe") //"CODE"
+    solve1("CODe") //"CODE"
 
     // Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
     let capitals = function (word) {
@@ -1340,19 +1340,70 @@ function strangeMath(n, k) {
 
     // Given a string, swap the case for each of the letters.
     // e.g. CodEwArs --> cODeWaRS
-    function swap(str) {
-        let arr = str.split('')
-        let result = []
-        for (let i = 0; i < str.length; i++) {
-            if (arr[i] === arr[i].toUpperCase()) {
-                result.push(arr[i].toLowerCase())
-            } else if (arr[i] === arr[i].toLowerCase()) {
-                result.push(arr[i].toUpperCase())
+
+
+    function testit(s) {
+        if (s.length) {
+            let result = []
+            let arr = s.split(' ')
+            for (let i = 0; i < arr.length; i++) {
+                let newLetter = arr[i][arr[i].length - 1].toUpperCase()
+                let newStr = arr[i].split('').slice(0, -1).join('') + newLetter
+                result.push(newStr)
             }
-        }
-        return result.join('')
+            return result.join(' ')
+        } else return ''
+
     }
 
-    swap('HelloWorld')//, 'hELLOwORLD'
-    swap('CodeWars')// 'cODEwARS'
+    testit('kjkph nyjww lod k') //'kjkpH nyjwW loD K'
+    testit('oj ijgfr ewh d zje') //'oJ ijgfR ewH D zjE'
+
+    function capitalizeWord(word) {
+        word = word.split('')
+        let result = word[0].toUpperCase();
+        word[0] = result
+        return word.join('');
+    }
+
+    capitalizeWord('glasswear') // Word
+
+    function lowerOrUpperCase(letter) {
+        if (letter === letter.toLowerCase()) {
+            return 'The letter is in Lowercase'
+        } else return 'The letter is in Uppercase'
+    }
+
+    function isNameStartsWithUpper(name) {
+        let temp = name.split('')[0]
+        if (temp === temp.toUpperCase()) {
+            return 'Welcome, sir'
+        } else return 'Howdy'
+    }
+
+    isNameStartsWithUpper('Alex') //Welcome, sir
+    isNameStartsWithUpper('lora') //Howdy
+
+    // Coding in function fiveLine, function accept 1 parameter:s. s is a string.
+    // Please return a string of 5 lines(newline symbol is \n). The first line has one s; Second line have two s; and so on..Fifth line have five s;
+    function fiveLine(s) {
+        let result = ''
+        let temp = s.trim()
+        for (let i = 0; i < 5; i++) {
+            if (i !== 4) {
+                for (let j = 0; j <= i; j++) {
+                    result += `${temp}`
+                }
+                result += '\n'
+            } else {
+                for (let j = 0; j <= i; j++) {
+                    result += `${temp}`
+                }
+            }
+        }
+        return result
+    }
+
+    fiveLine("  a")// "a\naa\naaa\naaaa\naaaaa"
 }
+
