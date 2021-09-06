@@ -1405,5 +1405,59 @@ function strangeMath(n, k) {
     }
 
     fiveLine("  a")// "a\naa\naaa\naaaa\naaaaa"
-}
 
+    // Метод padStart(length, otherStr) дополняет текущую строку другой строкой до заданной длины и возвращает ее значение.
+    {
+        let str = 'Fish';
+        str.padStart(7, 'new');  // "newFish если нужно, значение otherStr повторяется
+        str.padStart(8);         // "    Fish"
+        str.padStart(3, 'new'); // "Fish"
+        str.padStart(6, 'new'); // "neFish"
+    }
+
+    // This kata requires you to convert minutes (int) to hours and minutes in the format hh:mm (string).
+    // If the input is 0 or negative value, then you should return "00:00"
+    // Hint: use the modulo operation to solve this challenge. The modulo operation simply returns the remainder after a division. For example the remainder of 5 / 2 is 1, so 5 modulo 2 is 1.
+    function timeConvert(num) {
+        if (num > 0) {
+            let time = [0, 0]
+
+            let result
+            for (let i = 0; i < 10000; i++) {
+                if (num >= 60) {
+                    time[0]++
+                    num -= 60
+                }
+            }
+            time[1] = num
+            if (time[0] <= 9 && time[1] <= 9) {
+                result = `0${time[0]}:0${time[1]}`
+            } else if (time[0] > 9 && time[1] <= 9) {
+                result = `${time[0]}:0${time[1]}`
+            } else if (time[0] <= 9 && time[1] > 9) {
+                result = `0${time[0]}:${time[1]}`
+            } else if (time[0] > 9 && time[1] > 9) {
+                result = `${time[0]}:${time[1]}`
+            }
+            return result
+        } else return '00:00'
+    }
+
+    timeConvert(0)// '00:00'
+    timeConvert(8) // '00:08'
+    timeConvert(134) // '02:34'
+
+    //or
+    const timeConvert2 = num => num > 0 ? `${(Math.floor(num / 60) + '').padStart(2, '0')}:${(num % 60 + '').padStart(2, '0')}` : `00:00`
+
+    // Метод repeat() возвращает новую строку с указанным количеством повторений первоначальной строки.
+    {
+        let str = 'You';
+        console.log(str.repeat(3)); // "YouYouYou"
+        console.log(str.repeat(1)); // "You"
+        console.log(str.repeat(1.5)); // "You"
+        console.log(str.repeat(0)); // ""
+        console.log(str.repeat(Infinity)); // RangeError
+        console.log(str.repeat(-1)); // RangeError
+    }
+}
