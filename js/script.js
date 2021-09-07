@@ -1460,4 +1460,62 @@ function strangeMath(n, k) {
         console.log(str.repeat(Infinity)); // RangeError
         console.log(str.repeat(-1)); // RangeError
     }
+
+    // Напишите функцию с именем repeatWord, которая принимает слово word в качестве аргумента и возвращает строку, содержащую слово, повторенное столько раз, сколько букв содержит это слово. Слова раделяйте пробелами. После последнего слова пробела нет.
+    function repeatWord(word) {
+        let count = word.split('').length
+        let result = word.repeat(count)
+        let temp = count
+        result = result.split('')
+
+        for (let i = 0; i < count; i++) {
+            result.splice(temp, 0, ' ')
+            temp += count + 1
+        }
+        result.pop()
+        result = result.join('')
+        return result
+    }
+
+    repeatWord("a") //"a"
+    repeatWord("One") //"One One One"
+    repeatWord('Five') //"Five Five Five Five"
+
+    function spam(number) {
+        return "hue".repeat(number);
+    }
+
+    // Напишите функцию с именем validPassword, которая принимает строку password в качестве аргумента и возвращает строку, дополненную символами "$" справа, если пароль имеет длину менее 7 символов, или исходную строку, если пароль имеет длину 7 и более символов.
+    function validPassword(password) {
+        let lengthPassword = password.length
+        if (lengthPassword >= 7) {
+            return password
+        } else {
+            let dollar = '$'.repeat(7 - lengthPassword)
+            password += dollar
+        }
+        return password
+    }
+
+    validPassword("Null") // 'Null$$$'
+    validPassword("abc") //"abc$$$$"
+    validPassword("verybigpassword385848") //"verybigpassword385848"
+
+    // write me a function stringy that takes a size and returns a string of alternating '1s' and '0s'.
+    // the string should start with a 1.a string with size 6 should return :'101010'. with size 4 should return : '1010'.
+    function stringy(size) {
+        let result = ''
+        if (size % 2 === 1) {
+            result = '10'.repeat(size / 2 + 1).split('')
+            result.pop()
+            result = result.join('')
+        } else {
+            result = '10'.repeat(size / 2)
+        }
+        return result
+    }
+
+    stringy(5) //10101
+    stringy(6) //101010
+    stringy(1) //1
 }
