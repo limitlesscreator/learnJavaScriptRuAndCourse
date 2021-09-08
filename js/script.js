@@ -1518,4 +1518,70 @@ function strangeMath(n, k) {
     stringy(5) //10101
     stringy(6) //101010
     stringy(1) //1
+
+    // Mr. despair jumped from the 2 floor, the voice is "Aa~"
+    // He fell on the ground, the voice is "Pa!"
+    // He did not die immediately, and the final voice was "Aa!"
+    function sc(floor) {
+        let str = []
+        if (floor > 1) {
+            for (let i = 0; i < floor; i++) {
+                str.push('Aa~')
+            }
+            if (floor <= 6) {
+                str.unshift('Aa~')
+                str[str.length - 2] = 'Pa!'
+                str[str.length - 1] = 'Aa!'
+            } else if (floor > 6) {
+                str[str.length - 1] = 'Pa!'
+            }
+            str = str.join(' ')
+        } else {
+            return ''
+        }
+        return str
+    }
+
+    sc(6)// "Aa~ Aa~ Aa~ Aa~ Aa~ Pa! Aa!"
+    sc(10)//"Aa~ Aa~ Aa~ Aa~ Aa~ Aa~ Aa~ Aa~ Aa~ Pa!"
+
+    // You can print your name on a billboard ad. Find out how much it will cost you. Each letter has a default price of £30, but that can be different if you are given 2 parameters instead of 1.
+    // You can not use multiplier "*" operator. If your name would be Jeong-Ho Aristotelis, ad would cost £600. 20 leters * 30 = 600 (Space counts as a letter).
+    function billboard(name, price = 30) {
+        let str = name.split('').length
+        let newStr = `${price} `.repeat(str)
+        let result = newStr.split(' ').reduce((acc, curr) => +curr + acc, 0)
+        return result
+    }
+
+    billboard("Jeong-Ho Aristotelis")// 600
+    billboard("Hadufuns John", 20)// 260
+    billboard("Werner Vígi", 15)// 165
+    // Метод includes(otherStr, index) проверяет, содержит ли текущая строка другую строку.
+
+    {
+        let str = 'Did you notice the notes?';
+        console.log(str.includes('you')); // true
+        console.log(str.includes('not', 9)); // true
+        console.log(str.includes('not', 20)); // false
+        console.log(str.includes('did')); // false
+    }
+
+    // that takes in a string and replaces all the vowels [a,e,i,o,u] with their respective positions within that string.
+    function vowel2index(str) {
+        let result
+        let temp = str.split('')
+        for (let i = 0; i < temp.length; i++) {
+            if (temp[i].includes('i') || temp[i].includes('a') || temp[i].includes('o') || temp[i].includes('u') || temp[i].includes('e') ||
+                temp[i].includes('I') || temp[i].includes('A') || temp[i].includes('O') || temp[i].includes('U') || temp[i].includes('E')) {
+                temp[i] = i + 1
+            }
+        }
+        result = temp.join('')
+        return result
+    }
+
+    vowel2index('this is my string')//  'th3s 6s my str15ng'
+    vowel2index('Codewars is the best site in the world')// 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld'
+    vowel2index('')// ''
 }
