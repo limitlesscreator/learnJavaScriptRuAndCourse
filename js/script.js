@@ -1457,8 +1457,8 @@ function strangeMath(n, k) {
         console.log(str.repeat(1)); // "You"
         console.log(str.repeat(1.5)); // "You"
         console.log(str.repeat(0)); // ""
-        console.log(str.repeat(Infinity)); // RangeError
-        console.log(str.repeat(-1)); // RangeError
+        // console.log(str.repeat(Infinity)); // RangeError
+        // console.log(str.repeat(-1)); // RangeError
     }
 
     // Напишите функцию с именем repeatWord, которая принимает слово word в качестве аргумента и возвращает строку, содержащую слово, повторенное столько раз, сколько букв содержит это слово. Слова раделяйте пробелами. После последнего слова пробела нет.
@@ -1584,4 +1584,65 @@ function strangeMath(n, k) {
     vowel2index('this is my string')//  'th3s 6s my str15ng'
     vowel2index('Codewars is the best site in the world')// 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld'
     vowel2index('')// ''
+
+    // Write a function that checks if all the letters in the second string are present in the first one at least once, regardless of how many times they appear:
+    function letterCheck(arr) {
+        let b = arr.map(el => el.toLowerCase())
+        let result = false
+        let newArr = b[1].split('')
+        for (let i = 0; i < 100; i++) {
+            if (b[0].includes(newArr[i]) || typeof newArr[i] === 'undefined') {
+                result = true
+            } else {
+                result = false
+                break
+            }
+        }
+        return (result)
+    }
+
+    letterCheck(["trances", "nectar"])// true
+    letterCheck(["THE EYES", "they see"])// true
+    letterCheck(["dale", "caller"])// false
+
+    // Given a string of words and numbers. Extract the expression including: the operator: either addition or subtraction the two numbers that we are operating on. Return the result of the calculation.
+    // "Panda has 48 apples and loses 4" returns 44"Jerry has 34 apples and gains 6" returns 40 "loses" and "gains" are the only two words describing operators.
+    function calculate(string) {
+        let arr = string.split(' ')
+        let result = 0
+        let arrNumbers = []
+        for (let i = 0; i < arr.length; i++) {
+            if (!isNaN(arr[i])) {
+                arrNumbers.push(+arr[i])
+            }
+        }
+        if (string.includes('loses')) {
+            result = arrNumbers[0] - arrNumbers[1]
+        } else if (string.includes('gains')) {
+            result = arrNumbers[0] + arrNumbers[1]
+        }
+        return result
+    }
+
+    calculate("Panda has 48 apples and loses 4")// 44
+    calculate("Jerry has 34 apples and gains 6")// 40
+
+    function sabb(s, val, happiness) {
+        let result = 0
+        let temp = 0
+        let newStr = s.split('')
+        let secondStr = 'sabticl'.split('')
+        for (let i = 0; i < newStr.length; i++) {
+            for (let j = 0; j < secondStr.length; j++) {
+                if (newStr[i] === secondStr[j]) {
+                    temp++
+                }
+            }
+        }
+        result = val + happiness + temp
+        return result > 22 ? 'Sabbatical! Boom!' : 'Back to your desk, boy.'
+    }
+
+    sabb('What do you mean I cant learn to code??', 8, 9)// 'Sabbatical! Boom!'
+    sabb('Please calm down', 9, 1)// 'Back to your desk, boy.'
 }
