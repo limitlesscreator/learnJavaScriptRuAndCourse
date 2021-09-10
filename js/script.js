@@ -1645,4 +1645,56 @@ function strangeMath(n, k) {
 
     sabb('What do you mean I cant learn to code??', 8, 9)// 'Sabbatical! Boom!'
     sabb('Please calm down', 9, 1)// 'Back to your desk, boy.'
+
+    const mispelled = (word1, word2) => {
+        let firstArr = word1.split('')
+        let secondArr = word2.split('')
+        let count = 0
+        if (firstArr.length >= secondArr.length) {
+            for (let i = 0; i < firstArr.length; i++) {
+                if (!word1.includes(secondArr[i])) {
+                    count++
+                } else if (!word2.includes(secondArr[i])) {
+                    count++
+                }
+            }
+        } else if (firstArr.length < secondArr.length) {
+            for (let i = 0; i < secondArr.length; i++) {
+                if (!word2.includes(firstArr[i])) {
+                    count++
+                } else if (!word2.includes(firstArr[i])) {
+                    count++
+                }
+            }
+        }
+        return count === 1
+    }
+    mispelled('versed', 'xersed')// true
+    mispelled('1versed', 'versed')// true
+    mispelled('versed', 'aaversed')// false
+
+    // Напишите функцию с именем luckyChineseNumber, которая принимает массив numbers в качестве аргумента и возвращает массив счастливых для китайцев чисел, т.е. чисел, содержащих цифру 8.
+    function luckyChineseNumber(numbers) {
+        let result = []
+        let newArr = numbers.map(el => '' + el)
+        for (let i = 0; i < newArr.length; i++) {
+            if (newArr[i].includes('8')) {
+                result.push(+newArr[i])
+            }
+        }
+        return result
+    }
+
+    luckyChineseNumber([124, 18, 13, 8, 81, 182, 11])//[18, 8, 81, 182]
+
+    // Метод indexOf() возвращает индекс первого вхождения подстроки в строке.
+    {
+        let str = 'A turtle is on the beach.';
+        console.log(str.indexOf('turtle', 2)); // 2
+        console.log(str.indexOf('turtle')); // 2
+        console.log(str.indexOf('turtle', 3)); // -1
+        let str2 = 'Buy bread and milk';
+        console.log(str2.indexOf('milk') !== -1); // true
+        console.log(str2.indexOf('butter') !== -1); // false
+    }
 }
