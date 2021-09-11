@@ -1697,4 +1697,92 @@ function strangeMath(n, k) {
         console.log(str2.indexOf('milk') !== -1); // true
         console.log(str2.indexOf('butter') !== -1); // false
     }
+
+    function findEvenIndex(arr) {
+        let result = -1
+        let tempt = !!arr[-1]
+        for (let i = 0; i < arr.length; i++) {
+            if (!!arr[i - 1] && !!arr[i - 2]) {
+                if (Math.abs(arr[i - 1] + arr[i - 2]) === Math.abs(arr[i + 1] + arr[i + 2])) {
+                    result = i
+                    break;
+                }
+            } else if (!arr[i - 2] && !!arr[i - 1]) {
+                if (Math.abs(arr[i - 1]) === Math.abs(arr[i + 1] + arr[i + 2])) {
+                    result = i
+                    break
+                }
+            }
+        }
+        return result
+    }
+
+    findEvenIndex([1, 2, 3, 4, 3, 2, 1]) //3
+    findEvenIndex([1, 100, 50, -51, 1, 1])//1
+
+    // function tickets(peopleInLine){
+    //     debugger
+    //     let ownCash = 0
+    //     for (let i = 0; i < peopleInLine.length; i++) {
+    //         if (peopleInLine[i] === 25) {
+    //             ownCash += 25
+    //         } else if (peopleInLine[i] === 50 && ownCash - 25 >= 0) {
+    //             ownCash += 50
+    //             ownCash -= 25
+    //         } else if (peopleInLine[i] === 100 && ownCash - 75 >= 0) {
+    //             ownCash += 100
+    //             ownCash -= 75
+    //         }
+    //         else {
+    //             ownCash = -100000
+    //             break
+    //         }
+    //         if (ownCash < 0){
+    //             break
+    //         }
+    //     }
+    //     let result = ownCash >= 0
+    // } dos'nt work
+
+    // tickets([25, 100]) //NO
+    // tickets( [25,50,25,100,25,50,25,100,25,25,50,100,25,25,50,100]) //YES
+
+    function findMissingLetter(array) {
+        let result = ''
+        let alphabet1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        let alphabet2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].map(el => el.toUpperCase())
+
+
+        if (array[0] === array[0].toUpperCase()) {
+            //if array UPPERCASE
+            let indexLetter = alphabet2.indexOf(array[0])
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === alphabet2[indexLetter + i]) {
+                    continue
+                } else if (array[i] !== alphabet2[indexLetter + i]) {
+                    result += alphabet2[indexLetter + i]
+                    break
+                }
+            }
+        } else if (array[0] !== array[0].toUpperCase()) {
+
+            let indexLetter = alphabet1.indexOf(array[0])
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === alphabet1[indexLetter + i]) {
+                    continue
+                } else if (array[i] !== alphabet1[indexLetter + i]) {
+                    result += alphabet1[indexLetter + i]
+                    break
+                }
+            }
+        }
+        return result
+    }
+
+
+// findMissingLetter(['a','b','c','d','f'])//'e'
+    findMissingLetter(['O', 'Q', 'R', 'S'])// 'P'
+
 }
