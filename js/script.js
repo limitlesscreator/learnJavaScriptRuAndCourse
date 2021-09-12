@@ -1786,3 +1786,63 @@ function strangeMath(n, k) {
     findMissingLetter(['O', 'Q', 'R', 'S'])// 'P'
 
 }
+
+// Given a string, return true if the first instance of "x" in the string is immediately followed by the string "xx".
+function tripleX(str) {
+    let arr = str.split('')
+    let result = false
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 'x' && arr[i + 1] === 'x') {
+            result = true
+            break
+        }
+        if (arr[i] === 'x' && arr[i + 1] !== 'x') {
+            result = false
+            break
+        }
+    }
+    return result
+}
+
+tripleX("abraxxxas") //true
+tripleX("xoxotrololololololoxxx")//false
+
+// When provided with a letter, return its position in the alphabet.
+// Input :: "a"// Ouput :: "Position of alphabet: 1" // This kata is meant for beginners. Rank and upvote to bring it out of beta
+function position(letter) {
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    return `Position of alphabet: ${alphabet.indexOf(letter) + 1}`
+}
+
+// If　a = 1, b = 2, c = 3 ... z = 26. Then l + o + v + e = 54. and f + r + i + e + n + d + s + h + i + p = 108
+// So friendship is twice stronger than love :-). The input will always be in lowercase and never be empty.
+function wordsToMarks(string) {
+    let alphabet = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    let result = 0
+    let arr = string.split('')
+    arr.forEach(el => result += alphabet.indexOf(el))
+    return result
+}
+
+wordsToMarks("attitude")// 100
+wordsToMarks("family")// 66
+
+// Метод lastIndexOf() возвращает индекс последнего вхождения подстроки в строке.
+{
+    let str = 'banana';
+    console.log(str.lastIndexOf('a'));    // 5
+    console.log(str.lastIndexOf('a', 4)); // 3
+    console.log(str.lastIndexOf('a', 3)); // 3
+    console.log(str.lastIndexOf('a', 2)); // 1
+    console.log(str.lastIndexOf('a', 0)); // -1
+}
+
+// Метод startsWith() позволяет определить, начинается ли текущая строка с другой подстроки.
+
+// Basic regex tasks. Write a function that takes in a numeric code of any length. The function should check if the code begins with 1, 2, or 3 and return true if so. Return false otherwise.
+function validateCode(code) {
+    return `${code}`.startsWith(`1`) || `${code}`.startsWith(`2`) || `${code}`.startsWith(`3`)
+}
+
+validateCode(23)// true
+validateCode(523)// false
