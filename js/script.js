@@ -1846,3 +1846,56 @@ function validateCode(code) {
 
 validateCode(23)// true
 validateCode(523)// false
+
+// Метод endsWith() проверяет, заканчивается ли текущая строка символами другой строки
+{
+    let str = 'Create tests for the given api.';
+    str.endsWith('.'); // true
+    str.endsWith('api'); // false
+    str.endsWith(' ', 7); // true
+    str.endsWith('the', 20); // true
+    str.endsWith('Api', 30); // false
+    str.endsWith('api', 30); // true
+}
+
+// Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+function solution(str, ending) {
+    return str.endsWith(ending)
+}
+
+solution('abcde', 'cde')// true
+solution('abcde', 'abc')// false
+
+// While developing a website, you detect that some of the members have troubles logging in. Searching through the code you find that all logins ending with a "_" make problems.
+//     So you want to write a function that takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs from the login-names that end with "_". without filter
+
+function searchNames(logins) {
+    let result = []
+    for (let i = 0; i < logins.length; i++) {
+        if (logins[i][0].endsWith('_')) {
+            result.push(logins[i])
+        }
+    }
+    return result
+}
+
+// withFilter
+function searchNames(logins) {
+    let result = logins.filter(el => el[0].endsWith('_'))
+    return result
+}
+
+searchNames([["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]) //[ "foo", "foo@foo.com" ]
+
+// Метод substring() возвращает подстроку между двумя индексами.
+{
+    let str = 'Thanksgiving';
+    console.log(str.substring(0, 6)); // "Thanks"
+    console.log(str.substring(-1, 2)); // "Th"
+    console.log(str.substring(0)); // "Thanksgiving"
+    console.log(str.substring(0, 30)); // "Thanksgiving"
+    console.log(str.substring(str.length - 3)); // "ing", возвращены 3 последние символа строки
+    console.log(str.substring(4, 4)); // ""
+    console.log(str.substring(str.length - 5)); // "iving", возвращены 5 последних символов стр
+}
+
