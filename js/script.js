@@ -1898,4 +1898,57 @@ searchNames([["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]) //[ "foo", "foo@f
     console.log(str.substring(4, 4)); // ""
     console.log(str.substring(str.length - 5)); // "iving", возвращены 5 последних символов стр
 }
+// Метод slice() извлекает подстроку между индексами и возвращает ее значение.
 
+{
+    let str = 'destination';
+    console.log(str.slice(0, 5)); // "desti"
+    console.log(str.slice(2, 4)); // "st"
+    console.log(str.slice(2, 2)); // "", возвращена пустая строка
+    console.log(str.slice(5)); // "nation"
+    console.log(str.slice(-6)); // "nation"
+    console.log(str.slice(-3)); // "ion"
+    console.log(str.slice(-3, -1)) // "io"
+}
+
+// Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+const greet = function (name) {
+    let result = `Hello ${name.slice(0, 1).toUpperCase()}${name.slice(1).toLowerCase()}!`
+    return result
+};
+greet('riley')// 'Hello Riley!'
+
+// Return a function that will trim a string (the first argument given) if it is longer than the maximum string length (the second argument given). The result should also end with "..."
+//     If the string is smaller than or equal to 3 characters then the length of the dots is not added to the string length.
+
+function trim(arr, size) {
+    let result
+    if (arr.length < 3) {
+        result = arr.slice(0, size) + '...'
+    } else if (arr.length >= 3 && arr.length <= size) {
+        result = arr
+    } else {
+        result = arr.slice(0, size - 3) + '...'
+    }
+    return result
+}
+
+trim("Creating kata is fun", 14)//,"Creating ka...")
+trim("He", 1)//,"Creating ka...")
+trim("Code Wars is pretty rad", 50)//"Code Wars is pretty rad"
+
+// our family runs a shop and have just brought a Scrolling Text Machine (http://3.imimg.com/data3/RP/IP/MY-2369478/l-e-d-multicolour-text-board-250x250.jpg) to help get some more business.
+// The scroller works by replacing the current text string with a similar text string, but with the first letter shifted to the end; this simulates movement.
+//     You're father is far too busy with the business to worry about such details, so, naturally, he's making you come up with the text strings. Create a function named rotate() that accepts a string argument and returns an array of strings with each letter from the input string being rotated to the end.
+// 6kyu
+function rotate(str) {
+    let result = []
+    let newWord = `${str.slice(1)}${str.slice(0, 1)}`
+    for (let i = 1; i <= str.length; i++) {
+        let newWord = `${str.slice(i)}${str.slice(0, i)}`
+        result.push(newWord)
+    }
+    return result
+}
+
+rotate("Hello") // => ["elloH", "lloHe", "loHel", "oHell", "Hello"]
