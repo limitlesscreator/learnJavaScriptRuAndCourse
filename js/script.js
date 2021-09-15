@@ -1859,12 +1859,12 @@ validateCode(523)// false
 }
 
 // Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
-function solution(str, ending) {
+function solution1(str, ending) {
     return str.endsWith(ending)
 }
 
-solution('abcde', 'cde')// true
-solution('abcde', 'abc')// false
+solution1('abcde', 'cde')// true
+solution1('abcde', 'abc')// false
 
 // While developing a website, you detect that some of the members have troubles logging in. Searching through the code you find that all logins ending with a "_" make problems.
 //     So you want to write a function that takes an array of pairs of login-names and e-mails, and outputs an array of all login-name, e-mails-pairs from the login-names that end with "_". without filter
@@ -1952,3 +1952,68 @@ function rotate(str) {
 }
 
 rotate("Hello") // => ["elloH", "lloHe", "loHel", "oHell", "Hello"]
+
+// Write a function, shortenToDate, that takes the Website date/time in its original string format, and returns the shortened format.
+function shortenToDate(longDate) {
+    return longDate.split(',')[0]
+}
+
+shortenToDate("Friday May 2, 9am")// "Friday May 2")
+shortenToDate("Tuesday January 29, 10pm")// "Tuesday January 29")
+shortenToDate("Monday December 25, 10pm")// "Monday December 25")
+
+// You'll be given a list of two strings, and each will contain exactly one colon (":") in the middle (but not at beginning or end). The length of the strings, before and after the colon, are random.
+// Your job is to return a list of two strings (in the same order as the original list), but with the characters after each colon swapped.
+
+function tailSwap(arr) {
+    let result = []
+    let numberArr1 = arr[0].split(':')[1]
+    let numberArr2 = arr[1].split(':')[1]
+    result.push(arr[0].split(':')[0] + ':' + numberArr2)
+    result.push(arr[1].split(':')[0] + ':' + numberArr1)
+    return result
+}
+
+tailSwap(['abc:123', 'cde:456'])// ['abc:456', 'cde:123'];
+tailSwap(['a:12345', '777:xyz'])// ['a:xyz', '777:12345'];
+
+
+// 1      /1 = 1    // Works    // 12     /2 = 6    // Works
+// 123    /3 = 41   // Works    // 1232   /4 = 308  // Works
+// 12322  /5 = 2464.4         // Doesn't work       // 123220 /6 = 220536.333...  // Doesn't work
+function polydivisible(x) {
+    let temp = x.toString()
+    let result
+    for (let i = 1; i <= temp.length; i++) {
+        let num = Number.isInteger(+((x.toString().slice(0, i)) / i))
+        if (num === true) {
+            result = true
+        } else if (num === false) {
+            result = false;
+            break
+        }
+    }
+    return result
+}
+
+polydivisible(1232) //true
+polydivisible(123220)// false
+
+// Метод replace() позволяет найти и заменить какой-либо символ/символы в строке на заменитель.
+{
+    let str = 'anabell';
+    let str2 = str.replace('a', 'A');
+    console.log(str2); // "Anabell"
+
+    {
+        let str = 'bell';
+
+        function replacer(s) {
+            return s + 'BELL';
+        }
+
+        let str2 = str.replace('l', replacer);
+        console.log(str2); // "belBELLl"
+    }
+}
+
