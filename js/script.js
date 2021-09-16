@@ -2015,5 +2015,65 @@ polydivisible(123220)// false
         let str2 = str.replace('l', replacer);
         console.log(str2); // "belBELLl"
     }
+    {
+        let str = 'password: Aa12345bB';
+        let str2 = str.replace(/[0-9]/g, '*');
+        console.log(str2); // "password: Aa*****bB",
+        let str3 = 'password: ACad098bHmiz';
+        let str4 = str.replace(/[a-z]/gi, '_');
+        console.log(str4); // "________: ____098_____",
+    }
+    // Дана строка str. Заменить все символы строки, которые содержат цифры от 0 до 9 включительно, умножив их значение на 10.
+    {
+        let str = '2 + 3 = 5';
+
+        function replacer(s) {
+            return s * 10;
+        }
+
+        let str2 = str.replace(/[0-9]/g, replacer);
+        console.log(str2); // "20 + 30 = 50",
+    }
+
+    // Create a function called shortcut to remove all the lowercase vowels in a given string.
+    function shortcut(string) {
+        return string.replace(/[a,e,i,o,u]/g, '')
+    }
+
+    shortcut("codewars") //  cdwrs
+    shortcut("goodbye")  //  gdby
+
+    // In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell);
+    // you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+    function DNAStrand(dna) {
+        function replacer(s) {
+            switch (s) {
+                case 'T':
+                    return 'A'
+                case 'A':
+                    return 'T'
+                case 'C':
+                    return 'G'
+                case 'G':
+                    return 'C'
+            }
+        }
+
+        return dna.replace(/[atcg]/gi, replacer)
+
+    }
+
+    DNAStrand("AAAA")//"TTTT","String AAAA is"
+    DNAStrand("ATTGC")//"TAACG","String ATTGC is"
+    DNAStrand("GTAT")//"CATA","String GTAT is"
 }
+
+// Write a function which removes from string all non-digit characters and parse the remaining to number. E.g: "hell5o wor6ld" -> 56
+
+function getNumberFromString(s) {
+    return +s.replace(/\D/gi, '');
+}
+
+getNumberFromString("At123ff")// 123);
+getNumberFromString("this is number: 7")// 7);
 
