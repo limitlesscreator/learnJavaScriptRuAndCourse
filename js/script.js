@@ -2076,4 +2076,65 @@ function getNumberFromString(s) {
 
 getNumberFromString("At123ff")// 123);
 getNumberFromString("this is number: 7")// 7);
+// Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten pieces of fruit with fresh ones. For example, given ["apple","rottenBanana","apple"] the replaced array should be ["apple","banana","apple"].
+//     Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the rotten fruits are replaced by good ones.
 
+function removeRotten(bagOfFruits) {
+    if (bagOfFruits) {
+        let result = bagOfFruits.map(el => el.toLowerCase().replace('rotten', ''))
+        return result
+    }
+    return []
+}
+
+removeRotten(["apple", "rottenBanana", "apple"]) //["apple","banana","apple"]
+
+// Unscramble the eggs.
+//     The string given to your function has had an "egg" inserted directly after each consonant. You need to return the string before it became eggcoded.
+
+function unscrambleEggs(word) {
+    return word.replace(/egg/gi, '')
+}
+
+unscrambleEggs("Beggegeggineggneggeregg")//"Beginner"
+unscrambleEggs("FeggUNegg KeggATeggA")// "FUN KATA"
+unscrambleEggs("ceggodegge heggeregge")// "code here"
+
+// Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer. When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+//     Your task is correct the errors in the digitised text. You only have to handle the following mistakes: S is misinterpreted as 5. O is misinterpreted as 0 .I is misinterpreted as 1
+function correct(string) {
+    function replacer(s) {
+        switch (s) {
+            case '5':
+                return 'S'
+            case '0':
+                return 'O'
+            case '1':
+                return 'I'
+            default:
+                return ''
+        }
+    }
+
+    let result = string.replace(/[501]/gi, replacer)
+    return result
+}
+
+correct("L0ND0N")//"LONDON"
+correct("DUBL1N")//"DUBLIN"
+correct("51NGAP0RE")//"SINGAPORE"
+correct("BUDAPE5T")//"BUDAPEST"
+correct("PAR15")//"PARIS"
+
+// An AI has infected a text with a character!!
+// Note: The character is a string of length 1 or an empty string.
+function contamination(text, char) {
+    let arr = text.split('')
+    let result = arr.map(el => el.replace(el, char))
+    return result.join('')
+}
+
+contamination("abc", "z")//, "zzz")
+contamination("", "z")// "")
+contamination("abc", "")// "")
+contamination("_3ebzgh4", "&")//, "&&&&&&&&")
