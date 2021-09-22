@@ -139,20 +139,32 @@ function start() {
     }, 1000)
 }
 
-console.log('start')
+function stop() {
+    console.log('start')
 
-setTimeout(() => {
-    console.log('timer 1')
     setTimeout(() => {
-        console.log('timer 2')
+        console.log('timer 1')
+        setTimeout(() => {
+            console.log('timer 2')
+            setTimeout(() => {
+                console.log('timer 5')
+            }, 10)
+        }, 20)
     }, 0)
-}, 0)
 
-setTimeout(() => {
-    console.log('timer3')
-}, 0)
+    setTimeout(() => {
+        console.log('timer3')
+        setTimeout(() => {
+            console.log('timer 4')
+            setTimeout(() => {
+                console.log('timer 6')
+            }, 0)
+        }, 0)
+    }, 0)
 
-console.log('end')
+    console.log('end')
+}
+
 
 //start
 //end
@@ -213,3 +225,57 @@ vowelStart('under_score')//, 'und ersc or e')
 //     Квантификатор – количество раз, которое встречается символ в строке подряд:
 //     + – означает «один или более» (например: /\d+/).
 // * – означает «ноль или более» (например: /\d*/).
+
+function stopPromises() {
+    const inventory = {
+        sunglasses: 1900,
+        pants: 1088,
+        bags: 1344
+    };
+
+    function myExecutor(resolve, reject) {
+        if (inventory.sunglasses > 0) {
+            resolve('Sunglasses order processed.')
+        } else {
+            reject('That item is sold out.')
+        }
+    }
+
+    const myFirstPromise = new Promise(myExecutor)
+
+    function orderSunglasses() {
+        return new Promise(myExecutor)
+    }
+
+    const orderPromise = orderSunglasses()
+
+    console.log(orderPromise)
+}
+
+function withoutAsync() {
+    // without async await
+    const url = 'https://jsonplaceholder.typicode.com/todos/1'
+    fetch(url)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.log(err + 'ops  ')
+        })
+}
+
+const asyncFunction = async () => {
+    // with async
+    try {
+        const url = 'https://jsonplaceholder.typicode.com/todos/1'
+        const res = await fetch(url)
+        const data = await res.json()
+        return data
+    } catch (err) {
+        console.error(err)
+    }
+}
+asyncFunction().then((data) => console.log(data))
