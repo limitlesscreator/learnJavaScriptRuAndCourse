@@ -279,3 +279,58 @@ const asyncFunction = async () => {
     }
 }
 asyncFunction().then((data) => console.log(data))
+
+// Метод split() разбивает строку на массив подстрок путём разделения строки указанным разделителем.
+
+// Complete the solution so that it reverses all of the words within the string passed in.
+function reverseWords(str) {
+    return str.split(' ').reverse().join(' ')
+}
+
+reverseWords("kata editor")//  "editor kata"
+reverseWords("row row row your boat")//"boat your row row row")
+
+// Number is a palindrome if it is equal to the number with digits in reversed order. For example, 5, 44, 171, 4884 are palindromes, and 43, 194, 4773 are not.
+//     Write a function which takes a positive integer and returns the number of special steps needed to obtain a palindrome. The special step is: "reverse the digits, and add to the original number".
+//     If the resulting number is not a palindrome, repeat the procedure with the sum until the resulting number is a palindrome.
+const palindromeChainLength = function (n) {
+    let result = 0
+    for (let i = 0; i < 100; i++) {
+        let palindromeIs = String(n) === String(n).split('').reverse().join('')
+        if (!palindromeIs) {
+            n = n + Number(String(n).split('').reverse().join(''))
+            result++
+        } else {
+            break
+        }
+    }
+    return result
+}
+palindromeChainLength(87)// 4
+palindromeChainLength(89)// 24
+palindromeChainLength(10)// 1
+
+// An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia). Note: anagrams are case insensitive
+// Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+
+const isAnagram = function (test, original) {
+    let result
+    let tempTest = test.toLowerCase()
+    let tempOrig = original.toLowerCase().split('')
+
+    for (let i = 0; i < 100; i++) {
+        // debugger
+        if (tempTest.indexOf(tempOrig[i]) !== -1) {
+            tempTest = tempTest.replace(tempOrig[i], '')
+        } else if (tempTest.length === 0 && test.length === original.length) {
+            result = true
+            break
+        } else if (tempTest.indexOf(tempOrig[i]) === -1) {
+            result = false
+            break
+        }
+    }
+    return result
+};
+isAnagram("foefet", "toffee")
+isAnagram('Twoo', 'Woot')
