@@ -334,3 +334,65 @@ const isAnagram = function (test, original) {
 };
 isAnagram("foefet", "toffee")
 isAnagram('Twoo', 'Woot')
+
+// Your task is to write a function that takes a String and returns an Array/list with the length of each word added to each element .
+function addLength(str) {
+    let result = str.split(' ')
+    result = result.map(el => `${el} ${el.length}`)
+    return result
+}
+
+addLength('apple ban')//["apple 5", "ban 3"]
+addLength('you will win')//["you 3", "will 4", "win 3"]
+
+// In this exercise, a string is passed to a method and a new string has to be returned with the first character of each word in the string.
+function makeString(s) {
+    let word = s.split(' ')
+    word = word.map(el => el[0]).join('')
+    return word
+}
+
+makeString("sees eyes xray yoat")// "sexy"
+makeString("brown eyes are nice")// "bean"
+
+function findLongest(str) {
+    debugger
+    let spl = str.split(" ")
+    let longest = 0
+    for (let i = 0; i > spl.length; i++) {
+        if (spl[i].length > longest) {
+            longest = spl[i].length
+        }
+    }
+
+    return longest
+}
+
+findLongest("The quick white fox jumped around the massive dog")
+
+// Simple challenge - eliminate all bugs from the supplied code so that the code runs and outputs the expected value. Output should be the length of the longest word, as a number.
+function findLongest(str) {
+    let spl = str.split(" ")
+    let longest = 0
+    for (let i = 0; i < spl.length; i++) {
+        if (spl[i].length > longest) {
+            longest = spl[i].length
+        }
+    }
+    return longest
+}
+
+findLongest("The quick white fox jumped around the massive dog")// 7
+findLongest("Take me to tinseltown with you")// 10
+
+
+// Take a sentence (string) and reverse each word in the sentence. Do not reverse the order of the words, just the letters in each word If there is punctuation, it should be interpreted as a regular character; no special rules.
+//     If there is spacing before/after the input string, leave them there. String will not be empty. function reverser(sentence) {
+function reverser(sentence) {
+    let result = sentence.split(' ')
+    result = result.map(el => el.split('').reverse().join('')).join(' ')
+    return result
+}
+
+reverser("Hi mom")// 'iH mom'
+reverser("friendzone")// 'enozdneirf'
