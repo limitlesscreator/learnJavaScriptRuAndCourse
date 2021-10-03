@@ -1,3 +1,21 @@
+// i don't' remember where is it was, so i need rewrite it:)
+
+let str = '1I do, 2you do, 3they do';
+console.log(str.split('do'));
+// ["1I ", ", 2you ", ", 3they ", ""], сам разделитель не включается в массив
+console.log(str.split(' '));
+// ["1I", "do,", "2you", "do,", "3they", "do"], в качестве разделителя указана пустая строка
+console.log(str.split('o', 2));
+// ["1I d", ", 2y"], есть лимит на количество выводимых подстрок
+console.log(str.split('1'));
+// ["", "I do, 2you do, 3they do"]
+console.log(str.split());
+// ["1I do, 2you do, 3they do"], массив содержит 1 элемент со всей строкой
+console.log(str.split(/\d/));
+// ["", "I do, ", "you do, ", "they do"], /\d/ – регулярное выражение, которое заменяет символы от 0 до 9 включительно
+str = '01 2  3    4';
+console.log(str.split(/\s*/)); // ["0", "1", "2", "3", "4"], /\s*/ – регулярное выражение, которое означает "ноль или более" (*) пробелов (\s)
+//
 function clear() {
     console.clear()
 }
@@ -48,3 +66,47 @@ const stringToArray = string => string.split(' ')
 
 stringToArray("Robin Singh")// ["Robin", "Singh"];
 stringToArray("I love arrays they are my favorite")// ["I", "love", "arrays", "they", "are", "my", "favorite"]);
+
+
+function digits(num) {
+    let result = String(num).split('')
+    let mainResult = []
+    let arr = result
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            mainResult.push(+arr[i] + +arr[j])
+            result.shift()
+        }
+    }
+    console.log(mainResult)
+    console.log(result)
+}
+
+digits(12345)
+
+//doesn't work :(
+
+function digits(num) {
+    let res = [];
+    String(num).split('').forEach((d, i, arr) => {
+        for (let j = i + 1; j < arr.length; j++)
+            res.push(Number(d) + Number(arr[j]));
+    });
+    return res;
+}
+
+//this bellow is not mine, but i like it solution :)
+
+// Your task is to remove all consecutive duplicate words from a string, leaving only first words entries.
+function removeConsecutiveDuplicates(s) {
+    let result = []
+    let temp = s.split(' ')
+    for (let i = 0; i < temp.length; i++) {
+        if (result[result.length - 1] !== temp[i]) {
+            result.push(temp[i])
+        }
+    }
+    return result.join(' ')
+}
+
+removeConsecutiveDuplicates("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta") //'alpha beta gamma delta alpha beta gamma delta'
