@@ -110,3 +110,71 @@ function removeConsecutiveDuplicates(s) {
 }
 
 removeConsecutiveDuplicates("alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta") //'alpha beta gamma delta alpha beta gamma delta'
+clear()
+
+// Codewars Bar recommends you drink 1 glass of water per standard drink so you're not hungover tomorrow morning.
+// Your fellow coders have bought you several drinks tonight in the form of a string. Return a string suggesting how many glasses of water you should drink to not be hungover.
+function hydrate(s) {
+    let temp = s.split(' ').filter(el => +el).reduce((acc, curr) => acc + +curr, 0)
+    return `${temp < 2 ? `${temp} glass of water` : `${temp} glasses of water`}`
+}
+
+hydrate("1 beer")// "1 glass of water");
+hydrate("2 glasses of wine and 1 shot")// "3 glasses of water");
+hydrate("1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer")// "10 glasses of water");
+
+// function solve(eq){
+//     let result = []
+//     let arr =  eq.split('')
+//     for (let i = 0; i < arr.length; i++){
+//         if (!isNaN(arr[i])){
+//             result.push(arr[i])
+//         }
+//         else {
+//
+//         }
+//     }
+//     result
+// }
+// solve("100*b/y")//"y/b*100" //not working
+
+// Write a function that reverses the bits in an integer.
+//     For example, the number 417 is 110100001 in binary. Reversing the binary is 100001011 which is 267.
+function reverseBits(n) {
+    let result = parseInt((n.toString(2).split('').reverse().join('')), 2)
+    return result
+}
+
+reverseBits(417)//, 267)
+reverseBits(267)//, 417)
+reverseBits(0)//, 0)
+reverseBits(2017)//, 1087)
+
+// Given 2 string parameters, show a concatenation of:the reverse of the 2nd string with inverted case; e.g Fish -> HSIf
+// a separator in between both strings: @@@the 1st string reversed with inverted case and then mirrored; e.g Water -> RETAwwATER ** Keep in mind that this kata was initially designed for Shell, I'm aware it may be easier in other languages.**
+
+function reverseAndMirror(s1, s2) {
+    let arr1 = s1.split('')
+    let newWord1 = []
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] === arr1[i].toUpperCase()) {
+            newWord1.push(arr1[i].toLowerCase())
+        } else newWord1.push(arr1[i].toUpperCase())
+    }
+    newWord1 = newWord1.join('')
+    let twoWords = newWord1.split('').reverse().join('') + newWord1
+
+    let arr2 = s2.split('')
+    let newWord2 = []
+    for (let i = 0; i < arr2.length; i++) {
+        if (arr2[i] === arr2[i].toUpperCase()) {
+            newWord2.push(arr2[i].toLowerCase())
+        } else newWord2.push(arr2[i].toUpperCase())
+    }
+    newWord2 = newWord2.reverse().join('')
+    let result = newWord2 + '@@@' + twoWords
+    return result
+}
+
+reverseAndMirror("FizZ", "buZZ") //  "zzUB@@@zZIffIZz"
+reverseAndMirror("String Reversing", "Changing Case") //"ESAc GNIGNAHc@@@GNISREVEr GNIRTssTRING rEVERSING"
