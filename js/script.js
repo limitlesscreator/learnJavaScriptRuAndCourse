@@ -178,3 +178,69 @@ function reverseAndMirror(s1, s2) {
 
 reverseAndMirror("FizZ", "buZZ") //  "zzUB@@@zZIffIZz"
 reverseAndMirror("String Reversing", "Changing Case") //"ESAc GNIGNAHc@@@GNISREVEr GNIRTssTRING rEVERSING"
+
+
+// You will get an array as input with time durations as string in the following format: HH:MM:SS. Each duration is a present Santa has to distribute. Determine whether he can do it in 24 hours or not. In case the time required to deliver all of the presents is exactly 24 hours, Santa can complete the delivery ;-) .
+function determineTime(durations) {
+    let result = false
+    let hours = 0
+    let minutes = 0
+    let seconds = 0
+    for (let i = 0; i < durations.length; i++) {
+        hours += +durations[i].split(':')[0]
+        minutes += +durations[i].split(':')[1]
+        seconds += +durations[i].split(':')[2]
+    }
+    for (let i = 0; i < 100; i++) {
+        if (minutes > 59) {
+            hours++
+            minutes -= 60
+        } else {
+            break
+        }
+    }
+    if (hours === 24 && minutes === 0 || hours < 24) {
+        result = true
+    }
+    return result
+}
+
+determineTime(["00:30:00", "02:30:00", "00:15:00"])// true
+determineTime([])// true
+determineTime(["12:00:00", "12:00:00"])// true
+determineTime(["06:00:00", "12:00:00", "06:30:00"])// false
+
+// Some people just have a first name; some people have first and last names and some people have first, middle and last names.
+//     You task is to initialize the middle names (if there is any).
+function initializeNames(name) {
+    let arrCount = name.split(' ').length
+    if (arrCount > 2) {
+        let firstArr = name.split(' ').slice(1, -1).map(el => el.split('')[0] + '. ').join('')
+        let firstName = name.split(' ')[0]
+        let lastName = name.split(' ')[name.split(' ').length - 1]
+        let result = firstName + ' ' + firstArr + lastName
+        return result
+    } else if (arrCount <= 2) {
+        return name
+    }
+}
+
+initializeNames('Jack Ryan')// 'Jack Ryan','');
+initializeNames('Lois Mary Lane')// 'Lois M. Lane','');
+initializeNames('Dimitri')// 'Dimitri','');
+initializeNames('Alice Betty Catherine Davis')// 'Alice B. C. Davis','');
+
+// Count the number of exclamation marks and question marks, return the product.
+
+function product(s) {
+    let questions = 0
+    let exclamation = 0
+    s.split('').forEach(el => el === '?' ? questions++ : null)
+    s.split('').forEach(el => el === '!' ? exclamation++ : null)
+    return exclamation * questions
+}
+
+product("!!!??")//  6
+product("!!!???")//  9
+product("!???!!")//  9
+product("!????!!!?")//  20
