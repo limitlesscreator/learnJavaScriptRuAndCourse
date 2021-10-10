@@ -244,3 +244,89 @@ product("!!!??")//  6
 product("!!!???")//  9
 product("!???!!")//  9
 product("!????!!!?")//  20
+
+function magicNumber(date) {
+    debugger
+    let a = date.split('/')
+    let result = 0
+    for (let i = 0; i < a.length; i++) {
+        let temp = a[i].split('')
+        temp
+        for (let j = 0; j < temp[i].length; j++) {
+            result += +temp[j]
+        }
+    }
+}
+
+magicNumber("6/27/1975")
+
+// Нумерологи утверждают, что у каждого человека есть счастливое число-талисман. Чтобы вычислить его, надо цифры, обозначающие год, месяц и день рождения сложить и свести к простому числу (от 1 до 9).
+// Например, если человек родился 27 июня 1975 года, то его счастливое число рассчитывается так: 2 + 7 + 6 + 1 + 9 + 7 + 5 = 37 = 10 = 1.
+function magicNumber(date) {
+    let a = date.split('/')
+    let result = 0
+    for (let i = 0; i < a.length; i++) {
+        let temp = a[i].split('')
+        for (let j = 0; j < temp.length; j++) {
+            result += +temp[j]
+        }
+    }
+    //37
+    result = String(result).split('').reduce((curr, acc) => +curr + +acc, 0)
+    result = String(result).split('').reduce((curr, acc) => +curr + +acc, 0)
+    return result
+}
+
+magicNumber("6/27/1975") //1
+
+// function changeDigitsOrder(num){
+//     let result = []
+//     let arr = String(num).split('')
+//     let copyArr = [...String(num).split('')]
+//     for (let i = 0; i < arr.length; i++){
+//         let min = Math.min(...copyArr)
+//         let indexMin = copyArr.indexOf(min)
+//         indexMin
+//         result.push(min)
+//
+//     }
+//     result
+// }
+// changeDigitsOrder(1513) //1135 not work :(
+
+function changeDigitsOrder(num) {
+    let result = []
+    let arrNumbersFor = String(num).split('')
+    let copyNums = String(num).split('').map(el => +el)
+    let pushZero = 0
+    for (let i = 0; i < arrNumbersFor.length; i++) {
+        let min = Math.min(...copyNums)
+        let indexMin = copyNums.indexOf(min)
+
+        if (min > 0 || result[result.length - 1] === 0) {
+            result.push(min)
+
+            // if (result[result.length - 1] === 0){
+            //     pushZero--
+            // }
+            if (pushZero > 0) {
+                for (let j = 0; j < pushZero; j++) {
+                    result.push(0)
+                }
+                pushZero = 0
+            }
+        }
+        if (min === 0) {
+            pushZero++
+        }
+
+        // Найден индекс минимального, теперь надо убрать из копии это число
+        copyNums = copyNums.filter((el, index) => index !== indexMin)
+
+    }
+    return +result.join('')
+}
+
+changeDigitsOrder(4100) // 1004
+changeDigitsOrder(15231) //11235
+
