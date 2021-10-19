@@ -179,3 +179,60 @@ duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 30)//z
 duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 28)//, "g");
 duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 12)//, "b");
 
+function getCollege(player) {
+    let result
+    for (let key in curry) {
+        if (key === 'college') {
+            result = player[key]
+        }
+    }
+    return result
+}
+
+let curry = {fname: "Steph", lname: "Curry", number: 30, team: "Warriors", college: "Davidson"}
+
+getCollege(curry) //"Davidson"
+
+// Program channels into your TV's memory. An array with channels (strings) will be passed as an argument to the function redarr(). Sort the channels in an alphabetical order, remove duplicates and, finally, return an object where each channel (object's value) is assigned to a whole number (objects's key), starting with 0.
+function redarr(arr) {
+    let result = {}
+    let removeDuplicates = []
+    for (let i = 0; i < arr.length; i++) {
+        let channel = arr[i]
+        if (removeDuplicates.indexOf(channel) === -1) {
+            removeDuplicates.push(channel)
+        }
+    }
+    removeDuplicates = removeDuplicates.sort()
+    removeDuplicates.forEach((el, index) => result[index] = el)
+    return result
+}
+
+redarr(["BBC1", "BBC2", "MTV"])// {'0': 'BBC1','1': 'BBC2','2': 'MTV'}, "
+redarr(["BBC1", "BBC1", "BBC2", "MTV"])// {'0': 'BBC1','1': 'BBC2','2': 'MTV'},
+
+{
+    console.log({}.toString.call([])); // "[object Array]"
+    console.log({}.toString.call({})); // "[object Object]"
+    console.log({}.toString.call(new Date())); // "[object Date]"
+    console.log({}.toString.call(null)); // "[object Null]"
+
+    let value = {};
+    console.log(value instanceof Object); // true
+    console.log(value instanceof Array); // false
+
+    let arr = [1, 2];  // массив
+    console.log(arr instanceof Object); // true Array наследует от класса Object
+    console.log(arr instanceof Array);  // true array принадлежит классу Array
+
+    let arr1 = [];
+    console.log(arr1.constructor.name); // "Array"
+    console.log(arr1.constructor === Array); // true
+
+    let user = {
+        name: 'Bob',
+        age: 23,
+    };
+    let result = {}.toString.call(user) // "[object Object]"
+    let result2 = {}.toString.call({}) // "[object Object]"
+}
