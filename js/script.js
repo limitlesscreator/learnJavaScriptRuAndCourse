@@ -236,3 +236,81 @@ redarr(["BBC1", "BBC1", "BBC2", "MTV"])// {'0': 'BBC1','1': 'BBC2','2': 'MTV'},
     let result = {}.toString.call(user) // "[object Object]"
     let result2 = {}.toString.call({}) // "[object Object]"
 }
+// Create a function that takes two arguments: An array of objects which feature the season, the team and the country of the Champions League winner. // Country (as a string, for example, 'Portugal')
+// You function should then return the number which represents the number of times a team from a given country has won. Return 0 if there have been no wins.
+const winnerList1 = [
+    {season: '1996–97', team: 'Borussia Dortmund', country: 'Germany'},
+    {season: '1997–98', team: 'Real Madrid', country: 'Spain'},
+    {season: '1998–99', team: 'Manchester United', country: 'England'},
+    {season: '1999–00', team: 'Real Madrid', country: 'Spain'},
+];
+let country = 'Spain'
+
+function countWins(winnerList1, country) {
+    let count = 0
+    for (let key in winnerList1) {
+        if (winnerList1[key].country === country) {
+            count++
+        }
+    }
+    return count
+}
+
+countWins(winnerList1, country) //2
+
+{
+    const diary = {
+        text: true,
+    };
+
+    const copy = diary;
+    console.log(copy);
+// [object Object] {
+//   text: true
+// }
+    copy.date = '12.01.2018';
+    diary.number = 100;
+    delete diary.text;
+    console.log(diary);
+// [object Object] {
+//   date: "12.01.2018",
+//   number: 100,
+// }
+
+    console.log(copy)
+// [object Object] {
+//   date: "12.01.2018",
+//   number: 100,
+// }
+    const obj1 = {};
+    const obj2 = obj1;
+    console.log(obj1 == obj2); // true
+    console.log(obj1 === obj2); // true
+    // одинаковая ссылка
+
+    const obj3 = {};
+    const obj4 = {};
+    console.log(obj3 == obj4); // false
+    console.log(obj3 === obj4); // false
+    //Два разных объекта, при созданиее было созданно две разные ссылки
+    const obj = {
+        name: 'Kevin',
+        age: 30,
+    };
+    let str = undefined;
+    str = obj.name;
+    delete obj.name;
+    //str = 'Kevin'
+}
+
+function getMax1() {
+    let max = {name: 'Max Headroom'}
+    return max;
+}
+
+function getMax2() {
+    return {name: 'Max Headroom'}
+}
+
+let result = getMax1() == getMax2() //false
+
