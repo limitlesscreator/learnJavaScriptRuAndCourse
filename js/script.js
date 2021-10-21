@@ -314,3 +314,73 @@ function getMax2() {
 
 let result = getMax1() == getMax2() //false
 
+const person = {
+    name: 'Joey',
+    age: 30,
+    "likes cats": true,
+};
+console.log(person.name); // "Joey"
+console.log(person.age); // 30
+// console.log(person.likes cats); // SyntaxError
+// console.log(person['likes cats']); // true
+let secretCode = 'password'
+person[secretCode] = '123'
+console.log(person[secretCode])
+
+// Complete the function to create backronyms. Transform the given string (without spaces) to a backronym, using the preloaded dictionary and return a string of words, separated with a single space (but no trailing spaces).
+
+let makeBackronym = function (string) {
+    let result = []
+    let backronym = {
+        'a': 'awesome',
+        'b': 'beautiful',
+        'c': 'confident',
+        'd': 'disturbing',
+        'e': 'eager',
+        'f': 'fantastic',
+        'g': 'gregarious',
+        'h': 'hippy',
+        'i': 'ingestable',
+        'j': 'joke',
+        'k': 'klingon',
+        'l': 'literal',
+        'm': 'mustache',
+        'n': 'newtonian',
+        'o': 'oscillating',
+        'p': 'perfect',
+        'q': 'queen',
+        'r': 'rant',
+        's': 'stylish',
+        't': 'turn',
+        'u': 'underlying',
+        'v': 'volcano',
+        'w': 'weird',
+        'x': 'xylophone',
+        'y': 'yogic',
+        'z': 'zero',
+    }
+    string.split('').forEach(el => result.push(backronym[el]))
+    return result.join(' ')
+};
+
+makeBackronym("dgm")//, "disturbing gregarious mustache"
+makeBackronym("lkj")//, "literal klingon joke"
+makeBackronym('interesting')//, 'ingestable newtonian turn eager rant eager stylish turn ingestable newtonian gregarious','Output not as expected'
+makeBackronym('codewars')//, 'confident oscillating disturbing eager weird awesome rant stylish','Output not as expected'
+
+// Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them.
+function arithmetic(a, b, operator) {
+    const calculate = {
+        'add': a + b,
+        'subtract': a - b,
+        'multiply': a * b,
+        'divide': a / b,
+    }
+    return calculate[operator]
+}
+
+arithmetic(1, 2, "add")//, 3!");
+arithmetic(8, 2, "subtract")//, 6
+arithmetic(5, 2, "multiply")//, 10
+arithmetic(8, 2, "divide")//, 4
+
