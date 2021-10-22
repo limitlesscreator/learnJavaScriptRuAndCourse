@@ -166,18 +166,6 @@ greet('english')//, 'Welcome', "Your function should have returned 'Welcome'. Tr
 greet('dutch')//, 'Welkom', "Your function should have returned 'Welkom'. Try again.");
 greet('IP_ADDRESS_INVALID')//, 'Welcome', "Your function should have returned 'Welcome'. Try again.");
 
-function duckDuckGoose(players, goose) {
-    for (let i = 0; i < 100; i++) {
-        if (goose > players.length) {
-            goose -= players.length
-        } else break
-    }
-    return result = players[goose - 1]
-}
-
-duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 30)//z
-duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 28)//, "g");
-duckDuckGoose(["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"], 12)//, "b");
 
 function getCollege(player) {
     let result
@@ -384,3 +372,71 @@ arithmetic(8, 2, "subtract")//, 6
 arithmetic(5, 2, "multiply")//, 10
 arithmetic(8, 2, "divide")//, 4
 
+clear()
+let arr = Array.__proto__.__proto__ === Object.prototype
+console.log(arr)
+
+// Write a function, called sumPPG, that takes two NBA player objects/struct/Hash/Dict/Class and sums their PPG
+function NBAplayer(name, team, ppg) {
+    this.name = name;
+    this.team = team;
+    this.ppg = ppg;
+}
+
+let iverson = new NBAplayer("Iverson", "76ers", 11.2)
+let jordan = new NBAplayer("Jordan", "bulls", 20.2);
+
+function sumPPG(playerOne, playerTwo) {
+    let total = 0
+    total += playerOne.ppg + playerTwo.ppg
+    return total
+}
+
+sumPPG(iverson, jordan)// 31.4
+
+
+function checkThreeAndTwo(array) {
+    let countA = 0
+    let countB = 0
+    let countC = 0
+    let result = false
+    array.forEach(el => el === 'a' ? countA++ : el === 'b' ? countB++ : countC++)
+    if (countA === 2 && countB === 3) {
+        result = true
+    } else if (countA === 2 && countC === 3) {
+        result = true
+    } else if (countB === 2 && countA === 3) {
+        result = true;
+    } else if (countB === 2 && countC === 3) {
+        result = true
+    } else if (countC === 2 && countA === 3) {
+        result = true
+    } else if (countC === 2 && countB === 3) {
+        result = true
+    }
+    return result
+}
+
+checkThreeAndTwo(["a", "a", "a", "b", "b"])// true
+checkThreeAndTwo(["a", "c", "a", "c", "b"])// false
+checkThreeAndTwo(["a", "a", "a", "a", "a"])// false
+
+// Напишите функцию countLetters, которая принимает строку str в качестве аргумента и возвращает объект, в котором ключами являются буквы, а значениями - количество данных букв в строке. Регистр букв не имеет значения. Пробелы не учитывать.
+
+function countLetters(str) {
+    str = str.split(' ').join('').toLowerCase()
+
+    let arr = str.split('')
+    let result = {}
+    for (let i = 0; i < arr.length; i++) {
+        result[`${arr[i]}`] = 0
+
+    }
+    for (let j = 0; j < arr.length; j++) {
+        result[arr[j]]++
+    }
+    return result
+}
+
+countLetters('school') //{s: 1, c: 1, h: 1, o: 2, l: 1}
+countLetters('I like milk') //{i: 3, l: 2, k: 2, e: 1, m: 1}
