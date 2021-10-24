@@ -440,3 +440,93 @@ function countLetters(str) {
 
 countLetters('school') //{s: 1, c: 1, h: 1, o: 2, l: 1}
 countLetters('I like milk') //{i: 3, l: 2, k: 2, e: 1, m: 1}
+
+// Напишите функцию countLetters, которая принимает строку str в качестве аргумента и возвращает объект, в котором ключами являются СЛОВА, а значениями - количество данных Слов.
+
+
+function countWords(str) {
+    str = str.split(' ').join(' ').toLowerCase() //words
+    let arrWords = str.split(' ')
+    let result = {}
+    for (let i = 0; i < arrWords.length; i++) {
+        result[`${arrWords[i]}`] = 0
+    }
+    for (let j = 0; j < arrWords.length; j++) {
+        result[arrWords[j]]++
+    }
+    return result
+}
+
+countWords('A life is a moment') //{a: 2, life: 1, is: 1, moment: 1}
+
+{
+    const customers = [
+        {
+            id: '00000001',
+            personalInfo: {
+                name: {
+                    first: 'Ashley',
+                    last: 'Fox',
+                },
+                dob: '12/01/1990',
+                contactInfo: {
+                    phone: '+17008009000',
+                    email: 'qwe@qwe.com',
+                    address: {
+                        zip: '33021',
+                        city: {
+                            'city name': 'Golden city',
+                            street: 'Elm',
+                        },
+                    }
+                }
+            },
+            purchases: [{
+                order: {
+                    number: 1,
+                    date: '12.12.2018',
+                    item: {
+                        brand: {
+                            'brand name': 'aaa',
+                            code: {
+                                'unique number': '1b2n3n4m5lk9',
+                                color: 'red',
+                                size: [{
+                                    size0: {
+                                        count: 1
+                                    },
+                                }, {
+                                    size2: {
+                                        count: 2
+                                    },
+                                }],
+                            }
+                        }
+                    }
+                }
+            }],
+        },
+        {
+            id: '00000002',
+            personalInfo: {
+                name: {
+                    first: 'John',
+                    last: 'Black',
+                },
+                dob: '10/01/1980',
+                contactInfo: {
+                    phone: '+17778009900',
+                    email: null,
+                    address: null,
+                }
+            },
+            purchases: [null],
+        }];
+    console.log(customers[0].id)
+    console.log(customers[0]['id']);
+    console.log(customers[0].personalInfo.name);
+    console.log(customers[0].personalInfo.contactInfo.address.zip);
+    console.log(customers[0]['personalInfo']['contactInfo']['address']['zip']); // "33021"
+    console.log(customers[0].purchases[0].order.item.brand.code.size[1].size2.count); // 2
+    console.log(customers[0]['purchases'][0]['order']['item']['brand']['code']['size'][1]['size2']['count']); // 2
+}
