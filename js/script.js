@@ -530,3 +530,90 @@ countWords('A life is a moment') //{a: 2, life: 1, is: 1, moment: 1}
     console.log(customers[0].purchases[0].order.item.brand.code.size[1].size2.count); // 2
     console.log(customers[0]['purchases'][0]['order']['item']['brand']['code']['size'][1]['size2']['count']); // 2
 }
+clear()
+
+// There are two lists, possibly of different lengths. The first one consists of keys, the second one consists of values. Write a function createDict(keys, values) that returns a dictionary created from keys and values. If there are not enough values, the rest of keys should have a None (JS null)value. If there not enough keys, just ignore the rest of values.
+function createDict(keys, values) {
+    let result = {}
+    for (let i = 0; i < keys.length; i++) {
+        result[keys[i]] = null
+        if (values[i] !== undefined) {
+            result[keys[i]] = values[i]
+        }
+    }
+    return result
+}
+
+createDict(['a', 'b', 'c', 'd'], [1, 2, 3])// {'a': 1, 'b': 2, 'c': 3, 'd':null}
+createDict(['a', 'b', 'c'], [1, 2, 3, 4])// {'a': 1, 'b': 2, 'c': 3})
+createDict(['a', 'b', 'c', 'd'], [1, 2, 3])// {'a': 1, 'b': 2, 'c': 3, 'd':null})
+
+let list1 = [
+    {firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript'},
+    {firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript'},
+    {firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML'},
+    {firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS'}
+];
+let list2 = [
+    {firstName: 'Oliver', lastName: 'Q.', country: 'Australia', continent: 'Oceania', age: 19, language: 'HTML'},
+    {firstName: 'Lukas', lastName: 'R.', country: 'Austria', continent: 'Europe', age: 89, language: 'HTML'}
+];
+
+function countDevelopers(list) {
+    let result = 0
+    for (let i = 0; i < list.length; i++) {
+        if (list[i].continent === 'Europe' && list[i].language === 'JavaScript') {
+            result++
+        }
+    }
+    return result
+}
+
+countDevelopers(list1)//1
+countDevelopers(list2)//0
+
+function greetDevelopers(list) {
+    let result = []
+    for (let i = 0; i < list.length; i++) {
+        let namePerson = list[i].firstName
+        let languagePerson = list[i].language
+        let strGreeting = `Hi ${namePerson}, what do you like the most about ${languagePerson}?`
+        let newObj = {...list[i], greeting: strGreeting}
+        result.push(newObj)
+    }
+    return result
+}
+
+let list1 = [
+    {firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java'},
+    {firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python'},
+    {firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby'}
+];
+greetDevelopers(list1)
+
+function testResult(array) {
+    let result = []
+    let l = 0
+    let a = 0
+    let h = 0
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] >= 9) {
+            h++
+        } else if (array[i] >= 7 && array[i] <= 8) {
+            a++
+        } else if (array[i] >= 1 && array[i] <= 6) {
+            l++
+        }
+    }
+    let total = +(array.reduce((acc, curr) => acc + curr, 0) / array.length).toFixed(3)
+    let newObj = {'h': h, 'a': a, 'l': l}
+    let well = array.every(el => el >= 9)
+    if (well) {
+        result.push(total, newObj, 'They did well')
+    } else {
+        result.push(total, newObj)
+    }
+    return result
+}
+
+testResult([10, 9, 9, 10, 9, 10, 9])//,[9.429, {'h': 7, 'a': 0, 'l': 0}, 'They did well'])
