@@ -152,3 +152,160 @@ const object = {
 console.log(Object.keys(object)); // ["1", "name", "age", "id"]
 console.log(Object.values(object)); // ["unique", "Alice", 20, "KUI-567_UIO"]
 console.log(Object.entries(object)); // [["1", "unique"], ["name", "Alice"], ["age", 20], ["id", "KUI-567_UIO"]]
+
+const items = {
+    milk: 3,
+    bread: 4.5,
+    tomatoes: 1.9,
+};
+
+let arr = Object.entries(items);
+console.log(arr); // [["milk", 3], ["bread", 4.5], ["tomatoes", 1.9]]
+
+let newArr = arr.map(([key, value]) => [key, (value * 1.1).toFixed(2)]);
+console.log(newArr); // [["milk", "3.30"], ["bread", "4.95"], ["tomatoes", "2.09"]]
+
+const itemsNew = Object.fromEntries(newArr)
+console.log(itemsNew);
+
+function boredom(staff){
+    let total = 0
+    let obj = {
+        'accounts' : 1,
+        'finance' : 2,
+        'canteen': 10,
+        'regulation' : 3,
+        'trading' : 6,
+        'change' : 6,
+        'IS' : 8,
+        'retail' : 5,
+        'cleaning' : 4,
+        'pissing about' : 25
+    }
+    let entriesObj = Object.entries(obj)
+    let staffValue = Object.values(staff)
+
+    for (let i = 0; i < staffValue.length; i++){
+        for (let key in entriesObj){
+            console.log(entriesObj[key][1])
+            if (staffValue[i] === entriesObj[key][0]){
+                total += entriesObj[key][1]
+            }
+        }
+    }
+    let result = total <= 80 ? 'kill me now' : total < 100 && total> 80 ? 'i can handle this' : total >= 100 ? 'party time!!' : null
+    return total
+}
+boredom({tim: 'change', jim: 'accounts',
+    randy: 'canteen', sandy: 'change', andy: 'change', katie: 'IS',
+    laura: 'change', saajid: 'IS', alex: 'trading', john: 'accounts',
+    mr: 'finance' })// 'kill me now'
+
+function numberOfPairs(gloves) {
+    let obj = {}
+    gloves.forEach((el,index) => obj[el] = 0)
+    // let keys = Object.keys(obj)
+    // keys
+
+    for (let key in obj){
+        for (let i = 0; i < gloves.length; i++){
+            if (key === gloves[i]){
+                obj[key] += 1
+            }
+        }
+    }
+    let countGloves = Object.entries(obj).filter(el => el[1] >= 2)
+    if (countGloves.length > 0){
+        for (let i = 0; i < countGloves.length; i++){
+            let exactPair = countGloves[i]
+            if (exactPair[1] % 2 !== 0){
+                exactPair[1] -= 1
+            }
+        }
+    }
+    else {
+        return 0
+    }
+    let result = countGloves.reduce((acc,curr) => curr[1] / 2 + acc ,0)
+    return result
+}
+numberOfPairs(['red','green','red','blue','blue']) //2
+numberOfPairs(['red','red','red','red','red','red']) //3
+
+clear()
+
+function mostFrequentElement(arr){
+    let result = []
+    let obj = {}
+    arr.forEach(el => obj[el] = 0)
+    for (let i = 0; i < arr.length; i++){
+        for (let key in obj){
+            if (arr[i] === +key){
+                obj[key] += 1
+            }
+        }
+    }
+    let findMax = Object.entries(obj)
+    let maxRepit = 0
+    for (let i = 0; i < findMax.length; i++){
+        if (maxRepit < findMax[i][1]){
+            maxRepit = findMax[i][1]
+        }
+    }
+    findMax = findMax.filter(el => el[1] === maxRepit)
+    findMax = Object.fromEntries(findMax)
+    result = Object.keys(findMax).map(el => +el)
+    return result
+}
+mostFrequentElement([5,7,7,1,1,1,8,7,3,6,7,1]) // [1, 7]
+
+// Find the most common letter (not space) in the string(always lowercase and 2 < words) and replace it with the letter. If such letters are two or more, choose the one that appears in the string( earlier.
+function replaceCommon(string, letter) {
+    let arrStr = string.split(' ')
+
+    let arrLetters = []
+    let obj = {}
+    for (let i = 0; i < arrStr.length; i++){
+        let temp = arrStr[i].split('')
+        for (let j = 0; j < temp.length; j++){
+            obj[temp[j]] = 0
+            arrLetters.push(temp[j])
+        }
+    }
+    let popularLetter = []
+    for (let i = 0; i < arrLetters.length; i++){
+        for (let key in obj){
+            if (key === arrLetters[i]){
+                obj[key] += 1
+            }
+        }
+    }
+
+    let objValues = Object.values(obj)
+    let maxNumber = Math.max(...objValues)
+
+    //addPopularLetter
+    for (let key in obj){
+        if (obj[key] === maxNumber){
+            popularLetter.push(key)
+        }
+    }
+    //change arrStr letter to first popularLetter
+    let result = []
+    for (let i = 0; i < arrStr.length; i++){
+        let currStr = arrStr[i]
+        for (let j = 0; j < currStr.length; j++){
+            currStr = currStr.replace(new RegExp(popularLetter[0]) ,`${letter}`)
+        }
+        result.push(currStr)
+
+    }
+    result = result.join(' ')
+    return result
+}
+
+replaceCommon('my mom loves me as never did', 't')//, 'ty tot loves te as never did'
+replaceCommon('real talk bro', 'n')//, 'neal talk bno'
+replaceCommon('great job go ahead', 'k')//, 'grekt job go khekd'
+replaceCommon('yyyaaa twwww ttt uuu ccca', 'p')//, 'yyyppp twwww ttt uuu cccp
+
