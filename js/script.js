@@ -142,16 +142,16 @@ function nameScore(name) {
 
 nameScore('Mary Jane') //{"Mary Jane":20}
 
-const object = {
-    name: 'Alice',
-    age: 20,
-    id: 'KUI-567_UIO',
-    1: 'unique',
-};
+// const object = {
+//     name: 'Alice',
+//     age: 20,
+//     id: 'KUI-567_UIO',
+//     1: 'unique',
+// };
 
-console.log(Object.keys(object)); // ["1", "name", "age", "id"]
-console.log(Object.values(object)); // ["unique", "Alice", 20, "KUI-567_UIO"]
-console.log(Object.entries(object)); // [["1", "unique"], ["name", "Alice"], ["age", 20], ["id", "KUI-567_UIO"]]
+// console.log(Object.keys(object)); // ["1", "name", "age", "id"]
+// console.log(Object.values(object)); // ["unique", "Alice", 20, "KUI-567_UIO"]
+// console.log(Object.entries(object)); // [["1", "unique"], ["name", "Alice"], ["age", 20], ["id", "KUI-567_UIO"]]
 
 const items = {
     milk: 3,
@@ -376,3 +376,89 @@ obj3.sing(); // "Alice can sing and dance!"
 //     Когда this используется внутри объекта, это ключевое слово ссылается на сам объект.
 //     стоит помнить о том, что ключевое слово this относиться к тому объекту, в методе которого оно используется. Рассмотрим пример.
 //     при обращении к this в методе объекта, этому ключевому слову соответствует объект, которому принадлежит метод. Однако это не относится к стрелочным функциям. Вместо этого, this в таких функциях относится к глобальному контексту (к объекту window). Это происходит потому, что стрелочные функции не привязаны к собственным сущностям this. В Mozile MDN советуют не использовать стрелочные фунеции в качестве методов объектов
+clear()
+const object = {};
+console.log(object.toString())
+
+function NameMe(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+    this.name = this.firstName + ' ' + this.lastName
+}
+// typeof n.firstName != undefined && n.firstName == "John"//, "Verifying First name. Object returned should contain the firstname: John");
+// typeof n.lastName != undefined && n.lastName == "Doe"//, "Verifying Last name. Object returned should contain the lastname: Doe");
+// typeof n.name != undefined && n.name == "John Doe"//, "Verifying full name. Object returned should contain the full name: John Doe");
+
+{
+    const arr = [1, 2, 3, 4, 5];
+    arr.reverse();
+    console.log(arr); // [5, 4, 3, 2, 1]
+}
+
+Array.prototype.reverse = function() {
+    let count = [...this].length
+    let pushing = []
+    for (let i = 0; i < count; i++){
+        pushing.push(this.pop())
+    }
+    pushing.forEach(el => this.push(el))
+    return this
+};
+// without orriginal
+
+String.prototype.toJadenCase = function () {
+    let result = []
+    let temp = this.split(' ')
+    console.log(temp)
+};
+
+let str = 'How can mirrors be real if our eyes aren\'t real'.toJadenCase()
+console.log(str)
+
+String.prototype.toJadenCase = function (str) {
+    let result = []
+    let temp = this.split(' ')
+    for (let i = 0; i < temp.length; i++){
+        let deleteFirstLetter = temp[i].split('').shift().toUpperCase()
+        let newArr = temp[i].split('')
+        newArr.shift()
+        newArr.unshift(deleteFirstLetter)
+        newArr = newArr.join('')
+        result.push(newArr)
+    }
+    result = result.join(' ')
+    return result
+};
+
+let Ghost = function() {
+    const obj = {
+        '0': 'white',
+        '1': 'yellow',
+        '2': 'purple',
+        '3': 'red',
+    }
+    this.color = obj[Math.floor(Math.random() * 4)]
+};
+
+ghost = new Ghost()
+
+// console.log(ghost)
+clear()
+{
+    String.prototype.digit = function () {
+        console.log(this)
+    };
+
+    let str = '8'
+    str.digit()
+}
+// Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
+String.prototype.digit = function() {
+    if (!isNaN(this) && this.trim().length > 0){
+        if (this >= 0 && this <= 9){
+            return true
+        }
+        else return false
+    }
+    else return false
+};
