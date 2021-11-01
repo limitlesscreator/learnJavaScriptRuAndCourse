@@ -385,6 +385,7 @@ function NameMe(first, last) {
     this.lastName = last;
     this.name = this.firstName + ' ' + this.lastName
 }
+
 // typeof n.firstName != undefined && n.firstName == "John"//, "Verifying First name. Object returned should contain the firstname: John");
 // typeof n.lastName != undefined && n.lastName == "Doe"//, "Verifying Last name. Object returned should contain the lastname: Doe");
 // typeof n.name != undefined && n.name == "John Doe"//, "Verifying full name. Object returned should contain the full name: John Doe");
@@ -395,10 +396,10 @@ function NameMe(first, last) {
     console.log(arr); // [5, 4, 3, 2, 1]
 }
 
-Array.prototype.reverse = function() {
+Array.prototype.reverse = function () {
     let count = [...this].length
     let pushing = []
-    for (let i = 0; i < count; i++){
+    for (let i = 0; i < count; i++) {
         pushing.push(this.pop())
     }
     pushing.forEach(el => this.push(el))
@@ -418,7 +419,7 @@ console.log(str)
 String.prototype.toJadenCase = function (str) {
     let result = []
     let temp = this.split(' ')
-    for (let i = 0; i < temp.length; i++){
+    for (let i = 0; i < temp.length; i++) {
         let deleteFirstLetter = temp[i].split('').shift().toUpperCase()
         let newArr = temp[i].split('')
         newArr.shift()
@@ -430,7 +431,7 @@ String.prototype.toJadenCase = function (str) {
     return result
 };
 
-let Ghost = function() {
+let Ghost = function () {
     const obj = {
         '0': 'white',
         '1': 'yellow',
@@ -443,7 +444,6 @@ let Ghost = function() {
 ghost = new Ghost()
 
 // console.log(ghost)
-clear()
 {
     String.prototype.digit = function () {
         console.log(this)
@@ -453,12 +453,75 @@ clear()
     str.digit()
 }
 // Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
-String.prototype.digit = function() {
-    if (!isNaN(this) && this.trim().length > 0){
-        if (this >= 0 && this <= 9){
+String.prototype.digit = function () {
+    if (!isNaN(this) && this.trim().length > 0) {
+        if (this >= 0 && this <= 9) {
             return true
-        }
-        else return false
-    }
-    else return false
+        } else return false
+    } else return false
 };
+clear()
+
+{
+    function Counter() {
+        let count = 0
+        return () => {
+            count++
+            return count
+        }
+    }
+
+    let a = Counter()
+    let b = Counter()
+    console.log(a())
+    console.log(a())
+    console.log(a())
+    console.log(b())
+    console.log(b())
+    console.log(a())
+
+}
+String.prototype.toAlternatingCase = function () {
+    let result = []
+    let b = this.split('')
+    for (let i = 0; i < b.length; i++) {
+        if (b[i] === b[i].toLowerCase()) {
+            result.push(b[i].toUpperCase())
+        } else {
+            result.push(b[i].toLowerCase())
+        }
+    }
+    return result.join('')
+}
+Array.prototype.only = function(keys) {
+    let result = []
+    let arr = this.join('')
+    keys.forEach(el => result.push(arr[el]))
+    return result
+}
+// let arr = ['a', 'b', 'c', 'd', 'e'].only([0,3])
+
+clear()
+function Car(brand, color){
+    this.brand = brand
+    this.color = color
+}
+
+let b = new Car('Mercedes','white')
+
+
+let s = {brand: 'Mercedes', color: 'red'}
+
+console.log( new Car('Mercedes','white'))
+console.log(s)
+
+{
+    const obj = {
+        name: 'Tim',
+        age: 35,
+        say() {
+            console.log(this.name + ' is ' + this.age + ' years old.');
+        },
+    };
+    obj['say']()
+}
