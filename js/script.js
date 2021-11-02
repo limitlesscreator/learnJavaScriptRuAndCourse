@@ -493,7 +493,7 @@ String.prototype.toAlternatingCase = function () {
     }
     return result.join('')
 }
-Array.prototype.only = function(keys) {
+Array.prototype.only = function (keys) {
     let result = []
     let arr = this.join('')
     keys.forEach(el => result.push(arr[el]))
@@ -502,17 +502,18 @@ Array.prototype.only = function(keys) {
 // let arr = ['a', 'b', 'c', 'd', 'e'].only([0,3])
 
 clear()
-function Car(brand, color){
+
+function Car(brand, color) {
     this.brand = brand
     this.color = color
 }
 
-let b = new Car('Mercedes','white')
+let b = new Car('Mercedes', 'white')
 
 
 let s = {brand: 'Mercedes', color: 'red'}
 
-console.log( new Car('Mercedes','white'))
+console.log(new Car('Mercedes', 'white'))
 console.log(s)
 
 {
@@ -525,3 +526,121 @@ console.log(s)
     };
     obj['say']()
 }
+// В функцию будут переданы 2 аргумента: 'n' и 'other'.
+// Вернуть элементы в виде массива, предварительно увеличив их на 'n'.
+function biggerNums(n, ...other) { // (1)
+    return other.map(el => el + n); // (2)
+}
+
+console.log(biggerNums(3, 10, 2, 5, 3)); // [13, 5, 8, 6]}
+
+{
+    //linear_search.js
+    const array = [1, 4, 5, 8, 5, 1, 2, 7, 5, 2, 11]
+    let count = 0
+
+    function linearSearch(array, item) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === item) {
+                return i
+            }
+        }
+        return null
+    }
+
+    console.log(linearSearch(array, 1))
+}
+{
+    //binary_search.js
+    const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    let count = 0
+
+    function binarySearch(array, item) {
+        let start = 0
+        let end = array.length
+        let middle
+        let found = false
+        let position = -1
+        while (found === false && start <= end) {
+            count++
+            middle = Math.floor((start + end) / 2)
+            if (array[middle] === item) {
+                found = true
+                position = middle
+                return position
+            }
+            if (item < array[middle]) {
+                end = middle - 1
+            } else {
+                start = middle + 1
+            }
+        }
+        return position
+    }
+
+    console.log(binarySearch(array, 9))
+    console.log(count)
+}
+
+// spread operator
+function numbers(...arr) {
+    return arr.every(el => typeof el === 'number')
+}
+
+// Let's build a calculator that can calculate the average for an arbitrary number of arguments.
+let Calculator = {
+    average: function (...arg) {
+        let arr = arg
+        let count = arr.reduce((acc, curr) => acc + curr, 0) / arr.length
+        return count ? count : 0
+    }
+};
+
+function last(...list) {
+    let data = list
+    console.log({}.toString.call(...data))
+    if ({}.toString.call(...data) === '[object Array]') {
+        let result = data[0][data[0].length - 1]
+        console.log(result)
+    } else if ({}.toString.call(...data) === '[object String]') {
+        let result = data[0].split('')[data[0].split('').length - 1]
+        result
+    } else {
+        let result = data[data.length - 1]
+        result
+    }
+}
+
+last([1, 2, 3, 4, 5])//, 5);   //-- array
+last("abcde")//, "e");     //-- string
+last(1, "b", 3, "d", 5)//, 5);//-- argumentsnts
+// You will create a function named add. This function will return the sum of all the arguments. Sounds easy, doesn't it??
+// Well here's the twist. The inputs will gradually increase with their index as parameter to the function.
+const add = (...arg) => arg.reduce((acc, curr, index) => acc + (curr * (index + 1)), 0)
+add(100, 200, 300)//,1400
+add(3, 4, 5)// 26
+
+// Create a function isDivisible(n,...) that checks if the first argument n is divisible by all other arguments (return true if no other arguments)
+function isDivisible(...s) {
+    return s.every(el => Number.isInteger(s[0] / el))
+}
+
+console.log(isDivisible(3, 3, 4))//false
+console.log(isDivisible(12, 3, 4))//true
+console.log(isDivisible(8, 3, 4, 2, 5))//false
+// After calling the function findSum() with any number of non-negative integer arguments, it should return the sum of all those arguments. If no arguments are given, the function should return 0, if negative arguments are given, it should return -1.
+function findSum(...arg) {
+    if (arg.every(el => el >= 0)) {
+        return arg.reduce((acc, curr) => acc + curr, 0)
+    }
+    return -1
+}
+findSum(1,2,3,4); // returns 10
+findSum(1,-2);    // returns -1
+findSum();        // returns 0
+// Write function heron which calculates the area of a triangle with sides a, b, and c.
+function heron(...arg) {
+    let s = (arg[0] + arg[1] + arg[2]) / 2
+    return Math.sqrt(s * (s - arg[0]) * (s - arg[1]) * (s - arg[2]) )
+}
+heron(3, 4, 5)// 6
