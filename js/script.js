@@ -635,12 +635,75 @@ function findSum(...arg) {
     }
     return -1
 }
-findSum(1,2,3,4); // returns 10
-findSum(1,-2);    // returns -1
+
+findSum(1, 2, 3, 4); // returns 10
+findSum(1, -2);    // returns -1
 findSum();        // returns 0
 // Write function heron which calculates the area of a triangle with sides a, b, and c.
 function heron(...arg) {
     let s = (arg[0] + arg[1] + arg[2]) / 2
-    return Math.sqrt(s * (s - arg[0]) * (s - arg[1]) * (s - arg[2]) )
+    return Math.sqrt(s * (s - arg[0]) * (s - arg[1]) * (s - arg[2]))
 }
+
 heron(3, 4, 5)// 6
+
+//Метод call
+let x = 10;
+let obj = {x: 15};
+
+function fun() {
+    alert(this.x);
+    alert(this);
+}
+
+fun();          // 10, [object Window]
+fun.call(obj);  // 15, [object Object]
+
+//Постановка контекста и передача в нём аргрументов
+let person = {
+    firstName: "John",
+    lastName: "Konor",
+    specialty: "юрист-консультант"
+};
+
+function fullName(param1, param2) {
+    alert(this[param1] + " " + this[param2]);
+}
+
+fullName.call(person, 'firstName', 'lastName') // John Konor
+fullName.call(person, 'firstName', 'specialty') // John юрист-консультан
+
+{
+    let person = {
+        firstName: "John",
+        lastName: "Konor",
+        fullName: function () {
+            return this.firstName + " " + this.lastName;
+        }
+    }
+    let user = {
+        firstName: "Max",
+        lastName: "White",
+    }
+    alert(person.fullName.call(user)) // MAx White
+}
+let car = {
+    registrationNumber: "GA12345",
+    brand: "Toyota",
+
+    displayDetails: function () {
+        console.log(this.registrationNumber + " " + this.brand);
+    }
+}
+{
+    let car = {
+        registrationNumber: "GA12345",
+        brand: "Toyota"
+    }
+
+    function displayDetails(ownerName) {
+        console.log(ownerName + ", this is your car: " + this.registrationNumber + " " + this.brand);
+    }
+
+    displayDetails.call(car, "Vivian")
+}
