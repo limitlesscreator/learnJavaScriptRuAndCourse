@@ -652,8 +652,8 @@ let x = 10;
 let obj = {x: 15};
 
 function fun() {
-    alert(this.x);
-    alert(this);
+    // alert(this.x);
+    // alert(this);
 }
 
 fun();          // 10, [object Window]
@@ -667,7 +667,7 @@ let person = {
 };
 
 function fullName(param1, param2) {
-    alert(this[param1] + " " + this[param2]);
+    // alert(this[param1] + " " + this[param2]);
 }
 
 fullName.call(person, 'firstName', 'lastName') // John Konor
@@ -685,7 +685,7 @@ fullName.call(person, 'firstName', 'specialty') // John юрист-консул�
         firstName: "Max",
         lastName: "White",
     }
-    alert(person.fullName.call(user)) // MAx White
+    // alert(person.fullName.call(user)) // MAx White
 }
 let car = {
     registrationNumber: "GA12345",
@@ -707,3 +707,67 @@ let car = {
 
     displayDetails.call(car, "Vivian")
 }
+
+clear()
+let array = [-1,0,3,5,7,9,12]
+
+let search = function (nums, target){
+    debugger
+    let left = 0
+    let right = nums.length - 1
+    let mid
+    while(left <= right){
+        mid = Math.floor((right - left) / 2) + left
+        if (target === nums[mid]){
+            return mid
+        }
+        else if(target < nums[mid]){
+            right = mid - 1
+        }
+        else if (target > nums[mid]){
+            left = mid + 1
+        }
+    }
+    return -1
+}
+
+console.log(search(array, 9))
+
+// You must create a function, spread, that takes a function and a list of arguments to be applied to that function. You must make this function return the result of calling the given function/lambda with the given arguments.
+function spread(func, args) {
+    return func.apply(null,args)
+}
+// spread(someFunction, [1, true, "Foo", "bar"] )
+// someFunction(1, true, "Foo", "bar")
+
+{
+    const user = {
+        name: 'Joe',
+    };
+    function sayHi(word){
+        console.log(word + ' Hi! ' + this.name);
+    }
+    let funcUser = sayHi.bind(user);
+    funcUser('Nice!'); // "Nice! Hi! Joe"
+}
+{
+    const user = {
+        name: 'Ivan',
+        age: 30,
+        introduction: function (job){
+            console.log('Name is ' + this.name);
+            console.log('Age is ' + this.age);
+            console.log('Job is ' + job);
+        },
+    };
+    let say = user.introduction.bind(user);
+    say('QA');
+
+    const person = {
+        name: 'Anna',
+        age: 25,
+    };
+    user.introduction.bind(person, 'QA')();
+}
+
+
