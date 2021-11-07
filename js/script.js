@@ -709,22 +709,20 @@ let car = {
 }
 
 clear()
-let array = [-1,0,3,5,7,9,12]
+let array = [-1, 0, 3, 5, 7, 9, 12]
 
-let search = function (nums, target){
+let search = function (nums, target) {
     debugger
     let left = 0
     let right = nums.length - 1
     let mid
-    while(left <= right){
+    while (left <= right) {
         mid = Math.floor((right - left) / 2) + left
-        if (target === nums[mid]){
+        if (target === nums[mid]) {
             return mid
-        }
-        else if(target < nums[mid]){
+        } else if (target < nums[mid]) {
             right = mid - 1
-        }
-        else if (target > nums[mid]){
+        } else if (target > nums[mid]) {
             left = mid + 1
         }
     }
@@ -735,8 +733,9 @@ console.log(search(array, 9))
 
 // You must create a function, spread, that takes a function and a list of arguments to be applied to that function. You must make this function return the result of calling the given function/lambda with the given arguments.
 function spread(func, args) {
-    return func.apply(null,args)
+    return func.apply(null, args)
 }
+
 // spread(someFunction, [1, true, "Foo", "bar"] )
 // someFunction(1, true, "Foo", "bar")
 
@@ -744,9 +743,11 @@ function spread(func, args) {
     const user = {
         name: 'Joe',
     };
-    function sayHi(word){
+
+    function sayHi(word) {
         console.log(word + ' Hi! ' + this.name);
     }
+
     let funcUser = sayHi.bind(user);
     funcUser('Nice!'); // "Nice! Hi! Joe"
 }
@@ -754,7 +755,7 @@ function spread(func, args) {
     const user = {
         name: 'Ivan',
         age: 30,
-        introduction: function (job){
+        introduction: function (job) {
             console.log('Name is ' + this.name);
             console.log('Age is ' + this.age);
             console.log('Job is ' + job);
@@ -770,4 +771,66 @@ function spread(func, args) {
     user.introduction.bind(person, 'QA')();
 }
 
+String.prototype.trimAndUp = function () {
+    return this.trim().toUpperCase();
+}
+console.log(' c a t    '.trimAndUp()); // "C A T"
+console.log('   Dog'.trimAndUp()); // "DOG"
 
+{
+    String.prototype.trimSpaces = function () {
+        return this.split(/\s/).join(''); // /\s/ - удаление пробелов
+    };
+    let str = 'a b      c d  e   ';
+    let str2 = 'Hi! James Bond ! ';
+    console.log(str.trimSpaces()); // "abcde"
+    console.log(str2.trimSpaces()); // "Hi!JamesBond!"
+}
+
+{
+    Number.prototype.add = function (num) {
+        return this + num
+    }
+    console.log((5).add(5))
+}
+{
+    //Калькулятор в прототипе
+    Number.prototype.add = function (value) {
+        return this + value;
+    };
+    Number.prototype.subtr = function (value) {
+        return this - value;
+    };
+    Number.prototype.mult = function (value) {
+        return this * value;
+    };
+    Number.prototype.div = function (value) {
+        return this / value;
+    };
+    let num = 100;
+    console.log(num.add(5)); // 105
+    console.log(num.subtr(10)); // 90
+    console.log(num.mult(5)); // 500
+    console.log(num.div(20)); // 5
+    console.log(num.add(50).div(50).mult(3).subtr(9)); // 0
+}
+{
+    // Создать метод, который позволит вернуть сумму всех аргументов, переданных в функцию, предварительно увеличив значение каждого аргумента на значение объекта Number, к которому метод будет применен.
+    Number.prototype.addAdd = function (...arg) {
+        let sum = arg.map(el => el + this).reduce((acc, curr) => acc + curr, 0)
+        return sum
+    }
+
+    let num2 = 5;
+    console.log(num2.addAdd(1, 1, 2, 3)); // 27
+}
+{
+    // Your task is to implement the authenticate() method of the sleigh, which takes the name of the person, who wants to board the sleigh and a secret password.
+    // If, and only if, the name equals "Santa Claus" and the password is "Ho Ho Ho!" (yes, even Santa has a secret password with uppercase and lowercase letters and special characters :D), the return value must be true. Otherwise it should return false.
+    function Sleigh() {
+    }
+
+    Sleigh.prototype.authenticate = function (name, password) {
+        return name === 'Santa Claus' && password === 'Ho Ho Ho!'
+    };
+}
