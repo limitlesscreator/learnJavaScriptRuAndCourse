@@ -712,7 +712,6 @@ clear()
 let array = [-1, 0, 3, 5, 7, 9, 12]
 
 let search = function (nums, target) {
-    debugger
     let left = 0
     let right = nums.length - 1
     let mid
@@ -833,4 +832,74 @@ console.log('   Dog'.trimAndUp()); // "DOG"
     Sleigh.prototype.authenticate = function (name, password) {
         return name === 'Santa Claus' && password === 'Ho Ho Ho!'
     };
+}
+
+function fetchData() {
+    fetch('https://reqres.in/api/users')
+        .then(response => {
+            if (!response.ok) {
+                throw Error("ERROR")
+            }
+            return response.json()
+        })
+        .then(data => {
+            console.log('Data from API')
+            console.log(data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
+// fetchData()
+
+//just started new course jsAlgorithms
+
+{
+    const reverse = str => str.split('').reverse().join('')
+}
+//reverse without reverse method
+{
+    function reverse(str) {
+        let arr = []
+        str.split('').forEach(el => arr.unshift(el))
+        return arr.join('')
+    }
+
+    console.log(reverse('hello'))
+}
+//reverse with reduce
+{
+    function reverse(str) {
+        return str.split('').reduce((acc, curr) => curr + acc, '')
+    }
+
+    console.log(reverse('hello'))
+}
+clear()
+//Knapsack problem
+{
+    let items = [
+        {id: 'a', val: 10, w: 3},
+        {id: 'b', val: 6, w: 8},
+        {id: 'c', val: 3, w: 3},
+    ]
+    let maxWeight = 8
+
+    function bag(items, maxWeight) {
+        let result = []
+        let weight = 0
+        let value = 0
+        for (let i = 0; i < items.length; i++) {
+            if (weight + items[i].w <= 8) {
+                weight += items[i].w
+                result.push(items[i])
+                value += items[i].val
+            }
+        }
+        console.log(value)
+        return result
+    }
+
+    console.log(bag(items, maxWeight))
 }
