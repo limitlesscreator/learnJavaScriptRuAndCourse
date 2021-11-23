@@ -937,42 +937,7 @@ clear()
     console.log( numbers.odd())     // must return [1, 3, 5]
 }
 
-{
-    Array.prototype.even = function () {
-        return this.filter(el => el % 2 === 0)
-    }
 
-    Array.prototype.odd = function () {
-        return this.filter(el => el % 2 === 1)
-    }
-
-    Array.prototype.under = function (x) {
-        return this.slice(0, x - 1)
-    }
-
-    Array.prototype.over = function (x) {
-        return [this[x]]
-    }
-
-    Array.prototype.inRange = function (min, max) {
-        let result = []
-        for (let i = 0; i < 1000; i++) {
-            if (this[i] >= min && this[i] <= max) {
-                result.push(this[i])
-            }
-        }
-        return result
-    }
-    console.log(arr.inRange(1, 3))
-        [1, 2, 3, 4, 5].even()//,[2,4])
-        [1, 2, 3, 4, 5].odd() //,[1,3,5])
-        [1, 2, 3, 4, 5].under(4)//,[1,2,3])
-        [1, 2, 3, 4, 5].over(4) //,[5])
-        [1, 2, 3, 4, 5].inRange(1, 3)//,[1,2,3])
-
-        [1, 2, 18, 19, 20, 21, 22, 30, 40, 50, 100].even().inRange(18, 30)//, [18, 20, 22, 30])
-        ["a", 1, "b", 300, "x", "q", 63, 122, 181, "z", 0.83, 0.11].even()//,[300, 122])
-}
 
 {
     // Write a method, capitalize(), such that when the method is called on a String, only the very first letter of the string is capitalized (if it is a letter).
@@ -1014,3 +979,85 @@ clear()
     }
     console.log(str.capitalize())
 }
+
+function twistedSum(n) {
+    let sum = 0
+    for (let i = 0; i <= n; i++){
+        let split = i.toString().split('')
+        split.forEach(el => sum += Number(el))
+    }
+    return sum
+}
+
+console.log(twistedSum(12))
+
+// 6kyu XD
+// You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+function sortArray(array) {
+    let arrayWithEven = []
+    let arrayWithOdd = []
+    for (let i = 0; i < array.length; i++){
+        if (array[i] % 2 === 0){
+            arrayWithEven.push(array[i])
+        }
+        else arrayWithEven.push('')
+    }
+    for (let i = 0; i < array.length; i++){
+        if (array[i] % 2 !== 0){
+            arrayWithOdd.push(array[i])
+        }
+    }
+    arrayWithOdd = arrayWithOdd.sort((a,b) => a - b)
+    for (let i = 0; i < arrayWithEven.length; i++){
+        if (arrayWithEven[i] === ''){
+            arrayWithEven[i] = arrayWithOdd.shift()
+        }
+    }
+    return arrayWithEven
+}
+
+sortArray([5, 8, 6, 3, 4])// [3, 8, 6, 5, 4]
+sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])// [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+// 6kyu
+function countSmileys(arr) {
+    debugger
+    let counter = 0
+    for (let i = 0; i < arr.length; i++){
+        let scanSmile = arr[i].split('')
+        if ((scanSmile.includes(')') || scanSmile.includes('D')) && (scanSmile.includes(':') || scanSmile.includes(';'))){
+            counter++
+        }
+    }
+    return counter
+}
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))//, 1))
+// 6kyu
+
+
+
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+//     Rules for a smiling face:
+//     Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+// A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+//     Every smiling face must have a smiling mouth that should be marked with either ) or D
+// No additional characters are allowed except for those mentioned.
+//     Valid smiley face examples: :) :D ;-D :~)
+// Invalid smiley faces: ;( :> :} :]
+function countSmileys(arr) {
+    let counter = 0
+    for (let i = 0; i < arr.length; i++){
+        let scanSmile = arr[i].split('')
+        if ((scanSmile.length === 2 && (scanSmile.includes(')') || scanSmile.includes('D')) && (scanSmile.includes(':') || scanSmile.includes(';'))) || scanSmile.length === 3
+            && (scanSmile[0] === ':' || scanSmile[0] === ';') && (scanSmile[1] === '-' || scanSmile[1] === '~') && (scanSmile[2] === ')' || scanSmile[2] === 'D')){
+            counter++
+        }
+    }
+    return counter
+}
+
+console.log(countSmileys([]))//, 0))
+console.log(countSmileys([':D',':~)',';~D',':)']))//, 4))
+console.log(countSmileys([':)',':(',':D',':O',':;']))//, 2))
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))//, 1))
+console.log(countSmileys([':D',';~>',':>',';o)',':>',':->',';)']))//, 2))
