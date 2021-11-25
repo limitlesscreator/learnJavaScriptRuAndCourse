@@ -909,22 +909,22 @@ clear()
     // This kata is designed to test your ability to extend the functionality of built-in classes. In this case, we want you to extend the built-in Array class with the following methods: square(), cube(), average(), sum(), even() and odd().
     let numbers = [1, 2, 3, 4, 5];
 
-    Array.prototype.square = function(){
-        return this.map(el => Math.pow(el,2))
+    Array.prototype.square = function () {
+        return this.map(el => Math.pow(el, 2))
     }
-    Array.prototype.cube = function(){
-        return this.map(el => Math.pow(el,3))
+    Array.prototype.cube = function () {
+        return this.map(el => Math.pow(el, 3))
     }
-    Array.prototype.average = function(){
-        return this.reduce((acc,curr) => acc + curr,0) / this.length
+    Array.prototype.average = function () {
+        return this.reduce((acc, curr) => acc + curr, 0) / this.length
     }
-    Array.prototype.sum = function(){
-        return this.reduce((acc,curr) => acc + curr,0)
+    Array.prototype.sum = function () {
+        return this.reduce((acc, curr) => acc + curr, 0)
     }
-    Array.prototype.even = function(){
+    Array.prototype.even = function () {
         return this.filter(el => el % 2 === 0)
     }
-    Array.prototype.odd = function(){
+    Array.prototype.odd = function () {
         return this.filter(el => el % 2 !== 0)
     }
 
@@ -934,9 +934,8 @@ clear()
     console.log(numbers.average()); // must return 3
     console.log(numbers.sum())     // must return 15
     console.log(numbers.even())// must return [2, 4]
-    console.log( numbers.odd())     // must return [1, 3, 5]
+    console.log(numbers.odd())     // must return [1, 3, 5]
 }
-
 
 
 {
@@ -946,43 +945,43 @@ clear()
     // toLowerCase()
     let str = '1history is a very special subject.  what do you think?'
 
-    String.prototype.capitalize = function(){
+    String.prototype.capitalize = function () {
         const obj = {
-            'a' : 'A',
-            'b' : 'B',
-            'c' : 'C',
-            'd' : 'D',
-            'e' : 'E',
-            'f' : 'F',
-            'g' : 'G',
-            'h' : 'H',
-            'i' : 'I',
-            'j' : 'J',
-            'k' : 'K',
-            'l' : 'L',
-            'm' : 'M',
-            'n' : 'N',
-            'o' : 'O',
-            'p' : 'P',
-            'q' : 'Q',
-            'r' : 'R',
-            's' : 'S',
-            't' : 'T',
-            'u' : 'U',
-            'v' : 'V',
-            'w' : 'W',
-            'x' : 'X',
-            'y' : 'Y',
-            'z' : 'Z',
+            'a': 'A',
+            'b': 'B',
+            'c': 'C',
+            'd': 'D',
+            'e': 'E',
+            'f': 'F',
+            'g': 'G',
+            'h': 'H',
+            'i': 'I',
+            'j': 'J',
+            'k': 'K',
+            'l': 'L',
+            'm': 'M',
+            'n': 'N',
+            'o': 'O',
+            'p': 'P',
+            'q': 'Q',
+            'r': 'R',
+            's': 'S',
+            't': 'T',
+            'u': 'U',
+            'v': 'V',
+            'w': 'W',
+            'x': 'X',
+            'y': 'Y',
+            'z': 'Z',
         }
-        return obj[this.split('').shift()] === undefined ? this.split('').shift()  + this.split('').slice(1).join('') : (obj[this.split('').shift()]  + this.split('').slice(1).join(''))
+        return obj[this.split('').shift()] === undefined ? this.split('').shift() + this.split('').slice(1).join('') : (obj[this.split('').shift()] + this.split('').slice(1).join(''))
     }
     console.log(str.capitalize())
 }
 
 function twistedSum(n) {
     let sum = 0
-    for (let i = 0; i <= n; i++){
+    for (let i = 0; i <= n; i++) {
         let split = i.toString().split('')
         split.forEach(el => sum += Number(el))
     }
@@ -996,20 +995,19 @@ console.log(twistedSum(12))
 function sortArray(array) {
     let arrayWithEven = []
     let arrayWithOdd = []
-    for (let i = 0; i < array.length; i++){
-        if (array[i] % 2 === 0){
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) {
             arrayWithEven.push(array[i])
-        }
-        else arrayWithEven.push('')
+        } else arrayWithEven.push('')
     }
-    for (let i = 0; i < array.length; i++){
-        if (array[i] % 2 !== 0){
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 !== 0) {
             arrayWithOdd.push(array[i])
         }
     }
-    arrayWithOdd = arrayWithOdd.sort((a,b) => a - b)
-    for (let i = 0; i < arrayWithEven.length; i++){
-        if (arrayWithEven[i] === ''){
+    arrayWithOdd = arrayWithOdd.sort((a, b) => a - b)
+    for (let i = 0; i < arrayWithEven.length; i++) {
+        if (arrayWithEven[i] === '') {
             arrayWithEven[i] = arrayWithOdd.shift()
         }
     }
@@ -1023,17 +1021,17 @@ sortArray([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])// [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
 function countSmileys(arr) {
     debugger
     let counter = 0
-    for (let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         let scanSmile = arr[i].split('')
-        if ((scanSmile.includes(')') || scanSmile.includes('D')) && (scanSmile.includes(':') || scanSmile.includes(';'))){
+        if ((scanSmile.includes(')') || scanSmile.includes('D')) && (scanSmile.includes(':') || scanSmile.includes(';'))) {
             counter++
         }
     }
     return counter
 }
+
 console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))//, 1))
 // 6kyu
-
 
 
 // Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
@@ -1046,10 +1044,10 @@ console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))//, 1))
 // Invalid smiley faces: ;( :> :} :]
 function countSmileys(arr) {
     let counter = 0
-    for (let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         let scanSmile = arr[i].split('')
         if ((scanSmile.length === 2 && (scanSmile.includes(')') || scanSmile.includes('D')) && (scanSmile.includes(':') || scanSmile.includes(';'))) || scanSmile.length === 3
-            && (scanSmile[0] === ':' || scanSmile[0] === ';') && (scanSmile[1] === '-' || scanSmile[1] === '~') && (scanSmile[2] === ')' || scanSmile[2] === 'D')){
+            && (scanSmile[0] === ':' || scanSmile[0] === ';') && (scanSmile[1] === '-' || scanSmile[1] === '~') && (scanSmile[2] === ')' || scanSmile[2] === 'D')) {
             counter++
         }
     }
@@ -1057,7 +1055,98 @@ function countSmileys(arr) {
 }
 
 console.log(countSmileys([]))//, 0))
-console.log(countSmileys([':D',':~)',';~D',':)']))//, 4))
-console.log(countSmileys([':)',':(',':D',':O',':;']))//, 2))
+console.log(countSmileys([':D', ':~)', ';~D', ':)']))//, 4))
+console.log(countSmileys([':)', ':(', ':D', ':O', ':;']))//, 2))
 console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']))//, 1))
-console.log(countSmileys([':D',';~>',':>',';o)',':>',':->',';)']))//, 2))
+console.log(countSmileys([':D', ';~>', ':>', ';o)', ':>', ':->', ';)']))//, 2))
+clear()
+//repeat Asynchronous JavaScript nellow
+{
+    // setTimeout(() => {
+    //     console.log('start')
+    // })
+    console.log('hi')
+    clear()
+}
+
+{
+    let test = function () {
+        setTimeout(() => {
+            console.log('Start of code')
+
+            alert('Notice Me!')
+
+            console.log('End of code')
+        },10)
+    }
+
+    let test2 = function(){
+        console.log('Now I get attention')
+    }
+    // test()
+    // test2()
+
+    function test1(){
+        setTimeout(() => {
+            console.log('1')
+            setTimeout(() => {
+                console.log('3')
+            },0 )
+        },0)
+        setTimeout(() => {
+            console.log('2')
+        },0)
+    }
+    // test1()
+    const hero = {
+        name: 'Super Man',
+        greet: function(){
+            setTimeout(() => {
+                console.log('Hi, my name is', this.name)
+            },1000)
+        }
+    }
+    console.log(hero.greet())
+}
+//repeat Asynchronous JavaScript above
+
+//sugar syntax
+function createPerson(name, age, admin){
+    return {
+        name,
+        age,
+        isAdmin: admin
+    }
+}
+createPerson('Vladislav','20',true)
+
+{
+    const specialProperty = 'nationality'
+    const firstName = 'John'
+    const lastName = 'Doe'
+
+    const person = {
+        firstName,
+        lastName,
+        getFullName(){
+            return `${this.firstName} ${this.lastName}`
+        },
+        [specialProperty]: 'German'
+    }
+    console.log(person)
+
+    function greeting(name = 'Lydia'){
+        return `Hello there ${name}`
+    }
+    console.log(greeting('John'))
+    console.log(greeting())
+    {
+        const person = {
+            name: 'John Doe',
+            age: 45
+        }
+        const {name,age} = person
+        console.log(name,age)
+    }
+}
+
