@@ -1,3 +1,5 @@
+'use strict'
+
 function clear() {
     console.clear()
 }
@@ -344,7 +346,7 @@ var dog = {
 };
 
 function chase() {
-    console.log(this.breed + ' loves chasing ' + this.lovesToChase + '.');
+    // console.log(this.breed + ' loves chasing ' + this.lovesToChase + '.');
 }
 
 dog.foo = chase;
@@ -441,7 +443,7 @@ let Ghost = function () {
     this.color = obj[Math.floor(Math.random() * 4)]
 };
 
-ghost = new Ghost()
+// ghost = new Ghost()
 
 // console.log(ghost)
 {
@@ -1077,48 +1079,50 @@ clear()
             alert('Notice Me!')
 
             console.log('End of code')
-        },10)
+        }, 10)
     }
 
-    let test2 = function(){
+    let test2 = function () {
         console.log('Now I get attention')
     }
     // test()
     // test2()
 
-    function test1(){
+    function test1() {
         setTimeout(() => {
             console.log('1')
             setTimeout(() => {
                 console.log('3')
-            },0 )
-        },0)
+            }, 0)
+        }, 0)
         setTimeout(() => {
             console.log('2')
-        },0)
+        }, 0)
     }
+
     // test1()
     const hero = {
         name: 'Super Man',
-        greet: function(){
+        greet: function () {
             setTimeout(() => {
                 console.log('Hi, my name is', this.name)
-            },1000)
+            }, 1000)
         }
     }
-    console.log(hero.greet())
+    // console.log(hero.greet())
 }
 //repeat Asynchronous JavaScript above
 
 //sugar syntax
-function createPerson(name, age, admin){
+function createPerson(name, age, admin) {
     return {
         name,
         age,
         isAdmin: admin
     }
 }
-createPerson('Vladislav','20',true)
+
+createPerson('Vladislav', '20', true)
 
 {
     const specialProperty = 'nationality'
@@ -1128,16 +1132,17 @@ createPerson('Vladislav','20',true)
     const person = {
         firstName,
         lastName,
-        getFullName(){
+        getFullName() {
             return `${this.firstName} ${this.lastName}`
         },
         [specialProperty]: 'German'
     }
     console.log(person)
 
-    function greeting(name = 'Lydia'){
+    function greeting(name = 'Lydia') {
         return `Hello there ${name}`
     }
+
     console.log(greeting('John'))
     console.log(greeting())
     {
@@ -1145,8 +1150,76 @@ createPerson('Vladislav','20',true)
             name: 'John Doe',
             age: 45
         }
-        const {name,age} = person
-        console.log(name,age)
+        const {name, age} = person
+        console.log(name, age)
     }
 }
+
+{
+    class User {
+        constructor(firstName, lastName) {
+            this.firstName = firstName
+            this.lastName = lastName
+        }
+    }
+
+    let newUser = new User('Vladislav', 'Voloshenko')
+    console.log(newUser)
+
+    class Admin extends User {
+        constructor(firstName, lastName) {
+            super(firstName, lastName)
+            this.role = 'admin'
+        }
+    }
+
+    let newAdmin = new Admin('Will', 'Smith')
+    console.log(newAdmin)
+}
+clear()
+let hasDriversLicense = false
+const passTest = true
+// hasDriverLicense = true - error
+
+{
+    const jonas = {
+        birthYear: 2001,
+        calcAge() {
+            this.age = 2021 - this.birthYear
+        },
+        hadDriversLicense: true,
+        job: 'teacher',
+        firstName: 'Jonas',
+        lastName: 'Scmedtmann',
+        getSummary() {
+            return `${this.firstName} is a ${this.age}-year old ${this.job},
+            and he has ${this.hadDriversLicense ? 'a ' : 'no'} driver's license`
+        }
+    }
+    // console.log(jonas.calcAge())
+    // console.log(jonas.age)
+    // console.log(jonas.getSummary())
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------
+// that's better than notepad, so i decided to write here my (text), WARNING: u will find much mistakes!!!                                   |
+// JS is High-level programing language - developer does not have to worry about manage resources manually everything happens automatically  |
+// Prototype-based object-oriented: almost everything in JavaScript is an object except for primitive values                                 |
+// Dynamically-typed language, but if you wanna use js with types, you can always look into TypeScript                                       |
+// Single-Threaded: JS runs in one single thread, so it can do one thing at a time -> But we have non-block behavior. By using an event-loop |
+// takes long running tasks - executes them in the background, and puts them back in the main thread once they are finished.                 | :)
+//-------------------------------------------------------------------------------------------------------------------------------------------- <3
+
+console.log(this)
+
+const calcAge = function (birthYear){
+    console.log(2021 - birthYear)
+    console.log(this) //undefined with strict mod
+}
+calcAge(2001)
+
+const calcAgeArrow =  (birthYear) => {
+    console.log(2021 - birthYear)
+    console.log(this) //window (parent's) cuz arrow function doesn't get its own disc keyword
+}
+calcAgeArrow(2001)
 
