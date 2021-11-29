@@ -1208,7 +1208,6 @@ const passTest = true
 // Single-Threaded: JS runs in one single thread, so it can do one thing at a time -> But we have non-block behavior. By using an event-loop |
 // takes long running tasks - executes them in the background, and puts them back in the main thread once they are finished.                 | :)
 //-------------------------------------------------------------------------------------------------------------------------------------------- <3
-
 console.log(this)
 
 const calcAge = function (birthYear){
@@ -1217,9 +1216,115 @@ const calcAge = function (birthYear){
 }
 calcAge(2001)
 
-const calcAgeArrow =  (birthYear) => {
+const calcAgeArrow =  (birthYear) =>  {
     console.log(2021 - birthYear)
     console.log(this) //window (parent's) cuz arrow function doesn't get its own disc keyword
 }
 calcAgeArrow(2001)
+clear()
 
+const jonas = {
+    year: 1991,
+    calcAge: function (){
+        console.log(this)
+        console.log(2037 - this.year)
+        // solution 1
+        // const self = this
+        // const isMillenial = function () {
+        //     console.log(self.year >= 1981 && self.year <= 1996)
+        // }
+        // isMillenial()
+
+        // solution 2
+        const isMillenial = () => {
+            console.log(this.year >= 1981 && this.year <= 1996)
+        }
+        isMillenial()
+    },
+}
+jonas.calcAge()
+
+const matilda = {
+    year: 2017
+}
+matilda.calcAge = jonas.calcAge
+matilda.calcAge()
+
+const f = jonas.calcAge
+// f()  undefined
+// var a = 2 in global object
+console.log(this)
+jonas.calcAge()
+
+const addExpr = function (a,b){
+    console.log(arguments)
+}
+addExpr(1,2,3)
+
+const addArrow = (a, b) => console.log(arguments)
+
+// addArrow(1,2,4,23) error
+
+// Reference types
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+}
+
+const marriedJessica = {...jessica}
+const jessicaCopy = Object.assign({},jessica)
+console.log(jessicaCopy)
+marriedJessica.lastName = 'Devis'
+console.log('Before marriage:', jessica)
+console.log('After marriage', marriedJessica)
+
+// The for-of Loop
+{
+    const comeNumbers = [[1,2],[3,4],[5,6],[7,8],[9]]
+    for (const num of comeNumbers){
+        for (const newNum of num){
+            console.log(newNum)
+        }
+    }
+    for (const nums of comeNumbers.entries()){
+        console.log(nums)
+    }
+}
+clear()
+
+// DATA STRUCTURE: SET
+
+const ordersSet = new Set([
+    'Pasta',
+    'Pizza',
+    'Pizza',
+    'Risotto',
+    'Pasta',
+    'Pizza',
+])
+console.log(ordersSet)
+console.log(ordersSet.size)
+ordersSet.add('sushi')
+console.log(ordersSet)
+console.log(ordersSet.has('Pasta'))
+
+ordersSet.delete('Risotto')
+console.log(ordersSet)
+
+const staff = ['Waiter','Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+
+const uniqStaff = [...new Set(staff)]
+console.log(uniqStaff)
+
+// Data Structure: MAP
+
+const rest = new Map()
+
+rest.set(true,'we are open :)')
+    .set(false,'we are closed(')
+    .set('open',11)
+    .set('close',23)
+    .set('name','Clasico Italiano')
+console.log(rest)
+console.log(rest.get(true))
