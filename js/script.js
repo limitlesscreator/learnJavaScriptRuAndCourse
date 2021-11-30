@@ -1210,13 +1210,13 @@ const passTest = true
 //-------------------------------------------------------------------------------------------------------------------------------------------- <3
 console.log(this)
 
-const calcAge = function (birthYear){
+const calcAge = function (birthYear) {
     console.log(2021 - birthYear)
     console.log(this) //undefined with strict mod
 }
 calcAge(2001)
 
-const calcAgeArrow =  (birthYear) =>  {
+const calcAgeArrow = (birthYear) => {
     console.log(2021 - birthYear)
     console.log(this) //window (parent's) cuz arrow function doesn't get its own disc keyword
 }
@@ -1225,7 +1225,7 @@ clear()
 
 const jonas = {
     year: 1991,
-    calcAge: function (){
+    calcAge: function () {
         console.log(this)
         console.log(2037 - this.year)
         // solution 1
@@ -1256,10 +1256,10 @@ const f = jonas.calcAge
 console.log(this)
 jonas.calcAge()
 
-const addExpr = function (a,b){
+const addExpr = function (a, b) {
     console.log(arguments)
 }
-addExpr(1,2,3)
+addExpr(1, 2, 3)
 
 const addArrow = (a, b) => console.log(arguments)
 
@@ -1273,7 +1273,7 @@ const jessica = {
 }
 
 const marriedJessica = {...jessica}
-const jessicaCopy = Object.assign({},jessica)
+const jessicaCopy = Object.assign({}, jessica)
 console.log(jessicaCopy)
 marriedJessica.lastName = 'Devis'
 console.log('Before marriage:', jessica)
@@ -1281,17 +1281,16 @@ console.log('After marriage', marriedJessica)
 
 // The for-of Loop
 {
-    const comeNumbers = [[1,2],[3,4],[5,6],[7,8],[9]]
-    for (const num of comeNumbers){
-        for (const newNum of num){
+    const comeNumbers = [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
+    for (const num of comeNumbers) {
+        for (const newNum of num) {
             console.log(newNum)
         }
     }
-    for (const nums of comeNumbers.entries()){
+    for (const nums of comeNumbers.entries()) {
         console.log(nums)
     }
 }
-clear()
 
 // DATA STRUCTURE: SET
 
@@ -1312,19 +1311,73 @@ console.log(ordersSet.has('Pasta'))
 ordersSet.delete('Risotto')
 console.log(ordersSet)
 
-const staff = ['Waiter','Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
 
 const uniqStaff = [...new Set(staff)]
 console.log(uniqStaff)
-
+clear()
 // Data Structure: MAP
 
 const rest = new Map()
 
-rest.set(true,'we are open :)')
-    .set(false,'we are closed(')
-    .set('open',11)
-    .set('close',23)
-    .set('name','Clasico Italiano')
+rest.set(true, 'we are open :)')
+    .set(false, 'we are closed(')
+    .set('open', 11)
+    .set('close', 23)
+    .set('name', 'Clasico Italiano')
+
+const time = 12
+console.log(rest.get(time >= rest.get('open') && time < rest.get('close') ? true : false))
+
+rest.set([1, 2], 'Test')
 console.log(rest)
-console.log(rest.get(true))
+console.log(rest.get([1, 2]))  //undefined because different references
+
+let arr2 = [2, 2]
+rest.set(arr2, 'Tes2t')
+console.log(rest.get(arr2)) // here is:)
+
+
+const newMap = new Map()
+newMap.set(1, 'one')
+newMap.delete('one') //nothing
+newMap.delete('1') //nothing
+newMap.delete(1) //deleted
+console.log(newMap)
+{
+    let map = new Map();
+
+    map.set("name", "John");
+
+    let keys = [...map.keys()]
+    console.log(keys)
+}
+
+function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log('Outer Variable: ' + outerVariable)
+        console.log('Inner Variable: ' + innerVariable)
+    }
+}
+
+const newFunction = outerFunction('outside')
+newFunction('inside')
+clear()
+
+const question = new Map([
+    ['question', 'What is the best programming language in the world?'],
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'JavaScript'],
+    ['correct', 3],
+    [true, 'Correct!'],
+    [false, 'Try again!!'],
+])
+
+console.log(question)
+// Quiz app
+console.log(question.get('question'))
+for (const [key, value] of question) {
+    if (typeof key === 'number') console.log(`Answer ${key}: ${value}`)
+}
+const answer = Number(prompt('Your answer'))
