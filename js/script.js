@@ -1362,7 +1362,6 @@ function outerFunction(outerVariable) {
 
 const newFunction = outerFunction('outside')
 newFunction('inside')
-clear()
 
 const question = new Map([
     ['question', 'What is the best programming language in the world?'],
@@ -1380,4 +1379,128 @@ console.log(question.get('question'))
 for (const [key, value] of question) {
     if (typeof key === 'number') console.log(`Answer ${key}: ${value}`)
 }
-const answer = Number(prompt('Your answer'))
+// const answer = Number(prompt('Your answer'))
+
+// console.log(question.get(answer === 3))
+
+//Convert map to array
+const newArray = [...question]
+console.log(question.entries())
+console.log(question.keys())
+console.log(question.values())
+clear()
+
+const gameEvents = new Map([
+    [17, 'GOAL'],
+    [36, 'Substitution'],
+    [47, 'GOAL'],
+    [61, 'Substitution'],
+    [64, 'Yellow card'],
+    [69, 'Red card'],
+    [70, 'Substitution'],
+    [72, 'Substitution'],
+    [76, 'GOAL'],
+    [80, 'GOAL'],
+    [92, 'Yellow card'],
+])
+
+const allEventNoDuplicates = [...new Set([...gameEvents.values()])]
+console.log(allEventNoDuplicates)
+gameEvents.delete(64)
+console.log(gameEvents)
+
+const averageMinutesOfEvents = [0, ...gameEvents.keys()]
+let countMinutes = 0
+for (let i = 0; i < averageMinutesOfEvents.length - 1; i++) {
+    countMinutes += (averageMinutesOfEvents[i + 1] - averageMinutesOfEvents[i])
+}
+console.log(`An event happened, on average, every ${Math.floor(countMinutes / averageMinutesOfEvents.length)} minutes`)
+
+let eventsFirstOrSecondHalf = new Map()
+for (const [key, event] of gameEvents) {
+    if (key < 45) {
+        eventsFirstOrSecondHalf.set(`[FIRST HALF] ${key}`, event)
+    } else if (key >= 45) {
+        eventsFirstOrSecondHalf.set(`[SECOND HALF] ${key}`, event)
+    }
+}
+console.log(eventsFirstOrSecondHalf)
+clear()
+
+const createBooking = function (flightNum, numPassengers = 1, price = 199 * numPassengers) {
+    const booking = {
+        flightNum,
+        numPassengers,
+        price
+    }
+    console.log(booking)
+}
+// createBooking(1)
+// createBooking(2,4)
+
+{
+    const flight = 'LH234'
+    const jonas = {
+        name: 'Jonas Schmedtmann',
+        passport: 24739479284
+    }
+
+    const checkIn = function (flightNum, passenger) {
+        flightNum = 'LH999'
+        passenger.name = 'Mr.' + passenger.name
+
+        if (passenger.passport === 24739479284) {
+            // alert('Checked in')
+        } else {
+            // alert('Wrong passsport!')
+        }
+    }
+    checkIn(flight, jonas)
+    console.log(flight)//flight is primitive and don't will changed
+    console.log(jonas.name)//jonas.name have  reference and  will changed}
+    clear()
+}
+
+const oneWord = function(str){
+    return str.replace(/ /g,'').toLowerCase()
+}
+// console.log(oneWord('h i  '))
+
+const upperFirstWord = function (str){
+    return str.split(' ')[0].toUpperCase() + ' ' + str.split(' ').slice(1).join(' ')
+}
+
+// console.log(upperFirstWord('vladislav is my name'))
+
+// Higher-order function
+const transformer = function(str,fn){
+    console.log(`Original string: ${str}`)
+    console.log(`Transformed string: ${fn(str)}`)
+
+    console.log(`Transformed by ${fn.name}`)
+}
+
+// transformer('JavaScript is the best! React too:)', upperFirstWord)
+
+{
+    const greet = greeting => {
+        return name => {
+            console.log(`${greeting} ${name}`)
+        }
+    }
+    const greeterHey = greet('Hey')
+
+    greeterHey('Jonas')
+    greeterHey('Steven')
+
+    greet('Hello')('Alica')
+}
+
+{
+    const betterGreet = greeting => name => console.log(`${greeting} ${name}`)
+
+    betterGreet('Hi')('Janeta:)') // I remember you >:)
+}
+
+
+
