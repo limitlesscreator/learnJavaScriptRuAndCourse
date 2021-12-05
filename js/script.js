@@ -1501,6 +1501,9 @@ const transformer = function(str,fn){
 
     betterGreet('Hi')('Janeta:)') // I remember you >:)
 }
+clear()
+
+//something wrong with project 3 of work, so i decided do commit here, cuz i worked today:)
 
 
 
