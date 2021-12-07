@@ -1503,7 +1503,36 @@ const transformer = function(str,fn){
 }
 clear()
 
-//something wrong with project 3 of work, so i decided do commit here, cuz i worked today:)
 
+//call apply replay
 
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    booking: [],
+    book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline}        
+         flight ${this.iataCode} ${flightNum}`)
+        this.booking({flight: `${this.iataCode} ${flightNum}`, name})
+    }
+}
+lufthansa.book(239, 'Jonas Schmedtmann')
+lufthansa.book(635, 'John Smith')
+console.log(lufthansa)
 
+const eurowings = {
+    name: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+}
+
+const book = lufthansa.book
+book(23, 'Sarah Williams')
+
+const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: [],
+}
+book.call(swiss, 583, 'Mary Cooper')
+console.log(swiss)
