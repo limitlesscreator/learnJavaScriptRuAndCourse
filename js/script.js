@@ -1461,19 +1461,19 @@ const createBooking = function (flightNum, numPassengers = 1, price = 199 * numP
     clear()
 }
 
-const oneWord = function(str){
-    return str.replace(/ /g,'').toLowerCase()
+const oneWord = function (str) {
+    return str.replace(/ /g, '').toLowerCase()
 }
 // console.log(oneWord('h i  '))
 
-const upperFirstWord = function (str){
+const upperFirstWord = function (str) {
     return str.split(' ')[0].toUpperCase() + ' ' + str.split(' ').slice(1).join(' ')
 }
 
 // console.log(upperFirstWord('vladislav is my name'))
 
 // Higher-order function
-const transformer = function(str,fn){
+const transformer = function (str, fn) {
     console.log(`Original string: ${str}`)
     console.log(`Transformed string: ${fn(str)}`)
 
@@ -1509,11 +1509,10 @@ clear()
 const lufthansa = {
     airline: 'Lufthansa',
     iataCode: 'LH',
-    booking: [],
+    bookings: [],
     book(flightNum, name) {
-        console.log(`${name} booked a seat on ${this.airline}        
-         flight ${this.iataCode} ${flightNum}`)
-        this.booking({flight: `${this.iataCode} ${flightNum}`, name})
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`)
+        this.bookings.push({flight: `${this.iataCode} ${flightNum}`, name})
     }
 }
 lufthansa.book(239, 'Jonas Schmedtmann')
@@ -1521,13 +1520,21 @@ lufthansa.book(635, 'John Smith')
 console.log(lufthansa)
 
 const eurowings = {
-    name: 'Eurowings',
+    airline: 'Eurowings',
     iataCode: 'EW',
     bookings: [],
 }
+console.log(eurowings)
 
 const book = lufthansa.book
-book(23, 'Sarah Williams')
+// Does not work
+// book(23, 'Sarah Williams')
+
+// Call method
+book.call(eurowings, 23, 'Bella Wontson')
+book.call(lufthansa, 239, 'Mary Cooper')
+console.log(lufthansa)
+console.log(eurowings)
 
 const swiss = {
     airline: 'Swiss Air Lines',
@@ -1536,3 +1543,52 @@ const swiss = {
 }
 book.call(swiss, 583, 'Mary Cooper')
 console.log(swiss)
+
+// Apply method
+const flightData = [583, 'George Cooper']
+book.apply(swiss, flightData)
+console.log(swiss)
+book.call(swiss, ...flightData) //the same
+
+clear()
+// Bind method
+const bookEw = book.bind(eurowings)
+bookEw(333, 'Vladislav Voloshenko')
+console.log(eurowings.bookings)
+
+const bookEw23 = book.bind(eurowings, 23)
+bookEw23('Aleson Cuper')
+bookEw23('Stive Magnakic')
+console.log(eurowings)
+
+// With Event Listeners
+lufthansa.planes = 300
+lufthansa.buyPlane = function () {
+    console.log(this)
+
+    this.planes++
+    console.log(this.planes)
+}
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa))
+
+// Partial application
+const addTax = (rate, value) => value + value * rate
+console.log(addTax(0.1, 200))
+
+const addVat = addTax.bind(null, 0.23)
+// const addVat =  value => value + value * 0.23
+console.log(addVat(200))
+console.log(addVat(23))
+
+// HOC again
+const addVatHoc = (rate = 23) => value => rate * value
+console.log(addVatHoc()(100))
+
+// or old version
+const addVatHocOld = function (rate){
+    return function(value){
+        return value * rate
+    }
+}
+const addVAT2 = addVatHocOld(0.23)
+console.log(addVAT2(100))
