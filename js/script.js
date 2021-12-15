@@ -1585,10 +1585,75 @@ const addVatHoc = (rate = 23) => value => rate * value
 console.log(addVatHoc()(100))
 
 // or old version
-const addVatHocOld = function (rate){
-    return function(value){
+const addVatHocOld = function (rate) {
+    return function (value) {
         return value * rate
     }
 }
 const addVAT2 = addVatHocOld(0.23)
 console.log(addVAT2(100))
+clear()
+let answerText = 'What is your favorite programing language?\n' +
+    '0: JavaScript\n' +
+    '1: Python\n' +
+    '2: Rust\n' +
+    '3: C++\n'
+
+const poll = {
+    question: 'What is your favourite programming language?',
+    options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+    answers: new Array(4).fill(0),
+    registerNewAnswer() {
+        let answer = prompt(`${this.question} ${answerText}`)
+        if (+answer >= 0 && +answer <= 3) {
+            this.answers[+answer]++
+        } else alert('try again')
+        this.displayResult()
+    },
+    displayResult(){
+        console.log(`Poll result are ${this.answers.join(',  ')}`)
+    }
+}
+document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.bind(poll));
+
+// Immediately Invoked Function Expression (IIFE)
+    (function(){
+        console.log('This will never run again');
+    })();
+
+(() => console.log('This will ALSO never run again'))()
+
+// Closures again
+
+const secureBooking = function(){
+    let passengerCount = 0
+    return function(){
+        passengerCount++
+        console.log(passengerCount)
+    }
+}
+const booker = secureBooking()
+booker()
+booker()
+booker()
+
+console.dir(booker)
+
+let f
+const g = function(){
+   const a = 23
+   f = function (){
+       console.log(a*2)
+   }
+}
+const h = function(){
+    const b = 777
+    f = function(){
+        console.log(b * 2)
+    }
+}
+g()
+f()
+//Re-assign f function
+h()
+f()
