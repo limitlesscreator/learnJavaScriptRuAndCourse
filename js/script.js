@@ -1639,21 +1639,99 @@ booker()
 
 console.dir(booker)
 
-let f
-const g = function(){
-   const a = 23
-   f = function (){
-       console.log(a*2)
-   }
+{
+    let f
+    const g = function () {
+        const a = 23
+        f = function () {
+            console.log(a * 2)
+        }
+    }
+    const h = function () {
+        const b = 777
+        f = function () {
+            console.log(b * 2)
+        }
+    }
+    g()
+    f()
+//Re-assign f function
+    h()
+    f()
+    console.dir(f)
 }
-const h = function(){
-    const b = 777
-    f = function(){
-        console.log(b * 2)
+
+{
+    const boardPassengers = function (n, wait) {
+        const perGroup = n / 3
+
+        setTimeout(function () {
+            console.log(`We are now boarding all ${n}`)
+            console.log(`There are 3 groups, each with ${perGroup} passengers`)
+        }, wait * 1000)
+
+        console.log(`Will start boarding in ${wait} seconds`)
+    }
+
+    const perGroup = 1000
+    // boardPassengers(180, 3)
+    clear()
+}
+
+
+(function(){
+    const header = document.querySelector('h1');
+    header.style.color = 'red'
+
+    document.querySelector('body').addEventListener('click',()=>{
+        header.style.color = 'blue'
+    });
+})();
+
+//repeating array methods
+{
+    //slice
+    let arr = ['a', 'b', 'c', 'd', 'e']
+
+    console.log(arr.slice(2))
+    console.log(arr.slice(2, 4))
+    console.log(arr.slice(-3,-1))
+    console.log(arr.slice(0,-1))
+
+    //splice is changing original array
+    console.log(arr.splice(-1))
+    console.log(arr.splice(1,2))
+    console.log(arr)
+
+    //reverse is mutation original arr2
+    arr = ['a', 'b', 'c', 'd', 'e']
+    const arr2 = ['j','i','h','g','f']
+    console.log(arr2.reverse())
+    console.log(arr2)
+
+    //concat
+    const letters = arr.concat(arr2)
+    console.log(letters)
+    console.log([...arr, ...arr2]) //or like that (spread)
+
+    //join
+    console.log(letters.join(' - '))
+}
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
+
+for(const movement of movements){
+    if (movement > 0){
+        console.log(`You deposited ${movement}`)
+    }
+    else {
+        console.log(`You withdrew ${Math.abs(movement)}`)
     }
 }
-g()
-f()
-//Re-assign f function
-h()
-f()
+
+
+
+
+
+
+// 1720
