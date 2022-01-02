@@ -1610,24 +1610,24 @@ const poll = {
         } else alert('try again')
         this.displayResult()
     },
-    displayResult(){
+    displayResult() {
         console.log(`Poll result are ${this.answers.join(',  ')}`)
     }
 }
-document.querySelector('.poll').addEventListener('click',poll.registerNewAnswer.bind(poll));
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
 
 // Immediately Invoked Function Expression (IIFE)
-    (function(){
-        console.log('This will never run again');
-    })();
+(function () {
+    console.log('This will never run again');
+})();
 
 (() => console.log('This will ALSO never run again'))()
 
 // Closures again
 
-const secureBooking = function(){
+const secureBooking = function () {
     let passengerCount = 0
-    return function(){
+    return function () {
         passengerCount++
         console.log(passengerCount)
     }
@@ -1679,11 +1679,11 @@ console.dir(booker)
 }
 
 
-(function(){
+(function () {
     const header = document.querySelector('h1');
     header.style.color = 'red'
 
-    document.querySelector('body').addEventListener('click',()=>{
+    document.querySelector('body').addEventListener('click', () => {
         header.style.color = 'blue'
     });
 })();
@@ -1695,17 +1695,17 @@ console.dir(booker)
 
     console.log(arr.slice(2))
     console.log(arr.slice(2, 4))
-    console.log(arr.slice(-3,-1))
-    console.log(arr.slice(0,-1))
+    console.log(arr.slice(-3, -1))
+    console.log(arr.slice(0, -1))
 
     //splice is changing original array
     console.log(arr.splice(-1))
-    console.log(arr.splice(1,2))
+    console.log(arr.splice(1, 2))
     console.log(arr)
 
     //reverse is mutation original arr2
     arr = ['a', 'b', 'c', 'd', 'e']
-    const arr2 = ['j','i','h','g','f']
+    const arr2 = ['j', 'i', 'h', 'g', 'f']
     console.log(arr2.reverse())
     console.log(arr2)
 
@@ -1717,21 +1717,65 @@ console.dir(booker)
     //join
     console.log(letters.join(' - '))
 }
-
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-for(const movement of movements){
-    if (movement > 0){
+for (const movement of movements) {
+    if (movement > 0) {
         console.log(`You deposited ${movement}`)
-    }
-    else {
+    } else {
         console.log(`You withdrew ${Math.abs(movement)}`)
     }
 }
 
+console.log(`----FOREACH----`)
+movements.forEach((movement, index, array) => {
+    if (movement > 0) {
+        console.log(array[index])
+        console.log(`You deposited ${movement}`)
+    } else {
+        console.log(`You withdrew ${Math.abs(movement)}`)
+    }
+})
 
+{
+    // Map
+    const currencies = new Map([
+        ['USD', 'United States dollar'],
+        ['EUR', 'Euro'],
+        ['GBP', 'Pound sterling']
+    ])
 
+    currencies.forEach(function (value, key, map) {
+        console.log(`${key}: ${value}`)
+    })
 
+    // Set
+    const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
+    currenciesUnique.forEach((value,key,map)=> console.log(
+        value,key,map
+    ))
+}
+{
+    clear()
 
+    // Converting and Checking Numbers
+    console.log( 23 === 23.0) //true
+    console.log(0.1 + 0.2 === 0.3) // false
 
-// 1720
+    // Conversion
+    console.log(Number('23'))
+    console.log(+'23')
+
+    // Parsing
+    console.log(Number.parseInt('30px')) //30
+    console.log(Number.parseInt('e23')) //NaN
+
+    console.log(Number.parseInt('  2.5rem ')) // 2
+    console.log(Number.parseFloat('  2.5rem ')) // 2.5
+
+    console.log(Number.isNaN(+'20X'))
+    console.log(Number.isFinite(20))
+    console.log(Number.isFinite(+'20'))
+    console.log(Number.isFinite(22 / 0)) // false
+}
+
