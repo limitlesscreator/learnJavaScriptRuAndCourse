@@ -1751,15 +1751,15 @@ movements.forEach((movement, index, array) => {
 
     // Set
     const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
-    currenciesUnique.forEach((value,key,map)=> console.log(
-        value,key,map
+    currenciesUnique.forEach((value, key, map) => console.log(
+        value, key, map
     ))
 }
 {
     clear()
 
     // Converting and Checking Numbers
-    console.log( 23 === 23.0) //true
+    console.log(23 === 23.0) //true
     console.log(0.1 + 0.2 === 0.3) // false
 
     // Conversion
@@ -1778,4 +1778,57 @@ movements.forEach((movement, index, array) => {
     console.log(Number.isFinite(+'20'))
     console.log(Number.isFinite(22 / 0)) // false
 }
+//repetition
+{
+    // Math and Rounding
+    console.log(Math.sqrt(25))
+    console.log(25 ** (1 / 2))
+    console.log(8 ** (1 / 3)) //cubic root
 
+    console.log(Math.trunc(Math.random() * 6) + 1)
+
+    // Task randomInt
+    const randomInt = (min, max) => Math.trunc(Math.random() * (max - min) + 1) + min
+    console.log(randomInt(2, 5))
+    console.log(Math.ceil(23.3))
+    console.log(Math.floor(23.3))
+    console.log(Math.round(23.3))
+    console.log(Math.trunc(23.3))
+
+    console.log((2.7).toFixed(0)) // '3' be careful that is string
+    console.log(Number.MAX_SAFE_INTEGER)
+    console.log(1111111111111111111n)
+    console.log(BigInt(1111111111111111111))
+
+    console.log(20n > 15) // true
+    console.log(20n === 20) //false cuz they are different type first is bigint and second just Number
+
+    // Create a date
+    const future = new Date(2037, 3, 28, 18, 26, 26)
+    console.log(future)
+    console.log(future.getFullYear())
+    console.log(future.getMonth())
+    console.log(future.getDay())
+    future.setFullYear(2040)
+
+    //Operations with dates
+    console.log(+future)
+
+    const calcDaysPassed = (date1, date2) => Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)) // use abs cuz here can be negative number
+
+    const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24))
+    console.log(days1)
+
+    const ingredients = ['olives', 'spinach']
+    const pizzaTimer = setTimeout((ing1, ing2) => {
+        console.log(`Here is your pizza with ${ing1} and ${ing2}`)
+    }, 3000, ...ingredients)
+    console.log('waiting...')
+
+    if (ingredients.includes('spinach')) clearTimeout(pizzaTimer)
+
+    setInterval(() => {
+        const now = new Date();
+        console.log(now)
+    }, 1000)
+}
