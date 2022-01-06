@@ -1,5 +1,6 @@
 'use strict'
-function clear(){
+
+function clear() {
     console.clear()
 }
 
@@ -38,7 +39,7 @@ num.map(v => v * 2)
 
 // Constructor function and the new Operator
 
-const Person = function(firstName, birthYear){
+const Person = function (firstName, birthYear) {
     this.firstName = firstName
     this.birthYear = birthYear
 }
@@ -52,15 +53,15 @@ const Person = function(firstName, birthYear){
 const jonas = new Person('Jonas', 1991)
 console.log(jonas)
 
-const matilda = new Person('Matilda',2017)
-const jack = new Person('Jack',1975)
+const matilda = new Person('Matilda', 2017)
+const jack = new Person('Jack', 1975)
 console.log(jonas instanceof Person)
 console.log(matilda)
 
 // Prototypes
 console.log(Person.prototype)
 
-Person.prototype.calcAge = function(){
+Person.prototype.calcAge = function () {
     console.log(2037 - this.birthYear)
 }
 
@@ -72,7 +73,7 @@ console.log(Person.prototype.isPrototypeOf(jonas))
 
 console.log(jonas)
 // setTimeout(() => {
-    Person.prototype.species = 'Homo Sapiens'
+Person.prototype.species = 'Homo Sapiens'
 // },5000)
 
 console.log(jonas.hasOwnProperty('species'))
@@ -84,39 +85,154 @@ console.dir(Person.prototype.constructor)
 const arr = [3, 6, 4, 5, 6, 9, 3, 3]
 console.log(arr.__proto__ === Array.prototype)
 
-Array.prototype.unique = function(){
+Array.prototype.unique = function () {
     return [...new Set(this)]
 }
 
 console.log(arr.unique())
 console.dir(x => x + 1)
 
-function Car(mark,speed){
+function Car(mark, speed) {
     this.mark = mark
     this.speed = speed
 }
-Car.prototype.accelerate = function(){
+
+Car.prototype.accelerate = function () {
     this.speed += 10
     console.log(this.speed)
 }
 
-Car.prototype.brake = function(){
+Car.prototype.brake = function () {
     this.speed -= 5
     console.log(this.speed)
 }
 
-const car1 = new Car('BMW',120)
-const car2 = new Car('Mercedes',95)
+const car1 = new Car('BMW', 120)
+const car2 = new Car('Mercedes', 95)
 
 car1.accelerate()
 car1.accelerate()
 car2.brake()
 console.log(car1)
 console.log(car2)
- // function changeColor(){
+// function changeColor(){
 //     this.style.color = 'white'
 // }
 // const button = document.querySelector('.buy')
 // // const button2 = document.querySelector('.poll')
 // const click1 = button.ad dEventListener('click',() => changeColor.call(button))
+clear()
 
+// 197 ES6 Classes
+
+//Class declaration
+
+class PersonCl {
+    constructor(fullName, birthName) {
+        this.fullName = fullName
+        this.birthName = birthName
+    }
+
+    // the methods will be in prototype of the objects ( not on the abjects) which is great))))))) Bruno Simon*
+    calcAge() {
+        console.log(2037 - this.birthName)
+    }
+
+    greet() {
+        console.log(`Hey ${this.fullName}`)
+    }
+
+    get age() {
+        return 2037 - this.birthName
+    }
+
+    set fullName(name) {
+        console.log(name)
+        if (name.trim().includes(' ')) this._fullName = name
+        else alert(`${name} is not a full name!`)
+    }
+
+    get fullName() {
+        return this._fullName
+    }
+}
+
+const jessica = new PersonCl('Jessica Davis', 1996)
+console.log(jessica)
+jessica.calcAge()
+console.log(jessica.age)
+
+PersonCl.prototype.greet = function () {
+    console.log(`Hey ${this.fullName}`)
+}
+
+// Classes are not hoisted
+// Classes are first-class citizes
+// Classes are executed in a strict mode
+
+const account = {
+    owner: 'Jonas',
+    movements: [200, 530, 120, 300],
+
+    get latest() {
+        return this.movements.slice(-1).pop()
+    },
+    set latest(mov) {
+        this.movements.push(mov)
+    }
+}
+
+console.log(account.latest)
+account.latest = 50
+console.log(account.movements)
+
+const walter = new PersonCl('Walter Walson', 1965)
+
+// Object.create
+
+const PersonProto = {
+    calcAge() {
+        console.log(2037 - this.birthYear)
+    },
+    init(firstName, birthYear) {
+        this.firstName = firstName
+        this.birthYear = birthYear
+    }
+}
+
+const steven = Object.create(PersonProto)
+steven.birthYear = 2002
+steven.name = 'Steven'
+steven.calcAge()
+
+const sarah = Object.create(PersonProto)
+sarah.init('Sarah Roley', 1999)
+console.log(sarah)
+
+class newCar {
+    constructor(speed, mark) {
+        this.speed = speed
+        this.mark = mark
+    }
+
+    accelerate() {
+        this.speed += 10
+    }
+
+    brake() {
+        this.speed -= 5
+    }
+
+    get speedUS() {
+        return this.speed / 1.6
+    }
+
+    set speedUS(val) {
+        this.speed = val * 1.6
+    }
+}
+
+const lamborghini = new newCar(283, 'lamborghini')
+console.log(lamborghini.accelerate())
+console.log(lamborghini.speedUS)
+console.log(lamborghini.speedUS = 320)
