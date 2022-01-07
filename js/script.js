@@ -104,7 +104,7 @@ Car.prototype.accelerate = function () {
 
 Car.prototype.brake = function () {
     this.speed -= 5
-    console.log(this.speed)
+    console.log(`${this.mark} is going at ${this.speed} km/h`)
 }
 
 const car1 = new Car('BMW', 120)
@@ -236,3 +236,61 @@ const lamborghini = new newCar(283, 'lamborghini')
 console.log(lamborghini.accelerate())
 console.log(lamborghini.speedUS)
 console.log(lamborghini.speedUS = 320)
+
+// Inheritance between 'classes and constructor functions'
+
+const Student = function (firstName, birthYear, course) {
+    Person.call(this, firstName, birthYear)
+    this.course = course
+}
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype)
+
+Student.prototype.introduce = function () {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`)
+}
+
+const mike = new Student('Mike', 2020, 'Computer Science ')
+console.log(mike)
+mike.introduce()
+mike.calcAge()
+console.log(mike instanceof Student)
+console.log(mike instanceof Person)
+Student.prototype.constructor = Student
+
+
+console.dir(Student.prototype.constructor)
+clear()
+
+
+console.dir(Car)
+
+const EV = function (mark, speed, charge) {
+    Car.call(this, mark, speed)
+    this.charge = charge
+}
+
+EV.prototype = Object.create(Car.prototype)
+
+const car3 = new EV('Tesla', 304, 150)
+console.log(car3)
+
+EV.prototype.chargeBattery = function (chargeTo) {
+    this.charge = chargeTo
+}
+
+// Polymorphism
+EV.prototype.accelerate = function () {
+    this.speed += 20
+    this.charge = this.charge * 0.99
+    console.log(`${this.mark} going at ${this.speed} km/h, with a charge of ${this.charge}%`)
+}
+car3.chargeBattery(90)
+car3.brake()
+car3.accelerate()
+car3.chargeBattery(100)
+car3.accelerate()
+console.log(car3)
+console.dir(Car)
+
