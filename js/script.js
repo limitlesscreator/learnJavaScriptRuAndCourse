@@ -358,18 +358,23 @@ clear()
 // Privet fields
 // Public methods
 // Private methods
+// (there is also the private version)
 
 class Account {
+    // 1) Public fields
     locale = navigator.language
-    _movements
+
+    // 2) Private fields
+    #movements = []
+    #pin
 
     constructor(owner, currency, pin) {
         this.owner = owner
         this.currency = currency
         // Protected property
-        this._pin = pin
+        this.#pin = pin
         // this._movements = []
-        this.locale = navigator.language
+        // this.locale = navigator.language
 
         console.log(`Thanks for opening an account, ${owner}`)
     }
@@ -377,17 +382,20 @@ class Account {
     // Public interface
 
     getMovements() {
-        return this._movements
+        return this.#movements
     }
 
     deposit(val) {
-        this._movements.push(val)
+        this.#movements.push(val)
+        return this
     }
 
     withdraw(val) {
         this.deposit(-val)
+        return this
     }
 
+    // #approveLoan(val) {
     _approveLoan(val) {
         return true
     }
@@ -396,7 +404,12 @@ class Account {
         if (this._approveLoan(val)) {
             this.deposit(val)
             console.log(`Loan approved`)
+            return this
         }
+    }
+
+    static helper() {
+        console.log('Helper')
     }
 }
 
@@ -411,7 +424,68 @@ acc1.requestLoan(1000)
 console.log(acc1.getMovements())
 
 console.log(acc1)
-console.log(acc1._pin)
+// console.log(acc1.#pin) error
 
+Account.helper()
+
+// Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000)
+console.log(acc1.getMovements())
+clear()
+
+// Re-create challenge with using ES6
+class CarCl{
+    constructor(mark,speed){
+        this.mark = mark
+        this.speed = speed
+    }
+    accelerate() {
+            this.speed += 10
+            console.log(this.speed)
+    }
+    brake(){
+        this.speed -= 5
+        console.log(`${this.mark} is going at ${this.speed} km/h`)
+    }
+
+    get speedUS(){
+        return this.speed / 1.6
+    }
+
+    set speedUs(speed){
+        this.speed = speed * 1.6
+    }
+}
+
+
+
+class EVCL extends CarCl{
+    #charge
+
+    constructor(mark, speed, charge) {
+        super(mark, speed)
+        this.#charge = charge
+    }
+
+    chargeBattery(chargeTo) {
+        this.#charge = chargeTo
+        return this
+    }
+
+    accelerate() {
+        this.speed += 20
+        this.charge--
+        console.log(`${this.mark} going at ${this.speed} km/h, with a charge of ${this.charge}%`)
+        return this
+    }
+
+}
+
+
+const bentley = new EVCL('Bentley',342,80)
+console.log(bentley)
+
+
+// 470
 
 
