@@ -434,32 +434,35 @@ console.log(acc1.getMovements())
 clear()
 
 // Re-create challenge with using ES6
-class CarCl{
-    constructor(mark,speed){
+class CarCl {
+    constructor(mark, speed) {
         this.mark = mark
         this.speed = speed
     }
+
     accelerate() {
-            this.speed += 10
-            console.log(this.speed)
-    }
-    brake(){
-        this.speed -= 5
-        console.log(`${this.mark} is going at ${this.speed} km/h`)
+        this.speed += 10
+        console.log(this.speed)
+        return this
     }
 
-    get speedUS(){
+    brake() {
+        this.speed -= 5
+        console.log(`${this.mark} is going at ${this.speed} km/h`)
+        return this
+    }
+
+    get speedUS() {
         return this.speed / 1.6
     }
 
-    set speedUs(speed){
+    set speedUs(speed) {
         this.speed = speed * 1.6
     }
 }
 
 
-
-class EVCL extends CarCl{
+class EVCL extends CarCl {
     #charge
 
     constructor(mark, speed, charge) {
@@ -474,18 +477,65 @@ class EVCL extends CarCl{
 
     accelerate() {
         this.speed += 20
-        this.charge--
-        console.log(`${this.mark} going at ${this.speed} km/h, with a charge of ${this.charge}%`)
+        this.#charge--
+        console.log(`${this.mark} going at ${this.speed} km/h, with a charge of ${this.#charge}%`)
         return this
     }
 
 }
 
+const bentley = new EVCL('Bentley', 342, 80)
+console.log(bentley.accelerate().accelerate().chargeBattery(90))
+clear()
 
-const bentley = new EVCL('Bentley',342,80)
-console.log(bentley)
+// Asynchronous JavaScript, AJAX and APIs
 
 
-// 470
+// Asynchronous code executed after a task that runs in the 'background' finishes
+// Asynchronous code is non-blocking
+// Execution doesn't wait for an asynchronous task to finish its work
 
+// Application Programming Interface: Piece of software that can be used by another piece of software, in order to
+// allow applications to talk with each other
+
+// There are be many types of APIs in web development: DOM API, Geolocation API, Own Class API, 'Online' API.
+// ---------------------------------------------------------------------------------------------------------------
+//'Online' API: Application running on server, that receives requests for data, and sends data back as response
+
+//First XMLRequest (actually not first >:))
+
+
+const request = new XMLHttpRequest()
+request.open('GET', 'https://restcountries.com/v3.1/name/portugal')
+request.send()
+
+// request.addEventListener('load',() => {
+//     console.log(this.responseText)
+//
+//     const data = JSON.parse()
+// })
+// bellow is bad practice i forgot that array function doesn't have own this, so i got nothing XD
+
+request.addEventListener('load', function () {
+    // console.log(this.responseText)
+
+    //destructuring bellow
+    const [data] = JSON.parse(this.responseText)
+    console.log(data)
+
+    const html = `
+            <article class="country">
+          <img class="country__img" src="${data.flag}" />
+          <div class="country__data">
+            <h3 class="country__name">${data.name}</h3>
+            <h4 class="country__region">${data.region}</h4>
+            <p class="country__row"><span>👫</span>${(String(data.population)).padStart(3)}</p>
+            <p class="country__row"><span>🗣️</span>LANG</p>
+            <p class="country__row"><span>💰</span>CUR</p>
+          </div>
+        </article>`
+    const root = document.getElementById('root').innerHTML = html
+    console.log(root)
+})
+// should to update 532 lines, something wrong with code))0,
 
