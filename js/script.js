@@ -503,39 +503,95 @@ clear()
 //'Online' API: Application running on server, that receives requests for data, and sends data back as response
 
 //First XMLRequest (actually not first >:))
+const btn = document.querySelector('.btn-country')
+const countriesContainer = document.querySelector('.countries')
+function getCountryData(str){
 
+    const request = new XMLHttpRequest()
+    request.open('GET', `https://restcountries.com/v3.1/name/${str}`)
+    request.send()
 
-const request = new XMLHttpRequest()
-request.open('GET', 'https://restcountries.com/v3.1/name/portugal')
-request.send()
-
-// request.addEventListener('load',() => {
-//     console.log(this.responseText)
-//
-//     const data = JSON.parse()
-// })
+    // request.addEventListener('load',() => {
+    //     console.log(this.responseText)
+    //
+    //     const data = JSON.parse()
+    // })
 // bellow is bad practice i forgot that array function doesn't have own this, so i got nothing XD
 
-request.addEventListener('load', function () {
-    // console.log(this.responseText)
+    request.addEventListener('load', function () {
+        // console.log(this.responseText)
 
-    //destructuring bellow
-    const [data] = JSON.parse(this.responseText)
-    console.log(data)
+        //destructuring bellow
+        const [data] = JSON.parse(this.responseText)
+        console.log(data)
 
-    const html = `
-            <article class="country">
-          <img class="country__img" src="${data.flag}" />
+        const html = `
+            <article class="country" >
+          <img class="country__img" src="${data.flags['png']}" />
           <div class="country__data">
-            <h3 class="country__name">${data.name}</h3>
+            <h3 class="country__name">${Object.values(data.name)[0]}</h3>
             <h4 class="country__region">${data.region}</h4>
-            <p class="country__row"><span>👫</span>${(String(data.population)).padStart(3)}</p>
-            <p class="country__row"><span>🗣️</span>LANG</p>
-            <p class="country__row"><span>💰</span>CUR</p>
+            <p class="country__row"><span>👫</span>${(data.population/1000_000).toFixed(1)}M</p>
+            <p class="country__row"><span>🗣️</span>${Object.values(data.languages)}</p>
+            <p class="country__row"><span>💰</span>${Object.values(Object.values(data.currencies)[0])[0]}</p>
           </div>
         </article>`
-    const root = document.getElementById('root').innerHTML = html
-    console.log(root)
-})
-// should to update 532 lines, something wrong with code))0,
+        countriesContainer.insertAdjacentHTML('beforeend', html)
+    })
+}
 
+// Practise abstraction OOP
+
+function Employee(name, age, baseSalary){
+    this.name = name
+    this.age = age
+    this.baseSalary = baseSalary
+    let monthlyBonus = 1000
+    //bellow is private
+
+    let calculateFinalSalary = function(){
+        let finalSalary = baseSalary + monthlyBonus
+        console.log(`Final salary is: ${finalSalary}`)
+    }
+
+    this.getEmpDetails = function (){
+        console.log(`Name: ${this.name} | Age : ${this.age}`)
+        calculateFinalSalary()
+    }
+}
+
+const worker1 = new Employee('John', 30, 2000)
+worker1.getEmpDetails()
+worker1.monthlyBonus = 10000
+// worker1.calculateFinalSalary() is private
+
+// with ES6
+
+class Employee2{
+    #monthlyBonus
+    constructor(name, age, baseSalary) {
+        this.name = name
+        this.age = age
+        this.baseSalary = baseSalary
+        this.#monthlyBonus = 1000
+    }
+    #calculateFinalSalary(){
+        this.finalSalary = this.baseSalary + this.#monthlyBonus
+        console.log(`Final salary is: ${this.finalSalary}`)
+    }
+    getEmpDetails(){
+        console.log(`Name: ${this.name} | Age : ${this.age}`)
+        this.#calculateFinalSalary()
+    }
+}
+const worker2= new Employee2('Mike', 24, 1300)
+worker2.getEmpDetails()
+// worker2.monthlyBonus = 5000 // private
+// worker2.#calculateFinalSalary() -don't work cuz private >:))))))
+// ------****--****-----
+// ----*-----*-----*----
+// >>--*-----------*---->
+// -----*--------*------
+// -------*----*--------
+// ---------**----------
+// Yeah... i have a lot of time:)
