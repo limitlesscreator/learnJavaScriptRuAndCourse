@@ -505,11 +505,12 @@ clear()
 //First XMLRequest (actually not first >:))
 const btn = document.querySelector('.btn-country')
 const countriesContainer = document.querySelector('.countries')
-function getCountryData(str){
 
-    const request = new XMLHttpRequest()
-    request.open('GET', `https://restcountries.com/v3.1/name/${str}`)
-    request.send()
+function renderCountry(data) {
+
+    // const request = new XMLHttpRequest()
+    // request.open('GET', `https://restcountries.com/v3.1/name/${str}`)
+    // request.send()
 
     // request.addEventListener('load',() => {
     //     console.log(this.responseText)
@@ -518,43 +519,45 @@ function getCountryData(str){
     // })
 // bellow is bad practice i forgot that array function doesn't have own this, so i got nothing XD
 
-    request.addEventListener('load', function () {
-        // console.log(this.responseText)
+    // request.addEventListener('load', function () {
+    // console.log(this.responseText)
 
-        //destructuring bellow
-        const [data] = JSON.parse(this.responseText)
-        console.log(data)
+    //destructuring bellow
+    // const [data] = JSON.parse(this.responseText)
+    // console.log(data)
+    console.log(data)
 
-        const html = `
+    const html = `
             <article class="country" >
-          <img class="country__img" src="${data.flags['png']}" />
+          <img class="country__img" src="${data.flags['svg']}" />
           <div class="country__data">
             <h3 class="country__name">${Object.values(data.name)[0]}</h3>
             <h4 class="country__region">${data.region}</h4>
-            <p class="country__row"><span>👫</span>${(data.population/1000_000).toFixed(1)}M</p>
+            <p class="country__row"><span>👫</span>${(data.population / 1000_000).toFixed(1)}M</p>
             <p class="country__row"><span>🗣️</span>${Object.values(data.languages)}</p>
             <p class="country__row"><span>💰</span>${Object.values(Object.values(data.currencies)[0])[0]}</p>
           </div>
         </article>`
-        countriesContainer.insertAdjacentHTML('beforeend', html)
-    })
+    countriesContainer.insertAdjacentHTML('beforeend', html)
+    // }
+    // )
 }
 
 // Practise abstraction OOP
 
-function Employee(name, age, baseSalary){
+function Employee(name, age, baseSalary) {
     this.name = name
     this.age = age
     this.baseSalary = baseSalary
     let monthlyBonus = 1000
     //bellow is private
 
-    let calculateFinalSalary = function(){
+    let calculateFinalSalary = function () {
         let finalSalary = baseSalary + monthlyBonus
         console.log(`Final salary is: ${finalSalary}`)
     }
 
-    this.getEmpDetails = function (){
+    this.getEmpDetails = function () {
         console.log(`Name: ${this.name} | Age : ${this.age}`)
         calculateFinalSalary()
     }
@@ -567,24 +570,28 @@ worker1.monthlyBonus = 10000
 
 // with ES6
 
-class Employee2{
+class Employee2 {
     #monthlyBonus
+
     constructor(name, age, baseSalary) {
         this.name = name
         this.age = age
         this.baseSalary = baseSalary
         this.#monthlyBonus = 1000
     }
-    #calculateFinalSalary(){
+
+    #calculateFinalSalary() {
         this.finalSalary = this.baseSalary + this.#monthlyBonus
         console.log(`Final salary is: ${this.finalSalary}`)
     }
-    getEmpDetails(){
+
+    getEmpDetails() {
         console.log(`Name: ${this.name} | Age : ${this.age}`)
         this.#calculateFinalSalary()
     }
 }
-const worker2= new Employee2('Mike', 24, 1300)
+
+const worker2 = new Employee2('Mike', 24, 1300)
 worker2.getEmpDetails()
 // worker2.monthlyBonus = 5000 // private
 // worker2.#calculateFinalSalary() -don't work cuz private >:))))))
@@ -595,61 +602,61 @@ worker2.getEmpDetails()
 // -------*----*--------
 // ---------**----------
 // Yeah... i have a lot of time:)
+clear()
+// getCountryData('usa')
+
+// Requests and responses
+// https://restcounties.com/v3.1/alpha/PT
+//DNS - domain name server, domain isn't a real address, and that DNS will convert domain to the real IP address
+//   https://104.27.142.889:443
+//    /           |            \
+//   V            V             V
+// (Protocol)   (IP address)  (Port number: default is 443 for https, 80 for HTTP)
+//
+//  TCP - str Transmission Control Protocol
+//  1. DNS LookUP
+//  2. TCP/IP socket connection
+//  3. HTTP Request
+//  4. HTTP Response
+
+//CallBackHell
+function callBackHell() {
+    setTimeout(() => {
+        console.log('1 second passed')
+        setTimeout(() => {
+            console.log('2 second passed')
+            setTimeout(() => {
+                console.log('3 second passed')
+                setTimeout(() => {
+                    console.log('4 second passed')
+                }, 1000)
+            }, 1000)
+        }, 1000)
+    }, 1000)
+}
+
+// callBackHell()
+
+// Promise: An object that is used as a placeholder for the future result of an asynchronous operation
+
+{
+    const getCountryData = function (country) {
+        // Country 1
+        fetch(`https://restcountries.com/v3.1/name/${country}`)
+            .then(response => response.json())
+            .then(data => {
+                    renderCountry(data[0])
+                    const neighbour = data[0].borders[0]
+                    if (!neighbour) return
+
+                    // Country 2
+                    return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
+                })
+            .then( response => response.json())
+            .then( data => renderCountry(data[0], 'neighbour'));
+    }
+    getCountryData('USA')
+}
 
 
-//React anki kards need be here for some reasons
-
-// combineReducers
-// Это метод, который позволяет вместо того, чтобы создавать один огромный reducer для всего состояния приложения сразу,
-// разбивать его на отдельные модули.
-
-//Higher Order Components
-// Дословный перевод Компонента высшего порядка – но на деле это функция которая принимает компонент и возвращает
-// другой компонент. Здесь используется принцип DRY - don't repeat yourself. Поэтому HOC применяется для повторного
-// использования логики, чтобы сократить код
-
-// React это
-// React это библиотека которая за счёт своего Virtual DOM эффективно отрисовывает UI.
-//     А Virtual DOM - это набор алгоритмов, которые позволяют нам улучшить производительность на клиентской стороне,
-//     избегая прямой работы с DOM с помощью работы с легким JavaScript-объектом, имитирующем DOM-дерево. Virtual DOM
-// имеет упрощённую копию DOM nodes HTMLя  в виде структуры объектов и когда пользователь изменяет что-то в UI, то сначала
-// происходят изменения в Virtual DOM, затем они сравниваются с реальным и перерисовка происходит лишь там где выявлены
-// отличия между реальным и виртульным DOM.
-
-// Reducer
-// Reducer это функция она нам нужна чтобы хорошо управлять изменениями state она принимает состояние и объект action
-// который укажет как мы должны изменить state с помощью reducer и после возвращает изменённый state.
-
-//two-way binding
-// Это когда например когда мы пишем данные в инпут, то сначала они вносятся при onChange событии в state, а из state
-// мы передаёт в атрибут value инпуту значение.
-
-//UseContext && UseReducer или Redux?
-// С хуками нам не придётся подключать библиотеку, что сделает наше приложение чуть быстрее, но в то же \
-// время сложнее будет дебажить код
-
-//useMemo
-// useMemo понадобится для мемоизации результата функции, если у нас есть тяжелая функция, то мы можем использовать
-// UseMemo , чтобы замемоизировать её значение и тогда при перерисовке компоненты она не будет выполняться если зависимости
-// не поменялись, в следствии чего у нас будет лучше производительность, но мы не можем мемоизировать каждую функцию так
-// как мемоизация не бесплатная и тоже требует определённо памяти.
-
-//Что такое DOM?
-// Ну начнём с низов, когда мы пишем html код и когда браузер получает этот код страницы, для него это обычная
-// последовательность символов которую он не понимает и для того чтобы браузер смог понять что это html5 документ
-// в котором например присутствует тег title который нужно прописать на вкладке, то для всего этого html документ
-// нужно преобразовать в набор неких сущностей, над которыми можно оперировать програмно – такое преобразование
-// называется парсингом. После парсинга все эти символы превращаются в эрорхическую структуру которая называется
-// Дерево Объектов и отдельные объекты этого дерева называются node.
-//     И если вкратце то DOM это представление HTML документа в виде дерева тегов.
-//     А сам Dom нужен нам для того чтобы мы могли взаимодействовать с элементами html страницы с помощью JS.
-
-//Что такое redux и какую проблему он решает.
-
-// библиотека управления состоянием для приложений, написанных на JavaScript.
-//     Redux решает проблему с использованием состояний. Например представим, что у нас есть 10 компонент вложенных
-// в друг друга и нужно передать данные с первой в десятую, то получается мы будем перебрасывать через пропсы через
-// все компоненты, а если вдруг нам надо будет что-то родительским компонентам передавать, то код вовсе начнёт быть
-// большим и запутаным по итогу.
-//     Но Redux позволяет вынести состояние в нешнюю зависимость и каждая компонента может сразу получить данные из
-// этого состояния
+//650
