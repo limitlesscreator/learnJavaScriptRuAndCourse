@@ -640,23 +640,77 @@ function callBackHell() {
 // Promise: An object that is used as a placeholder for the future result of an asynchronous operation
 
 {
+    const countriesContainer = document.querySelector('.countries')
+
+    const renderError = function (msg) {
+        countriesContainer.insertAdjacentText('beforeend', msg)
+        countriesContainer.style.opacity = 1
+    }
+
     const getCountryData = function (country) {
         // Country 1
         fetch(`https://restcountries.com/v3.1/name/${country}`)
-            .then(response => response.json())
-            .then(data => {
-                    renderCountry(data[0])
-                    const neighbour = data[0].borders[0]
-                    if (!neighbour) return
+            .then(response => {
+                console.log(response)
 
-                    // Country 2
-                    return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
-                })
-            .then( response => response.json())
-            .then( data => renderCountry(data[0], 'neighbour'));
+                if (!response.ok)
+                    throw new Error(`Country not found (${response.status})`)
+
+                return response.json()
+            })
+            .then(data => {
+                renderCountry(data[0])
+                const neighbour = data[0].borders[0]
+                if (!neighbour) return
+
+                // Country 2
+                return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
+            })
+            .then(response => response.json())
+            .then(data => renderCountry(data[0], 'neighbour'))
+            .catch(err => {
+                console.error(err)
+                renderError(`Something went wrong ${err.message}`)
+            })
+            .finally(() => {
+                countriesContainer.style.opacity = 1
+            })
     }
-    getCountryData('USA')
+    // getCountryData('USA')
+
+    btn.addEventListener('click', function () {
+        getCountryData('USA')
+    })
+
+    // getCountryData('asdasdsa') //error
+
+    // 237: Coding Challenge
+
+
+    function whereAmI(lat, lng) {
+        fetch(`https://geocode.xyz/${lat},${lng}?geoit=json&auth=629552444900727591131x6948 `)
+            .then(res => res.json())
+            .then(data => {
+                console.log(`You are in ${data.country}`)
+                getCountryData(`${data.country}`)
+            })
+            .catch(err => console.log(err))
+    }
+
+    whereAmI(52.508, 13.381)
+    // whereAmI(19.037,13.873)
+    whereAmI(-33.933, 18.373)
 }
 
+//Just a little some 240 simple Promise, must to be review
 
-//650
+const lotteryPromise = new Promise((resolve, reject) => {
+    if (Math.random() >= 0.5) {
+        resolve('You WIN!!!')
+    } else {
+        reject(' You lost your money >:)')
+    }
+})
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err))
+
