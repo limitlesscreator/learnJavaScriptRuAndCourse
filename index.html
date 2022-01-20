@@ -7,13 +7,29 @@
 </head>
 <body style="background: rgba(0,0,0,0.10)">
 <main class="container">
-    <div class="countries">
+<!--    <div class="countries">-->
 
-    </div>
-    <button class="btn-country">Where am I?</button>
-    <div class="images "></div>
+<!--    </div>-->
+<!--    <button class="btn-country">Where am I?</button>-->
+    <div class="images"></div>
+    <button id="btn-0">Button 1</button>
+    <button id="btn-1">Button 2</button>
+    <button id="btn-2">Button 3</button>
 </main>
 <script src="js/script.js"></script>
+<script type="text/javascript">
+    const prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
+    for (let btnNum = 0; btnNum < prizes.length; btnNum++) {
+
+        // For each of our buttons, when the user clicks it...
+        document.getElementById(`btn-${btnNum}`).onclick = () => {
+
+            // Tell her what she's won!
+            alert(prizes[btnNum]);
+        };
+    }
+</script>
+// just training a stuff from https://www.interviewcake.com/question/javascript/js-whats-wrong
 <!--<script src="js/HigherOrderFunctions.js"></script>-->
 <!--<script src="js/xhr.js"></script>-->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

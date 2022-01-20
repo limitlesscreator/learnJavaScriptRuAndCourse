@@ -737,17 +737,17 @@ function promiseTest() {
 // resolved promise 1
 // 0 sec timer
 
-const lotteryPromise = new Promise((resolve, reject) => {
-    console.log('Lotter draw is happening')
-    if (Math.random() >= 0.5) {
-        resolve('You WIN!!!')
-    } else {
-        reject(new Error(' You lost your money >:)'))
-    }
-})
+// const lotteryPromise = new Promise((resolve, reject) => {
+//     console.log('Lotter draw is happening')
+//     if (Math.random() >= 0.5) {
+//         resolve('You WIN!!!')
+//     } else {
+//         reject(new Error(' You lost your money >:)'))
+//     }
+// })
 
-lotteryPromise.then(res => console.log(res)).catch
-(err => console.error(err))
+// lotteryPromise.then(res => console.log(res)).catch
+// (err => console.error(err))
 
 const wait = function (seconds) {
     return new Promise((resolve) => {
@@ -755,25 +755,118 @@ const wait = function (seconds) {
     })
 }
 
-wait(1)
-    .then(() => {
-        console.log(`I waited for 1 seconds`)
-        return wait(1)
-    })
-    .then(() => {
-        console.log(`I waited for 2 second`)
-        return wait(1)
-    })
-    .then(() => {
-        console.log(`I waited for 3 second`)
-        return wait(1)
-    })
-    .then(() => {
-        console.log(`I waited for 4 second`)
-        return wait(1)
-    })
-
-    Promise.resolve('abc').then(str => console.log(str))
-    Promise.reject(new Error('Problem!')).catch(str => console.error(str))
+// wait(2)
+//     .then(() => {
+//         console.log(`I waited for 1 seconds`)
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log(`I waited for 2 second`)
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log(`I waited for 3 second`)
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log(`I waited for 4 second`)
+//         return wait(1)
+//     })
+//
+//     Promise.resolve('abc').then(str => console.log(str))
+//     Promise.reject(new Error('Problem!')).catch(str => console.error(str))
 
 // I have to have more practice with Promise :)
+
+// Some OOP Encapsulation example
+// Uncle Bob - Robert C Martin says:
+// 'The best functions are those with no parameters!'
+// OOP helps us do not make a spaghetti code ( when you copying and pasting lines of code over and over, and when
+// you wanna change one function and then several others functions brake) :D
+
+{
+    // This example bellow is without OOP Encapsulation
+    let baseSalary = 30_000
+    let overtime = 10
+    let rate = 20
+
+    function getWage(baseSalary, overTime, rate) {
+        return baseSalary + (overTime * rate)
+    }
+}
+{
+    // But this one bellow have OOP Encapsulation
+    let emplaye = {
+        baseSalary: 30_000,
+        overtime: 10,
+        rate: 20,
+        getWage() {
+            return this.baseSalary + (this.overtime * this.rate)
+        }
+    }
+    emplaye.getWage()
+}
+
+// navigator.geolocation.getCurrentPosition(
+//     (position => console.log(position),
+//     err => console.log(err)) )
+//
+// console.log('Getting position')
+
+const getPosition = () => {
+    return new Promise((resolve, reject) => {
+        // navigator.geolocation.getCurrentPosition(
+        //     geolocation => resolve(geolocation),
+        //     err => reject(err))
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+    })
+}
+// getPosition().then(data => {
+//     console.log('Getting Position ');
+//     console.log(data)
+// }).catch(err => `you have got an error ${err}`)
+
+// Coding challenge 242
+// img.src = './img/img-1.jpg'
+const imgContainer = document.querySelector('.images')
+const createImage = (imgPath) => {
+    return new Promise((resolve, reject) => {
+        const img = document.createElement('img')
+        img.src = imgPath
+        img.addEventListener('load', () => {
+            imgContainer.append(img);
+            resolve(img)
+        })
+        img.addEventListener('error', () => {
+            reject(new Error('Image not found'))
+        })
+    })
+}
+let currentImg
+
+createImage('./img/img-1.jpg')
+    .then(img => {
+        currentImg = img
+        console.log(`everything is fine`, img.complete)
+        return wait(2)
+    })
+    .then(() => {
+        currentImg.style.display = 'none'
+        return wait(2)
+    })
+    .then(() => {
+        return createImage('./img/img-2.jpg')
+    })
+    .then((img) => {
+        currentImg = img
+        return wait(2)
+    })
+    .then(() => {
+        currentImg.style.display = 'none'
+    })
+    .catch(err => console.error(`there is an error ${err}`))
+
+// 860
+
+
+// 7:47//
