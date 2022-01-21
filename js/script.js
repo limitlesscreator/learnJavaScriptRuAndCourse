@@ -829,44 +829,98 @@ const getPosition = () => {
 // Coding challenge 242
 // img.src = './img/img-1.jpg'
 const imgContainer = document.querySelector('.images')
-const createImage = (imgPath) => {
-    return new Promise((resolve, reject) => {
-        const img = document.createElement('img')
-        img.src = imgPath
-        img.addEventListener('load', () => {
-            imgContainer.append(img);
-            resolve(img)
-        })
-        img.addEventListener('error', () => {
-            reject(new Error('Image not found'))
-        })
-    })
+// const createImage = (imgPath) => {
+//     return new Promise((resolve, reject) => {
+//         const img = document.createElement('img')
+//         img.src = imgPath
+//         img.addEventListener('load', () => {
+//             imgContainer.append(img);
+//             resolve(img)
+//         })
+//         img.addEventListener('error', () => {
+//             reject(new Error('Image not found'))
+//         })
+//     })
+// }
+// let currentImg
+//
+// createImage('./img/img-1.jpg')
+//     .then(img => {
+//         currentImg = img
+//         console.log(`everything is fine`, img.complete)
+//         return wait(2)
+//     })
+//     .then(() => {
+//         currentImg.style.display = 'none'
+//         return wait(2)
+//     })
+//     .then(() => {
+//         return createImage('./img/img-2.jpg')
+//     })
+//     .then((img) => {
+//         currentImg = img
+//         return wait(2)
+//     })
+//     .then(() => {
+//         currentImg.style.display = 'none'
+//     })
+//     .catch(err => console.error(`there is an error ${err}`))
+
+// Promises with async await
+
+{
+    // Function bellow is asynchronous code!! and it's syntactic sugar we are still using promises
+    const whereAmI = async function (...country) {
+        const data = [...country]
+        const result = await fetch(`https://restcountries.com/v3.1/name/${data[0]}`)
+        let result2
+        // console.log(`first result: `, result)
+        if (data[1]) {
+            result2 = await fetch(`https://restcountries.com/v3.1/name/${data[1]}`)
+            // console.log(`second result: `, result2)
+        }
+        return [result,result2]
+    }
+    console.log('1: WIll get location')
+    // const countries = whereAmI('USA', 'Russia')
+    // console.log(countries)
+    whereAmI('USA', 'Russia')
+        .then(result => console.log(result))
+        .finally(() => {console.log('3: Finished getting location')})
+    //Error handling With Try and Catch
+    try {
+        let y = 0
+        const x = 2
+        // x = 3
+    } catch (err) {
+        alert(err.message)
+    }
+
+    // Running Promises in Parallel
+    const get3Countries = async function (c1, c2, c3) {
+        try {
+            const data1 = (await fetch(`https://restcountries.com/v3.1/name/${c1}`)).json()
+            // const [data2] = (await fetch(`https://restcountries.com/v3.1/name/${c2}`)).json()
+            // const [data3] = (await fetch(`https://restcountries.com/v3.1/name/${c3}`)).json()
+
+            console.log(data1)
+        } catch (error) {
+
+        }
+    }
+    get3Countries('USA', 'Russia', 'Canada')
 }
-let currentImg
 
-createImage('./img/img-1.jpg')
-    .then(img => {
-        currentImg = img
-        console.log(`everything is fine`, img.complete)
-        return wait(2)
-    })
-    .then(() => {
-        currentImg.style.display = 'none'
-        return wait(2)
-    })
-    .then(() => {
-        return createImage('./img/img-2.jpg')
-    })
-    .then((img) => {
-        currentImg = img
-        return wait(2)
-    })
-    .then(() => {
-        currentImg.style.display = 'none'
-    })
-    .catch(err => console.error(`there is an error ${err}`))
-
-// 860
-
-
-// 7:47//
+// OOP Inheritance
+//  Наследование - предоставление всех свойств и методов определенного класса дочернему классу.
+// Это позволяет нам повторно использовать общую логику. Например у нас есть в html елементы такие как TextBox
+// , DropDownList, ChekBox, все эти элементы например имеют такой параметр как innerHTML и методы click or focus
+// и вместо того чтобы каждый раз переопределять эти методы нашим элементам, мы можем один раз их
+    // определить в прототипе объекта HTMLElement и позволить другим объектам унаследовать методы от HTMLElement
+// OOP Abstraction
+// Абстракция - игнорирование или скрытие деталей, которые не имеют значения, что позволяет нам получить
+// общее представление о том, что мы реализуем, вместо того чтобы возиться с деталями, которые на самом деле
+// не имеют значения для нашей реализации. Например пример с микроволновкой, всё что нам надо, это выбрать режим
+// разогрева и время разогрева еды, мы имеем кнопки и дисплей на котором показана информация о выставленом режиме
+// и времени, когда мы нажимаем кнопку добавить время или start или stop, то внутри микроволновки происходят вычисления,
+// некоторые программые исполняются, но нас это не интересует, мы не хотим этого видеть.
