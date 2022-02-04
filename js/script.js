@@ -82,3 +82,96 @@ for (let car in freightTrain){
 }
 console.log(Object.getOwnPropertySymbols(freightTrain))
 freightTrain.showLength()
+
+console.clear()
+
+// Repeat Objects_Prototypes Classes
+
+let cat2 = {
+    length: 0.5,
+    color: 'white',
+    age: 7,
+    getVoice(){
+        console.log('maaau')
+    }
+}
+
+cat2.getVoice()
+console.log(cat2)
+
+let c = 'test'
+let b = new String('test')
+console.log(typeof c)
+console.log(typeof b)
+b.some = '123'
+
+console.log(b)
+
+console.log(['a','b'])
+console.log({0:'a',1:'b',length: 2})
+
+console.log(document.querySelector('.images'))
+
+console.dir(document.querySelector('.images'))
+console.clear()
+class ModernCat{
+    constructor(length,color,weight){
+        this.weight = weight
+        this.color = color
+        this.length = length
+    }
+    eat(){
+        console.log(`has started eat`)
+    }
+}
+let modernCat1 = new ModernCat(0.5,'black','5kg')
+
+console.log(modernCat1)
+
+// old syntax
+{
+    let animal = {
+        year: 10
+    }
+
+    let dog = {
+        color: 'black'
+    }
+
+
+    dog.__proto__ = animal
+
+    console.log(dog.year)
+}
+
+// new syntax
+{
+    class Animal {
+        constructor(age){
+            this.year = age
+        }
+    }
+
+    class Cat extends Animal  {
+        constructor(age){
+            super(age) // Вызов родительского конструктора
+            this.color = 'black'
+        }
+    }
+    const cat = new Cat(5)
+    console.log(cat)
+
+    class Tiger extends Cat{
+        constructor(age){
+            super(age)
+            this.stripers = 'long'
+        }
+    }
+    let tiger = new Tiger(2)
+    console.log(tiger)
+    console.log(['a','b','c'].indexOf('b'))
+    console.dir(Array)
+
+    let getElements = document.querySelectorAll('.button')
+    console.log(getElements)
+}
