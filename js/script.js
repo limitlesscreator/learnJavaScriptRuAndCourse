@@ -22,7 +22,7 @@
 // foo()
 // // finished what is varriable hosting 3, 2:13
 
-// have skipped 5 8 9 10 11 15 16 17 18 19 21 22 23 24 25 27
+// have skipped 8 9 10 11 15 17  21 22 24 25 27
 // interestion 16 23 25
 //upgrade - 1m, 2m, 4canBeTernar,
 
@@ -129,7 +129,7 @@
 
 const createSecretHolder = (secret) => {
     return {
-        andersenSecret : secret,
+        andersenSecret: secret,
         getSecret: function () {
             return this.andersenSecret
         },
@@ -168,22 +168,22 @@ console.clear()
 //11 (26)
 {
     var numbers = [1, 2, 3, 4, 5];
-    Array.prototype.square = function(){
+    Array.prototype.square = function () {
         return this.map(el => el * el)
     }
-    Array.prototype.cube = function(){
+    Array.prototype.cube = function () {
         return this.map(el => el * el * el)
     }
-    Array.prototype.average = function(){
-        return this.reduce((acc,curr) => acc + curr, 0) / this.length
+    Array.prototype.average = function () {
+        return this.reduce((acc, curr) => acc + curr, 0) / this.length
     }
-    Array.prototype.sum = function(){
-        return this.reduce((acc,curr) => acc + curr, 0)
+    Array.prototype.sum = function () {
+        return this.reduce((acc, curr) => acc + curr, 0)
     }
-    Array.prototype.even = function(){
+    Array.prototype.even = function () {
         return this.filter(num => !(num % 2))
     }
-    Array.prototype.odd = function(){
+    Array.prototype.odd = function () {
         return this.filter(num => (num % 2))
     }
     console.log(numbers.square())//, [1, 4, 9, 16, 25]
@@ -273,25 +273,136 @@ console.clear()
 
 // 14 30!
 class Cuboid {
-    constructor(length, width, height){
+    constructor(length, width, height) {
         this.length = length
         this.width = width
         this.height = height
     }
-    get surfaceArea(){
-        return (2 *this.length*this.width) + (2 * this.length * this.height) + (2 * this.width * this.height)
+
+    get surfaceArea() {
+        return (2 * this.length * this.width) + (2 * this.length * this.height) + (2 * this.width * this.height)
     }
-    get volume(){
+
+    get volume() {
         return this.length * this.width * this.height
     }
 }
+
 class Cube extends Cuboid {
-    constructor(length){
+    constructor(length) {
         super(length)
         this.length = length
         this.width = length
         this.height = length
     }
 }
+
 var cuboid = new Cuboid(1, 2, 3);
 console.log(cuboid.volume, 6)
+
+// 15 (23)
+{
+    // function isSantaClausable (obj){
+//     if (obj.hasOwnProperty('sayHoHoHo') && obj.hasOwnProperty('distributeGifts') && obj.hasOwnProperty('goDownTheChimney')) {
+//         if (typeof obj.sayHoHoHo == 'function' && typeof obj.distributeGifts == 'function' && obj.goDownTheChimney == 'function') {
+//             return typeof obj.sayHoHoHo == 'function' && typeof obj.distributeGifts == 'function' && obj.goDownTheChimney == 'function'
+//         }
+//     } else {
+//         console.log('something wrong, try again:)')
+//         return false
+//     }
+//         return typeof obj.sayHoHoHo === 'function' && typeof obj.distributeGifts === 'function' && typeof obj.goDownTheChimney === 'function'
+//     }
+// sorry for so many comments, i want to go back later and find what i wrote wrong
+}
+
+
+// 16(19)- Need more information
+const compose = (...andersenFun) => a => andersenFun.reduceRight((b, c) => c(b), a)
+//hardest task)
+
+//17(18)
+{
+    const compose = (f, g) => (...andersen) => f(g(...andersen))
+//hardest2
+
+
+}
+
+{
+    // 18 (19)// more information
+    const add = num => {
+
+        let total = num
+
+        const increase = b => {
+            total += b
+            return increase
+        }
+
+        increase.toString = () => total
+
+        return increase
+    }
+}
+
+    //19 (25)
+{
+    const calc = (number, operator) => {
+        if(!operator)
+            return number;
+        return operator(number);
+    }
+
+    const zero = operator =>  calc(0, operator)
+    const one = operator =>  calc(1, operator)
+    const two = operator =>  calc(2, operator)
+    const three = operator =>  calc(3, operator)
+    const four = operator =>  calc(4, operator)
+    const five = operator =>  calc(5, operator)
+    const six = operator =>  calc(6, operator)
+    const seven = operator =>  calc(7, operator)
+    const eight = operator =>  calc(8, operator)
+    const nine = operator =>  calc(9, operator)
+
+    const  minus = a => b =>  b - a
+    const  plus = a => b =>  b + a
+    const dividedBy = a =>  b =>  Math.floor(b / a)
+    const  times = a => b =>  b * a
+
+}
+// Finished for 24 hours 19tasks
+
+// Practicing with CurryFunctions
+
+const buildSandwich = (ingredient1) => ingredient2 => ingredient3 => `${ingredient1}, ${ingredient2}, ${ingredient3}`
+const sandwich = buildSandwich('Bacon')('salad')('Tomato')
+console.log(sandwich)
+console.clear()
+
+// Partially applied functions are common use of currying functions
+
+{
+    const multiply = a => b => a * b
+
+    const multiplyBy10 = multiply(10)
+    console.log(multiplyBy10(6))
+
+}
+console.clear()
+{
+
+    function sum(arg1){
+        let total = arg1
+
+        return function next(arg2){
+            if (arg2){
+                total += arg2
+                return next
+            }
+            else return total
+        }
+
+    }
+    console.log(sum(1)(2)(3)())
+}
