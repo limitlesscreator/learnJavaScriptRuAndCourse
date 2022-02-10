@@ -346,29 +346,29 @@ const compose = (...andersenFun) => a => andersenFun.reduceRight((b, c) => c(b),
     }
 }
 
-    //19 (25)
+//19 (25)
 {
     const calc = (number, operator) => {
-        if(!operator)
+        if (!operator)
             return number;
         return operator(number);
     }
 
-    const zero = operator =>  calc(0, operator)
-    const one = operator =>  calc(1, operator)
-    const two = operator =>  calc(2, operator)
-    const three = operator =>  calc(3, operator)
-    const four = operator =>  calc(4, operator)
-    const five = operator =>  calc(5, operator)
-    const six = operator =>  calc(6, operator)
-    const seven = operator =>  calc(7, operator)
-    const eight = operator =>  calc(8, operator)
-    const nine = operator =>  calc(9, operator)
+    const zero = operator => calc(0, operator)
+    const one = operator => calc(1, operator)
+    const two = operator => calc(2, operator)
+    const three = operator => calc(3, operator)
+    const four = operator => calc(4, operator)
+    const five = operator => calc(5, operator)
+    const six = operator => calc(6, operator)
+    const seven = operator => calc(7, operator)
+    const eight = operator => calc(8, operator)
+    const nine = operator => calc(9, operator)
 
-    const  minus = a => b =>  b - a
-    const  plus = a => b =>  b + a
-    const dividedBy = a =>  b =>  Math.floor(b / a)
-    const  times = a => b =>  b * a
+    const minus = a => b => b - a
+    const plus = a => b => b + a
+    const dividedBy = a => b => Math.floor(b / a)
+    const times = a => b => b * a
 
 }
 // Finished for 24 hours 19tasks
@@ -392,17 +392,72 @@ console.clear()
 console.clear()
 {
 
-    function sum(arg1){
+    function sum(arg1) {
         let total = arg1
 
-        return function next(arg2){
-            if (arg2){
+        return function next(arg2) {
+            if (arg2) {
                 total += arg2
                 return next
-            }
-            else return total
+            } else return total
         }
 
     }
+
     console.log(sum(1)(2)(3)())
 }
+
+{
+    function curry(_f) {
+        return x => y => z => _f(x, y, z)
+    }
+
+    function f(x, y, z){
+        return x + y + z
+    }
+}
+// just an anki kard for me
+// 1.Каждый объект в js имеет свой prototype. В прототипах существуют встроенные методы, если
+// мы например создадим пустой объект с названием obj и выведем в консоль obj.toSring, то увидем в консоли
+//     [object Object], тоесть произошло преобразование объекта в строку, это произошло следующим образом:
+//     1) Js начал искать этот метод в самом объекте. 2) Он его не нашел и полез в ptototype нашего Obj и уже
+// там нашли этот метод после чего им воспользовались.
+//
+//     let a = 'test'
+//
+// Так же если мы например обратимся к а.length , то строка будет приведена  в объект. и в Прототипе класса
+// String найдём метод.
+//     Что такое класс? Это шаблон для создания объектов
+//
+// Разница между функцией конструктор и классами в том, что классы сразу выносят функции в прототип
+//
+// Приведу пример сразу, почему прототип полезен, представим ситуацию
+// что мы создаём кучу объектов Human чезер функцию конструктор
+// допустим есть 2 параметра name и birthYear и один метод
+// показывающьй сколько человеку лет, мы можем написать метод в самой
+// функции конструктора
+// const Obj = function (name, birthYear) {
+//     this.name = name
+//     this.birthYear = birthYear
+//     this.showAge = function(){
+//         console.log(2043 - this.birthYear)
+//     }
+// }
+// но теперь, каждый объект созданный через эту функцию конструктора
+// будет иметь свой собственный метод, то есть один и тот же метод
+// продублируется во все объекты. Решение данной ситуации будет
+// добавление функции в прототип наших объектов.
+//     const Obj = function (name, birthYear) {
+//     this.name = name
+//     this.birthYear = birthYear
+// }
+// Obj.prototype.showAge = function(){
+//     console.log(2043 - this.birthYear)
+// }
+//
+// const human1 = new Obj('Mike',2001)
+// const human2 = new Obj('Mike',2001)
+//
+// console.dir(human1)
+// console.dir(human2)
+// human1.showAge()
