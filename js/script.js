@@ -412,7 +412,7 @@ console.clear()
         return x => y => z => _f(x, y, z)
     }
 
-    function f(x, y, z){
+    function f(x, y, z) {
         return x + y + z
     }
 }
@@ -461,3 +461,52 @@ console.clear()
 // console.dir(human1)
 // console.dir(human2)
 // human1.showAge()
+
+{
+    //bad practice of duplicateCode
+    let userOne = {
+        email: 'ryu@ninjas.com',
+        name: 'Ryu',
+        login() {
+            console.log(this.email, 'has logged in')
+        },
+        logout() {
+            console.log(this.email, 'has logged out;')
+        }
+    }
+
+    let userTwo = {
+        email: 'ryu@yoshi@ninjas.com.com',
+        name: 'Mike',
+        login() {
+            console.log(this.email, 'has logged in')
+        },
+        logout() {
+            console.log(this.email, 'has logged out;')
+        }
+    }
+
+
+    //good practice inheritance
+    class User {
+        constructor(email, name) {
+            this.email = email
+            this.name = name
+            this.score = 0
+        }
+
+        updateScore() {
+            this.score++
+            console.log(this.email, 'score is now', this.score)
+            return this
+        }
+
+        login() {
+            console.log(this.email, 'has logged in')
+        }
+    }
+
+    //chaining method
+    let userGood = new User('ryu@nijas.com', 'Ryu')
+    userGood.login().updateScore().updateScore()
+}
