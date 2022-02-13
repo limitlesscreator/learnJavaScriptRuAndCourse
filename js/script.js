@@ -130,14 +130,16 @@ console.clear()
         checkThis() {
             // 'use strict' // mode helps us do not declare on 135  line
             console.log(this)
-            function checkOther(){
+
+            function checkOther() {
                 console.log(this)
                 this.moo = 1 // moo is of asim2
                 console.log(this)
             }
+
             checkOther()
         },
-        checkOther(){
+        checkOther() {
             console.log(window.moo) // undefined
         }
     }
@@ -151,3 +153,59 @@ console.clear()
     asim2.checkThis()
 
 }
+
+console.clear()
+
+// Function composition
+
+const compose = (a, b, c) => data => a(b(c(data))) // right to left
+
+const multBy3 = (num) => num * 3
+
+const multBy4 = num => num * 4
+
+const multBy5 = num => num * 5
+
+
+const getNumber = compose(multBy5, multBy4, multBy3)
+
+console.log(getNumber(1))
+
+const add2 = x => x + 2
+const subtract1 = x => x - 1
+const multiplyBy5 = x => x * 5
+
+const result = multiplyBy5(subtract1(add2(4)))
+console.log(result)
+
+{
+    const compose = (...fns) => val => fns.reduceRight((prev, fn) => fn(prev), val)
+
+    const compResult = compose(multiplyBy5, subtract1, add2)(4)
+    console.log(compResult)
+
+    // To do the same but read left to right we use 'pipe'.
+    // It is the same except uses reduce instead of reduceRight.
+
+    const pipe = (...fns) => val => fns.reduce((prev, fn) => fn(prev), val)
+    const pipeResult = pipe(add2, subtract1, multiplyBy5)(2)
+    console.log(pipeResult)
+
+    const splitOnSpace = (str) => str.split(' ')
+    const count = arr => arr.length
+
+    const wordCount = pipe(splitOnSpace, count)
+    console.log(wordCount('lara lora lera'))
+
+    const scoreObj = {home: 0, away: 0}
+    const shallowClone = obj => Array.isArray(obj ? [...obj] : {...obj})
+
+    const max = (a, b) => a > b ? a : b
+    const max3 = (a, b, c) => max(max(a, b), c)
+    console.log(max3(-100, 10, -50))
+
+    const compose2 = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
+}
+
+
+// 210
