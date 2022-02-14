@@ -206,6 +206,61 @@ console.log(result)
 
     const compose2 = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)))
 }
+console.clear()
+// Closures
 
+{
+    // for (var i = 0; i < 3; i++) {
+    //     // debugger
+    //     const log = () => console.log(i)
+    //     setTimeout(log, 100)
+    // }
 
-// 210
+    // Simple Closure
+    function f1(a) {
+        let b = 2
+        setTimeout(() => {
+            console.log(a, b)
+        }, 1000)
+    }
+
+    // f1(3)
+
+    // Closure with problem
+    function f2() {
+        for (let i = 0; i < 3; i++) {
+            setTimeout(() => {
+                console.log(i)
+                console.log(new Date().getSeconds())
+            }, 1000 * i)
+        }
+    }
+
+    // f2()
+
+    let f = () => {
+        let i = 1
+        let j = 2
+        return () => {
+            console.log(i)
+        }
+    }
+    console.dir(f())
+}
+
+(function immediateA(a) {
+    return (function immediateB(b) {
+        console.log(a)
+    })(1)
+})(0)
+//0
+
+let count = 0;
+(function immediate() {
+    if (count === 0) {
+        let count = 1
+        console.log(count)
+    }
+    console.log(count)
+})()
+// 0 1
