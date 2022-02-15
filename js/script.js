@@ -264,3 +264,83 @@ let count = 0;
     console.log(count)
 })()
 // 0 1
+
+
+// continue this key word
+// repeating call/ apply/ bind
+
+{
+    // Functions are objects
+    function asim(param1, param2) {
+        console.log(this)
+    }
+
+    const testObj = {
+        something: 'good'
+    }
+    // console.log(asim.toString())
+    asim.call(testObj)
+
+    function a(b, c, d) {
+        console.log(this)
+        console.log(b)
+        console.log(c)
+        console.log(d)
+    }
+
+    a.call(testObj, 1, 2, 3)
+    // apply is the same as call, but now using []
+
+    a.apply(testObj, [2, 3, 4])
+
+    // example when do we need use apply
+    let testData = [1, 2, 4, 1, 234, 346, 2]
+
+    function sum() {
+        let result = 0
+        for (let i = 0; i < arguments.length; i++) {
+            result += arguments[i]
+        }
+        return result
+    }
+
+    console.log(sum.apply(null, testData))
+
+    //bind
+    const testBind = function () {
+        console.log(this)
+    }
+    testBind.bind(1)()
+
+    console.clear()
+
+    // prototypes
+    let animal = {
+        kind: 'human'
+    }
+    let asim2 = {}
+
+    asim2.__proto__ = animal
+    console.log(asim2.kind)
+    console.log(animal.isPrototypeOf(asim2))
+
+    // ES6 Classes using strict mode inside
+    class Person{
+        _firstName = ''
+        _lastName = ''
+
+        constructor(firstName, lastName){
+            this._firstName = firstName
+            this._lastName = lastName
+        }
+
+        get firstName(){
+            return this.firstName
+        }
+    }
+
+    let asimObj = new Person('asim', 'hussain')
+    console.log(asimObj)
+}
+
+
