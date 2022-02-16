@@ -325,16 +325,16 @@ let count = 0;
     console.log(animal.isPrototypeOf(asim2))
 
     // ES6 Classes using strict mode inside
-    class Person{
+    class Person {
         _firstName = ''
         _lastName = ''
 
-        constructor(firstName, lastName){
+        constructor(firstName, lastName) {
             this._firstName = firstName
             this._lastName = lastName
         }
 
-        get firstName(){
+        get firstName() {
             return this.firstName
         }
     }
@@ -342,5 +342,82 @@ let count = 0;
     let asimObj = new Person('asim', 'hussain')
     console.log(asimObj)
 }
+
+// curry and function composition
+{
+    const pipe = (...fnc) => x => fnc.reduce((y, f) => f(y), x)
+    const add = a => b => a + b
+    console.log(add(5)(2))
+
+    const inc = add(1)
+    let result = inc(3)
+    console.log(result)
+
+    const g = n => n + 1
+    const f = n => n * 2
+    const d = n => n / 2
+    // const h = x => console.log(f(g(x)))
+    // h(23)
+
+    // const compose = (v, b) => x => v(b(x))
+    // console.log(compose(g, f)(20))
+    console.clear()
+
+    const compose = (...fnc) => x => fnc.reduceRight((g, f) => f(g), x)
+
+
+    // console.log(compose(g, f, d)(6))
+
+
+    // if we want to debug code we should to write something like that
+    const trace = label => value => {
+        console.log(`${label} : ${value}`)
+        return value
+    }
+
+    const h = pipe(g, trace('after g'), f, trace('after f'))
+    h(20)
+
+}
+
+// asynchronous stuff in js
+// callbacks are synchronous btw)) here is prove
+{
+    function doTask(cb) {
+        setTimeout(cb, 0)
+    }
+
+    doTask(() => console.log(message))
+
+    let message = 'Callback'
+}
+// Repeating promises
+let promise = Promise.resolve('done')
+promise.then(data => console.log(data))
+
+// .finally(() => console.log('finished'))
+new Promise((resolve, reject) => {
+    // throw ('fail')
+})
+    .then(data => console.log('resolved'))
+    .catch(data => console.error(`${data} rejected`))
+    .catch(data => console.log(`second reject`))
+    .then(() => console.log(`second then`))
+
+const firstPromise = new Promise((resolve, reject) => {
+    reject(`First 1`)
+})
+const secondPromise = new Promise((resolve, reject) => {
+    resolve(`Second 2`)
+})
+const thirdPromise = new Promise((resolve, reject) => {
+    reject(`Third 3`)
+})
+Promise.any([firstPromise, secondPromise, thirdPromise]).then(data => {
+    console.log(data)
+})
+    .catch(() => `Error`)
+
+
 
 
