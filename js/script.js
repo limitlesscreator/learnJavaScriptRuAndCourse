@@ -148,7 +148,7 @@ console.clear()
         console.log(--cookies) // 99
         console.log(cookies) // 99
     }
-    for(let i = 0; i <= 10; i++){
+    for (let i = 0; i <= 10; i++) {
         console.log(++i) // 1 3 5 7 9 11
     }
 
@@ -161,7 +161,7 @@ console.clear()
 
     let x = 10;
     let y = 20;
-    x+= y*= 3;
+    x += y *= 3;
     console.log(x); // 70
 
     // Void operator - return undefined
@@ -178,12 +178,12 @@ console.clear()
     }
     // the variable var icecream is hoisted to the top of its scope
 
-    for(var i = 0; i <= 4; i++) {
-        console.log(i);
-        setTimeout(function() {
-            console.log('The number being logged is ' + i);
-        },1000);
-    }
+    // for (var i = 0; i <= 4; i++) {
+    //     console.log(i);
+    //     setTimeout(function () {
+    //         console.log('The number being logged is ' + i);
+    //     }, 1000);
+    // }
     // 5 5 5 5 5 5
 
     // let and const hoisting
@@ -202,14 +202,205 @@ console.clear()
     // that's why code bellow is work
 
     myFunc()
-    function myFunc(){
+
+    function myFunc() {
         console.log('This is myFunc')
     }
+
     /////////////////////////////////////////////////
     // Precedence for variable and function hoisting|
     // 1. Variable assignment                       |
     // 2. Function declaration                      |
     // 3. Variable declaration                      |
     ////////////////////////////////////////////////|
+
 }
 
+function fruit() {
+    console.log('peaches, mandarins, grapes')
+}
+
+var fruit = 'apples'
+console.log(typeof (fruit)) // "string"
+
+// but without assignment  it's going be
+
+// function fruit() {
+//     console.log('peaches, mandarins, grapes')
+// }
+// var fruit
+// console.log(typeof (fruit)) // "function"
+
+// Throw statement
+console.clear()
+
+
+let price = 101
+let discount = 0.5
+let result = (price * discount)
+try {
+    if (result <= 50) {
+        throw new Error('The price is 50 and bellow')
+    }
+    console.log(m)
+} catch (e) {
+    console.log(`${e.name} ${e.message}`)
+}
+
+// Finally statement
+
+try {
+
+} catch (e) {
+
+} finally {
+    console.log('executed after try or catch even if there is error')
+}
+
+// Common types of errors are:
+//     SyntaxError: caused by invalid syntax
+//     ReferenceSyntax: caused by referencing variable/function/object that doesn't exist
+//     RangeError: This error is thrown when value is out of range
+//     TypeError: dataType of variable is invalid as expected
+
+function grouping(num) {
+    try {
+        if (num < 3) {
+            throw new Error('not enough students')
+        }
+        console.log(`${num / 3} are formed`)
+    } catch (e) {
+        console.log(`${e.name} ${e.message}`)
+    } finally {
+        console.log('Function just finished')
+    }
+}
+
+grouping(2)
+
+// Strict mode - doesn't work in block scope
+// a = 10
+// without strictMode  this will automatically create a variable/obj in the global context
+// var a = 10
+// but we get ReferenceError if we enable strict mode
+
+// in strict mode you can't duplicate parameter name
+'use strict'
+
+function add(x, x) {
+    let sum = x + x;
+    console.log(sum);
+}
+
+// add(1,2)// syntaxError
+
+// also you can't name your variables with following keywords: interface, let, package, implements, private, protected
+// public, static, yield
+
+var name = 'nice'
+
+console.log(name)
+
+// Chapter 3 - all about objects
+
+// A function attached to an object is calling it's method
+
+// Object can be create by using: constructor function, es6 classes, Object.create method, assign() method, Object literal syntax
+
+// Object literal syntax
+{
+    const user = {
+        login: true,
+        name: 'kartoshka300',
+        age: 13,
+        message: function () {
+            console.log('The student currently enrolled ')
+        }
+    }
+
+    console.log(user.hasOwnProperty('login')) // true
+    console.log(user.hasOwnProperty('snacks')) // false
+}
+
+// adding dot notation
+{
+    let user = {}
+    user.login = true
+    user.message = function () {
+        console.log('Andersen company one of the best:D')
+    }
+    console.log(user)
+    // Delete a property
+
+    delete user.login
+    console.log(user)
+
+    const author = {
+        name: 'Kolya',
+        genge: 'boy',
+        year: '2000',
+        introduction: function () {
+            console.log(this.name)
+        }
+    }
+    author.introduction()
+
+    // Object literal
+    // example
+    {
+        let name = 'Mike'
+        let introduction = function () {
+            console.log(this.name)
+        }
+        let user = {
+            name,
+            introduction
+        }
+        user.introduction()
+    }
+
+    //create dynamic keys ES6
+
+    let num = 10
+    let secondNum = 20
+    let numObject = {
+        [num + 1]: num,
+        [secondNum + 1]: secondNum
+    }
+    console.log(numObject)
+
+    let startValue = 0
+    let percents = 0
+    let buttery = {
+        [`charge ${++startValue}`]: percents += 10,
+        [`charge ${++startValue}`]: percents += 10,
+        [`charge ${++startValue}`]: percents += 10,
+    }
+    console.log(buttery)
+
+    // new()
+    let randomNumber = new Object()
+    randomNumber.luckydraw = true
+    randomNumber.value = function () {
+        return Math.round(Math.random() * -10)
+    }
+    console.log(randomNumber.value())
+    console.log(randomNumber.value())
+
+    // User defined object constructor function
+
+    {
+        function Dessert(name, calories, flavor, helpings) {
+            this.name = name
+            this.calories = calories
+            this.flavor = flavor
+            this.helpings = helpings
+            this.totalCal = function () {
+                return this.calories * this.helpings
+            }
+        }
+
+        let cake = new Dessert('Bamboozle', 1000, 'chocolate', 3.5)
+        console.log(cake.totalCal())
+    }
+}
