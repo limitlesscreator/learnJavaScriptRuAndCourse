@@ -403,4 +403,70 @@ console.log(name)
         let cake = new Dessert('Bamboozle', 1000, 'chocolate', 3.5)
         console.log(cake.totalCal())
     }
+    console.clear()
+
+    // Object create method
+
+    let parentObject = {
+        diabetes: false,
+        descent: 'Scottish descent'
+    }
+
+    let childObject = Object.create(parentObject)
+    childObject.age = 29
+    console.log(childObject)
+
+    let grandChildObject = Object.create(childObject)
+    grandChildObject.age = 3
+    console.log(grandChildObject)
+
+    // Exercise
+    let department = {
+        name: 'Entertainment',
+        fulltime: true
+    }
+    let musicDepartment = Object.create(department)
+
+    musicDepartment.employees = 200
+    musicDepartment.remote = true
+
+    delete musicDepartment.name
+    console.log(musicDepartment.name)
+
+    delete department.name
+    console.log(musicDepartment.name)
+    console.log(department)
+
+    // Object.assign method
+    {
+        let testObj1 = {
+            id_1: 1,
+            category1: 'home'
+        }
+        let testObj2 = {
+            id_2: 2,
+            category2: 'electronics'
+        }
+        let targetObj = Object.assign({}, testObj1, testObj2)
+        delete targetObj.id_2
+        console.log(targetObj)
+        console.log(testObj2)
+
+        // Exercise
+        let food = {
+            name1: 'Gill SuperStore',
+            locations1: ['Albuquerque', 'Orlando', 'Toronto']
+        }
+        let hardware = {
+            name2: 'Supermax Hardware',
+            locations2: ['Cairo']
+        }
+        let clothing = {
+            name3: 'Cloth mania',
+            locations3: ['Vietnam', 'Jakarta']
+        }
+        let superStore = Object.assign({},food,hardware,clothing)
+        console.log(superStore)
+    }
 }
+
