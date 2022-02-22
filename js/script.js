@@ -465,8 +465,125 @@ console.log(name)
             name3: 'Cloth mania',
             locations3: ['Vietnam', 'Jakarta']
         }
-        let superStore = Object.assign({},food,hardware,clothing)
+        let superStore = Object.assign({}, food, hardware, clothing)
         console.log(superStore)
     }
-}
 
+    // ES6 Classes
+    class Player {
+        constructor(energy, power, level) {
+            this.energy = energy
+            this.power = power
+            this.level = level
+        }
+
+        powerControl() {
+            let calculate = this.power - this.energy
+            return `Remaining power left is:a ${calculate}`
+        }
+    }
+
+    const ryu = new Player(200, 500, 1)
+    console.log(ryu)
+
+    const chunLi = Object.create(ryu)
+    console.log(chunLi)
+
+    // Object iteration, exercise
+    let coffee = {
+        roast: 'medium',
+        blend: 'Ethopian',
+        servings: 100,
+        morningMsg: function () {
+            console.log(`Ooh! The smell of an ${this.blend} blend in the mornings`)
+        }
+    }
+    for (let key in coffee) {
+        console.log(key)
+    }
+    console.log(Object.values(coffee))
+    console.log(Object.keys(coffee))
+    console.log(Object.entries(coffee))
+
+    // new test of obj
+    {
+        let coffee = {
+            roast: ['light', 'medium', 'dark', 'extra dark'],
+            blend: ['Ethopian', 'Columbian', 'American'],
+            servings: ['small', 'medium', 'large'],
+            morningMsg: function () {
+                console.log(`Ooh! The smell of an ${this.blend} blend in the mornings`)
+            },
+        }
+        console.log(Object.entries(coffee))
+    }
+
+    //checking empty ob
+    let ob = {}
+    console.log(Object.keys(ob).length > 0 ? 'has some properties' : 'empty')
+
+    // this keyword ----------  here we go again :D
+
+    // this refers to the global object (window) in the global context execution, when in not strict mode
+
+    function globalContext() {
+        console.log(this) // object window - but with strict mode gonna be undefined
+    }
+
+    globalContext()
+
+    // DOM event handler:
+
+    let button = document.createElement('button')
+    button.innerHTML = 'Click'
+    document.body.append(button)
+
+    // button.addEventListener('click', () => console.log(this)) //going be window
+    button.addEventListener('click', function () {
+        console.log(this)
+    })
+
+    // Explicit binding
+
+    // call
+    let merengue = {
+        level: 'Intermediate'
+    }
+
+    function greeting(points, bells) {
+        console.log(` You are at the ${this.level} lvl in the game. You have ${points} and ${bells} bells`)
+    }
+
+    greeting.call(merengue, 5000, 100000)
+
+    // apply is similar to call() except that it accepts an array of arguments instead of comma separated arguments
+    // bind - return new function and set this to a specific object
+
+    // exercises
+    {
+        function log() {
+            console.log(this) //global window
+        }
+
+        log();
+
+        {
+            function log() {
+                'use strict'
+                console.log(this)// undefined
+            }
+
+            log()
+        }
+    }
+
+    const HR = {
+        company: 'Zimpak Software',
+        hiring: false,
+        employees: 100,
+        message: function () {
+            let result = this.employees <= 100 ? `${this.company} ${this.employees} ${this.hiring}` : 'Zimpack is not hiring'
+            return result
+        }
+    }
+}
