@@ -587,3 +587,78 @@ console.log(name)
         }
     }
 }
+
+// anki cards, i need to save them here:)
+
+// question 1
+// написать на новом синтаксисе
+// и почему let items = document.querySelectorAll('.items .item') - он вернёт массив если что
+// так вот, почему если мы напишем items.indexOf('anything here') выдаст ошибку?
+//     а массив с буквами ['a','b','c'].indexOf('b'), не выдст ошибку
+// и как вызвать всё же метод
+let animal = {
+    year: 10
+}
+
+let dog = {
+    color: 'black'
+}
+
+
+dog.__proto__ = animal
+
+console.log(dog.year)
+
+class Animal {
+    constructor(color) {
+        this.year = 10
+        this.color = color
+    }
+}
+
+class Dog extends Animal {
+    constructor() {
+        super()
+        this.color = 'black'
+    }
+}
+
+const dog = new Dog()
+
+// вызов метода
+// super - вызов родительского конструктора, забирает свойства родителя
+// и присваевает дочернему (копи пастит! а не в прототипе держит), но методы
+// класса будут в прототипе если сами не засуним их в конструктор
+// answer 1
+
+// Что такое чистая функция?
+// "Чистая" функция - это детерминированная функция, которая не имеет побочных эффектов.
+//     Детерминированная функция - это функция, которая всегда вращает один и тот же результат при одинаковых входных данных.
+//     Недетерминированная функция не всегда возвращает одинаковое значение при одинаковых входных данных. Недетерминированная функция непредсказуема, её результат зависит от внешних условий.
+//     А побочные эффекты — это то, как функция изменяет внешний мир. например какую-то переменную за пределами её области видимости.
+//     Чем меньше побочных эффектов имеет функция, тем лучше.
+//     Чистые функции проще читать, отлаживать, тестировать.
+
+// question 2
+function sum(a, b) {
+    console.log(a + b)
+}
+
+sum(1)// log1?
+
+function sum2(a, b) {
+    console.log(a + b)
+}
+
+sum2(1, 2, 3, 4)// log2?
+
+
+// and how to do slice of arguments in a right way?
+// log1 = without error, just 3
+// log2 = NaN
+
+function sum(a, b) {
+    // console.log(arguments.slice(1))  Error because prototype is Object class:D
+    console.log(Array.prototype.slice.call(arguments, 1))
+    return a + b
+}
