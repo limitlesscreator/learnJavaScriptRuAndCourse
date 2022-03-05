@@ -100,3 +100,106 @@
 
     console.log(equity)
 }
+console.clear()
+//check quality objects without JSON.stringify
+
+let a = {
+    randomData: 'test1'
+}
+
+let b = {
+    randomData: 'test2'
+}
+
+let firstData = Object.entries(a)
+let secondData = Object.entries(b)
+console.log(Object.keys(a))
+console.log(Object.keys(b))
+
+let status
+if (firstData.length === secondData.length) {
+    for (let i = 0; i < firstData.length; i++) {
+        if (firstData[i][0] === secondData[i][0] &&
+            firstData[i][1] === secondData[i][1]) {
+            status = true
+        } else {
+            status = false;
+            console.log(status);
+            break;
+        }
+        console.log(status)
+    }
+} else console.log('different')
+
+// static method
+
+class MusicLabel {
+    constructor(name, genre, artist) {
+        this.name = 'Avocado Label:D'
+        this.genre = genre
+        this.artist = artist
+    }
+
+    static labelMotto() {
+        console.log(`Hello there`)
+    }
+}
+
+const artist = new MusicLabel('Music Records', 'Jazz', 'RIchie Zonn')
+
+MusicLabel.labelMotto()
+console.log(artist)
+
+//Public and primitive fields
+
+class Player {
+    name = ''
+    punches = 10
+    throw = 3
+    score
+
+    constructor(name) {
+        this.name = name
+        this.score = this.punches + this.throw
+    }
+
+    startMessage() {
+        console.log(`Are you ready to kung-foo ${this.name}?`)
+    }
+}
+
+let fooFighter = new Player('foo Fighter')
+console.log(fooFighter)
+fooFighter.startMessage()
+
+// Private instance fields
+{
+    class Person {
+        #name = ''
+        #age = ''
+
+        constructor(age, name) {
+            this.#name = name
+            this.#age = age
+        }
+    }
+
+    const person1 = new Person('Zelda');
+    // console.log(person1.age) // undefined
+}
+
+// Accessors: Getters and Setters
+let donut = {
+    units: 100,
+    flavors: ['strawberry', 'oreo', 'java'],
+    price: 5.99,
+    get: function () {
+        let flavorList = this.flavors
+        flavorList.forEach(el => console.log(el))
+    },
+    set: function (str) {
+        this.flavors.push(str)
+    }
+}
+donut.set('chocolate')
+console.log(donut.flavors)
