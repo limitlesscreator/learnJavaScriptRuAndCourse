@@ -203,3 +203,132 @@ let donut = {
 }
 donut.set('chocolate')
 console.log(donut.flavors)
+console.clear()
+
+const person = {
+    firstName: 'Mosh',
+    lastName: 'Hamedani',
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    },
+    set fullName(value) {
+        const parts = value.split(' ')
+        this.firstName = parts[0]
+        this.lastName = parts[1]
+    }
+}
+person.fullName = 'Smith Donat'
+console.log(person.fullName)
+// some js Features
+{
+    // #1 Nullish Coalescing
+    function calculatePrice(price, taxes, description) {
+        // taxes = taxes || 0.5 this is bad, cuz if taxes = 0, then it's gonna take 0.5 taxes. Instead we have to write
+        // something like this (bellow)
+        taxes = taxes ?? 0.5 // this is better, cuz if taxes === null or undefined, then it uses our second value
+        description = description || 'default item'
+        const total = price * (1 + taxes)
+        console.log(`${description} With Tax: ${total}$`)
+    }
+
+    calculatePrice(100, 0.007, 'My item')
+    calculatePrice(100, undefined, '')
+
+    // #2 Optional Chaining
+    class Person {
+        constructor(name, address, hobbies) {
+            this.name = name
+            this.address = address
+            this.hobbies = hobbies
+        }
+
+        print() {
+            console.log(this)
+        }
+    }
+
+    function printPersonStreet(person) {
+        console.log(person?.address?.street) // gonna be an error without questions mark
+    }
+
+    const mike = new Person(
+        'Kile',
+        // {street: '12345 main st', city: 'Somewhere'},
+        undefined,
+        ['Bowling,', 'Weight Lifting']
+    )
+    mike.print()
+    printPersonStreet(mike)
+
+    const testObj = {
+        name: ['Mike', 'John'],
+    }
+    console.log(testObj?.namePerson?.[0]) // without error - undefined
+
+    // #3 Object shorthand
+    const name = 'Kyle'
+    const favoriteFood = 'Rice'
+
+    const kyle = {
+        name,
+        favoriteFood
+    }
+    console.log(kyle)
+
+    // Fastest and cooler way to run js script is plus Defer to the script and put it into head
+    // test get button
+    const button = document.querySelector('.deferJS')
+    button.style.background = 'green'
+    // defer executed after parsed HTML document
+}
+// Copying objects with shallow and deep copies
+
+// shallow copy
+{
+    let console1 = {
+        one: 'Nintendo Switch',
+        two: 'XBox',
+        three: 'PlayStation',
+        four: 'Gameboy'
+    };
+    let console2 = {...console1}
+    console.log(console2)
+
+    let console3 = {
+        five: 'Sega Saturn',
+        six: 'GameCube',
+        seven: 'Wii',
+    }
+    // merge two objects
+
+    let mainObj = {...console1, ...console3}
+    console.log(mainObj)
+
+    // Exercise
+    let city = {
+        name: 'Toronto',
+        coordinates: '43.6532° N, 79.3832° W',
+        streets: {
+            North: 'Bathurst',
+            South: 'Queens',
+            West: 'Bathurst',
+            East: 'Spadina'
+        },
+        population: 3190000,
+    };
+    const toronto_clone = {...city}
+    toronto_clone.streets.North = 'St.George'
+    toronto_clone.name = 'Toronto clone'
+    console.log(city)
+    console.log(toronto_clone)
+
+    // assign method
+    let a = {
+        one: 'one',
+        two: 'two',
+        three: 'three'
+    }
+    let newB = Object.assign({}, a)
+    newB.one = '1'
+    console.log(a)
+}
