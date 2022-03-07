@@ -332,3 +332,79 @@ console.log(person.fullName)
     newB.one = '1'
     console.log(a)
 }
+console.clear()
+// Coping objects with deep copy
+{
+    let object1 = {
+        role: 'HR',
+        division: {
+            management: 'HR Recruiter',
+        },
+    }
+    let object2 = JSON.parse(JSON.stringify(object1))
+    console.log(object2)
+    // Exercise
+    let peterbilt = {
+        company: 'Peterbilt Motors Company',
+        type: 'on-highway',
+        class_number: 8,
+        load: {
+            light: '10 tonne',
+            medium: '20 tonne',
+            heavy: '30 tonne'
+        },
+    }
+    let truck_copy = JSON.parse(JSON.stringify(peterbilt))
+    console.log(truck_copy)
+}
+
+let alphabet = ['a', 'b', 'c', 'd', 'e', 'f']
+let [firstEl, secondEl, thirdEl, , , fifthEl, sixthEl] = alphabet // skip latter D by using comma
+console.log(fifthEl)
+
+// learn tomorrow https://habr.com/ru/post/246959/
+
+// MAPS
+const items = new Map([
+
+    [
+        1,
+        {
+            id: 1,
+            name: 'Test',
+            description: 'Desc',
+        }],
+    [
+        2,
+        {
+            id: 2,
+            name: 'Test 2',
+            description: 'Desc 2',
+        }],
+    [
+        3,
+        {
+            id: 3,
+            name: 'Test 3',
+            description: 'Desc 3',
+        }
+    ],
+])
+
+items.set(1, {
+    id: 1,
+    name: 'Test',
+    description: 'Desc 3'
+})
+
+function getItem(id) {
+    return items.get(id)
+}
+
+console.log(getItem(2))
+
+// not much code, because i had problems today with my second monitor
+// my video drivers pissed off :D
+// but i made it alive, so now everything is fine
+// btw you can have a look at my death blue screen by take link bellow :D
+// https://cloud.mail.ru/public/cAbM/Lr1bWjLZ7
