@@ -408,3 +408,112 @@ console.log(getItem(2))
 // but i made it alive, so now everything is fine
 // btw you can have a look at my death blue screen by take link bellow :D
 // https://cloud.mail.ru/public/cAbM/Lr1bWjLZ7
+
+// Sets repeating
+
+{
+    const set = new Set([1, 2, 3, 4]) //unique values
+    set.add(5)
+    set.add(4) // won't add cuz we are already have 4 above
+    console.log(set)
+    console.log(set[0]) // we can't access values by using brackets, we can only check values like bellow
+    console.log(set.has(2))
+
+    // Exercise
+    function removeDups(arr) {
+        return [...new Set(arr)]
+    }
+
+    console.log(removeDups([1, 2, 3, 4, 3, 2, 5]))
+
+    // symbol
+    const sym1 = Symbol('Name')
+
+    const person = {
+        age: 28,
+        sym1: 'Kyle'
+    }
+    console.log(person)
+
+    // function generators
+    function* simpleGenerator() {
+        yield 1
+        yield 2
+        yield 3
+    }
+
+    const generator = simpleGenerator()
+    console.log(generator.next()) // 1
+    console.log(generator.next()) // 2
+    console.log(generator.next()) // done: false
+    console.log(generator.next()) // done: true
+
+    function* idGenerator() {
+        let total = 1
+        while (true) {
+            yield total++
+        }
+    }
+
+    const generator2 = idGenerator()
+    console.log(generator2.next())
+    console.log(generator2.next())
+    console.log(generator2.next())
+    console.log(generator2.next())
+
+    // get set repeat with syntax sugar and 'private' variable
+    const person1 = {
+        _userName: 'Web Dew Simplified', // actually good chanel))
+        name: 'Kyle',
+        lastName: 'Cook',
+        age: 29,
+        get fullName() {
+            return `${this.name} ${this.lastName}`
+        },
+        set fullName(value) {
+            return [this.name, this.lastName] = value.split(' ')
+        },
+        get birthYear() {
+            return `was born in ${new Date().getFullYear() - this.age}`
+        }
+    }
+    person1.fullName = 'Sally Smith'
+    console.log(person1)
+    console.log(person1.birthYear)
+
+    //bind deeper
+    window.name = 'Global name'
+
+    const person3 = {
+        name: 'Kyle'
+    }
+
+    function printName() {
+        console.log(this.name) //because without bind, it's gonna be window
+    }
+
+    printName() //Kyle
+
+    function sum(a, b) {
+        return a * b
+    }
+
+    // function sumTwo(b){
+    //     return 2 + b
+    // }
+    const sumTwo = sum.bind(null, 2) // this is the same as above:)
+    console.log(sumTwo(7)) //required only one parameter
+    const numbers2 = [1, 2, 3, 4, 5]
+
+    // const newNumbers = numbers2.map(num => {
+    //     return sum(2,num)
+    // })
+    const newNumbers = numbers2.map(sum.bind(null, 2)) // the same as code above
+    console.log(newNumbers)
+
+    // call/apply
+    printName.call(person3)
+}
+
+
+
