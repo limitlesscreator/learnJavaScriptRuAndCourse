@@ -1,155 +1,84 @@
-// {
-//     // nice way to look up object variable
-//     let arr = {
-//         console1: 'test value 1',
-//         console2: 'test value 2',
-//     }
-//     console.table(arr) // just check the console)
-//
-//     // counter time of looping for example
-//     console.time('Loop')
-//     for (let i = 0; i < 10000000; i++){
-//         //something
-//     }
-//     console.timeEnd('Loop') // we gonna get the result time of looping
-// }
+// https://metanit.com/web/javascript/3.3.php
+// closure and function IIFE
+// Immediately Invoked Function Expression
 
-// Math Solver
+(function (n) {
+    let result = 1
+    for (let i = 1; i <= n; i++) {
+        result *= i
+        console.log(`Factorial of number ${i} equal ${result}`)
+    }
+}(4))
 
+// Child functions have access to the scope of their parent functions
 
-const button = document.querySelector('.solve')
-const input = document.querySelector('.mathInput')
-let valueInput
+let x = 1
 
-// function operation(arg) {
-//     console.log('started')
-//     if (!isNaN(arg)) {
-//         return 'number'
-//     } else if (arg === '+') {
-//         return '+'
-//     } else if(arg === '-'){
-//         return '-'
-//     }
-// }
-//
-// function calculation(arg) {
-//     let total = 0
-//     let stackNumbers = []
-//     let stackOperator = []
-//     let countOperation = false
-//
-//     for (let i = 0; i < arg.length; i++) {
-//         debugger
-//         if (operation(arg[i]) === 'number') {
-//             console.log('here is Number now')
-//             stackNumbers.push(+arg[i])
-//             if (countOperation && stackOperator[0] === '+') {
-//                 total = stackNumbers[0] + +arg[i]
-//                 stackNumbers.push(total)
-//                 stackNumbers.pop()
-//                 stackNumbers.pop()
-//                 stackOperator.pop()
-//             } else if (countOperation && stackOperator[0] === '-') {
-//                 total = stackNumbers[0] - +arg[i]
-//                 stackNumbers.push(total)
-//                 stackNumbers.pop()
-//                 stackNumbers.pop()
-//                 stackOperator.pop()
-//             }
-//         } else if (operation(arg[i]) === '+') {
-//             console.log('here is: +')
-//             stackOperator.push('+')
-//             countOperation = true
-//
-//         } else if (operation(arg[i]) === '-') {
-//             console.log('here is: -')
-//             stackOperator.push('-')
-//             countOperation = true
-//         }
-//     }
-//     console.log(stackOperator)
-//     console.log(stackNumbers)
-//     console.log(`result is ${total}`)
-// }
-let currArr = []
+const parentFunction = () => {
+    // local scope
+    let myValue = 2
+    console.log(x)
+    console.log(myValue)
 
-function calculation(arg) {
-    // let stackNumbers = [arg.filter(el => !isNaN(+el))]
-    console.log(arg)
-
-    for (let i = 0; i < arg.length; i++) {
-
+    const childFUnction = () => {
+        console.log(x += 5)
+        console.log(myValue += 1)
     }
 
-    for (let i = 0; i < 20; i++) {
-        if (arg[i] === '*') {
-            let indexOfFirstNum = i - 1
-            let indexOfSecondNum = i + 1
-            let indexOperation = i
-            currArr.push(arg[i - 1] * arg[i + 1])
-        }
-    }
-    console.log(currArr)
+    childFUnction()
 }
 
-button.addEventListener('click', () => {
-    valueInput = (input.value).replace(/[^+\d]/g, ' ').split(' ')
-    calculation(valueInput)
-})
+parentFunction()
 
-//React anki's cards
+// Debounce Functions
 
-// 1
-{
-    const [counter, setCounter] = useState(0)
-
-    useEffect(() => {
-        console.log('Component didMount or Update')
+const initApp = () => {
+    const button = document.querySelector('button')
+    // button.addEventListener('click', debounce(clickLog, 2000))
+    button.addEventListener('click', () => {
+        button.disabled = true
+        clickLog()
+        setTimeout(() => {
+            button.disabled = false
+        }, 2000)
     })
+}
+const clickLog = () => console.log(`clicked`)
 
-    useEffect(() => {
-        console.log('Component didMount')
-    }, [])
+document.addEventListener('DOMContentLoaded', initApp)
 
+const debounce = (fn, delay) => {
+    let id
 
-    useEffect(() => {
-        console.log('deps changed or first mount' + counter)
-    }, [counter])
+    console.log(`id at immediate load: ${id}`)
+
+    return (...args) => {
+        console.log(`previous id: ${id}`)
+        if (id) clearTimeout(id)
+
+        id = setTimeout(() => {
+            fn(...args)
+        }, delay)
+    }
 }
 
-// 2
-// ***useReducer***
-// этот хук можно использовать как альтернативу к useState особено будет полезен когда есть некоторая сложная логика
-// состояния, то есть когда это не только одно значение, а целый кусок данных который нужно менять по сложному алгоритму.
+// forEach in some case is BAD, example bellow :)
 
-// 3
-//      ***Что такое redux и какую проблему он решает.***
-//     библиотека управления состоянием для приложений, написанных на JavaScript.
-//     Redux решает проблему с использованием состояний. Например представим, что у нас есть 10 компонент вложенных
-//     в друг друга и нужно передать данные с первой в десятую, то получается мы будем перебрасывать через пропсы
-//     через все компоненты, а если вдруг нам надо будет что-то родительским компонентам передавать, то код вовсе
-//     начнёт быть большим и запутаным по итогу.
-//     Но Redux позволяет вынести состояние в нешнюю зависимость и каждая компонента может сразу получить данные
-//     из этого состояния
+const ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+const getPost = async (id) => {
+    return await (await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)).json()
+}
 
-// 3
-// ***Что такое хуки?***
-// Хуки это функциональность которая позволяет использовать состояние приложения и методы жизненный циклов без
-// использование классов. Раньше доскуп к методам жизненного цыкла или к состоянию имели только классовые компоненты,
-//     а функциональные могли описывать только разметку.
-//     Могу добавить, что хуки можно вызывать только внутри функциональных компонентов на верхнем уровне. Нельзя
-// вкладывать хук внутрь другого хука, нельзя вызывать в обработчике событий, так же внутри блоков циклов, но хуки
-// можно вызывать внутри кастомных хуков.
-//     Функциональные компоненты с хуками читаются проще чем классовые.
+const useForEach = (ids) => {
+    ids.forEach(async (id) => {
+        const data = await getPost(id)
+        console.log(data)
+    })
+}
 
-// 4
-// *** Что такое DOM?***
-// Когда мы пишем html код и когда браузер получает этот код страницы, для него это обычная
-// последовательность символов которую он не понимает и для того чтобы браузер смог понять что это html5 документ
-// в котором например присутствует тег title который нужно прописать на вкладке, то для всего этого html документ
-// нужно преобразовать в набор неких сущностей, над которыми можно оперировать програмно – такое преобразование
-// называется парсингом. После парсинга все эти символы превращаются в эрорхическую структуру которая называется
-// Дерево Объектов и отдельные объекты этого дерева называются node.
-//     И если вкратце то DOM это представление HTML документа в виде дерева тегов.
-//     А сам Dom нужен нам для того чтобы мы могли взаимодействовать с элементами html страницы с помощью JS.
+const initApp2 = async () => {
+    useForEach(ids)
+}
+initApp2(ids)
+// here is results without order that we want
