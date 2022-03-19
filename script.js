@@ -80,5 +80,100 @@ const useForEach = (ids) => {
 const initApp2 = async () => {
     useForEach(ids)
 }
-initApp2(ids)
+// initApp2(ids)
 // here is results without order that we want
+console.clear()
+
+// Recursion in JS
+// Official Definition of Recursion:
+// In computer science, recursion is a method of solving problem where the solution depends on solution to smaller
+// instances of the  same problem. Any iteration function can be recursive instead.
+
+// The Fibonacci Sequence
+
+// Without Recursion
+const fibonacciCount = (num, array = [0, 1]) => {
+    while (num > 2) {
+        const [nextToLast, last] = array.slice(-2)
+        array.push(nextToLast + last)
+        num -= 1
+    }
+    return array
+}
+
+console.log(fibonacciCount(12))
+
+// With Recursion
+const fib = (num, array = [0, 1]) => {
+    if (num <= 2) return array
+    const [lastToNext, last] = array.slice(-2)
+    return fib(num - 1, [...array, lastToNext + last])
+}
+
+console.log(fib(12))
+
+const artistsByGenre = {
+    jazz: ['Miles Davis', 'John Coltrane'],
+    rock: {
+        classic: ['Bob Seger', 'The Eagles'],
+        hair: ['Def Leppard', 'Whitesnake', 'Poison'],
+        alt: {
+            classic: ['Pearl Jam', 'The Killers'],
+            current: ['Joywave', 'SIr Sly']
+        }
+    },
+    unclassified: {
+        new: ['Caamp', 'Neil Young'],
+        classic: ['Seal', 'Morcheeba', 'Chris Stapleton']
+    }
+}
+
+//without recursion
+const showArtists = (arr) => {
+    let result = []
+    Object.keys(arr).forEach(el => {
+        if (Array.isArray(arr[el])) {
+            arr[el].forEach(el => result.push(el))
+        } else {
+            console.log(Object.keys(arr[el]))
+            Object.keys(arr[el]).forEach(secEl => {
+                if (Array.isArray(arr[el][secEl])) {
+                    arr[el][secEl].forEach(el => {
+                        result.push(el)
+                    })
+                } else {
+                    console.log(Object.keys(arr[el][secEl]))
+                    Object.keys(arr[el][secEl]).forEach(thirdEl => {
+                        if (Array.isArray(arr[el][secEl][thirdEl])) {
+                            arr[el][secEl][thirdEl].forEach(pushEl => {
+                                result.push(pushEl)
+                            })
+                        }
+                    })
+                }
+            })
+        }        // console.log(Array.isArray(arr[el]))
+    })
+    console.log(result)
+}
+
+showArtists(artistsByGenre)
+
+// The better solution with recursion
+
+const getArtistNames = (dataObj, arr = []) => {
+    Object.keys(dataObj).forEach(key => {
+        console.log(dataObj[key])
+        if (Array.isArray(dataObj[key])) {
+            return dataObj[key].forEach(artist => {
+                arr.push(artist)
+            })
+        }
+        // console.log(dataObj[key])
+        getArtistNames(dataObj[key], arr)
+    })
+    return arr
+}
+
+getArtistNames(artistsByGenre)
+
