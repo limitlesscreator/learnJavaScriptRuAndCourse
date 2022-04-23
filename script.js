@@ -1,73 +1,41 @@
-// Repeating promises
+//home work #1
+const makeObjectDeepCopy = (obj) => {
+    let outObject, value, key
 
-// let data1 = new Promise((resolve,reject) => {
-//     resolve(fetch('https://jsonplaceholder.typicode.com/todos'))
-// })
-// let data2 = setTimeout(() => {
-//     return new Promise((resolve,reject) => {
-//         resolve(5)
-//     })
-// },1000)
-//
-// Promise.race([data1,data2]).then(el => console.log(el))
-//
-
-const promiseOne = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('promiseOne Resolved!')
-            // reject('promiseOne Rejected :D')
-        }, 500)
-    })
-}
-
-const promiseTwo = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // resolve('promiseTwo Resolved!')
-            reject('promiseTwo Rejected :D')
-        }, 400)
-    })
-}
-
-const promiseThree = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('promise Three Resolved!')
-        }, 700)
-    })
-}
-
-const throwError = () => new Promise((_, reject) => {
-    setTimeout(() => {
-        reject('took too long time')
-    }, 500)
-})
-
-
-const fetchData = async () => {
-    try {
-        // const beforeTime = new Date()
-        const responseOne = await promiseOne()
-        const responseTwo = await promiseTwo()
-        const responseThree = await promiseThree()
-        // const afterTime = new Date()
-        //
-        // console.log(responseOne, responseTwo, responseThree, afterTime - beforeTime)
-
-        const beforeTime = new Date()
-        // Running all of these in parallel
-        // const response = await Promise.all([promiseOne(),promiseTwo(),promiseThree()])
-        // the first one
-        const response = await Promise.all([promiseThree(), throwError()])
-        const afterTime = new Date()
-        console.log('response from promise race', response, afterTime - beforeTime)
-    } catch (error) {
-        console.log("i'm sorry the api sucks :)", error)
+    if (Object.prototype.toString.call(obj) !== '[object Object]') {
+        return obj
     }
+
+    outObject = {}
+
+    for (key in obj) {
+        value = obj[key]
+        outObject[key] = makeObjectDeepCopy(value)
+    }
+
+    return outObject
 }
-fetchData()
+
+let testObj = {
+    first: 1,
+    second: 2,
+    third: {num1: 1, num2: 2},
+    fourth: {num3: 3, num4: 4},
+    fifth: {
+        testObjOne: {num4: 4},
+        testObjTwo: { test: 8}
+    },
+}
+
+console.log(testObj)
+let result = makeObjectDeepCopy(testObj)
 
 
+testObj.fifth.testObjOne.num4 = 10
+testObj.fifth.testObjTwo.test = 10
 
+console.log('check')
+console.log(testObj)
+console.log(result)
 
+// console.log(testObj.fifth.testObjOne.num4)
