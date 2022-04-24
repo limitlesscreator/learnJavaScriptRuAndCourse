@@ -1,41 +1,51 @@
-//home work #1
-const makeObjectDeepCopy = (obj) => {
-    let outObject, value, key
+// const makeObjectDeepCopy = obj => {
+//     if(typeof(obj) !== "object") {
+//         return obj;
+//     }
+//
+//     let r = (obj instanceof Array) ? [] : {};
+//     for(let i in obj) {
+//         if(obj.hasOwnProperty(i)) {
+//             r[i] = makeObjectDeepCopy(obj[i]);
+//         }
+//     }
+//     return r;
+// }
+//
+// let testObj = {
+//     first: 1,
+//     second: 2,
+//     third: {num1: 1, num2: 2},
+//     fourth: [{num3: 3, num4: 4}],
+//     fifth: {
+//         testObjOne: {num4: 4},
+//         testObjTwo: { test: 8}
+//     },
+// }
+//
+// let obj1 = makeObjectDeepCopy(testObj)
+// testObj.third.num1 = 4
+// testObj.fourth[0].num3 = 5
+// console.log(testObj)
+// console.log(obj1)
 
-    if (Object.prototype.toString.call(obj) !== '[object Object]') {
-        return obj
+// ------------------------------------------------------------------------------
+let testArr = [-2, -15, 0, 4]
+
+
+const selectFromInterval = (arr,start,end) => {
+    let result = []
+    let ifNumbers = [...arr,start,end].every(el => Object.prototype.toString.call(el) === '[object Number]' && !isNaN(el))
+
+    if (!ifNumbers){
+        throw new Error('Ошибка!')
     }
 
-    outObject = {}
-
-    for (key in obj) {
-        value = obj[key]
-        outObject[key] = makeObjectDeepCopy(value)
-    }
-
-    return outObject
+    let newNums = start > end ? [end, start] : [start, end]
+    testArr.forEach(num => num >= newNums[0] && num <= newNums[1] && result.push(num))
+    return result
 }
 
-let testObj = {
-    first: 1,
-    second: 2,
-    third: {num1: 1, num2: 2},
-    fourth: {num3: 3, num4: 4},
-    fifth: {
-        testObjOne: {num4: 4},
-        testObjTwo: { test: 8}
-    },
-}
+console.log(selectFromInterval(testArr,-15, 3))
 
-console.log(testObj)
-let result = makeObjectDeepCopy(testObj)
-
-
-testObj.fifth.testObjOne.num4 = 10
-testObj.fifth.testObjTwo.test = 10
-
-console.log('check')
-console.log(testObj)
-console.log(result)
-
-// console.log(testObj.fifth.testObjOne.num4)
+// continue homeWork2 https://astondevs.com/
