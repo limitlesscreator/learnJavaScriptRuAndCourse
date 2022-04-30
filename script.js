@@ -1,51 +1,78 @@
-// const makeObjectDeepCopy = obj => {
-//     if(typeof(obj) !== "object") {
-//         return obj;
-//     }
-//
-//     let r = (obj instanceof Array) ? [] : {};
-//     for(let i in obj) {
-//         if(obj.hasOwnProperty(i)) {
-//             r[i] = makeObjectDeepCopy(obj[i]);
-//         }
-//     }
-//     return r;
-// }
-//
-// let testObj = {
-//     first: 1,
-//     second: 2,
-//     third: {num1: 1, num2: 2},
-//     fourth: [{num3: 3, num4: 4}],
-//     fifth: {
-//         testObjOne: {num4: 4},
-//         testObjTwo: { test: 8}
-//     },
-// }
-//
-// let obj1 = makeObjectDeepCopy(testObj)
-// testObj.third.num1 = 4
-// testObj.fourth[0].num3 = 5
-// console.log(testObj)
-// console.log(obj1)
+// TDZ
 
-// ------------------------------------------------------------------------------
-let testArr = [-2, -15, 0, 4]
+{
+    let b = 1
 
-
-const selectFromInterval = (arr,start,end) => {
-    let result = []
-    let ifNumbers = [...arr,start,end].every(el => Object.prototype.toString.call(el) === '[object Number]' && !isNaN(el))
-
-    if (!ifNumbers){
-        throw new Error('Ошибка!')
+    function one(b, a = b) { // has own scope
+        console.log(a, b)
     }
 
-    let newNums = start > end ? [end, start] : [start, end]
-    testArr.forEach(num => num >= newNums[0] && num <= newNums[1] && result.push(num))
-    return result
+    one(2, undefined) // 2 2
+}
+{
+    let b = 1
+
+    function one(a = b, b) {
+        console.log(a, b)
+    }
+
+    // one(undefined, 2) // Uncaught ReferenceError
+}
+{
+    // let x = x // Uncaught Reference Error
+    // let a = f() // Uncaught Reference Error
+    const b = 2
+
+    function f() {
+        return b
+    }
+}
+{
+    (function (a, b = a) {
+        console.log(a,b)
+    }
+    (1, undefined)) // no error
 }
 
-console.log(selectFromInterval(testArr,-15, 3))
+// repeating Symbol label
+const sym1 = Symbol('cat') // cat is just a label
+const sym2 = Symbol('cat')
+console.log(sym1 === sym2) // false
+console.log(sym1)
 
-// continue homeWork2 https://astondevs.com/
+const idSym = Symbol('id')
+let user = {
+    id: 9461,
+    name: 'Dominique',
+    city: 'Siena',
+    age: 59,
+    [idSym] : 9123128412
+}
+console.log(Object.keys(user))
+console.log(Object.getOwnPropertySymbols(user))
+
+// example with usage Symbol
+
+
+const length = Symbol('length')
+
+class Train {
+    constructor() {
+        this[length] = 0
+    }
+
+    add(car, contents){
+        this[car] = contents
+        this[length]++
+    }
+}
+
+let freightTrain = new Train()
+freightTrain.add('refrigerator car', 'cattle')
+freightTrain.add('flat car', 'aircraft parts')
+freightTrain.add('tank car', 'milk')
+freightTrain.add('hopper car', 'coal')
+
+for (let car in freightTrain){
+    console.log(car, freightTrain[car]) // we are gonna get only cars without length 4
+}
