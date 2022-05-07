@@ -164,4 +164,96 @@ const logMessage = () => {
 const message = 'Lexical Environment is confusing'
 const value = 5
 
-logMessage()
+console.clear()
+
+{
+    const obj = {a: 2}
+
+    obj[Symbol.toPrimitive] = function(hint){
+        if (hint === 'string'){
+            return '[custom object]'
+        }
+        else if(hint === 'number'){
+            return '[object Num]'
+        }
+
+        return 1
+    }
+
+    console.log(String(obj))
+    console.log(Number(obj))
+
+    console.log(Array.of(7,1))
+}
+
+// console.log(Array.from(document.querySelectorAll('[value]')).pop())
+// or
+
+let elements = document.querySelectorAll('[value]')
+let newResult = Array.prototype.push.call(4,elements)
+console.log(elements)
+
+// Контекст вызова функции
+
+const obj = {
+    a: 1,
+    b: 2,
+    print(){
+        console.log(this)
+    }
+}
+
+obj.print = function(){
+    setTimeout(function(){
+        console.log(this)
+    },1000)
+}
+
+obj.print() // global obj window
+
+const user2 = {
+    firstName: 'Roman',
+    closeApp(){
+        console.log(`${this.firstName} has just closed the app!`)
+    }
+}
+
+console.clear()
+// https://habr.com/ru/company/ruvds/blog/422089/
+
+let a = 'Hello World!'
+function first() {
+    console.log('Inside first function')
+    second();
+    console.log('Again inside first function')
+}
+function second() {
+    console.log('Inside second function')
+}
+first();
+console.log('Inside Global Execution Context')
+// prety stuff http://jsflow.org/docs/exec-stack/
+
+{
+    // globalEnvironment
+    // outer = null
+    // environmentRecord = { phrase: "hi!", sayHi: function sayHi(name){...}}
+
+    var phrase = "hi!";
+
+    function sayHi(name) {
+        // sayHiEnvironment
+        // outer = globalEnvironment
+        // environmentRecord = { name: "Mike", surname: undefined}
+
+        var surname = "Tayler"
+
+        alert(name + " " + surname + ", " + phrase)
+    }
+
+    sayHi("Mike")
+
+    phrase = "bye!"
+
+    console.log("End, " + phrase)
+}
