@@ -25,3 +25,16 @@ body {
     width: 300px;
     font-size: 30px;
 }
+
+
+.black{
+    background: #191c1f !important;
+    color: white;
+}
+
+.circle{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: white;
+}

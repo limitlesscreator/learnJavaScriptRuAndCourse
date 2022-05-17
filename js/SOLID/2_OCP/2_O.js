@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------------------------------
 // bellow without sOlid
-
+// Open/Closed Principle
 
 class Square {
     constructor(size) {
@@ -128,6 +128,6 @@ class AreaCalculator {
             new GoodTriangle(3,20)
         ]
     )
-    console.log(calculatorArea.goodSum())
+    // console.log(calculatorArea.goodSum())
 }
 
