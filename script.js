@@ -99,58 +99,47 @@ console.clear()
 
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/  medium
 
-var lengthOfLongestSubstring = function(s) {
+let lengthOfLongestSubstring = function (s) {
     let prevLongest = 0
     let longest = 0
     let arrLetters = Array.from(new Set([...s.split('')]))// without duplicate
 
     let objWithTotal = {} // obj with a:0 b:0 c:0
 
-    for (let i = 0; i < arrLetters.length; i++){
+
+    for (let i = 0; i < arrLetters.length; i++) {
         objWithTotal[arrLetters[i]] = 0 // creating main obj
     }
 
+    let cleanObjWithTotal = {...objWithTotal}
+
     // console.log(objWithTotal) // if 2 brake!
     let arrElements = s.split('')
-    for (let i = 0; i < arrElements.length; i++){
-        debugger
-        if (objWithTotal[arrElements[i]] !== undefined){
+    for (let i = 0; i < arrElements.length; i++) {
+        // let currentElement = arrElements[i]
+        if (objWithTotal[arrElements[i]] !== undefined) {
             // are all less than 2?
             objWithTotal[arrElements[i]] += 1
 
-            let temp = Object.entries(objWithTotal)
-            let trueOrFalse = temp.every(el => el[1] < 2)
-
-            if (trueOrFalse){
-                longest++
-            }
-
-            else {
-                if (prevLongest < longest){
+            if (objWithTotal[arrElements[i]] < 2) {
+                if (arrElements[i].length > 0 && arrElements[i] !== ' ') {
+                    longest++
+                } else if (i === 0 && arrElements[i] === ' ') {
+                    longest++
+                }
+            } else {
+                if (prevLongest < longest) {
                     prevLongest = longest
                 }
                 longest = 0
-                // if all elements same
-                let checkAll = arrElements.every(el => el === arrElements[i])
-
-                if (arrElements.length - 1 === i || checkAll){
-                    break
+                if (arrElements.length - 1 === i) {
+                    break;
                 }
-
-                // ********************************************
-                //     if (arrElements.indexOf(arrElements[i] === 0)){
-                //         i -= i - (arrElements.indexOf(arrElements[i]) + 1)
-                //     }
-                //     else {
-                        i -= i - (arrElements.indexOf(arrElements[i]))
-                    // }
-                // ********************************************
-
-                //find firstIndexOf element that create 2 and set to the i + 1
-
-                temp.forEach((el,index) => {
-                    objWithTotal[el[0]] = 0
-                })
+                let iOfElementEquals = (arrElements.indexOf(arrElements[i]))
+                arrElements[iOfElementEquals] = ' '
+                i = -1
+                arrElements = [...arrElements.slice(iOfElementEquals + 1)]
+                objWithTotal = {...cleanObjWithTotal}
             }
         }
     }
@@ -158,14 +147,82 @@ var lengthOfLongestSubstring = function(s) {
     return prevLongest
 };
 
-// console.log(lengthOfLongestSubstring("pwwkew")) // 3
-// console.log(lengthOfLongestSubstring(" ")) // 1
-// console.log(lengthOfLongestSubstring("bbbbb")) // 1
-// console.log(lengthOfLongestSubstring("dvqrcdf")) // 6
-// console.log(lengthOfLongestSubstring("aab")) // 2
-
+console.log(lengthOfLongestSubstring("pwwkew")) // 3
+console.log(lengthOfLongestSubstring(" ")) // 1
+console.log(lengthOfLongestSubstring("bbbbb")) // 1
 console.log(lengthOfLongestSubstring("abcabcbb")) // 3
-// console.log(lengthOfLongestSubstring("dvdf")) // 3
+console.log(lengthOfLongestSubstring("jbpnbwwd")) // 4
 
-// what the hell, i can't solve it, yet :D
+console.log(lengthOfLongestSubstring("aab")) // 2
+console.log(lengthOfLongestSubstring("dvqrcdf")) // 6
+console.log(lengthOfLongestSubstring("dvdf")) // 3
+console.log(lengthOfLongestSubstring("tmmzuxt")) // 5
+
+// I DID IT!!!!!!!!!!!!!!!!!!!!!
+
+console.clear()
+// https://leetcode.com/problems/3sum-closest/ medium
+
+function threeSumClosest(nums, target) {
+    let closestSum = nums[0] + nums[1] + nums[2]
+    let checkIsAllTheSame = true
+
+    for (let i = 0; i < nums.length; i++) { // if all the same/ lets count
+        if (nums[i] === nums[0]) {
+            continue
+        } else {
+            checkIsAllTheSame = false;
+            break;
+        }
+    }
+    if (checkIsAllTheSame) {
+        closestSum = nums[0] + nums[1] + nums[2]
+        return closestSum
+    }
+
+
+    if (nums.length === 3) {
+        return nums.reduce((acc, curr) => acc + curr, 0)
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let q = j + 1; q < nums.length; q++) {
+                let whatWeCounter = [nums[i], nums[j], nums[q]]
+                let whatWeCounter2 = `i:${i} | j:${j} | q:${q}`
+                let count = nums[i] + nums[j] + nums[q] // count current 3
+                if (i === j || i === q || j === q) {
+                    continue
+                }
+                if (count === target) {
+                    closestSum = count // if target === count all done 100%
+                    return count
+                    break
+                }
+                //add number if it closer than closesSum
+                let addNumberToClosestOrNot = Math.abs(target - count) < Math.abs(target - closestSum)
+                if (addNumberToClosestOrNot) {
+                    closestSum = count
+                }
+            }
+        }
+    }
+    return closestSum
+}
+
+console.log(threeSumClosest([0,1,2], 0)) // 3
+console.log(threeSumClosest([1, 1, 1, 1], 0)) // 3
+console.log(threeSumClosest([1, 2, 5, 10, 11], 12)) // 13
+console.log(threeSumClosest([0, 2, 1, -3], 1)) // 0
+console.log(threeSumClosest([1, 1, 1, 0], 100)) // 3
+console.log(threeSumClosest([-1, 2, 1, -4], 1)) // 2
+console.log(threeSumClosest([-1, 0, 1, 1, 55], 3)) // 2
+console.log(threeSumClosest([1, 1, 1, 0], -100)) // 2
+console.log(threeSumClosest([-3, -2, -5, 3, -4], -1)) /// -2
+console.log(threeSumClosest([1, 1, -1, -1, 3], -1)) // -1
+
+
+
+
+
 
