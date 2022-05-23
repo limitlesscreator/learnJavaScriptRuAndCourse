@@ -186,3 +186,116 @@ let maxProfit = function(prices) {
 
 console.log(maxProfit([7,1,5,3,6,4])) // 5
 console.log(maxProfit([7,6,4,3,1])) // 0
+console.clear()
+
+
+// https://leetcode.com/problems/contains-duplicate/
+let containsDuplicate = function(nums) {
+    return new Set(nums).size !== nums.length
+};
+
+
+console.log(containsDuplicate([1, 2, 3, 1])) // true
+console.log(containsDuplicate([1,2,3,4])) // false
+console.log(containsDuplicate( [1,1,1,3,3,4,3,2,4,2])) // true
+console.clear()
+
+// https://leetcode.com/problems/missing-number/
+{
+    let missingNumber = function(nums) {
+        //option 1
+        // let count = nums.length
+        // let result = 0
+        //
+        // for (let i = 0; i < count + 1; i++) {
+        //     if (nums.includes(i)){
+        //         console.log(true)
+        //     }
+        //     else {
+        //         result = i
+        //     }
+        // }
+        // return result
+
+        // option2
+        // let newArr = nums.sort((a,b) => a - b)
+        // let result = 0
+        // for (let i = 0; i < newArr.length + 1; i++){
+        //     if (newArr[i] === i){
+        //         continue
+        //     }
+        //     else {
+        //         result = i
+        //         break
+        //     }
+        // }
+        // return result
+
+        // option3   O(n) space,  O(n) runtime
+        // let totalSumOfNums = 0
+        // let sumOfElementsHasToBe = 0
+        // for (let i = 0; i < nums.length + 1; i++){
+        //     if (nums[i]){
+        //         totalSumOfNums += nums[i]
+        //     }
+        //     sumOfElementsHasToBe += i
+        // }
+        // return sumOfElementsHasToBe - totalSumOfNums
+
+        // option4 the winner!  O(1) space,  O(n) runtime
+
+        let gSum = (nums.length * ( nums.length + 1)) / 2 // sum of all numbers
+        let totalOurArr = nums.reduce((acc, curr) => acc + curr, 0) // sum our numbers
+        return gSum - totalOurArr
+
+    };
+
+    console.log(missingNumber([3, 0, 1])) // 2
+    console.log(missingNumber([0, 1])) // 2
+    console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])) // 8
+}
+console.clear()
+// https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+{
+    let findDisappearedNumbers = function(nums) {
+        // option 1
+        let obj = {}
+        let result = []
+        nums.forEach(el => {
+            obj[el] = 0
+        })
+        for (let i = 1; i <= nums.length; i++){
+            if (obj[i] === undefined){
+                result.push(i)
+            }
+        }
+        return result
+        // option 2
+    };
+
+    console.log(findDisappearedNumbers([4,3,2,7,8,2,3,1])) //5,6
+    console.log(findDisappearedNumbers([1,1])) //2
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
