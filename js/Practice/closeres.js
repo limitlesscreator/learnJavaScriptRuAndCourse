@@ -44,7 +44,7 @@
 // var a = {}
 // function clear(a){
 //     a.b = 2
-//     a = null
+//     delete a
 // }
 // clear(a)
 //
@@ -70,14 +70,15 @@
 ///////////////////////////////////////////////////////////////
 
 
-const message = 'message'
+// const message = 'message'
+//
+// function logMessage() {
+//     console.log(message)
+// }
+//
+// function a(){
+//     const message = 'second_message'
+//     logMessage()
+// }
+// a()
 
-function logMessage() {
-    console.log(message)
-}
-
-function a(){
-    const message = 'second_message'
-    logMessage()
-}
-a()

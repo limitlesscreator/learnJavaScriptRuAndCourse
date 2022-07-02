@@ -61,3 +61,42 @@
 
 
 // ////////////////////////////////////////////////////////////////////
+
+
+// setTimeout(() => console.log(1), 0)
+//
+// const p = Promise.resolve().then(() => console.log(2));
+//
+// console.log(3);
+//
+// const p2 = new Promise((resolve) => {
+//     console.log(4);
+//     resolve();
+// }).then(() => console.log(5));
+
+////////////////////////////////////////////////////////////////////////
+
+// var f = function() {
+//     this.x = 5;
+//     (function() {
+//         this.x = 3;
+//     })();
+//     console.log(this.x);
+// };
+//
+// var obj = {
+//     x: 4,
+//     m: function() {
+//         console.log(this.x);
+//     }
+// };
+//
+//
+// f(); // 3
+// new f(); // 3
+// obj.m(); // 4
+// new obj.m(); // undefined
+// f.call(f); // 5
+// obj.m.call(f); // 5
+
+////////////////////////////////////////////////////////////////////////
