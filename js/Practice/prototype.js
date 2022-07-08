@@ -51,3 +51,67 @@ let shogun = new Samurai('Random')
 // console.log(shogun.__proto__.constructor.__proto__.__proto__) // ?
 
 // -------------------------------------------------------------------------------------
+
+// 1
+function Foo() {
+    return 2;
+}
+
+let foo = new Foo();
+console.log(foo.__proto__);
+
+// 2
+console.log(Function.prototype);
+console.log(Function.prototype === Function.__proto__);
+console.log(Function.prototype === function () {}.__proto__);
+console.log(Function.prototype === {}.toString.__proto__);
+console.log(Object.prototype === {}.__proto__);
+
+// 3
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.getName = function () {
+    return this.name;
+};
+
+function SomePerson(name, surname) {
+    Person.prototype.constructor(name);
+    this.surname = surname;
+}
+
+SomePerson.prototype = Object.create(Person.prototype);
+SomePerson.prototype.constructor = SomePerson;
+
+SomePerson.prototype.getName = function () {
+    return Person.prototype.getName.call(this) + ' ' + this.surname;
+};
+
+const some = new SomePerson('Jack', 'Johnson');
+console.log(some.getName());
+
+// 4
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+
+    getName() {
+        return this.name;
+    }
+}
+
+class SomePerson extends Person {
+    constructor(name, surname) {
+        super(name);
+        this.surname = surname;
+    }
+
+    getName() {
+        return super.getName() + ' ' + this.surname;
+    }
+}
+
+const some1 = new SomePerson('Jack', 'Daniels');
+console.log(some1.getName());
