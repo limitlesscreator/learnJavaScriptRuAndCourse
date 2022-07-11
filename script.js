@@ -1,76 +1,64 @@
-let elem = document.getElementById('div2')
-let style = window.getComputedStyle(elem).color
-
-elem.setAttribute('value', '28')
-console.log(elem.getAttribute('value'))
-elem.removeAttribute('style')
-console.log(elem)
-
-let test2 = document.createElement('div')
-test2.innerHTML = `Test2`
-test2.setAttribute('id','test2')
-
-let childTest1 = document.createElement('span')
-let childTest2 = document.createElement('span')
-childTest1.innerHTML = 'Child 1'
-childTest2.innerHTML = 'Child 2'
-
-test2.append(childTest1)
-test2.prepend(childTest2)
-console.log(test2)
-
-
-elem.after(test2)
-
-
-// clear interval repeating
-
-let startInterval = document.getElementById('startI')
-let stopInterval = document.getElementById('cancelI')
-let count = 0
-let firstInterval
-
-function intervalFunction() {
-    console.log(count)
-    count++
-}
-
-function start(){
-   firstInterval = setInterval(intervalFunction,1000)
-}
-
-function stop(){
-    clearInterval(firstInterval)
-}
-
-
-// const firstInterval =  setInterval(intervalFunction,1000)
-startInterval.addEventListener('click', start)
-stopInterval.addEventListener('click', stop)
-
-// finished reading on page 34 you don't know js Async
-
-console.log(window.getComputedStyle(elem).fontSize)
-console.clear()
-let store1 = new Set([1,2,3,4])
-let store2 = {
-    'one': 1,
-    'two': '2',
-    [Symbol.iterator](n = 10){
-        let i = 0
-        return {
-            next(){
-                if(i < n){
-                    return {value: ++i, done: false}
-                }
-                return {value: undefined, done: true}
-            }
-        }
-    }
-}
-
-// for (let elem of store2){
-//     console.log(elem)
+// let data = localStorage.getItem('adress')
+// console.log(data)
+// localStorage.setItem('weather', '30')
+// console.log(localStorage)
+//
+// localStorage.removeItem('weather')
+// console.log(localStorage)
+//
+// // localStorage.clear()
+// console.log(localStorage)
+//
+//
+// function setData(text){
+//     console.log('changed')
+//     localStorage.setItem('login',`${text}`)
+//     console.log(localStorage)
 // }
+//
+// let input = document.getElementById('logInput')
+// input.value = localStorage.getItem('login')
+// console.log()
+//
+// input.addEventListener('change', () => setData(input.value))
+//
+// window.addEventListener('storage', () => console.log('storage changed'))
 
-console.log(store2.next())
+
+// document.cookie = 'username=John Doe; expires=Mon, 11 Jul 2022 14:25:00 UTC'
+// let date = new Date(Date.now() + 86400e3);
+// date = date.toUTCString();
+// document.cookie = "user=John; expires=" + date;
+// console.log(document.cookie)
+//
+//
+// document.cookie = 'surName=Voloshenko; max-age=360; secure'
+
+
+// const response = new Promise((resolve,reject) => {
+//     reject()
+// })
+// response
+//     .then(el => console.log('allNice'),err => console.log('something bad to happen to meeee:D'))
+//
+
+// let data = fetch('https://jsonplaceholder.typicode.com/todos/')
+//     .then(res => res.json()).then(data => console.log(data))
+// console.log(data)
+
+async function data1(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    return await response.json()
+}
+async function data2(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/2')
+    return await response.json()
+}
+async function data3(){
+    const response = await fetch('https://jsonplaceholerrorder.typicode23.com/todo32s/1')
+    return await response.json()
+}
+
+Promise.any([data1(), data2(), data3()]).then(el => {
+    console.log(el)
+}).catch(error => console.log('something wrong'))
