@@ -14,9 +14,12 @@
 // });
 //
 // console.log("5");
+//
+//
+//que:
 
 //////////////////////////////////////////////////////////////
-
+//
 // setTimeout(() => console.log(1), 0)
 //
 // const p = Promise.resolve().then(() => console.log(2));
@@ -28,7 +31,8 @@
 //     resolve();
 // }).then(() => console.log(5));
 
-
+//
+//que:
 //////////////////////////////////////////////////////////////
 
 // setTimeout(() => console.log(1), 0)
@@ -46,14 +50,14 @@
 //     resolve();
 // }).then(() => console.log(7));
 
-
+//
+//que:
 
 //////////////////////////////////////////////////////////////
 
 // const one = () => Promise.resolve('One!')
 //
-// async function myFunc(){
-//     console.log('In function!')
+//     console.log('In function!')// async function myFunc(){
 //     const res = await one()
 //     console.log(res)
 // }
@@ -62,6 +66,8 @@
 // myFunc()
 // console.log('After function!')
 
+//
+//que:
 
 //////////////////////////////////////////////////////////////
 
@@ -78,6 +84,5 @@
 // setTimeout(() => console.log(6));
 //
 // console.log(7);
-
 
 

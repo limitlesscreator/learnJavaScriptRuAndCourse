@@ -34,6 +34,14 @@
 //
 // document.cookie = 'surName=Voloshenko; max-age=360; secure'
 
+// function random(){
+//      b = 3
+// }
+//
+// random()
+//
+// console.log(b)
+
 
 // const response = new Promise((resolve,reject) => {
 //     reject()
@@ -45,20 +53,60 @@
 // let data = fetch('https://jsonplaceholder.typicode.com/todos/')
 //     .then(res => res.json()).then(data => console.log(data))
 // console.log(data)
+// ...........
+// async function data1(){
+//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+//     return await response.json()
+// }
+// async function data2(){
+//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/2')
+//     return await response.json()
+// }
+// async function data3(){
+//     const response = await fetch('https://jsonplaceholerrorder.typicode23.com/todo32s/1')
+//     return await response.json()
+// }
+//
+// Promise.any([data1(), data2(), data3()]).then(el => {
+//     console.log(el)
+// }).catch(error => console.log('something wrong'))
 
-async function data1(){
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-    return await response.json()
-}
-async function data2(){
-    const response = await fetch('https://jsonplaceholder.typicode.com/todos/2')
-    return await response.json()
-}
-async function data3(){
-    const response = await fetch('https://jsonplaceholerrorder.typicode23.com/todo32s/1')
-    return await response.json()
-}
 
-Promise.any([data1(), data2(), data3()]).then(el => {
-    console.log(el)
-}).catch(error => console.log('something wrong'))
+// let obj = {
+//     a: '1',
+//     b: '2'
+// }
+//
+// console.log(Object.fromEntries(Object.entries(obj)))
+//
+// let collection = document.querySelector('.testDiv')
+// // let result = Array.from(collection)
+//
+// collection.append('lala')
+//
+// console.log(collection)
+//
+//
+// let a = [1,2,[2,3],[5,3]]
+//
+// let result = []
+//
+// a.flatMap(el => {
+//     result.push(el)
+// })
+//
+// console.log(result)
+//
+//
+// async function somehting(){
+//       let a = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+//     console.log(a)
+// }
+// somehting()
+
+
+let a = [1,2,3,4].reduce((acc, curr) => acc + curr, 0)
+
+console.log(a)
+
+
