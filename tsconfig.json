@@ -1,0 +1,39 @@
+{
+  "rules": {
+    //отсупы и правильная сортировка импортов
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+
+
+
+    //если я правильно понял, то это отключает export default компоненты, то есть
+    "import/prefer-default-export": "off"
+  },
+
+  // на сколько я понял это убирает возможность типизации того, что функция возвращает
+  "@typescript-eslint/explicit-function-return-type": "off"
+
+}
+
+// Imports pending
+// Decomposition просто запомнить
+// Components не понял
+// Functions (handlers, utilities) возвращение типов должно быть автоматическим и типы аргументам задаются отдельно
+// Type import

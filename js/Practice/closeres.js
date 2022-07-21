@@ -82,3 +82,30 @@
 // }
 // a()
 
+///////////////////////////////////////////////////////////////
+
+// if (true) {
+//     apples = 10;
+//
+//     console.log(apples);
+// }
+//
+// console.log(apples);
+
+///////////////////////////////////////////////////////////////
+
+// if (true) {
+//     let apples = 10;
+//
+//     console.log(apples);
+// }
+// console.log(apples);
+
+///////////////////////////////////////////////////////////////
+
+// let apples = 5;
+// if (true) {
+//     let apples = 10;
+//     console.log(apples);
+// }
+// console.log(apples);

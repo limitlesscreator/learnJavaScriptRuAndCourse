@@ -1,112 +1,102 @@
-// let data = localStorage.getItem('adress')
-// console.log(data)
-// localStorage.setItem('weather', '30')
-// console.log(localStorage)
+// //Пример плохого решения и хорошего регения KISS
 //
-// localStorage.removeItem('weather')
-// console.log(localStorage)
+// // Плохой
 //
-// // localStorage.clear()
-// console.log(localStorage)
-//
-//
-// function setData(text){
-//     console.log('changed')
-//     localStorage.setItem('login',`${text}`)
-//     console.log(localStorage)
+// function badExampleWeek1(day) {
+//     if (day === 1){
+//         return 'Monday'
+//     }
+//     else if(day === 2){
+//         return 'Tuesday'
+//     }
+//     else if(day === 3){
+//         return 'Wednesday'
+//     }
+//     else if(day === 4){
+//         return 'Thursday'
+//     }
+//     else if (day === 5){
+//         return 'Friday'
+//     }
+//     else if (day === 6){
+//         return 'Saturday'
+//     }
+//     else if (day === 7){
+//         return 'Sunday'
+//     }
+//     else {
+//         return 'try another number'
+//     }
 // }
-//
-// let input = document.getElementById('logInput')
-// input.value = localStorage.getItem('login')
-// console.log()
-//
-// input.addEventListener('change', () => setData(input.value))
-//
-// window.addEventListener('storage', () => console.log('storage changed'))
-
-
-// document.cookie = 'username=John Doe; expires=Mon, 11 Jul 2022 14:25:00 UTC'
-// let date = new Date(Date.now() + 86400e3);
-// date = date.toUTCString();
-// document.cookie = "user=John; expires=" + date;
-// console.log(document.cookie)
+// // Здесь код выглядит простым, но он так же объёмен, что нам не подходит
 //
 //
-// document.cookie = 'surName=Voloshenko; max-age=360; secure'
-
-// function random(){
-//      b = 3
+// // Плохой
+// function badExampleWeek2(day) {
+//     return day === 1 ? 'Monday' : day === 2 ? 'Tuesday' : day === 3 ? 'Wednesday' : day === 4 ?
+//         'Thursday' : day === 5 ? 'Friday' : day === 6 ? 'Saturday' : day === 7 ? 'Sunday' : 'try another number'
 // }
+// // Здесь же код короткий, но теперь его не так просто понять на первый взгляд
 //
-// random()
-//
-// console.log(b)
-
-
-// const response = new Promise((resolve,reject) => {
-//     reject()
-// })
-// response
-//     .then(el => console.log('allNice'),err => console.log('something bad to happen to meeee:D'))
-//
-
-// let data = fetch('https://jsonplaceholder.typicode.com/todos/')
-//     .then(res => res.json()).then(data => console.log(data))
-// console.log(data)
-// ...........
-// async function data1(){
-//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-//     return await response.json()
+// // Хороший
+// function GoodExampleWeek1(day) {
+//     switch (day) {
+//         case 1:
+//             return 'Monday';
+//         case 2:
+//             return 'Tuesday';
+//         case 3:
+//             return 'Wednesday';
+//         case 4:
+//             return 'Thursday';
+//         case 5:
+//             return 'Friday';
+//         case 6:
+//             return 'Saturday';
+//         case 7:
+//             return 'Sunday';
+//         default:
+//             throw Error('Not valid number')
+//     }
 // }
-// async function data2(){
-//     const response = await fetch('https://jsonplaceholder.typicode.com/todos/2')
-//     return await response.json()
+// // Данный код является уже простым для понимания и занимает меньше на 6 строк чем при написании else if
+//
+// //Хороший
+// function GoodExampleWeek2(day) {
+//     if (day < 1 || day > 7){
+//         throw Error('Error')
+//     }
+//
+//     let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+//
+//     return days[day - 1]
 // }
-// async function data3(){
-//     const response = await fetch('https://jsonplaceholerrorder.typicode23.com/todo32s/1')
-//     return await response.json()
-// }
+// // Один из самых коротких и понятных в данном случае кодов является этот
 //
-// Promise.any([data1(), data2(), data3()]).then(el => {
-//     console.log(el)
-// }).catch(error => console.log('something wrong'))
+// // console.log(week2(3))
+// // console.log(badExampleWeek1(12))
+//
+//
+// console.log(GoodExampleWeek2(2))
+// ///////////////////////////////////////////////////////////////////////////////////
+//
+// //Пример плохого решения и хорошего регения DRY
+// // https://www.youtube.com/watch?v=KPqZvsyQ1p0
+//
+// // have to look some examples in google
+
+const requestURL = 'https://jsonplaceholder.typicode.com/todos/1'
+
+let XMLRequest = new XMLHttpRequest()
 
 
-// let obj = {
-//     a: '1',
-//     b: '2'
-// }
-//
-// console.log(Object.fromEntries(Object.entries(obj)))
-//
-// let collection = document.querySelector('.testDiv')
-// // let result = Array.from(collection)
-//
-// collection.append('lala')
-//
-// console.log(collection)
-//
-//
-// let a = [1,2,[2,3],[5,3]]
-//
-// let result = []
-//
-// a.flatMap(el => {
-//     result.push(el)
-// })
-//
-// console.log(result)
-//
-//
-// async function somehting(){
-//       let a = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-//     console.log(a)
-// }
-// somehting()
+XMLRequest.onreadystatechange = function (){
+    if(this.status == 200 && this.readyState ==4){
+        let response =  JSON.parse(this.response)
+        console.log(JSON.stringify(response,'',2))
+    }
+}
 
+XMLRequest.open('GET', requestURL, true)
 
-let a = [1,2,3,4].reduce((acc, curr) => acc + curr, 0)
-
-console.log(a)
-
-
+XMLRequest.send()

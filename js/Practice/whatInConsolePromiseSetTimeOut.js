@@ -86,3 +86,38 @@
 // console.log(7);
 
 
+//////////////////////////////////////////////////////////////
+
+// function makeSomething() {
+//     return Promise.resolve(1);
+// }
+// function makeSomethingElse() {
+//     return Promise.resolve(2);
+// }
+// function makeError() {
+//     return Promise.reject('err');
+// }
+//
+// makeSomething()
+//     .then((res) => {
+//         console.log('first then', res);
+//         return makeError();
+//     })
+//     .then(res => {
+//         console.log('second then', res);
+//         return makeSomethingElse();
+//     })
+//     .catch(err => {
+//         console.log('catch', err); //
+//     })
+//     .then((res) => {
+//         console.log('third then', res);
+//         return makeSomething();
+//     })
+//     .finally((res) => {
+//         console.log('finally', res);
+//         return makeSomethingElse();
+//     })
+//     .then((res) => {
+//         console.log('last then', res);
+//     })

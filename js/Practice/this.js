@@ -92,11 +92,44 @@
 // };
 //
 //
-// f(); // 3
-// new f(); // 3
-// obj.m(); // 4
-// new obj.m(); // undefined
-// f.call(f); // 5
-// obj.m.call(f); // 5
+// f(); //
+// new f(); //
+// obj.m(); //
+// new obj.m(); //
+// f.call(f);
+// obj.m.call(f);
+
+////////////////////////////////////////////////////////////////////////
+
+// let user = {
+//     name: "Dima",
+//     hi() { console.log(this.name); }
+// };
+//
+// const hi = user.hi;
+//
+// let admin = { name: "Paul" };
+// admin.hi = hi;
+//
+// user.hi();  // Dima
+// admin.hi(); // Paul
+// hi.call(admin);       // undefined
+//
+// const hi2 = user.bind(user).bind(admin);
+
+////////////////////////////////////////////////////////////////////////
+
+// let group = {
+//     title: "Our Group",
+//     students: ["John", "Pete", "Alice"],
+//
+//     showList() {
+//         this.students.forEach(function (student) {
+//             console.log(this.title + ': ' + student)
+//         });
+//     }
+// };
+//
+// group.showList();
 
 ////////////////////////////////////////////////////////////////////////
