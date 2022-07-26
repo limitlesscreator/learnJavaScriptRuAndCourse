@@ -48,5 +48,5 @@
 // console.log([1,2,3] == [1,2,3])
 // console.log([1,2,3] === [1,2,3])
 // console.log("2" > "12")
-// console.log("22" < "23")
+console.log("13" === "13")
 // console.log(null == null)
