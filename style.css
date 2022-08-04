@@ -26,14 +26,54 @@ body {
 }
 
 
-.black{
-    background: #191c1f !important;
-    color: white;
+[type='red']{
+    background: red;
 }
+.black{
+    background: #191c1f ;
+}
+
 
 .circle{
     height: 50px;
     width: 50px;
     border-radius: 50%;
     background: white;
+}
+
+#testBlue{
+    background: blue;
+}
+
+
+/*li.red{*/
+/*    background: red;*/
+/*}*/
+
+/*ul .red + li{*/
+/*    background: red;*/
+/*}*/
+
+li:nth-child(2n - 1){
+    background: yellowgreen;
+}
+
+span:only-child{
+    background: #0a58ca;
+}
+
+div:first-of-type{
+    background: deeppink;
+}
+
+.specialDiv::after{
+    margin-left: -50px;
+    content: 'som';
+    background: white;
+    color: black;
+}
+
+[solidLatters]{
+    font-weight: bold;
+    font-size: 80px;
 }
