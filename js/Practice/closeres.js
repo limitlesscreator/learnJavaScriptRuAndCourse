@@ -124,3 +124,27 @@
 // }
 // console.log(apples);
 
+///////////////////////////////////////////////////////////////
+
+// let user = {
+//     surname: 'Иванов',
+//     show: function () {
+//         console.log('Фамилия', this.surname);
+//     }
+// };
+//
+// setTimeout(user.show,5)
+
+
+///////////////////////////////////////////////////////////////
+
+// let user = {
+//     surname: 'Иванов',
+//     show: function () {
+//         console.log('Фамилия', this.surname);
+//     }
+// };
+//
+// let answer = user.show
+//
+// answer()

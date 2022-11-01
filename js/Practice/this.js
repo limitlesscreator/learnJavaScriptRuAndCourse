@@ -10,26 +10,7 @@
 // console.log(shape.diameter());
 //
 // ////////////////////////////////////////////////////////////////////
-//
-//
-// console.log(1);
-//
-// const p = Promise.resolve(() => {
-//     console.log(2);
-//
-//     setTimeout(() => console.log("3"));
-// });
-//
-// setTimeout(() => console.log("4"));
-//
-// p.then((res) => {
-//     res();
-//     console.log("name");
-// });
-//
-// console.log("5");
 
-// ////////////////////////////////////////////////////////////////////
 
 
 // const obj = {
@@ -42,7 +23,7 @@
 //     }
 // }
 //
-// obj.method() //
+// obj.method()
 //
 // const obj2 = {a: 5}
 // const obj3 = {a: 0}
@@ -51,7 +32,7 @@
 //
 //
 // const bindedMethod = obj.method.bind(obj3)
-// bindedMethod() //
+// bindedMethod()
 //
 // bindedMethod.call(obj2) //
 //
@@ -59,48 +40,34 @@
 //
 // arrowFunc.call(obj2) //
 
-
-// ////////////////////////////////////////////////////////////////////
-
-
-// setTimeout(() => console.log(1), 0)
-//
-// const p = Promise.resolve().then(() => console.log(2));
-//
-// console.log(3);
-//
-// const p2 = new Promise((resolve) => {
-//     console.log(4);
-//     resolve();
-// }).then(() => console.log(5));
-
 ////////////////////////////////////////////////////////////////////////
 
-// var f = function() {
-//     this.x = 5;
-//     (function() {
-//         this.x = 3;
-//     })();
-//     console.log(this.x);
-// };
-//
-// var obj = {
-//     x: 4,
-//     m: function() {
-//         console.log(this.x);
-//     }
-// };
-//
-//
-// f(); //
-// new f(); //
-// obj.m(); //
-// new obj.m(); //
+var f = function() {
+    this.x = 5;
+    (function() {
+        this.x = 3;
+    })();
+    console.log(this.x);
+};
+
+var obj = {
+    x: 4,
+    m: function() {
+        console.log(this.x);
+    }
+};
+
+
+// f();
+// new f();
+
+// obj.m();
+// new obj.m();
 // f.call(f);
 // obj.m.call(f);
 
 ////////////////////////////////////////////////////////////////////////
-
+//
 // let user = {
 //     name: "Dima",
 //     hi() { console.log(this.name); }
@@ -111,12 +78,13 @@
 // let admin = { name: "Paul" };
 // admin.hi = hi;
 //
-// user.hi();  // Dima
-// admin.hi(); // Paul
-// hi.call(admin);       // undefined
+// user.hi();  //
+// admin.hi(); //
+// hi.call(admin); //
 //
-// const hi2 = user.bind(user).bind(admin);
-
+// const hi2 = user.hi.bind(user).bind(admin);
+//
+// hi2() //
 ////////////////////////////////////////////////////////////////////////
 
 // let group = {
@@ -131,5 +99,16 @@
 // };
 //
 // group.showList();
+
+////////////////////////////////////////////////////////////////////////
+
+// let user = {
+//     firstName: "Вася",
+//     sayHi() {
+//         alert(`Привет, ${this.firstName}!`);
+//     }
+// };
+//
+// setTimeout(user.sayHi, 1000);
 
 ////////////////////////////////////////////////////////////////////////

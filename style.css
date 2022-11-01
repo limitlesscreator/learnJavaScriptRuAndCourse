@@ -9,71 +9,21 @@ body {
     color: white;
 }
 
-.mathInput{
-    margin-left: 50px;
-    margin-top: 100px;
-    height: 50px;
-    width: 300px;
-    font-size: 40px;
-}
 
-.solve{
-    margin-left: 20px;
-    margin-top: 100px;
-    height: 50px;
-    width: 300px;
-    font-size: 30px;
-}
-
-
-[type='red']{
-    background: red;
-}
-.black{
-    background: #191c1f ;
-}
-
-
-.circle{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background: white;
-}
-
-#testBlue{
-    background: blue;
-}
-
-
-/*li.red{*/
-/*    background: red;*/
-/*}*/
-
-/*ul .red + li{*/
-/*    background: red;*/
-/*}*/
-
-li:nth-child(2n - 1){
+.parent{
+    margin-top: 50px;
+    /*position: relative;*/
     background: yellowgreen;
+    height: 100px;
+    width: 100px;
+    font-size: 30px;
+    margin-bottom: 1000px;
 }
 
-span:only-child{
-    background: #0a58ca;
-}
-
-div:first-of-type{
-    background: deeppink;
-}
-
-.specialDiv::after{
-    margin-left: -50px;
-    content: 'som';
-    background: white;
-    color: black;
-}
-
-[solidLatters]{
-    font-weight: bold;
-    font-size: 80px;
+.child-1{
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: sticky;
 }
