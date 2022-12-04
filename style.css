@@ -10,20 +10,18 @@ body {
 }
 
 
-.parent{
-    margin-top: 50px;
-    /*position: relative;*/
-    background: yellowgreen;
-    height: 100px;
-    width: 100px;
-    font-size: 30px;
-    margin-bottom: 1000px;
+
+.square{
+    width: 400px;
+    height: 500px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.child-1{
-    top: 0;
+.child{
     width: 100px;
-    height: 100px;
     background: red;
-    position: sticky;
+    height: 50px;
 }
